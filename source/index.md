@@ -16,15 +16,18 @@ includes:
 search: true
 ---
 
-# Introduction
+# Summary
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+The Whispir API has been designed to provide application developers the ability to embed the powerful multichannel messaging capabilities the Whispir Platform provides, directly into any application with access to the web.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+To start, you need access to the following:
 
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+* A Whispir Account ([Free Trial Here](https://app.whispir.it/pub/whispirSelfRegistration.pub))
+* An API key ([Developer Account Here](https://developer.whispir.com/member/register))
 
-# Authentication
+With this information you can begin to make requests to the API.
+
+# Access
 
 > To authorize, use this code:
 
