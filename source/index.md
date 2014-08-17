@@ -1,13 +1,13 @@
 ---
-title: API Reference
+title: Whispir API
 
 language_tabs:
-  - shell
-  - ruby
-  - python
+  - php
+  - java
+  - csharp
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='http://developer.whispir.com'>Sign Up for a Developer Key</a>
   - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
