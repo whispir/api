@@ -2,9 +2,8 @@
 title: Whispir API
 
 language_tabs:
-  - php
-  - java
-  - csharp
+  - shell : json
+  - shell : xml
 
 toc_footers:
   - <a href='http://developer.whispir.com'>Sign Up for a Developer Key</a>
@@ -20,6 +19,8 @@ search: true
 
 The Whispir API has been designed to provide application developers the ability to embed the powerful multichannel messaging capabilities the Whispir Platform provides, directly into any application with access to the web.
 
+# Access
+
 To start, you need access to the following:
 
 * A Whispir Account ([Free Trial Here](https://app.whispir.it/pub/whispirSelfRegistration.pub))
@@ -27,39 +28,24 @@ To start, you need access to the following:
 
 With this information you can begin to make requests to the API.
 
-# Access
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import 'kittn'
-
-api = Kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
 <aside class="notice">
 You must replace `meowmeowmeow` with your personal API key.
 </aside>
+
+> To authorize, use this code:
+
+```json
+HTTP 1.1 GET https://api.whispir.com?apikey=json
+
+
+```
+
+```xml
+HTTP 1.1 GET https://api.whispir.com?apikey=xml
+
+
+```
+
 
 # Kittens
 
