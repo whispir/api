@@ -2,7 +2,7 @@
 title: Whispir API Reference
 
 language_tabs:
-  - json
+  - go: json
   - xml
 
 toc_footers:

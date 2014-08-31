@@ -95,7 +95,7 @@ If you get a different response than **HTTP 200 OK**, perform the following:
 
 * If you're still having issues, contact us at [apisupport@whispir.com](mailto:apisupport@whispir.com)
 
-## Step 4: Send an SMS Message
+## Step 4 - Send an SMS Message
 
 > Send your first message using curl
 
@@ -125,6 +125,36 @@ You're going to use the URL `https://api.whispir.com/messages` as the API endpoi
 
 ### Content Type
 
+> Samples in XML and JSON
+
+```go
+POST https://api.whispir.com/messages?apikey=89asdfohasd89023rsdfhio8923
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+Accept: application/vnd.whispir.message-v1+json
+
+{
+    "to": "<DESTINATION PHONE NUMBER>", 
+    "subject": "This is the first line of my SMS",
+    "body": "This is the content of my SMS"
+}
+```
+
+```xml
+POST https://api.whispir.com/messages?apikey=89asdfohasd89023rsdfhio8923
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+Accept: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to><DESTINATION PHONE NUMBER></to>
+    <subject>This is the first line of my SMS</subject>    
+    <body>This is the content of my SMS</body>
+</ns2:message> 
+
+```
+
 The next thing you need to do is tell Whispir what information you're sending.  You can just blindly send some XML or JSON content, but life is much easier if Whispir knows exatly what it is you are sending.
 
 You're going to tell Whispir what you are sending by using the **Content-Type** HTTP header.  Your Content-Type header is going to be (either JSON or XML):
@@ -134,41 +164,8 @@ You're going to tell Whispir what you are sending by using the **Content-Type** 
 
 This tells Whispir that you are sending content that conforms to Version 1 of the message schema.  As Whispir adds more features to each schema, our version numbers will increase, this is described in much more detail later on in the documentation.
 
+
 ### Sending messages using JSON and XML
-
-> Send your first message in JSON
-
-```
-POST https://api.whispir.com/messages?apikey=89asdfohasd89023rsdfhio8923
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
-Content-Type: application/vnd.whispir.message-v1+json
-Accept: application/vnd.whispir.message-v1+json
-```
-```
-{
-    "to": "<DESTINATION PHONE NUMBER>", 
-    "subject": "This is the first line of my SMS",
-    "body": "This is the content of my SMS"
-}
-
-```
-> Send your first message in XML
-
-```
-POST https://api.whispir.com/messages?apikey=89asdfohasd89023rsdfhio8923
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
-Content-Type: application/vnd.whispir.message-v1+xml
-Accept: application/vnd.whispir.message-v1+xml
-```
-```shell
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
-    <to><DESTINATION PHONE NUMBER></to>
-    <subject>This is the first line of my SMS</subject>    
-    <body>This is the content of my SMS</body>
-</ns2:message> 
-
-```
 
 Once you have successfully sent your SMS message using curl, you can move on to using your application to generate XML or JSON formats for processing.
 

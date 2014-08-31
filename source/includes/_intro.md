@@ -3,7 +3,7 @@
 > Whispir's API requires only 3 parameters within JSON or XML to send an SMS message
 
 
-```json
+```go
 {
    "to" : "61400000000",
    "subject" : "Test SMS Message",
