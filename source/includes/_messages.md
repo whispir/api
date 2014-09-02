@@ -100,8 +100,6 @@ The **messages** endpoint allows a user to perform the following tasks:
 
 These are described in more detail below:
 
-##
-
 As message resources can exist in the default (Company) workspace or other workspace, messages have two access URLs:
 
 * https://api.whispir.com/messages - for Company Workspace messages 
@@ -176,6 +174,186 @@ If your application does not require separate workspaces, you can simply send al
     </tbody>
 </table>
 
+## Message Variables
+
+> Demonstration of sending messages with variables (or tags).
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>61400000000</to>
+    <subject>Test SMS Message with tags</subject>    
+    <body>Hi @@first_name@@.  This is your message.</body>
+</ns2:message> 
+```
+
+```go
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+Accept: application/vnd.whispir.message-v1+json
+
+{
+   "to" : "61400000000",
+   "subject" : "Test SMS Message with tags",
+   "body" : "Hi @@first_name@@.  This is your message."
+}
+```
+
+When sending messages using the Whispir API, users have the ability to automatically include recipient information as part of the message.  This is facilitated using **tags**.
+
+The following **tags** can be included in any message:
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">Recipient Message Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@first_name@@</td>
+            <td>Recipients first name.<br/>e.g. John</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@last_name@@</td>
+            <td>Recipients last name.<br/>e.g. Smith</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@recipient_email@@</td>
+            <td>Recipients primary email address.<br/>e.g. jsmith@email.com</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@recipient_sms@@</td>
+            <td>Recipients primary mobile phone number.<br/>e.g. 61412345678</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@recipient_voice@@</td>
+            <td>Recipients primary phone number for voice calls.<br/>e.g. 61412345678</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@pin@@</td>
+            <td>Whispir message retrieval service call back PIN (only populated when voice is used).<br/>e.g. 1234</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@recipient_role@@</td>
+            <td>Resolves to the recipient's 'Role' field.<br/>e.g. Manager</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@recipient_additionalrole@@</td>
+            <td>Resolves to the recipient's 'Additional Role' field.<br/>e.g. Team Leader</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@team_name1@@</td>
+            <td>Resolves to the recipient's 'Team Name' field.<br/>e.g. Red Team</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@messagelabel@@</td>
+            <td>Resolves to the label field of the sent message.<br/>e.g. Incident #1234</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@messagecategories@@</td>
+            <td>Resolves to the list of categories used in the message, separated with commas.<br/>e.g. Product Update</td
+        </tr>
+    </tbody>
+</table>
+
+Each of these tags will resolve on send of the message to the individual recipient's information.  As Whispir needs to know about this information prior to sending the message, the tags will only work when sending messages to Contacts or Distribution Lists.
+
+For more information about sending messages to Contacts or Distribution Lists, please consult the documentation under Messaging.
+
+### Using auto-populated system variables in messages
+
+> Demonstration of sending messages with system variables (or tags).
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>61400000000</to>
+    <subject>Test SMS Message with tags</subject>    
+    <body>Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
+</ns2:message> 
+```
+
+```go
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+Accept: application/vnd.whispir.message-v1+json
+
+{
+   "to" : "61400000000",
+   "subject" : "Test SMS Message with tags",
+   "body" : "Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@."
+}
+```
+
+When sending messages using the Whispir API, users have the ability to automatically include system generated information as part of the message.  This is facilitated using **system tags**.
+
+The following **system tags** can be included in any message:
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">System Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@dd@@</td>
+            <td>Current day with leading zero.<br/>e.g. 25</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@mm@@</td>
+            <td>Current month with leading zero.<br/>e.g. 10</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@yy@@</td>
+            <td>Current year, short form.<br/>e.g. 14</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@yyyy@@</td>
+            <td>Current year, long form.<br/>e.g. 2014</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@day@@</td>
+            <td>Day in spoken form.<br/>e.g. Wednesday</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@month@@</td>
+            <td>Month in spoken form.<br/>e.g. June</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@hrs@@</td>
+            <td>Current hour with leading zero in 24hrs.<br/>e.g. 16</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@min@@</td>
+            <td>Current minute with leading zero .<br/>e.g. 37</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@date@@</td>
+            <td>Current date in format (yyyy-mm-dd)<br/>e.g. 2014-09-02</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@time@@</td>
+            <td>Current time in 24hr format.<br/>e.g. 14:37</td>
+        </tr>
+    </tbody>
+</table>
+
+Each of these system tags will resolve on send of the message to the system information.  The system tags will only work when sending messages to any recipient.
+
+For more information about sending messages, please consult the documentation under Messaging.
+
 ## SMS Messages
 
 ```xml
@@ -244,15 +422,15 @@ The 'to' field can be provided in the following formats:
 
 **Notes:**
 
-Each SMS message can contain up to **1600** characters. 
-
+* Each SMS message can contain up to **1600** characters. 
 * The Subject field is Mandatory.
 * The Body field is Mandatory.
+* MRI (Message Resource Identifier) is the unique Whispir address for the Contact, User or Distribution List.
 
 
 ## Email Messages
 
-> Plain Text Email Example
+> Demonstration of a plain text Email
 
 ```xml
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
@@ -287,7 +465,7 @@ Accept: application/vnd.whispir.message-v1+json
     }
 }
 ```
-> Rich Text Email Example
+> Demonstration of a Rich (HTML) Email
 
 ```xml
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
@@ -335,7 +513,86 @@ Whispir can easily be used as an API email gateway to deliver thousands of rich 
 * The Body field is Mandatory.
 * The Type field is Mandatory and must specify a value of 'text/plain' or 'text/html' to describe the content of the message.
 
-**Whispir's support of Rich (HTML) Emails**
+###Whispir's support of Rich (HTML) Emails
+
+> Demonstration of a Rich (HTML) Email with an attachment
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>john.smith@test.com</to>
+    <subject>Test e-mail message with attachment</subject>    
+    <email>
+        <body>Test Message Content</body>
+        <type>text/plain</type>
+    <resources>
+            <attachment>
+                <attachmentName>TestIcon.png</attachmentName>
+                <attachmentDesc>TestIcon.png</attachmentDesc>
+                <derefUri>iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAIAAADUsmlHAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
+jwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMvSURBVDhPTVT5S1RhFD3fezOOOePTXHKriWgj
+sogWC1TSMuuHIFqoX0KsIIgSWwiq/6FFU8MKK6KyXYSKpkUKR4QMSSpCLQpyxHHUZpztzdu63xub
+5vKWj/fu+c6599z3mMfjSU9P13UdZoiCaLfZYQWiUGKq1WrBLEBDOBpWNTWeQyEIwvT0NAsEAgRO
+PKXFxceNbQOtv4ShkKCkaZZ5kYU1Sw6dqT0NMTkLBIbf7zf+xaOuJzgG4RmyPyP/Kwq/oWAYeT+R
+6gYOofnmlUQmLQjI6JQkifasu368KdCQWwFEwBiYQOIgiDBETDFIORh/iZ0De55cehgXQJIphce9
+d/ebJhuyV0P3QY9Cj/HDUKhseIPomP/CW2QYB42nSx+db76YUM9IusPhYHVM2g5Bpo5xNuIkZibC
+F8On0oGVjhWabmR8EBx5GDuHaItsy0zhzA6bo/H5ZSyDMQ1d4YQa0Sqc1hdAe3E7IYkqp9tiUcHG
+kXIQZ8+fm+k5uXK3/46YAV3mMMLEt/BHUJ1Vua9oH+WV9ayLyLpVhRYFkT8d4mUzRuI0DAcHmQng
+SLrGoBJ/GC/L31JSy/cm91ifXTcboYDJGLX+1kI6WS3AQFSRCUDvwhGEwubiD1yVLkLKWuxoT50k
+zGwab6Ru6HIsahpiwTybkwTLU9iUU1Ezf394CmuyV20p2kLg8mcbRHLLxGimLlWFFMpMc6TRFlx2
+9aJqePBgx4M3u7tubb1dMXfjw6rHhOwb+/jhV3+qNtMFKspQEZnA+oxSPr9UdjgUllV59pHZhSUF
+I/We5AnMv5o7bvhsFu5f3DlmR7ATr/a+rtq2mVulqEqmlFlbUuv5MbqudW0C7PrhGpvwidRhIoyX
+qiHoRam/tGrT5n9Wmfcb9TfmBOf0DXy80H0h/uKU6yQRcqlmk+mji0RhbbN2XOpAygzF/9nmfp4o
+c4+4y6vLqRnuUTdsfNqYFRop/4JFw4t723qz52YlZpvPd/K30vm+03nAie1ADXAYOADsgHOXs/la
+ix7RkzMJyJJ/BjQ09lQ7me8f9/cP9nsnvemzpOIFy3PzclkK0wyNgvDEHP8Z/AXQ58rAz69IBAAA
+AABJRU5ErkJggg==</derefUri>
+            </attachment>
+        </resources>
+    </email>
+</ns2:message>
+```
+```go
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+Accept: application/vnd.whispir.message-v1+json 
+
+{
+    "to" : "jsmith@test.com",
+    "subject" : "Test e-mail message with attachment",
+    "email" : {
+        "body" : "This is my content",
+        "type" : "text/plain",
+        "resources" : {
+            "attachment" : [{
+                "attachmentName" : "TestIcon.png",
+                "attachmentDesc" : "TestIcon.png",
+                "derefUri" : "iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAIAAADUsmlHAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
+jwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMvSURBVDhPTVT5S1RhFD3fezOOOePTXHKriWgj
+sogWC1TSMuuHIFqoX0KsIIgSWwiq/6FFU8MKK6KyXYSKpkUKR4QMSSpCLQpyxHHUZpztzdu63xub
+5vKWj/fu+c6599z3mMfjSU9P13UdZoiCaLfZYQWiUGKq1WrBLEBDOBpWNTWeQyEIwvT0NAsEAgRO
+PKXFxceNbQOtv4ShkKCkaZZ5kYU1Sw6dqT0NMTkLBIbf7zf+xaOuJzgG4RmyPyP/Kwq/oWAYeT+R
+6gYOofnmlUQmLQjI6JQkifasu368KdCQWwFEwBiYQOIgiDBETDFIORh/iZ0De55cehgXQJIphce9
+d/ebJhuyV0P3QY9Cj/HDUKhseIPomP/CW2QYB42nSx+db76YUM9IusPhYHVM2g5Bpo5xNuIkZibC
+F8On0oGVjhWabmR8EBx5GDuHaItsy0zhzA6bo/H5ZSyDMQ1d4YQa0Sqc1hdAe3E7IYkqp9tiUcHG
+kXIQZ8+fm+k5uXK3/46YAV3mMMLEt/BHUJ1Vua9oH+WV9ayLyLpVhRYFkT8d4mUzRuI0DAcHmQng
+SLrGoBJ/GC/L31JSy/cm91ifXTcboYDJGLX+1kI6WS3AQFSRCUDvwhGEwubiD1yVLkLKWuxoT50k
+zGwab6Ru6HIsahpiwTybkwTLU9iUU1Ezf394CmuyV20p2kLg8mcbRHLLxGimLlWFFMpMc6TRFlx2
+9aJqePBgx4M3u7tubb1dMXfjw6rHhOwb+/jhV3+qNtMFKspQEZnA+oxSPr9UdjgUllV59pHZhSUF
+I/We5AnMv5o7bvhsFu5f3DlmR7ATr/a+rtq2mVulqEqmlFlbUuv5MbqudW0C7PrhGpvwidRhIoyX
+qiHoRam/tGrT5n9Wmfcb9TfmBOf0DXy80H0h/uKU6yQRcqlmk+mji0RhbbN2XOpAygzF/9nmfp4o
+c4+4y6vLqRnuUTdsfNqYFRop/4JFw4t723qz52YlZpvPd/K30vm+03nAie1ADXAYOADsgHOXs/la
+ix7RkzMJyJJ/BjQ09lQ7me8f9/cP9nsnvemzpOIFy3PzclkK0wyNgvDEHP8Z/AXQ58rAz69IBAAA
+AABJRU5ErkJggg=="
+            }]
+        }
+    }
+}
+```
 
 * HTML, HEAD and BODY HTML elements are not supported.  HTML content assumes that it is starting from within the BODY tag.
 * HTML form and input elements are not supported in most email clients.  These can be included in the HTML content but should be thoroughly tested prior to use.
@@ -343,3 +600,77 @@ Whispir can easily be used as an API email gateway to deliver thousands of rich 
 * Javascript is not supported and should not be used in e-mail messages.
 * Images must be referenced through absolute web urls, any other mechanism will not work on most email clients.
 <br/><br/>**Note:** Whispir does not host images for clients, you must use another hosting service and reference the URL in your Whispir request payload.
+
+###Including attachments in e-mail messages
+
+The Whispir API provides users with the ability to compose e-mail messages that also contain message attachments.
+
+Attachments can be of any type (e.g. PDF, Images, Documents), and can be up to 10MB in size (maximum for all attachments).
+
+Attachments must be provided in the payload of the message.  URLs can be referenced in the Email, but will not be added as message attachments.
+
+**Notes:**
+
+* attachmentName - The name of the file being attached (mandatory)
+* attachmentDesc - An optional description of the file being attached
+* derefUri - The base64 representation of the file being uploaded
+
+<aside class="notice">
+The attachment element in JSON is also an array, so be sure to add the square bracket in there!
+</aside>
+
+## Voice Messages
+
+> Demonstration of sending a Text To Speech Voice call
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>61400000000</to>
+    <subject>Test Voice Call</subject>    
+    <voice>
+        <header>This is the introduction of the voice call</header>        
+        <body>This is body of the message</body>
+        <footer>This is the footer of the message</footer>
+        <type>ConfCall:,ConfAccountNo:,ConfPinNo:,ConfModPinNo:,Pin:</type>
+    </voice>
+</ns2:message> 
+```
+```go
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+
+{
+    "to" : "61400000000",
+    "subject" : "Test Voice Call",
+    "voice" : {
+        "header" : "This is the introduction of the voice call",
+        "body" : "This is body of the message",
+        "footer" : "This is the footer of the message",
+        "type" : "ConfCall:,ConfAccountNo:,ConfPinNo:,ConfModPinNo:,Pin:"
+    }
+}
+```
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">'To' field options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@teleconf_number@@</td>
+            <td>When Teleconferencing Services are used as part of voice calls, the Teleconference line that is used in the voice call can be accessed via this variable.<br/>e.g. 1800 123 123</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@teleconf_account@@</td>
+            <td>When Teleconferencing Services are used as part of voice calls, the Teleconference line that is used in the voice call can be accessed via this variable.<br/>e.g. 1800 123 123</td>
+        </tr>
+    </tbody>
+</table>
