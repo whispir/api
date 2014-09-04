@@ -420,7 +420,7 @@ The 'to' field can be provided in the following formats:
     </tbody>
 </table>
 
-**Notes:**
+###Notes:
 
 * Each SMS message can contain up to **1600** characters. 
 * The Subject field is Mandatory.
@@ -609,7 +609,7 @@ Attachments can be of any type (e.g. PDF, Images, Documents), and can be up to 1
 
 Attachments must be provided in the payload of the message.  URLs can be referenced in the Email, but will not be added as message attachments.
 
-**Notes:**
+###Notes:
 
 * attachmentName - The name of the file being attached (mandatory)
 * attachmentDesc - An optional description of the file being attached
@@ -656,11 +656,71 @@ Content-Type: application/vnd.whispir.message-v1+json
     }
 }
 ```
+> Demonstration of sending a Text To Speech Voice call with an attached teleconference
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>61400000000</to>
+    <subject>Test Voice Call</subject>    
+    <voice>
+        <header>This is the introduction of the voice call</header>        
+        <body>This is body of the message</body>
+        <footer>This is the footer of the message</footer>
+        <type>
+            ConfCall:1800500536,
+            ConfAccountNo:12345678,
+            ConfPinNo:1234,
+            ConfModPinNo:1234,
+            Pin:
+        </type>
+    </voice>
+</ns2:message> 
+```
+```go
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+
+{
+    "to" : "61400000000",
+    "subject" : "Test Voice Call",
+    "voice" : {
+        "header" : "This is the introduction of the voice call",
+        "body" : "This is body of the message",
+        "footer" : "This is the footer of the message",
+        "type" : "ConfCall:1800500536,
+                  ConfAccountNo:12345678,
+                  ConfPinNo:1234,
+                  ConfModPinNo:1234,
+                  Pin:"
+    }
+}
+```
+Whispir's API provides users the ability to send a Voice Call to any landline or mobile phones around the world.
+
+Whispir supports both **Text to Speech** and **Pre-recorded WAV file** approaches to sending Voice Calls.
+
+Using Whispir's Voice Module, you can easily connect all recipients onto a single bridged call, simplifying your teleconferences and ensuring your message gets through.
+
+###Notes:
+
+* The Subject field is Mandatory.
+* The Body field is Mandatory.
+* The Type field is Mandatory and at a minimum must specify the following string:
+   `<type>ConfCall:,ConfAccountNo:,ConfPinNo:,ConfModPinNo:,Pin:</type>`
+* Pauses can be added in conference call details using a +
+
+Your account must be enabled to use the Voice capability within Whispir for this to function.  If you are unsure whether you can use Voice please contact <a href="mailto:apisupport@whispir.com">apisupport@whispir.com</a>.
 
 <table>
     <thead>
         <tr>
-            <th style="width: 50%" colspan="2">'To' field options</th>
+            <th style="width: 50%" colspan="2">Custom Variables for Voice Calls</th>
         </tr>
     </thead>
     <tbody>
@@ -670,7 +730,94 @@ Content-Type: application/vnd.whispir.message-v1+json
         </tr>
         <tr>
             <td style="text-align: right; font-weight: bold;">@@teleconf_account@@</td>
-            <td>When Teleconferencing Services are used as part of voice calls, the Teleconference line that is used in the voice call can be accessed via this variable.<br/>e.g. 1800 123 123</td>
+            <td>When Teleconferencing Services are used as part of voice calls, the Teleconference Account or Room number that is used in the voice call can be accessed via this variable.<br/>e.g. 098711234</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@teleconf_pin@@</td>
+            <td>When Teleconferencing Services are used as part of voice calls, the Teleconference Room PIN that is used in the voice call can be accessed via this variable.<br/>e.g. 8181</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@teleconf_mod_pin@@</td>
+            <td>When Teleconferencing Services are used as part of voice calls, the Teleconference Moderator PIN that is used in the voice call can be accessed via this variable.<br/>e.g. 8181</td>
         </tr>
     </tbody>
 </table>
+
+<aside class="notice">
+Whispir's Voice Module doesn't include a Conference Call service.  User's can easily integrate existing conference call services using the fields provided.
+</aside>
+
+## Publishing to Web, RSS or Social Media
+
+> Social Media Request/Response Example
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>61400000000</to>
+    <subject>Test Web Message</subject>    
+    <web> 
+        <body>This is web body of my test message</body> 
+        <type>text/plain</type> 
+    </web> 
+    <social> 
+        <social id="social"> 
+            <body>This is the content of social message for Twitter</body>
+         </social> 
+        <social id="social_long"> 
+            <body>This is the content of social message for Facebook</body>
+            <type>text/plain</type> 
+        </social> 
+    </social>
+</ns2:message>
+```
+```go
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+
+{
+    "to" : "61400000000",
+    "subject" : "Test Web Message",
+    "web" : {
+        "body" : "This is the body of the web content",
+        "type" : "text/plain"
+    },
+    "social" : {
+        "social" : [{
+            "id" : "social",
+            "body" : "This is the content of social message for Twitter"
+        }, {
+            "id" : "socialType",
+            "body" : "text/plain"
+        }, {
+            "id" : "social_long",
+            "body" : "This is the content of social message for Facebook"
+        }]
+    }
+}
+```
+
+The Whispir API supports publishing to Web, RSS and Social Media through existing configurations set up in the Whispir Platform.
+
+If your existing Whispir setup already allows you to publish to these destinations, you can simply specify the information in the message, and it will automatically be published as per your existing setup.
+
+### Web Publishing
+
+The Web section is used to publish information to Whispir's Contact Portal or Whispir Community, or to a pre-defined web destination e.g. your company intranet.  
+
+Whispir can automatically export this content as plain text or HTML and export it to a location for you to either iFrame into your webpage, or include via AJAX.
+
+For more information on web publishing, please contact <a href="mailto:apisupport@whispir.com">apisupport@whispir.com</a>.
+
+### Social Publishing
+
+The Social section is used to publish information to Twitter or Facebook as per your Whispir implementation.  
+
+Whispir can automatically publish content to your pre-configured Twitter and Facebook pages based on the information you have provided us.
+
+For more information about configuring Social Publishing, please contact <a href="mailto:apisupport@whispir.com">apisupport@whispir.com</a>.
