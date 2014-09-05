@@ -91,19 +91,29 @@ Content-Type: application/vnd.whispir.message-v1+json
 }
 ````
 
-Messages are the core of what the Whispir API offers as a service to customers. 
+Messages are the core of what the Whispir API offers as a service to customers.
+
+Whispir has the ability to send messages across 7 different channels in a single API request:
+
+**SMS** - up to 1600 characters per message, premium routes, delivery receipts<br/>
+**Email** - free email messaging with HTML and Plain Text support<br/>
+**Voice** - high quality outbound voice calls delivered to mobiles and landlines within seconds<br/>
+**Rich Messages** - personalised, targeted rich messaging to drive conversations<br/>
+**Twitter** - support for instant publishing to multiple twitter accounts<br/>
+**Facebook** - simplify the process of publishing to multiple facebook accounts instantaneously<br/>
+**RSS** - easily generate RSS feeds for consumption by other services
 
 The **messages** endpoint allows a user to perform the following tasks:
 
-1. Retrieve a list of Sent messages
-2. Create (send) a new message
+1. Create and Send a new message
+2. Retrieve a list of previously sent messages
 
 These are described in more detail below:
 
 As message resources can exist in the default (Company) workspace or other workspace, messages have two access URLs:
 
-* https://api.whispir.com/messages - for Company Workspace messages 
-* https://api.whispir.com/workspaces/:id/messages - for other Workspace messages
+`https://api.whispir.com/messages` - for Company Workspace messages 
+`https://api.whispir.com/workspaces/:id/messages` - for other Workspace messages
 
 If your application does not require separate workspaces, you can simply send all messages from the default Company workspace.
 
@@ -509,9 +519,12 @@ Whispir can easily be used as an API email gateway to deliver thousands of rich 
 
 **Mandatory fields**
 
-* The Subject field is Mandatory.
-* The Body field is Mandatory.
-* The Type field is Mandatory and must specify a value of 'text/plain' or 'text/html' to describe the content of the message.
+Only 4 fields are required in order to send an email message.
+
+1. To - the recipient of the email message.
+2. Subject - the subject line of the email message.
+3. Body - the content of the email (either HTML or Plain Text content).
+4. Type - either 'text/plain' or 'text/html' to describe the content of the message.
 
 ###Whispir's support of Rich (HTML) Emails
 
@@ -747,7 +760,9 @@ Your account must be enabled to use the Voice capability within Whispir for this
 Whispir's Voice Module doesn't include a Conference Call service.  User's can easily integrate existing conference call services using the fields provided.
 </aside>
 
-## Publishing to Web, RSS or Social Media
+## Rich Messages
+
+## Publishing to Websites, RSS or Social Media
 
 > Social Media Request/Response Example
 
