@@ -1,5 +1,5 @@
 ---
-title: Whispir API Reference
+title: Whispir API Documentation
 
 language_tabs:
   - go: json
@@ -14,7 +14,7 @@ includes:
   - api-access
   - rate-limiting
   - messages
-  - errors
+  - other
 
 search: true
 ---

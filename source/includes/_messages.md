@@ -760,8 +760,6 @@ Your account must be enabled to use the Voice capability within Whispir for this
 Whispir's Voice Module doesn't include a Conference Call service.  User's can easily integrate existing conference call services using the fields provided.
 </aside>
 
-## Rich Messages
-
 ## Publishing to Websites, RSS or Social Media
 
 > Social Media Request/Response Example
