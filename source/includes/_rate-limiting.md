@@ -3,7 +3,7 @@
 > In the event that Whispir's rate limits are breached, the following error messages will be returned from the Whispir API:
 
 ```shell
-# Over Queries Per Second Limit
+# Over Queries Per Second Limit 
 
 GET /messages?apikey=abc38bc83bcd3ucbud83
 

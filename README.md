@@ -1,7 +1,9 @@
 Whispir API Documentation
 ========
 
-# Update 7 September 2014.
+Documentation available here: [http://whispir.github.io/api/](http://whispir.github.io/api)
+
+## Update 7 September 2014
 
 This documentation is being migrated from [http://developer.whispir.com](http://developer.whispir.com).
 
