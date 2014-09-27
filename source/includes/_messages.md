@@ -184,186 +184,6 @@ If your application does not require separate workspaces, you can simply send al
     </tbody>
 </table>
 
-## Message Variables
-
-> Demonstration of sending messages with variables (or tags).
-
-```xml
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
-Content-Type: application/vnd.whispir.message-v1+xml
-
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
-    <to>61400000000</to>
-    <subject>Test SMS Message with tags</subject>    
-    <body>Hi @@first_name@@.  This is your message.</body>
-</ns2:message> 
-```
-
-```go
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
-Content-Type: application/vnd.whispir.message-v1+json
-Accept: application/vnd.whispir.message-v1+json
-
-{
-   "to" : "61400000000",
-   "subject" : "Test SMS Message with tags",
-   "body" : "Hi @@first_name@@.  This is your message."
-}
-```
-
-When sending messages using the Whispir API, users have the ability to automatically include recipient information as part of the message.  This is facilitated using **tags**.
-
-The following **tags** can be included in any message:
-
-<table>
-    <thead>
-        <tr>
-            <th style="width: 50%" colspan="2">Recipient Message Tags</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@first_name@@</td>
-            <td>Recipients first name.<br/>e.g. John</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@last_name@@</td>
-            <td>Recipients last name.<br/>e.g. Smith</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@recipient_email@@</td>
-            <td>Recipients primary email address.<br/>e.g. jsmith@email.com</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@recipient_sms@@</td>
-            <td>Recipients primary mobile phone number.<br/>e.g. 61412345678</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@recipient_voice@@</td>
-            <td>Recipients primary phone number for voice calls.<br/>e.g. 61412345678</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@pin@@</td>
-            <td>Whispir message retrieval service call back PIN (only populated when voice is used).<br/>e.g. 1234</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@recipient_role@@</td>
-            <td>Resolves to the recipient's 'Role' field.<br/>e.g. Manager</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@recipient_additionalrole@@</td>
-            <td>Resolves to the recipient's 'Additional Role' field.<br/>e.g. Team Leader</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@team_name1@@</td>
-            <td>Resolves to the recipient's 'Team Name' field.<br/>e.g. Red Team</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@messagelabel@@</td>
-            <td>Resolves to the label field of the sent message.<br/>e.g. Incident #1234</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@messagecategories@@</td>
-            <td>Resolves to the list of categories used in the message, separated with commas.<br/>e.g. Product Update</td
-        </tr>
-    </tbody>
-</table>
-
-Each of these tags will resolve on send of the message to the individual recipient's information.  As Whispir needs to know about this information prior to sending the message, the tags will only work when sending messages to Contacts or Distribution Lists.
-
-For more information about sending messages to Contacts or Distribution Lists, please consult the documentation under Messaging.
-
-### Using auto-populated system variables in messages
-
-> Demonstration of sending messages with system variables (or tags).
-
-```xml
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
-Content-Type: application/vnd.whispir.message-v1+xml
-
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
-    <to>61400000000</to>
-    <subject>Test SMS Message with tags</subject>    
-    <body>Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
-</ns2:message> 
-```
-
-```go
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
-Content-Type: application/vnd.whispir.message-v1+json
-Accept: application/vnd.whispir.message-v1+json
-
-{
-   "to" : "61400000000",
-   "subject" : "Test SMS Message with tags",
-   "body" : "Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@."
-}
-```
-
-When sending messages using the Whispir API, users have the ability to automatically include system generated information as part of the message.  This is facilitated using **system tags**.
-
-The following **system tags** can be included in any message:
-
-<table>
-    <thead>
-        <tr>
-            <th style="width: 50%" colspan="2">System Tags</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@dd@@</td>
-            <td>Current day with leading zero.<br/>e.g. 25</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@mm@@</td>
-            <td>Current month with leading zero.<br/>e.g. 10</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@yy@@</td>
-            <td>Current year, short form.<br/>e.g. 14</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@yyyy@@</td>
-            <td>Current year, long form.<br/>e.g. 2014</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@day@@</td>
-            <td>Day in spoken form.<br/>e.g. Wednesday</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@month@@</td>
-            <td>Month in spoken form.<br/>e.g. June</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@hrs@@</td>
-            <td>Current hour with leading zero in 24hrs.<br/>e.g. 16</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@min@@</td>
-            <td>Current minute with leading zero .<br/>e.g. 37</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@date@@</td>
-            <td>Current date in format (yyyy-mm-dd)<br/>e.g. 2014-09-02</td>
-        </tr>
-        <tr>
-            <td style="text-align: right; font-weight: bold;">@@time@@</td>
-            <td>Current time in 24hr format.<br/>e.g. 14:37</td>
-        </tr>
-    </tbody>
-</table>
-
-Each of these system tags will resolve on send of the message to the system information.  The system tags will only work when sending messages to any recipient.
-
-For more information about sending messages, please consult the documentation under Messaging.
-
 ## SMS Messages
 
 ```xml
@@ -528,7 +348,7 @@ Only 4 fields are required in order to send an email message.
 
 ###Whispir's support of Rich (HTML) Emails
 
-> Demonstration of a Rich (HTML) Email with an attachment
+> Demonstration of a Plain Text Email with an attachment
 
 ```xml
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
@@ -760,6 +580,157 @@ Your account must be enabled to use the Voice capability within Whispir for this
 Whispir's Voice Module doesn't include a Conference Call service.  User's can easily integrate existing conference call services using the fields provided.
 </aside>
 
+## Rich Messages
+
+> Simple Rich Message using SMS with a Web Link
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>61400000000</to>
+    <subject>Test Rich Message</subject>    
+    <body>This is some content followed by the Rich Message link @@web_link@@</body>
+    <web>
+        <type>text/html</type>
+        <body>
+            <![CDATA[
+                <div id="content">
+                    <p>This is the body of my Rich Message</p>
+                </div>
+            ]]>
+        </body>
+    </web>
+</ns2:message> 
+```
+
+```go
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+Accept: application/vnd.whispir.message-v1+json
+
+{
+   "to" : "61400000000",
+   "subject" : "Test Rich Message",
+   "body" : "This is some content followed by the Rich Message link @@web_link@@",
+   "web" : {
+      "type" : "text/html",
+      "body" : "<div class='content'>This is the body of my Rich Message</div>"
+   } 
+}
+```
+
+> Using Javascript to personalise the Rich Message
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>61400000000</to>
+    <subject>Test Rich Message</subject>    
+    <body>This is some content followed by the Rich Message link @@web_link@@</body>
+    <web>
+        <type>text/html</type>
+        <body>
+            <![CDATA[
+                <div id='content'>
+                    <p>Hi <span id='first_name'></span></p>
+                    <p>This is the body of my Rich Message</p>
+                    <script type='text/javascript'>
+                        document.getElementById('first_name').innerHTML = Whispir.data.profile.firstname;
+                    </script>
+                </div>
+            ]]>
+        </body>
+    </web>
+</ns2:message> 
+```
+
+```go
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+Accept: application/vnd.whispir.message-v1+json
+
+{
+   "to" : "61400000000",
+   "subject" : "Test Rich Message",
+   "body" : "This is some content followed by the Rich Message link @@web_link@@",
+   "web" : {
+      "type" : "text/html",
+      "body" : "<div id='content'><p>Hi <span id='first_name'></span></p><p>This is the body of my Rich Message</p><script type='text/javascript'>document.getElementById('first_name').innerHTML = Whispir.data.profile.firstname;</script></div>"
+   } 
+}
+```
+```HTML
+<!--For ease of reading, the above HTML looks like-->
+
+<div id='content'>
+    <p>Hi <span id='first_name'></span></p>
+    <p>This is the body of my Rich Message</p>
+    <script type='text/javascript'>
+        var firstName = Whispir.data.profile.firstname;
+        document.getElementById('first_name').innerHTML = firstName;
+    </script>
+</div>
+```
+
+
+
+Whispir's Rich Messages provide you with the capability to seamlessly 'push' HTML content to your audience. 
+
+This can be in the form of a simple web page, through to a mini web application with interactive widgets such as video, data visualisation, or map. 
+
+For example;
+
+<img src="http://developer.whispir.com/files/rpm-iphone-shift.jpg" />
+
+Visit our demo site <a href="http://demo.whispir.com/rich-message.php" target="_blank">here</a> for lots of samples of rich messages.
+
+The inclusion of the `@@web_link@@` tag anywhere in the body of the SMS or Email will automatically generate a URL and embed any content specified in the web body of the same message.
+
+### Requirements to use Rich Messaging
+
+Rich push is utilised when delivered to a mobile device. The receiving device requires the following features to be enabled to ensure the experience is optimised.
+
+The target device:
+
+* Needs to be able to launch a web browser that is HTML5 compliant. Most mainstream smartphones and tablets include modern browsers.
+* Requires Javascript to be enabled on the target devices.
+* Have an active internet connection.
+
+### Guidelines for authoring the Rich Message HTML
+
+Whispir allows you to control the entire content to be delivered to the end users device. Therefore, it's important that you build to a responsive design to display the content appropriately for every screen size.
+
+* Build to a responsive design that works across your target devices. Ensure you test across these devices.
+* Whispir strips body and doctype tags, and replaces them with tags suitable to render on mobile devices. The final DOCTYPE is delivered as a HTML 5 doctype.
+* Use style tags at the **bottom** of the HTML content (rather than in the head tag or inline styles). 
+* Custom javascript should be included at the bottom of the content if possible (speeds up viewing).
+
+### HTML Resources
+
+Any HTML resources (Images, videos and visual assets) must be hosted externally, and referenced in the HTML. This allows you to control and link to resources using your existing CDN assets.
+
+* External hosting also applies to scripts such as javascript libraries. Google CDN has excellent resources here: https://developers.google.com/speed/libraries/. Javascript can also be coded inline if required.
+* As content is delivered over HTTPS, it is recommended that all external resources be accessible over HTTPS, as devices may refuse to load or display any mixed (HTTP and HTTPS) content.
+
+### Response rules
+
+Response Rules allow you to define pre-canned responses to your message. Your stakeholders can review these responses and optional reply to your message by selecting one.
+
+* Response Rules can be attached to a Whispir Message Template within the Whispir interface.
+* A message with Response Rules displays a response button at the bottom on the page. So ensure your message has at least 60px at the bottom of the page content.
+
+More information about Rich Messages and the `Whispir` object is included later in this documentation.
+
 ## Publishing to Websites, RSS or Social Media
 
 > Social Media Request/Response Example
@@ -834,3 +805,185 @@ The Social section is used to publish information to Twitter or Facebook as per 
 Whispir can automatically publish content to your pre-configured Twitter and Facebook pages based on the information you have provided us.
 
 For more information about configuring Social Publishing, please contact <a href="mailto:apisupport@whispir.com">apisupport@whispir.com</a>.
+
+## Message Variables
+
+> Demonstration of sending messages with variables (or tags).
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>61400000000</to>
+    <subject>Test SMS Message with tags</subject>    
+    <body>Hi @@first_name@@.  This is your message.</body>
+</ns2:message> 
+```
+
+```go
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+Accept: application/vnd.whispir.message-v1+json
+
+{
+   "to" : "61400000000",
+   "subject" : "Test SMS Message with tags",
+   "body" : "Hi @@first_name@@.  This is your message."
+}
+```
+
+When sending messages using the Whispir API, users have the ability to automatically include recipient information as part of the message.  This is facilitated using **tags**.
+
+The following **tags** can be included in any SMS, Email or Voice message:
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">Recipient Message Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@first_name@@</td>
+            <td>Recipients first name.<br/>e.g. John</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@last_name@@</td>
+            <td>Recipients last name.<br/>e.g. Smith</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@recipient_email@@</td>
+            <td>Recipients primary email address.<br/>e.g. jsmith@email.com</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@recipient_sms@@</td>
+            <td>Recipients primary mobile phone number.<br/>e.g. 61412345678</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@recipient_voice@@</td>
+            <td>Recipients primary phone number for voice calls.<br/>e.g. 61412345678</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@pin@@</td>
+            <td>Whispir message retrieval service call back PIN (only populated when voice is used).<br/>e.g. 1234</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@recipient_role@@</td>
+            <td>Resolves to the recipient's 'Role' field.<br/>e.g. Manager</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@recipient_additionalrole@@</td>
+            <td>Resolves to the recipient's 'Additional Role' field.<br/>e.g. Team Leader</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@team_name1@@</td>
+            <td>Resolves to the recipient's 'Team Name' field.<br/>e.g. Red Team</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@messagelabel@@</td>
+            <td>Resolves to the label field of the sent message.<br/>e.g. Incident #1234</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@messagecategories@@</td>
+            <td>Resolves to the list of categories used in the message, separated with commas.<br/>e.g. Product Update</td
+        </tr>
+    </tbody>
+</table>
+
+Each of these tags will resolve on send of the message to the individual recipient's information.  As Whispir needs to know about this information prior to sending the message, the tags will only work when sending messages to Contacts or Distribution Lists.
+
+For more information about sending messages to Contacts or Distribution Lists, please consult the documentation under Messaging.
+
+**Note: **tags do not work in Rich Messages.  The `Whispir` javascript object must be used instead to populate recipient specific fields.
+
+### Using auto-populated system variables in messages
+
+> Demonstration of sending messages with system variables (or tags).
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>61400000000</to>
+    <subject>Test SMS Message with tags</subject>    
+    <body>Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
+</ns2:message> 
+```
+
+```go
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+Accept: application/vnd.whispir.message-v1+json
+
+{
+   "to" : "61400000000",
+   "subject" : "Test SMS Message with tags",
+   "body" : "Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@."
+}
+```
+
+When sending messages using the Whispir API, users have the ability to automatically include system generated information as part of the message.  This is facilitated using **system tags**.
+
+The following **system tags** can be included in any message:
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">System Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@dd@@</td>
+            <td>Current day with leading zero.<br/>e.g. 25</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@mm@@</td>
+            <td>Current month with leading zero.<br/>e.g. 10</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@yy@@</td>
+            <td>Current year, short form.<br/>e.g. 14</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@yyyy@@</td>
+            <td>Current year, long form.<br/>e.g. 2014</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@day@@</td>
+            <td>Day in spoken form.<br/>e.g. Wednesday</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@month@@</td>
+            <td>Month in spoken form.<br/>e.g. June</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@hrs@@</td>
+            <td>Current hour with leading zero in 24hrs.<br/>e.g. 16</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@min@@</td>
+            <td>Current minute with leading zero .<br/>e.g. 37</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@date@@</td>
+            <td>Current date in format (yyyy-mm-dd)<br/>e.g. 2014-09-02</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">@@time@@</td>
+            <td>Current time in 24hr format.<br/>e.g. 14:37</td>
+        </tr>
+    </tbody>
+</table>
+
+Each of these system tags will resolve on send of the message to the system information.  The system tags will only work when sending messages to any recipient.
+
+For more information about sending messages, please consult the documentation under Messaging.
