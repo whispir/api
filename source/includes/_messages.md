@@ -682,8 +682,6 @@ Accept: application/vnd.whispir.message-v1+json
 </div>
 ```
 
-
-
 Whispir's Rich Messages provide you with the capability to seamlessly 'push' HTML content to your audience. 
 
 This can be in the form of a simple web page, through to a mini web application with interactive widgets such as video, data visualisation, or map. 
