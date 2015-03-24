@@ -1,4 +1,4 @@
-# Whispir's API
+# Whispir API
 
 > Whispir's API requires only 3 parameters within JSON or XML to send an SMS message
 
