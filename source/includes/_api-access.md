@@ -1,4 +1,4 @@
-# Accessing the API
+# Getting Started
 
 To get started using the Whispir API, you'll need a few things:
 
@@ -7,7 +7,7 @@ To get started using the Whispir API, you'll need a few things:
 3. Check your connectivity to the API
 4. Try it out! Send an SMS Message
 
-## Step 1 - Register with Whispir
+## Register with Whispir
 
 Whispir's API is available for all existing Whispir customers to use.  If you're already a Whispir customer, great! Your existing username and password will work straight away.  You don't even need to contact us.
 
@@ -15,7 +15,7 @@ If you're a new customer and are interested in finding out more about using the 
 
 Once you've got your Whispir Username and Password handy, you're ready to move to Step 2.
 
-## Step 2 - Get an API Key
+## Get an API Key
 
 If you haven't done so already, click [Register](http://developer.whispir.com/member/register), fill in the form you'll receive an email with your API key. 
 
@@ -23,7 +23,7 @@ Please note that your API key will need to be activated by one of our support te
 
 Once you've got your API key, you're ready to move to Step 3.
 
-## Step 3 - Check your connectivity to the API
+## Connect to the API
 
 > Using the information on the left, you can execute the following curl statment: 
 
@@ -95,7 +95,7 @@ If you get a different response than **HTTP 200 OK**, perform the following:
 
 * If you're still having issues, contact us at [apisupport@whispir.com](mailto:apisupport@whispir.com)
 
-## Step 4 - Send an SMS Message
+## Send a Message
 
 > Send your first message using curl
 

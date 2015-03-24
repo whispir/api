@@ -1,4 +1,4 @@
-# Rate Limiting
+## API Limits
 
 > In the event that Whispir's rate limits are breached, the following error messages will be returned from the Whispir API:
 

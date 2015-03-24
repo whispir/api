@@ -1,4 +1,4 @@
-# Messages
+# Communications
 
 > Sample to send an SMS, Email, Voice call, and Web Publishing in one request
 
@@ -87,13 +87,19 @@ Content-Type: application/vnd.whispir.message-v1+json
             "type" : "text/plain"
         }
     },
-    "type" : "defaultNoReply"
+    "type" : "defaultNoReply",
+    "features" : {
+        "pushOptions" : {
+            "notifications" : "enabled",
+            "escalationMins" : "3"
+        }
+    }
 }
 ````
 
-Messages are the core of what the Whispir API offers as a service to customers.
+Communications are the core of what the Whispir API offers as a service to customers.
 
-Whispir has the ability to send messages across 7 different channels in a single API request:
+Whispir has the ability to send communications across 7 different channels in a single API request:
 
 **SMS** - up to 1600 characters per message, premium routes, delivery receipts<br/>
 **Email** - free email messaging with HTML and Plain Text support<br/>
@@ -103,7 +109,7 @@ Whispir has the ability to send messages across 7 different channels in a single
 **Facebook** - simplify the process of publishing to multiple facebook accounts instantaneously<br/>
 **RSS** - easily generate RSS feeds for consumption by other services
 
-The **messages** endpoint allows a user to perform the following tasks:
+All communications are driven from the `/messages` endpoint within the API.  This endpoint allows a user to perform the following tasks:
 
 1. Create and Send a new message
 2. Retrieve a list of previously sent messages
@@ -178,6 +184,19 @@ If your application does not require separate workspaces, you can simply send al
                 <ul>
                     <li>defaultNoReply - Used to reject any replies to this message.</li>
                     <li>noDlr - Used to specify that DLRs should not be enabled for this message.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">features:</td>
+            <td><strong>Object</strong><br/>
+                Allows the user to modify the push notifications properties if these are configured in the company.
+                <br/>
+                <br/>
+                <strong>pushOptions:</strong>
+                <ul>
+                    <li>notifications - enabled/disabled</li>
+                    <li>escalationMins - # mins to await a push notifications response</li>
                 </ul>
             </td>
         </tr>

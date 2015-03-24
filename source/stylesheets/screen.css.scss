@@ -356,6 +356,10 @@ html, body {
     clear:both;
   }
 
+  p {
+    line-height: 1.5em !important;
+  }
+
   h1 {
     @extend %header-font;
     font-size: 30px;
@@ -373,11 +377,11 @@ html, body {
   h2 {
     @extend %header-font;
     font-size: 20px;
-    margin-top: 4em;
+    margin-top: 2em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
-    padding-bottom: 1.2em;
+    padding-bottom: 0.8em;
     @include background-image(
       linear-gradient(top, rgba(#fff,0.4), rgba(#fff, 0))
     );
@@ -392,8 +396,8 @@ html, body {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 12px;
-    margin-top: 2.5em;
+    font-size: 16px;
+    margin-top: 2em;
     margin-bottom: 0.8em;
     text-transform: uppercase;
   }

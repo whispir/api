@@ -35,7 +35,7 @@ curl -H "Authorization: Basic <YOUR AUTHORIZATION HEADER>"
 
 The Whispir API has been designed to provide application developers the ability to embed the powerful multichannel messaging capabilities the Whispir Platform provides, directly into any application with access to the web.
 
-**Multichannel Messaging API**
+### Communications API
 
 Whispir's API gives developers the ability to:
 
@@ -44,7 +44,7 @@ Whispir's API gives developers the ability to:
 * Publish messages to internal or external web pages, RSS feeds and social networks
 * Asynchronously receive all responses to a given message and perform analysis on the data
 
-**Contact & Recipient Management API**
+### Contact Management API
 
 The Whispir API provides developers with the ability to manage the recipients of their messages:
 
