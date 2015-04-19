@@ -77,6 +77,9 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
+  background-image: linear-gradient(to right bottom, #000000 0%,#444444 100%);
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #000000),color-stop(100%, #444444));
+  background-image: -webkit-linear-gradient(left top, #000000 0%,#444444 100%);
   font-size: 13px;
   font-weight: bold;
 
@@ -93,6 +96,7 @@ html, body {
   &>img {
     display: block;
     margin: 0 auto;
+    height: $logo-height;
   }
 
   &>.search {
@@ -146,7 +150,7 @@ html, body {
     }
 
     a {
-      color: $nav-text;
+      color: $main-text;
       text-decoration: none;
 
       &:hover {
@@ -196,6 +200,7 @@ html, body {
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
       font-size: 12px;
+      color: $main-text;
     }
 
   }

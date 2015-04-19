@@ -6,8 +6,8 @@ language_tabs:
   - xml
 
 toc_footers:
-  - <a href='http://developer.whispir.com'>Sign Up for a Developer Key</a>
-  - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='http://stage.whispir.io/register'>Register for an API Key</a>
+  - <a href='http://github.com/tripit/slate'>Documentation by Slate</a>
 
 includes:
   - intro
