@@ -97,7 +97,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 }
 ````
 
-Communications are the core of what the Whispir API offers as a service to customers.
+Communications are the core of what the Whispir.io API offers as a service to customers.
 
 Whispir has the ability to send communications across 7 different channels in a single API request:
 

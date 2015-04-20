@@ -24,12 +24,12 @@ Whispir's API usage is limited on a per apikey basis using **per second** limit 
 
 Depending on your Whispir License, you will obtain higher per second and per day rates:
 
-Whispir Edition | Calls Per Second (CPS) | Calls Per Day (CPD)
--------------- | -------------- | --------------
-API Only Edition | 7 calls per second | 5000 calls per day
-Business Edition | 1 call per second | 1000 calls per day
-Essential Edition | 1 call per second | 1000 calls per day
-Professional Edition | 3 call per second | 3000 calls per day
-Enterprise Edition | 7 call per second | 5000 calls per day
+### Whispir.io Editions
 
-If further calls per second or per day are required for your application, please contact your Whispir Sales Representative, or [sales@whispir.com](mailto:sales@whispir.com).
+Whispir.io Edition | Requests Per Second | Requests Per Day
+-------------- | -------------- | --------------
+Startup API Edition | 5 requests per second | 10000 requests per day
+Business API Edition | 10 requests per second | 20000 requests per day
+Enterprise API Edition | 30 requests per second | 50000 requests per day
+
+If further calls per second or per day are required for your application, please contact your Whispir Sales Representative, or [Contact Us](http://stage.whispir.io/contact/).
