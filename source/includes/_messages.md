@@ -101,7 +101,7 @@ Communications are the core of what the Whispir.io API offers as a service to cu
 
 Whispir has the ability to send communications across 7 different channels in a single API request:
 
-**SMS** - up to 1600 characters per message, premium routes, delivery receipts<br/>
+**SMS** - up to 1600&#42; characters per message, premium routes, delivery receipts<br/>
 **Email** - free email messaging with HTML and Plain Text support<br/>
 **Voice** - high quality outbound voice calls delivered to mobiles and landlines within seconds<br/>
 **Rich Messages** - personalised, targeted rich messaging to drive conversations<br/>
@@ -271,11 +271,12 @@ The 'to' field can be provided in the following formats:
 
 ###Notes:
 
-* Each SMS message can contain up to **1600** characters. 
+* Each SMS message can contain up to **1600&#42;** characters 
 * The Subject field is Mandatory.
 * The Body field is Mandatory.
 * MRI (Message Resource Identifier) is the unique Whispir address for the Contact, User or Distribution List.
 
+&#42; SMS character counts are limited in some countries. Contact your local Whispir Representative for information about the supported number of characters in your region.
 
 ## Email Messages
 
@@ -291,8 +292,8 @@ Content-Type: application/vnd.whispir.message-v1+xml
     <to>john.smith@test.com</to>
     <subject>Test Email Message</subject>    
     <email>
-        <body>This is the body of my test Email message</body>
-        <footer>This is footer of my test Email</footer>
+        <body>Email Body goes here.</body>
+        <footer>Email signature goes here.</footer>
         <type>text/plain</type>
     </email>
 </ns2:message> 
@@ -485,10 +486,18 @@ Content-Type: application/vnd.whispir.message-v1+xml
     <to>61400000000</to>
     <subject>Test Voice Call</subject>    
     <voice>
-        <header>This is the introduction of the voice call</header>        
-        <body>This is body of the message</body>
-        <footer>This is the footer of the message</footer>
-        <type>ConfCall:,ConfAccountNo:,ConfPinNo:,ConfModPinNo:,Pin:</type>
+        <header>
+            This is the introduction of the voice call
+        </header>        
+        <body>This is the body of the message</body>
+        <!-- Do not include line breaks in your API calls -->
+        <type>
+            ConfCall:,
+            ConfAccountNo:,
+            ConfPinNo:,
+            ConfModPinNo:,
+            Pin:
+        </type>
     </voice>
 </ns2:message> 
 ```
@@ -502,8 +511,7 @@ Content-Type: application/vnd.whispir.message-v1+json
     "subject" : "Test Voice Call",
     "voice" : {
         "header" : "This is the introduction of the voice call",
-        "body" : "This is body of the message",
-        "footer" : "This is the footer of the message",
+        "body" : "This is the body of the message",
         "type" : "ConfCall:,ConfAccountNo:,ConfPinNo:,ConfModPinNo:,Pin:"
     }
 }
@@ -520,15 +528,18 @@ Content-Type: application/vnd.whispir.message-v1+xml
     <to>61400000000</to>
     <subject>Test Voice Call</subject>    
     <voice>
-        <header>This is the introduction of the voice call</header>        
+        <header>
+            This is the introduction of the voice call
+        </header>        
         <body>This is body of the message</body>
         <footer>This is the footer of the message</footer>
+        <!-- Do not include line breaks in your API calls -->
         <type>
             ConfCall:1800500536,
             ConfAccountNo:12345678,
             ConfPinNo:1234,
             ConfModPinNo:1234,
-            Pin:
+            Pin:0000
         </type>
     </voice>
 </ns2:message> 
@@ -565,6 +576,7 @@ Using Whispir's Voice Module, you can easily connect all recipients onto a singl
 * The Body field is Mandatory.
 * The Type field is Mandatory and at a minimum must specify the following string:
    `<type>ConfCall:,ConfAccountNo:,ConfPinNo:,ConfModPinNo:,Pin:</type>`
+* **The Type field is mandatory even when no conference call is being used**
 * Pauses can be added in conference call details using a +
 
 Your account must be enabled to use the Voice capability within Whispir for this to function.  If you are unsure whether you can use Voice please contact <a href="mailto:apisupport@whispir.com">apisupport@whispir.com</a>.
@@ -703,7 +715,7 @@ Accept: application/vnd.whispir.message-v1+json
 
 Whispir's Rich Messages provide you with the capability to seamlessly 'push' HTML content to your audience. 
 
-This can be in the form of a simple web page, through to a mini web application with interactive widgets such as video, data visualisation, or map. 
+This can be in the form of a simple web page, through to a mini web application with interactive widgets such as video, a data visualisation, or map. 
 
 For example;
 
@@ -748,7 +760,7 @@ Response Rules allow you to define pre-canned responses to your message. Your st
 
 More information about Rich Messages and the `Whispir` object is included later in this documentation.
 
-## Publishing to Websites, RSS or Social Media
+## Web/Social Messaging
 
 > Social Media Request/Response Example
 

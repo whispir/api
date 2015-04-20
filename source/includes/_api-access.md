@@ -15,7 +15,7 @@ Simply log in to ([whispir.io](https://stage.whispir.io/login)) and create an ap
 
 If you're a new customer and are interested in using the API, sign up for our ([Free 30 Day Trial](https://stage.whispir.io/register)). No Credit Card Required.  
 
-## Create an App 
+## Create an app 
 
 Follow these simple steps to create your first Whispir.io Application.
 
@@ -142,7 +142,7 @@ If you get a different response than **HTTP 200 OK**, perform the following:
 
 * If you're still having issues, please contact us at [apisupport@whispir.com](mailto:apisupport@whispir.com).
 
-## Create a message
+## Creating your messages
 
 > Send your first message using cURL
 

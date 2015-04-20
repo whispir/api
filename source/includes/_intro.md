@@ -33,20 +33,42 @@ curl -H "Authorization: Basic <YOUR AUTHORIZATION HEADER>"
 
 ```
 
-The Whispir API has been designed to provide application developers the ability to embed the powerful multichannel messaging capabilities the Whispir Platform provides, directly into any application with access to the web.
+Built by developers, for developers, Whispir.io is the place where you can easily build accountable messaging into your app – SMS, email, push, voice, chat, web, social, & rich messages.
 
-### Communications API
+Easy to use, Whispir.io presents all the tools you need to develop a communications capability for your app and enable rapid deployment to market. Integrate, test, demonstrate, and commercialise your app, without significant capital investment, with leading messaging API technology.
 
-Whispir's API gives developers the ability to:
+No other platform enables you to create & send rich messages, personalise cross-channel communications, and enrich your contact data with relevance.
+
+**We can't wait to see what you build**
+
+### Accountable Communications API
+
+The Whispir.io API gives developers the ability to:
 
 * Create, send and retrieve multi-channel messages over 8 different channels
 * Invoke scenario based communications for quick, effective and targeted communications
 * Publish messages to internal or external web pages, RSS feeds and social networks
 * Asynchronously receive all responses to a given message and perform analysis on the data
 
+### Communications Template API
+
+The Whispir.io Template API gives developers the ability to:
+
+* Create rich, cross-channel message templates that can be managed by designers within the Whispir Rich Message Studio.
+* Ensure a DRY (don't repeat yourself) pattern within developer code by separating the communication content from code 
+* Reduce code change by managing content elsewhere
+
+### Event Management API
+
+The Whispir.io API Event Management API provides developers with the tools needed to manage the communication around events that happen:
+
+* When events occur in your organisation, manage them using Whispir.io
+* Save different event details; Severity, Priority, Description and Tasks to ensure a path to a seamless resolution
+* Automatically inform teams through Whispir's integrated cross-channel messaging, ensuring that you know who has received the message, and more importantly; who hasn't
+
 ### Contact Management API
 
-The Whispir API provides developers with the ability to manage the recipients of their messages:
+The Whispir.io API provides developers with the ability to manage the recipients of their messages:
 
 * Store contact information in a cloud based highly available and accessible environment
 * Use standards based methods to create, update, and delete contact information

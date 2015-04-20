@@ -13,7 +13,9 @@ includes:
   - intro
   - api-access
   - rate-limiting
+  - conventions
   - messages
+  - templates
   - other
 
 search: true
