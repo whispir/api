@@ -41,9 +41,9 @@ No other platform enables you to create & send rich messages, personalise cross-
 
 **We can't wait to see what you build**
 
-### Accountable Communications API
+### Whispir Communications API
 
-The Whispir.io API gives developers the ability to:
+The Whispir.io Communications API gives developers the ability to:
 
 * Create, send and retrieve multi-channel messages over 8 different channels
 * Invoke scenario based communications for quick, effective and targeted communications
