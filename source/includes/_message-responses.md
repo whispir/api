@@ -220,7 +220,7 @@ This response states that of the 2 people that were sent the message, both of th
 
 Your application can use this information to easily determine the numbers of recipients in each state and show a small graph.
 
-## Detailed Status
+## Detailed Responses
 
 > Sample Detailed Responses Request
 
