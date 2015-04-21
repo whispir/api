@@ -1,10 +1,10 @@
 # Other Resources
 
 <aside class="notice">
-	Updated 20 April 2015
+	Updated 22 April 2015
 </aside>
 
-This API documentation is being migrated from [http://developer.whispir.com/docs](http://developer.whispir.com/docs).
+This API documentation is being migrated from [https://developer.whispir.com/docs](https://developer.whispir.com/docs).
 
 If the information about the resource you are looking for is not yet listed here, please check the previous documentation.
 

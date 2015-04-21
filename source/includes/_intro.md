@@ -13,7 +13,7 @@
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>61400000000</to>
     <subject>Test SMS Message</subject>    
     <body>This is the body of my test SMS message</body>

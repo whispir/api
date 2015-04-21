@@ -32,4 +32,4 @@ Startup API Edition | 5 requests per second | 10000 requests per day
 Business API Edition | 10 requests per second | 20000 requests per day
 Enterprise API Edition | 30 requests per second | 50000 requests per day
 
-If further calls per second or per day are required for your application, please contact your Whispir Sales Representative, or [Contact Us](http://stage.whispir.io/contact/).
+If further calls per second or per day are required for your application, please contact your Whispir Sales Representative, or [Contact Us](https://stage.whispir.io/contact/).

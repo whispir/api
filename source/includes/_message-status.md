@@ -4,7 +4,7 @@ Whispir will automatically monitor the status of each message after it has been 
 
 Each message progresses through various states, from Pending to Acknowledged.
 
-![](http://developer.whispir.com/files/MessageStatus.png)
+![](https://developer.whispir.com/files/MessageStatus.png)
 
 <table>
     <thead>
@@ -63,7 +63,7 @@ The first thing a developer must do in order to retrieve the status of a sent me
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com" xmlns:ns3="https://schemas.api.whispir.com/dap">
  <to>61400000000</to>
  <subject>test subject</subject>
  <body>test body</body>
@@ -75,7 +75,7 @@ The first thing a developer must do in order to retrieve the status of a sent me
  <createdTime>2012-09-24T15:36:16+10:00</createdTime>
  <ns3:link method="GET" 
    rel="self" 
-   uri="http://api.whispir.com/messages/069BF68E5E0FE99B?apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.whispir.com/messages/069BF68E5E0FE99B?apikey=498nadsasdff09fewdsafjaa90f"/>
  <ns3:link method="GET" 
    rel="summaryStatus" 
    uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"/>
@@ -107,7 +107,7 @@ The first thing a developer must do in order to retrieve the status of a sent me
     "link": [{
       "method": "GET",
       "rel": "self",
-      "uri": "http://api.whispir.com/messages/069BF68E5E0FE99B?apikey=498nadsasdff09fewdsafjaa90f"
+      "uri": "https://api.whispir.com/messages/069BF68E5E0FE99B?apikey=498nadsasdff09fewdsafjaa90f"
     },{
       "method": "GET",
       "rel": "summaryStatus",
@@ -200,7 +200,7 @@ Each of the URLs specified in the response can be accessed using the REL and app
 ```xml
 <ns3:link method="GET" 
    rel="summaryStatus" 
-   uri="http://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"/>
 ```
 ```go
 {
@@ -214,7 +214,7 @@ Each of the URLs specified in the response can be accessed using the REL and app
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="https://schemas.api.whispir.com/dap" xmlns:ns3="https://schemas.api.whispir.com">
  <ns2:messageStatuses>
   <ns2:messageStatus>
     <ns2:link method="GET" 
@@ -301,7 +301,7 @@ Your application can use this information to easily determine the numbers of rec
 ```xml
 <ns3:link method="GET" 
    rel="summaryStatus" 
-   uri="http://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"/>
 ```
 ```go
 {
@@ -315,13 +315,13 @@ Your application can use this information to easily determine the numbers of rec
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="https://schemas.api.whispir.com/dap" xmlns:ns3="https://schemas.api.whispir.com">
   <status>1 to 2 of 2</status>
   <ns2:messageStatuses>
     <ns2:messageStatus>
       <ns2:link method="GET" 
 	        rel="self" 
-                uri="http://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed"/>
+                uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed"/>
       <status type="email">
         <destination></destination>
         <status></status>
@@ -343,7 +343,7 @@ Your application can use this information to easily determine the numbers of rec
     <ns2:messageStatus>
       <ns2:link method="GET" 
 	        rel="self" 
-                uri="http://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed"/>
+                uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed"/>
       <status type="email">
         <destination></destination>
         <status></status>
@@ -421,7 +421,7 @@ Your application can use this information to easily determine the numbers of rec
 
 Similar to the **summaryStatus**, using the links provided in the message response, the user can simply make a new API request to retrieve the **detailedStatus** URL. 
 
-` GET http://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=`
+` GET https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=`
 
 As this is a **GET** request we don't have to provide any message body.	
 

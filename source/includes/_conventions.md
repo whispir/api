@@ -24,7 +24,7 @@ Once this has been confirmed, the request is forwarded on to Whispir for Basic a
 * If this Username and password is correct, the server will process the request and send back an appropriate response.
 * If the Username and password is not correct, the server will send back an HTTP 401 (Authorization required).
 
-![Basic Authentication](http://developer.whispir.com/files/Computer-diagram.png)
+![Basic Authentication](https://developer.whispir.com/files/Computer-diagram.png)
 
 Once Whispir has validated the username and password, the requested resource is returned through Mashery to the application client.
 
@@ -34,7 +34,7 @@ A valid request that will be accepted and authenticated by the Whispir messaging
 
 The ‘Authorization’ header is comprised of the word **Basic** followed by the base64 representation of the username and password of the user.
 
-More information about HTTP Basic Authentication can be found on [Wikipedia](http://en.wikipedia.org/wiki/Basic_access_authentication "Basic access authentication").
+More information about HTTP Basic Authentication can be found on [Wikipedia](https://en.wikipedia.org/wiki/Basic_access_authentication "Basic access authentication").
 
 ##RESTful Architecture
 
@@ -55,7 +55,7 @@ An application is considered ‘RESTful’ if it conforms to a ‘REST’ archit
 
 Each **resource** within the Whispir API is available through a secure and authenticated URL. 
 
-**Note:** More information about REST can be found on [Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer).
+**Note:** More information about REST can be found on [Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 ##Retrieving objects
 
@@ -71,10 +71,10 @@ HTTP GET https://api.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3
 > Retrieve all Messages from within the Company
 
 ```xml
-HTTP GET http://api.whispir.com/messages?apikey=bneov3023nfo023rssdf3
+HTTP GET https://api.whispir.com/messages?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-HTTP GET http://api.whispir.com/messages?apikey=bneov3023nfo023rssdf3
+HTTP GET https://api.whispir.com/messages?apikey=bneov3023nfo023rssdf3
 ```
 
 Application clients can retrieve lists of resources of a single type through a simple URL. 
@@ -103,7 +103,7 @@ To retrieve a single **Workspace** when you know the ID, the URL is as follows:
 
 Or to retrieve a single **Contact** when you know the ID, the URL is as follows:
 
-`GET http://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3`
+`GET https://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3`
 
 > Retrieve the Contact with the ID of 78910
 

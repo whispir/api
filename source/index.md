@@ -6,7 +6,7 @@ language_tabs:
   - xml
 
 toc_footers:
-  - <a href='http://stage.whispir.io/register'>Register for an API Key</a>
+  - <a href='http://stage.whispir.io/register'>Create an API Key</a>
   - <a href='http://github.com/tripit/slate'>Documentation by Slate</a>
 
 includes:
@@ -18,11 +18,6 @@ includes:
   - message-status
   - message-responses
   - templates
-  - response-rules
-  - contacts
-  - distribution-lists
-  - scenarios
-  - workspaces
   - other
 
 search: true

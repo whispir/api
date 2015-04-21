@@ -16,8 +16,8 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.template-v1+xml
 
 <?xml version="1.0" encoding="UTF-8"?>
-<ns3:template xmlns:ns3="http://schemas.api.whispir.com" 
-              xmlns:ns2="http://schemas.api.whispir.com/dap">
+<ns3:template xmlns:ns3="https://schemas.api.whispir.com" 
+              xmlns:ns2="https://schemas.api.whispir.com/dap">
   <messageTemplateName>Sample SMS Template</messageTemplateName>
   <messageTemplateDescription>
     Template to provide an example on whispir.io
@@ -141,7 +141,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Accept: application/vnd.whispir.template-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="https://schemas.api.whispir.com/dap" xmlns:ns3="https://schemas.api.whispir.com">
     <status>1 to 4 of 4</status>
     <ns2:messagetemplates>
         <ns2:template>
@@ -289,7 +289,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
     <messageTemplateId>BACEB8D46BEF5315</messageTemplateId>
 </ns2:message> 
@@ -313,7 +313,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>6140000000000</to>
     <messageTemplateName>Sample SMS Template</messageTemplateName>
 </ns2:message> 
@@ -343,7 +343,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>6140000000000</to>
     <messageTemplateName>Sample SMS Template</messageTemplateName>
     <subject>This will override the template Subject</subject>

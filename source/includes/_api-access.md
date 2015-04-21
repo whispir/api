@@ -48,8 +48,8 @@ curl -H "Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk" https://api.whispir.
 
 ```shell
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:company xmlns="http://schemas.api.whispir.com/dap" 
-             xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:company xmlns="https://schemas.api.whispir.com/dap" 
+             xmlns:ns2="https://schemas.api.whispir.com">
     <link method="GET" 
           rel="retrieveWorkspaces" 
           uri="https://api.whispir.com/workspaces?apikey=89asdfohasd89023rsd"/>
@@ -107,7 +107,7 @@ Generate your Authorization Header using the form above, and using the code snip
 If you're unsure about using curl, you can install a REST Client in your browser and test the calls through there.  Whispir recommends the following clients:
 
 1. [Postman - Chrome/IE](https://www.getpostman.com/)
-2. [RESTClient - Firefox](http://restclient.net)
+2. [RESTClient - Firefox](https://restclient.net)
 
 To test your connectivity, you will need to enter the following parameters:
 
@@ -194,7 +194,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>[DESTINATION PHONE NUMBER]</to>
     <subject>This is the first line of my SMS</subject>    
     <body>This is the content of my SMS</body>

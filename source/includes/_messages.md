@@ -8,7 +8,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>61400000000</to>
     <subject>Test Message</subject>    
     <body>This is the body of my test SMS message</body>
@@ -211,7 +211,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>61400000000</to>
     <subject>Test SMS Message</subject>    
     <body>This is the body of my test SMS message</body>
@@ -219,7 +219,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
@@ -288,7 +288,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test Email Message</subject>    
     <email>
@@ -300,7 +300,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
@@ -323,7 +323,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test Email Message</subject>    
     <email>
@@ -340,7 +340,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
@@ -376,7 +376,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test e-mail message with attachment</subject>    
     <email>
@@ -409,7 +409,7 @@ AABJRU5ErkJggg==</derefUri>
 </ns2:message>
 ```
 ```go
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json 
@@ -482,7 +482,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>61400000000</to>
     <subject>Test Voice Call</subject>    
     <voice>
@@ -524,7 +524,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>61400000000</to>
     <subject>Test Voice Call</subject>    
     <voice>
@@ -621,7 +621,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>61400000000</to>
     <subject>Test Rich Message</subject>    
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
@@ -639,7 +639,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
@@ -663,7 +663,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>61400000000</to>
     <subject>Test Rich Message</subject>    
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
@@ -685,7 +685,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
@@ -719,9 +719,9 @@ This can be in the form of a simple web page, through to a mini web application 
 
 For example;
 
-<img src="http://developer.whispir.com/files/rpm-iphone-shift.jpg" />
+<img src="https://developer.whispir.com/files/rpm-iphone-shift.jpg" />
 
-Visit our demo site <a href="http://demo.whispir.com/rich-message.php" target="_blank">here</a> for lots of samples of rich messages.
+Visit our demo site <a href="https://demo.whispir.com/rich-message.php" target="_blank">here</a> for lots of samples of rich messages.
 
 The inclusion of the `@@web_link@@` tag anywhere in the body of the SMS or Email will automatically generate a URL and embed any content specified in the web body of the same message.
 
@@ -770,7 +770,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>61400000000</to>
     <subject>Test Web Message</subject>    
     <web> 
@@ -845,7 +845,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>61400000000</to>
     <subject>Test SMS Message with tags</subject>    
     <body>Hi @@first_name@@.  This is your message.</body>
@@ -853,7 +853,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
@@ -939,7 +939,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
     <to>61400000000</to>
     <subject>Test SMS Message with tags</subject>    
     <body>Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
@@ -947,7 +947,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
