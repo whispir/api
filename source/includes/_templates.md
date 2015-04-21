@@ -332,3 +332,39 @@ Content-Type: application/vnd.whispir.message-v1+json
 Whispir.io API messages can simply specify the Message Template ID in the messages request, instead of specifying the entire content payload.
 
 The message template can then easily be changed (using either another API request or by logging in to the Whispir Platform) and the part of the application sending the messages does not need to be altered.
+
+## Overriding Templates
+
+> You can override content in the template by supplying it inline with the message request
+
+```xml
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>6140000000000</to>
+    <messageTemplateName>Sample SMS Template</messageTemplateName>
+    <subject>This will override the template Subject</subject>
+    <body>This will override the template SMS Body</body>
+</ns2:message> 
+```
+```go
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+Content-Type: application/vnd.whispir.message-v1+json
+
+{ 
+   "to" : "6140000000000",
+   "messageTemplateName" : "Sample SMS Template",
+   "subject" : "This will override the template Subject",
+   "body" : "This will override the template SMS Body"
+}
+```
+
+Users can easily override the content of the Message Template by supplying the content inline with the request to the `/messages` endpoint.
+
+Any information provided in the message request will take precidence over the templated content.
+
+All of the features that are specified on the template (for example, any message aliasing) will still be respected when the message is delivered.

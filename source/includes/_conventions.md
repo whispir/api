@@ -263,6 +263,211 @@ The table below describes the response codes that will be issued and gives poten
     </tbody>
 </table>
 
+##Content Types & Versioning
+
+The Whispir.io API has been designed and built to support the wide feature set provided in the current version of the Whispir Platform. 
+
+In order to manage and incorporate change in future versions of the API, Whispir's API has implemented a versioning structure that allows application clients to choose which version of the API they would like to retrieve their responses from.
+
+This allows new versions to be built and old versions to be supported concurrently, with no impact to clients when changes are made.
+
+Whispir's API achieves this versioning capability by using **Vendor Specific MIME Types (VSMT)**.
+
+### Without VSMT
+
+>A Sample API request that is not using VSMT
+
+```
+HTTP/1.1 GET /workspaces/123/contacts?firstName=Neil&apikey=789264 
+Accept: application/xml
+
+HTTP/1.1 200 OK
+Content-Type: application/xml
+<contact>
+   <name>Neil Armstrong</name>
+</contact>
+```
+
+This implementation of an API in this manner works correctly, but conceptually it is incorrect.  The issue with this design is the request is only asking for an XML representation of some resource called a Contact, it is not specifically asking for the XML version of a **Contact Resource** as defined by Whispir's API.
+
+Any XML representation of a resource could be passed back e.g. a **Cat** or a **House**, and the client would need to inspect the response to determine whether it is a **Contact** or not through its own means.
+
+### With VSMT
+
+>A Sample API request that is uses VSMT
+
+```
+HTTP/1.1 GET /workspaces/123/contacts?firstName=Neil&apikey=789264 
+Accept: application/vnd.whispir.contact+xml
+
+HTTP/1.1 200 OK
+Content-Type: application/xml
+<contact>
+   <name>Neil Armstrong</name>
+</contact>
+```
+
+By using VSMT, Whispir can define and make available the various content types for resources prior to the requests being made. This allows the application clients to specify the resource that they would like to receive from the API, and Whispir will only return content of that specific type.
+
+For example:
+
+By using this method, the client is specifically asking for a resource representation of a **Contact** that is defined by Whispir's API.  There is no confusion about the representation that will be returned, and the client need not worry about validation as Whispir will only ever return a valid **Contact** as a response to this request.
+
+VSMT also allows the client the ability to choose the language in which their resource representation should be returned.  Using the previous example, the application client was asking for the **Contact** to be returned in **XML**.
+
+`Accept: application/vnd.whispir.contact+xml`
+
+This **Contact** resource could just as easily be returned as a **JSON** object by changing the content type as follows:
+
+`Accept: application/vnd.whispir.contact+json`
+
+### With VSMT (including versioning)
+
+> Sample request with VSMT and Versioning (V1)
+
+```
+HTTP/1.1 GET /workspaces/123/contacts?firstName=Neil&apikey=789264 
+Accept: application/vnd.whispir.contact-v1+xml
+
+HTTP/1.1 200 OK
+Content-Type: application/vnd.whispir.contact-v1+xml
+<contact>
+   <name>Neil Armstrong</name>
+</contact>
+```
+
+> Sample request with VSMT and Versioning (V2)
+
+
+```
+HTTP/1.1 GET /workspaces/123/contacts?firstName=Neil&apikey=789264 
+Accept: application/vnd.whispir.contact-v2+xml
+
+HTTP/1.1 200 OK
+Content-Type: application/vnd.whispir.contact-v2+xml
+<contact>
+   <name>Neil Armstrong</name>
+   <mobile>+61456838435</mobile>
+   <email>neil.armstrong@space.com</email>
+</contact>
+```
+
+This method of using VSMT also allows the resource representations to be updated, re-written and maintained without any notification required to application clients.
+
+This can be achieved by adding a **version** element to the defined content types.
+
+By versioning the application MIME types, application clients can request the resource representation that their application is built on, e.g. ‘contact-v1’, or ‘workspace-v2’.
+
+Whispir can create new representations of these documents, and the application clients will not be affected by these changes.
+
+The **v2** version of this resource representation can co-exist with the **v1** version, and application clients do not need to worry about their existence.
+
+### Deprecation of Versions
+
+As the version numbers grow and new features are introduced into the resource representations, it is inevitable that the older versions will become deprecated and no longer supported over an extended period of time.
+
+This process of deprecation will be facilitated using HTTP Status Codes 301 and 415.
+
+### List of Whispir's VSMT's
+
+The following table depicts the available mime types that will be accepted through Whispir's API:
+
+**Note:** The Mime Type is always *Singular*. `message-v1`, not `messages-v1`.
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">List of Whispir.io VSMT's</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Workspace:</td>
+            <td>XML - application/vnd.whispir.workspace-v1+xml<br/>
+            	JSON - application/vnd.whispir.workspace-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Message:</td>
+            <td>XML - application/vnd.whispir.message-v1+xml<br/>
+            	JSON - application/vnd.whispir.message-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Message Status:</td>
+            <td>XML - application/vnd.whispir.messagestatus-v1+xml<br/>
+            	JSON - application/vnd.whispir.messagestatus-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Message Responses:</td>
+            <td>XML - application/vnd.whispir.messageresponse-v1+xml<br/>
+            	JSON - application/vnd.whispir.messageresponse-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Message Response Rule:</td>
+            <td>XML - application/vnd.whispir.responserule-v1+xml<br/>
+            	JSON - application/vnd.whispir.responserule-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Message Template:</td>
+            <td>XML - application/vnd.whispir.template-v1+xml<br/>
+            	JSON - application/vnd.whispir.template-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Contact:</td>
+            <td>XML - application/vnd.whispir.contact-v1+xml<br/>
+            	JSON - application/vnd.whispir.contact-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Distribution List:</td>
+            <td>XML - application/vnd.whispir.distributionlist-v1+xml<br/>
+            	JSON - application/vnd.whispir.distributionlist-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Message Scenario:</td>
+            <td>XML - application/vnd.whispir.scenario-v1+xml<br/>
+            	JSON - application/vnd.whispir.scenario-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Event:</td>
+            <td>XML - application/vnd.whispir.event-v1+xml<br/>
+            	JSON - application/vnd.whispir.event-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Asset:</td>
+            <td>XML - application/vnd.whispir.asset-v1+xml<br/>
+            	JSON - application/vnd.whispir.asset-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Custom List:</td>
+            <td>XML - application/vnd.whispir.customlist-v1+xml<br/>
+            	JSON - application/vnd.whispir.customlist-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Activity Log:</td>
+            <td>XML - application/vnd.whispir.activity-v1+xml<br/>
+            	JSON - application/vnd.whispir.activity-v1+json
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">User:</td>
+            <td>XML - application/vnd.whispir.user-v1+xml<br/>
+            	JSON - application/vnd.whispir.user-v1+json
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ##Pagination
 
 >Request for the first page of messages:

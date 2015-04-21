@@ -15,7 +15,14 @@ includes:
   - rate-limiting
   - conventions
   - messages
+  - message-status
+  - message-responses
   - templates
+  - response-rules
+  - contacts
+  - distribution-lists
+  - scenarios
+  - workspaces
   - other
 
 search: true

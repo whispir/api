@@ -1,4 +1,4 @@
-# Communications
+# Messages
 
 > Sample to send an SMS, Email, Voice call, and Web Publishing in one request
 
