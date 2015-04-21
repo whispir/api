@@ -2,8 +2,8 @@
 
 Getting started with the Whispir.io API is easy:
 
-1. Register with Whispir.io to create your account - ([Free 30 Day Trial](https://stage.whispir.io/register))
-2. Create an App inside the Whispir.io App Dashboard - ([App Dashboard](https://stage.whispir.io/dashboard))
+1. Register with Whispir.io to create your account - ([Free 30 Day Trial](https://whispir.io/register))
+2. Create an App inside the Whispir.io App Dashboard - ([App Dashboard](https://whispir.io/dashboard))
 3. Check your connectivity to the API
 4. Try it out! Send your first message
 
@@ -11,15 +11,15 @@ Getting started with the Whispir.io API is easy:
 
 The Whispir.io API is available for all existing Whispir customers to use.  If you're already a Whispir customer, great! Your existing username and password will work straight away.  You don't even need to contact us.
 
-Simply log in to ([whispir.io](https://stage.whispir.io/login)) and create an app inside the app dashboard.
+Simply log in to ([whispir.io](https://whispir.io/login)) and create an app inside the app dashboard.
 
-If you're a new customer and are interested in using the API, sign up for our ([Free 30 Day Trial](https://stage.whispir.io/register)). No Credit Card Required.  
+If you're a new customer and are interested in using the API, sign up for our ([Free 30 Day Trial](https://whispir.io/register)). No Credit Card Required.  
 
 ## Create an app 
 
 Follow these simple steps to create your first Whispir.io Application.
 
-1. Log in to the ([whispir.io dashboard](https://stage.whispir.io/login)).
+1. Log in to the ([whispir.io dashboard](https://whispir.io/login)).
 
 2. If you haven't validated your e-mail address, you'll need to do this first by clicking the *validate* link.  This will send you an e-mail.  Simply click the link in the e-mail you receive and your e-mail will be validated.
 
@@ -134,7 +134,7 @@ If you get a different response than **HTTP 200 OK**, perform the following:
 
 **HTTP 403 Forbidden, or HTTP 401 Unauthorized**
 
-* Your Authorization header may not be quite right, verify your username and password browsing to [Whispir.io](https://stage.whispir.io) and clicking 'Log In'
+* Your Authorization header may not be quite right, verify your username and password browsing to [Whispir.io](https://whispir.io) and clicking 'Log In'
 * If you can successfully log in, then try and re-generate the Base64 encoded username and password using the form above.
 * If you cannot log in, then it's possible your account isn't active. Contact your Whispir Administrator, or send a message to our support team at [apisupport@whispir.com](mailto:apisupport@whispir.com).
 
