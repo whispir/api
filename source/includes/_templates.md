@@ -10,9 +10,15 @@ The simple inclusion of a Message Template can alleviate this completely, allowi
 
 ## Creating Templates
 
-```xml
+> Creating Templates
+> > The following API calls allow users to manage Templates using the Whispir API.
+
+```
 HTTP 1.1 POST https://api.whispir.com/templates?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.template-v1+xml
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -27,8 +33,6 @@ Content-Type: application/vnd.whispir.template-v1+xml
 </ns3:template>
 ````
 ```go
-HTTP 1.1 POST https://api.whispir.com/templates?apikey=[yourkey]
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.template-v1+json
 
 { 
@@ -39,8 +43,8 @@ Content-Type: application/vnd.whispir.template-v1+json
 }
 ```
 
-> The sample code above will create a simple SMS only message template within the default workspace.<br/><br/>
-The expected response to this call is an HTTP 201 - Created.
+> > The sample code above will create a simple SMS only message template within the default workspace.<br/><br/>
+The expected response to this call is an **HTTP 201 - Created**.
 
 To create a new message template, you can use the `/templates` endpoint.
 
@@ -135,9 +139,15 @@ Only **3 fields** are required:
 
 ##Retrieving Templates
 
-```xml
+> Retrieving Templates
+> > The following API Methods allow you to access templates via the API
+
+```
 HTTP 1.1 GET https://api.whispir.com/templates?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Accept: application/vnd.whispir.template-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -184,8 +194,6 @@ Accept: application/vnd.whispir.template-v1+xml
 </ns2:return>
 ```
 ```go
-HTTP 1.1 GET https://api.whispir.com/templates?apikey=[your_api_key]
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Accept: application/vnd.whispir.template-v1+json
 
 {
@@ -283,9 +291,15 @@ Each of these templates will provide the following information:
 
 ##Using Templates
 
-```xml
+> Using Templates
+> > The following methods allow you to use the templates that you've created in your Whispir Messages
+
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -295,8 +309,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 </ns2:message> 
 ```
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 
 { 
@@ -305,11 +317,14 @@ Content-Type: application/vnd.whispir.message-v1+json
 }
 ```
 
-> Alternatively, you can enter the Message Template Name in place of the Message Template ID:
+> > Alternatively, you can enter the Message Template Name in place of the Message Template ID:
 
-```xml
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -319,8 +334,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 </ns2:message> 
 ```
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 
 { 
@@ -335,11 +348,15 @@ The message template can then easily be changed (using either another API reques
 
 ## Overriding Templates
 
-> You can override content in the template by supplying it inline with the message request
+> Overriding Templates
+> > You can override content in the template by supplying it inline with the message request
 
-```xml
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -351,8 +368,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 </ns2:message> 
 ```
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 
 { 

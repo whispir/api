@@ -11,8 +11,16 @@ The sections below describe the process to retrieve the responses to any message
 ## Retrieve a Message
 
 > Retrieve a message
+> > Use the API to retrieve a sent Message 
+
+```
+HTTP 1.1 GET https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
 
 ```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com" xmlns:ns3="https://schemas.api.whispir.com/dap">
  <to>61400000000</to>
@@ -48,6 +56,8 @@ The sections below describe the process to retrieve the responses to any message
 </ns2:message>
 ```
 ```go
+Content-Type: application/vnd.whispir.message-v1+json
+
 {
     "to": "61400000000",
     "subject": "test subject",
@@ -146,7 +156,8 @@ Each of the URLs specified in the response can be accessed using the REL and app
 
 ## Summary Responses
 
-> Sample Summary Responses Request
+> Summary of Responses
+> > This snippet of code will allow users to retrieve the summary of responses to a message.
 
 ```xml
 <ns3:link method="GET" 
@@ -162,6 +173,7 @@ Each of the URLs specified in the response can be accessed using the REL and app
 ```
 
 > Sample Summary Responses Response
+> > This response contains the summary of responses to the message
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -222,7 +234,8 @@ Your application can use this information to easily determine the numbers of rec
 
 ## Detailed Responses
 
-> Sample Detailed Responses Request
+> Detailed Responses
+> > This snippet allows the user to retrieve the detailed response report for a message
 
 ```xml
 <ns3:link method="GET" 
@@ -238,6 +251,7 @@ Your application can use this information to easily determine the numbers of rec
 ```
 
 > Sample Detailed Responses Response
+> > This is the detailed response report for a message
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -311,7 +325,9 @@ Your application can use this information to easily determine the numbers of rec
 }
 ```
 
->This shows the application client that there were two intended recipients of this message.  1 of the recipients is in the **noresponse** category, meaning they have not provided a response.  1 of the recipients is in the **notmatched** category, meaning the response did not match any search criteria.
+> > This shows the application client that there were two intended recipients of this message.
+
+> > One of the recipients is in the **noresponse** category, meaning they have not provided a response.  The other recipient is in the **notmatched** category, meaning the response did not match any search criteria.
 
 Using the links provided in the message response, the user can simply make a new API request to retrieve the **detailedResponses** URL. 
 

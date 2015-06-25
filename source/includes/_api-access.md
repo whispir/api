@@ -34,19 +34,21 @@ Now that you've got your App API key, you can check your connectivity to the API
 
 ## Connect to the API
 
-> Using the information on the left, you can execute the following curl statment: 
+> Connect to the API
+
+> > Using the information on the left, you can execute the following curl statment: 
 
 ```shell
-curl -H "Authorization: <Your Authorization Header>" https://api.whispir.com?apikey=<Your App API Key>
+curl -H "Authorization: <Your Authorization Header>" 
+     https://api.whispir.com?apikey=<Your App API Key>
 
-# e.g. with sample values
+# with sample values
 
-curl -H "Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk" https://api.whispir.com?apikey=89asdfohasd89023rsd 
-```
+curl -H "Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk"  
+     https://api.whispir.com?apikey=89asdfohasd89023rsd 
 
-> If all is correct, the following response should be expected (The Whispir.io API defaults to an XML response)
+# If all is correct, the following response should be expected (The API defaults to an XML response)
 
-```shell
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:company xmlns="https://schemas.api.whispir.com/dap" 
              xmlns:ns2="https://schemas.api.whispir.com">
@@ -56,8 +58,6 @@ curl -H "Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk" https://api.whispir.
     ...
 </ns2:company>
 ```
-
-> This may look a bit scary at first, but it will all make sense shortly. All you need to know now is you've got access to the API!
 
 The first thing you'll need to do is generate your **Authorization Header** for your API requests. You'll need to use the Authorization Header on every request that you submit to the Whispir.io API.
 
@@ -142,22 +142,27 @@ If you get a different response than **HTTP 200 OK**, perform the following:
 
 * If you're still having issues, please contact us at [apisupport@whispir.com](mailto:apisupport@whispir.com).
 
-## Creating your messages
+## Sending Messages
 
-> Send your first message using cURL
+> Sending Messages
+
+> > Send your first message using curl.
 
 ```shell
-curl -H "Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk" 
+curl -H "Authorization: Basic <YOUR AUTH HEADER>" 
      -H "Content-Type: application/vnd.whispir.message-v1+json" 
      -H "Accept: application/vnd.whispir.message-v1+json" 
-     -d '{ "to": "<DESTINATION PHONE NUMBER>",
-     "subject": "This is the first line of my SMS",
-     "body": "This is the content of my SMS"
-   }' 
-   https://api.whispir.com/messages?apikey=89asdfohasd89023rsdfhio8923
+     -d '{ 
+            "to": "<DESTINATION PHONE NUMBER(S)>",
+            "subject": "This is the first line of my SMS",
+            "body": "This is the content of my SMS"
+         }' 
+     https://api.whispir.com/messages?apikey=<YOUR API KEY>
 ```
 
-> Once you submit this, Whispir will send you back an HTTP 202 Accepted stating that your request has been accepted for processing.  Within a few seconds your phone should be buzzing away.
+> > Once you submit this, Whispir will send you back an **HTTP 202 Accepted** stating that your request has been accepted for processing.  
+
+> > Within a few seconds your phone should be buzzing away.
 
 
 ### Sending Messages
@@ -172,11 +177,16 @@ You're going to use the URL `https://api.whispir.com/messages` as the API endpoi
 
 ### Content Type
 
-> Samples in XML and JSON
+> Samples in XML / JSON
 
-```go
+> > The following example shows how to use a POST request to send the message in XML or JSON.  Use the selector at the top to choose your syntax.
+
+```
 POST https://api.whispir.com/messages?apikey=89asdfohasd89023rsdfhio8923
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```go
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
@@ -188,8 +198,6 @@ Accept: application/vnd.whispir.message-v1+json
 ```
 
 ```xml
-POST https://api.whispir.com/messages?apikey=89asdfohasd89023rsdfhio8923
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 Accept: application/vnd.whispir.message-v1+xml
 

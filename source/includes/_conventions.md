@@ -2,16 +2,31 @@
 
 ##API Security
 
->Basic HTTP Authentication over HTTPS
+> API Security
 
-```
-HTTPS GET /workspaces/123/contacts?firstname=John&lastname=Smith?apikey=789264
+> > Whispir utilises Basic HTTP Authentication over HTTPS to secure the API Requests.
+
+```shell
+HTTP/1.1 GET https://api.whispir.com/?apikey=ab37bdvs32898dssddsddsfklio
 Authorization: Basic frJIUN8DYpKDtOLCwo//yllqDzg=
+
+# Successful Response
+HTTP/1.1 200 OK
+
+# Unsuccessful Response (incorrect apikey)
+HTTP/1.1 403 Forbidden
+<h1>Developer Inactive</h1>
+
+# Unsuccessful Response (incorrect username / password)
+HTTP/1.1 401 Unauthorized
+
+# Unsuccessful Response (no permission to access that resource endpoint)
+HTTP/1.1 403 Forbidden
 ```
 
 The Whispir.io API supports multiple methods of authentication to cater for varying client needs.  Authentication is necessary for users of the API to ensure that only valid and legal requests are processed by the Whispir messaging engine.
 
-### Basic Authentication over HTTPS (default)
+### Basic Authentication over HTTPS
 
 The basic authentication process is offered for use with clients that already have an ‘up and running’ application, and would like to integrate Whispir as a messaging provider in a quick and simple fashion.
 
@@ -59,22 +74,24 @@ Each **resource** within the Whispir API is available through a secure and authe
 
 ##Retrieving objects
 
-> Retrieve all workspaces within your Company
+> Retrieving objects
+
+> > Retrieve all workspaces within your Company
 
 ```xml
-HTTP GET https://api.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-HTTP GET https://api.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3
 ```
 
-> Retrieve all Messages from within the Company
+> > Retrieve all Messages from within the Company
 
 ```xml
-HTTP GET https://api.whispir.com/messages?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.whispir.com/messages?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-HTTP GET https://api.whispir.com/messages?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.whispir.com/messages?apikey=bneov3023nfo023rssdf3
 ```
 
 Application clients can retrieve lists of resources of a single type through a simple URL. 
@@ -86,13 +103,15 @@ For example, to retrieve a list of **Workspaces** from within the **Company**, t
 
 ### Retrieving a single object
 
-> Retrieve the Workspace with the ID of 12345
+> Retrieving a single object
+
+> > Retrieve the Workspace with the ID of 12345
 
 ```xml
-GET https://api.whispir.com/workspaces/12345?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.whispir.com/workspaces/12345?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-GET https://api.whispir.com/workspaces/12345?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.whispir.com/workspaces/12345?apikey=bneov3023nfo023rssdf3
 ```
 
 Application clients also have access to a single resource by specifying the relevant ID of the resource.  This information would have been returned when retrieving the list of resources as specified above.
@@ -105,24 +124,26 @@ Or to retrieve a single **Contact** when you know the ID, the URL is as follows:
 
 `GET https://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3`
 
-> Retrieve the Contact with the ID of 78910
+> > Retrieve the Contact with the ID of 78910
 
 ```xml
-GET https://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-GET https://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3
 ```
 
 ### Nested objects
 
->Retrieve the Contact with the ID 67890 from within the Workspace with ID 12345
+> Nested objects
+
+> > Retrieve the Contact with the ID 67890 from within the Workspace with ID 12345
 
 ```xml
-GET https://api.whispir.com/workspaces/12345/contacts/67890?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.whispir.com/workspaces/12345/contacts/67890?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-GET https://api.whispir.com/workspaces/12345/contacts/67890?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.whispir.com/workspaces/12345/contacts/67890?apikey=bneov3023nfo023rssdf3
 ```
 
 Within Whispir's resource model, some resources are nested within one another.  For example; 
@@ -275,7 +296,8 @@ Whispir's API achieves this versioning capability by using **Vendor Specific MIM
 
 ### Without VSMT
 
->A Sample API request that is not using VSMT
+>Without VSMT
+> >A Sample API request that is not using VSMT
 
 ```
 HTTP/1.1 GET /workspaces/123/contacts?firstName=Neil&apikey=789264 
@@ -294,7 +316,8 @@ Any XML representation of a resource could be passed back e.g. a **Cat** or a **
 
 ### With VSMT
 
->A Sample API request that is uses VSMT
+>With VSMT
+> > A Sample API request that is uses VSMT
 
 ```
 HTTP/1.1 GET /workspaces/123/contacts?firstName=Neil&apikey=789264 
@@ -323,7 +346,8 @@ This **Contact** resource could just as easily be returned as a **JSON** object 
 
 ### With VSMT (including versioning)
 
-> Sample request with VSMT and Versioning (V1)
+> With VSMT (including versioning)
+> > Sample request with VSMT and Versioning (V1)
 
 ```
 HTTP/1.1 GET /workspaces/123/contacts?firstName=Neil&apikey=789264 
@@ -336,7 +360,7 @@ Content-Type: application/vnd.whispir.contact-v1+xml
 </contact>
 ```
 
-> Sample request with VSMT and Versioning (V2)
+> > Sample request with VSMT and Versioning (V2)
 
 
 ```
@@ -470,22 +494,18 @@ The following table depicts the available mime types that will be accepted throu
 
 ##Pagination
 
->Request for the first page of messages:
+> Pagination
 
-```xml
-GET https://api.whispir.com/?apikey=sbdsfd0sa09fds&limit=20&offset=0
+> > Request for the first page of messages:
+
 ```
-```go
-GET https://api.whispir.com/?apikey=sbdsfd0sa09fds&limit=20&offset=0
+HTTP/1.1 GET https://api.whispir.com/?apikey=sbdsfd0sa09fds&limit=20&offset=0
 ```
 
->Request for the second page of messages (note the offset is now 20):
+> > Request for the second page of messages (note the offset is now 20):
 
-```xml
-GET https://api.whispir.com/?apikey=sbdsfd0sa09fds&limit=20&offset=20
 ```
-```go
-GET https://api.whispir.com/?apikey=sbdsfd0sa09fds&limit=20&offset=20
+HTTP/1.1 GET https://api.whispir.com/?apikey=sbdsfd0sa09fds&limit=20&offset=20
 ```
 
 Requests that contain multiple items will be paginated by default.
@@ -504,3 +524,4 @@ This makes programatic pagination easy as you can simply detect for the presence
 **Note:** The following resources aren't paginated for ease of use:
 
 - Workspaces
+- Scenarios

@@ -1,10 +1,14 @@
 # Messages
 
-> Sample to send an SMS, Email, Voice call, and Web Publishing in one request
+> Messages
+> > Sample to send an SMS, Email, Voice call, and Web Publishing in one request
+
+```
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<YOUR API KEY>
+Authorization: Basic <YOUR AUTH HEADER>
+```
 
 ```xml
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -46,8 +50,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 </ns2:message>
 ````
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
@@ -139,6 +141,7 @@ If your application does not require separate workspaces, you can simply send al
                     <li>Email Address: john.smith@test.com.au</li>
                     <li>Landline: 61386000000</li>
                 </ul>
+                <strong>Note:</strong> Multiple recipients can be specified using semicolons
             </td>
         </tr>
         <tr>
@@ -183,7 +186,7 @@ If your application does not require separate workspaces, you can simply send al
                 Allows the user to modify the message behaviour for replies and DLRs (delivery receipts) e.g.
                 <ul>
                     <li>defaultNoReply - Used to reject any replies to this message.</li>
-                    <li>noDlr - Used to specify that DLRs should not be enabled for this message.</li>
+                    <li>NoDlr - Used to specify that DLRs should not be enabled for this message.</li>
                 </ul>
             </td>
         </tr>
@@ -205,10 +208,18 @@ If your application does not require separate workspaces, you can simply send al
 
 ## SMS Messages
 
-```xml
+> SMS Messages
+
+> > Sending SMS messages using Whispir is as easy as providing the destination phone number(s), a message subject, and the content of the message.
+
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
+Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
@@ -219,8 +230,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
@@ -280,11 +289,15 @@ The 'to' field can be provided in the following formats:
 
 ## Email Messages
 
-> Demonstration of a plain text Email
+> Email Messages
+> > **Sending Plain Text Emails**
 
-```xml
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -300,8 +313,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
@@ -315,11 +326,14 @@ Accept: application/vnd.whispir.message-v1+json
     }
 }
 ```
-> Demonstration of a Rich (HTML) Email
 
-```xml
+> > **Sending Rich Text (HTML) Emails**
+
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -340,8 +354,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
@@ -368,11 +380,14 @@ Only 4 fields are required in order to send an email message.
 
 ###Whispir's support of Rich (HTML) Emails
 
-> Demonstration of a Plain Text Email with an attachment
+> > **Sending Emails with Attachments**
 
-```xml
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -409,8 +424,6 @@ AABJRU5ErkJggg==</derefUri>
 </ns2:message>
 ```
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json 
 
@@ -474,11 +487,16 @@ The attachment element in JSON is also an array, so be sure to add the square br
 
 ## Voice Messages
 
-> Demonstration of sending a Text To Speech Voice call
+> Voice Messages
 
-```xml
+> > **Sending Voice Calls**
+
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -502,8 +520,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 </ns2:message> 
 ```
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
@@ -516,11 +532,15 @@ Content-Type: application/vnd.whispir.message-v1+json
     }
 }
 ```
-> Demonstration of sending a Text To Speech Voice call with an attached teleconference
 
-```xml
+> > **Sending Voice Calls with Teleconferences**
+
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -545,8 +565,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 </ns2:message> 
 ```
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
@@ -579,7 +597,7 @@ Using Whispir's Voice Module, you can easily connect all recipients onto a singl
 * **The Type field is mandatory even when no conference call is being used**
 * Pauses can be added in conference call details using a +
 
-Your account must be enabled to use the Voice capability within Whispir for this to function.  If you are unsure whether you can use Voice please contact <a href="mailto:apisupport@whispir.com">apisupport@whispir.com</a>.
+Your account must be enabled to use the Voice capability within Whispir for this to function.  If you are unsure whether you can use Voice please contact <a href="mailto:support@whispir.io">support@whispir.io</a>.
 
 <table>
     <thead>
@@ -613,11 +631,15 @@ Whispir's Voice Module doesn't include a Conference Call service.  User's can ea
 
 ## Rich Messages
 
-> Simple Rich Message using SMS with a Web Link
+> Rich Messages
+> > Simple Rich Message using SMS with a Web Link
 
-```xml
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -639,8 +661,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
@@ -655,11 +675,17 @@ Accept: application/vnd.whispir.message-v1+json
 }
 ```
 
-> Using Javascript to personalise the Rich Message
+> Whispir's Javascript API
 
-```xml
+> > Users can use Whispir's Javascript API to perform different functions from within Rich Messages.
+> > The following example uses javascript to personalise the Rich Message
+
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -685,8 +711,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
@@ -700,9 +724,8 @@ Accept: application/vnd.whispir.message-v1+json
    } 
 }
 ```
-```HTML
+```php
 <!--For ease of reading, the above HTML looks like-->
-
 <div id='content'>
     <p>Hi <span id='first_name'></span></p>
     <p>This is the body of my Rich Message</p>
@@ -762,11 +785,15 @@ More information about Rich Messages and the `Whispir` object is included later 
 
 ## Web/Social Messaging
 
-> Social Media Request/Response Example
+> Web/Social Messaging
+> > Social Media Request/Response Example
 
-```xml
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -789,8 +816,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 </ns2:message>
 ```
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
@@ -825,7 +850,7 @@ The Web section is used to publish information to Whispir's Contact Portal or Wh
 
 Whispir can automatically export this content as plain text or HTML and export it to a location for you to either iFrame into your webpage, or include via AJAX.
 
-For more information on web publishing, please contact <a href="mailto:apisupport@whispir.com">apisupport@whispir.com</a>.
+For more information on web publishing, please contact <a href="mailto:support@whispir.io">support@whispir.io</a>.
 
 ### Social Publishing
 
@@ -833,15 +858,19 @@ The Social section is used to publish information to Twitter or Facebook as per 
 
 Whispir can automatically publish content to your pre-configured Twitter and Facebook pages based on the information you have provided us.
 
-For more information about configuring Social Publishing, please contact <a href="mailto:apisupport@whispir.com">apisupport@whispir.com</a>.
+For more information about configuring Social Publishing, please contact <a href="mailto:support@whispir.io">support@whispir.io</a>.
 
 ## Message Variables
 
-> Demonstration of sending messages with variables (or tags).
+> Message Variables
+> > Demonstration of sending messages with variables (or tags).
 
-```xml
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -853,8 +882,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
@@ -927,15 +954,19 @@ Each of these tags will resolve on send of the message to the individual recipie
 
 For more information about sending messages to Contacts or Distribution Lists, please consult the documentation under Messaging.
 
-**Note: **tags do not work in Rich Messages.  The `Whispir` javascript object must be used instead to populate recipient specific fields.
+**Note: ** Tags do not work in Rich Messages.  The `Whispir` javascript object must be used instead to populate recipient specific fields.
 
 ### Using auto-populated system variables in messages
 
-> Demonstration of sending messages with system variables (or tags).
+> Using auto-populated system variables in messages
+> > Demonstration of sending messages with system variables (or tags).
 
-```xml
+```
 HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -947,8 +978,6 @@ Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
@@ -1014,5 +1043,451 @@ The following **system tags** can be included in any message:
 </table>
 
 Each of these system tags will resolve on send of the message to the system information.  The system tags will only work when sending messages to any recipient.
+
+
+## Dynamic (Bulk) Messages
+
+> Dynamic (Bulk) Messages
+> > Whispir's API allows users to upload structured data, and process this line by line into outbound communications via SMS, Email, Voice, Web or Social Media.
+
+```
+|------------|------------|-------------|-------------|------------| 
+| First Name | Last Name  | Mobile      | Amount Owed | Date Due   |
+|------------|------------|-------------|-------------|------------| 
+| Jono       | Johnson    | +6590091234 | S$1000      | 21/08/2015 |
+| Steve      | Smith      | +6590091235 | S$1100      | 22/08/2015 |
+|------------|------------|-------------|-------------|------------| 
+```
+
+> > After processing, the first recipient would receive a message that looks as follows:
+
+```
+Hi Jono. Your account is currently outstanding, with the amount S$1000.00 being due on 21/08/2015.  Please make every effort to pay your account on time.  If you would like more information, please contact us on 1800 000 000, regards.
+```
+
+Whispir allows you send messages with dynamic content. This is very useful when you are sending SMS or emails in bulk and want to simply replace the placeholders or variables with values from a spreadsheet, data file or database table.
+
+This can be achieved easily by uploading a file with the message content and the message recipient information. Whispir's messaging engine takes this information and processes it in bulk sendout.
+
+This process allows users to easily specify recipient information within the file, and this can be processed within the message content.
+
+This file could be saved and uploaded to Whispir's bulk messaging engine.  As a result, Whispir would then propose the following variables to be available for use in the message:
+
+@@first_name@@<br/>
+@@last_name@@<br/>
+@@mobile@@<br/>
+@@amount_owed@@<br/>
+@@date_due@@<br/>
+
+The user then has the option to construct a message using this information, and Whispir will dynamically replace these variables at send time.  For example your message content could be as follows:
+
+<br/>
+###Sending Dynamic Messages
+
+The bulk message sending is an easy two-step process.
+
+1. Upload the resource file via API (CSV, JSON or XML)
+2. Create a new message using the resource file as source data.
+
+<br/>
+**Step 1: Upload the Resource file via API**
+
+```
+HTTP 1.1 POST https://api.whispir.com/resources?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+Accept: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+    <name>sample.json</name>
+    <scope>private</scope>
+    <mimeType>application/json</mimeType>
+    <derefUri><!--base64 encoded JSON content --></derefUri>
+</ns3:resource>
+```
+
+```go
+Content-Type: application/vnd.whispir.resource-v1+json
+Accept: application/vnd.whispir.resource-v1+json
+
+{
+  "name" : "sample.json",
+  "scope" : "private",
+  "mimeType" : "application/json",
+  "derefUri" : "//base64 encoded JSON content"
+}
+
+```
+
+> > This will return a Resource ID that applications can use in the next step.
+
+To upload a file to Whispir's API, users will make an API call to the `/resources` endpoint. 
+
+Applications can use this endpoint to store the source files for dynamic messages. This endpoint can also be used to store any file based data (e.g. images, pdf documents, spreadsheets) for an unlimited amount of time.
+
+**Note:** The types of files allowed are - CSV, JSON, XML, Images [JPEG, PNG], and WAV.
+
+Information about the resources endpoint is documented in the **Resources** section of the documentation.
+
+<br/>
+**Step 2: Invoke the bulk message with reference to the resource ID and the desired content**
+
+Once the resource file has been uploaded and the location of the resource being returned, applications can use this to populate a dynamic message using the **/messages** endpoint.
+
+```
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
+Content-Type: application/vnd.whispir.bulkmessage-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+    <resource>
+      <resourceId/>
+      <smsMappingField/>
+      <emailMappingField/>
+      <voiceMappingField>
+   </resource>
+   <messageTemplateId>  
+   <messageContent>
+      <subject></subject>
+      <body></body>
+      <email>
+         <body></body>
+         <footer></footer>
+         <type></type>
+      </email>
+      <voice>
+         <header></header>
+         <body></body>
+         <footer></footer>
+         <other></other>
+         <type></type>
+      </voice>
+      <web>
+         <body></body>
+         <type></type>
+      </web>
+   </messageContent>
+   <callbackId/>
+
+</ns2:message> 
+```
+
+```go
+Content-Type: application/vnd.whispir.bulkmessage-v1+json
+
+{
+   "resource" : {
+        "resourceId" : "",
+        "smsMappingField" : "",
+        "emailMappingField" : "",
+        "voiceMappingField" : ""
+    },
+    "messageTemplateId" : "",
+    "messageContent" : {
+        "subject" : "",
+        "body" : "",
+        "email" : {
+            "body" : "",
+            "footer" : "",
+            "type" : ""
+        },
+        "voice" : {
+            "header" : "",
+            "body" : "",
+            "footer" : "",
+            "other" : "",
+            "type" : ""
+        },
+        "web" : {
+            "body" : "",
+            "type" : ""
+        }
+    },
+    "callbackId" : ""
+}
+```
+
+###Dynamic Messaging
+
+###Method Definition and Descriptions 
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Service URL</td>
+            <td>https://api.whispir.com/messages <br/> https://api.whispir.com/workspaces/[id]/messages</td>
+        </tr>
+        <tr>
+            <td>Methods Supported</td>
+            <td>GET, POST</td>
+        </tr>
+        <tr>
+            <td>Request MIME Type</td>
+            <td>application/vnd.whispir.bulkmessage-v1+xml <br/> application/vnd.whispir.bulkmessage-v1+json</td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">/messages</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">GET:</td>
+            <td>
+                Provides a List of all the currently sent messages within the company or workspace (URIs)
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">POST:</td>
+            <td>
+                Creates and sends a new message/bulk message.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">/messages/{id}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">GET:</td>
+            <td>
+                Retrieves the representation of the requested message.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">POST:</td>
+            <td>
+                NOT SUPPORTED
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+**Note**: The endpoint does not support PUT and DELETE in bulk messages. Similarly there is no POST for the **/messages/{id}**.
+
+###Request Components
+
+The structure of the Bulk Message is used to define the resource that should be used in the sendout, while also giving the user the capability to override the message content in the event a message template is not desired.
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">Main Section</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">messageTemplateId</td>
+            <td>
+                The resource identifier of the Message Template that should be used for this request.<br/>
+                Sample Value: 4FBBC384BCE3DAABFE3
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">callbackId</td>
+            <td>
+                The id of the callback to be used for responses to this message.<br/>
+                Sample Value: SampleCallback
+                <br/><br/>
+                **Note:** callback IDs are configured by Administrators within the Whispir Platform. 
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">Resource Section</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">resourceId</td>
+            <td>
+                The resource identifier returned from the POST to /resources.<br/>
+                Resource referred to must be a valid CSV file.<br/>
+                Sample Value: 384BCE34FBBCDAABFE3
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">smsMappingField</td>
+            <td>
+                The column name from within the CSV file that refers to the field on each row that should be used for SMS messages.<br/>
+                Sample Value: Mobile
+                <br/><br/>
+                <strong>Note:</strong> This field will default to ‘mobile’ if present in the file and this field is not populated.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">emailMappingField</td>
+            <td>
+                The column name from within the CSV file that refers to the field on each row that should be used for Email messages.<br/>
+                Sample Value: Email
+                <br/><br/>
+                <strong>Note:</strong> This field will default to ‘email’ if present in the file and this field is not populated. 
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">voiceMappingField</td>
+            <td>
+                The column name from within the CSV file that refers to the field on each row that should be used for Voice messages.<br/>
+                Sample Value: Mobile
+                <br/><br/>
+                <strong>Note:</strong> This field will default to ‘mobile’ if present in the file and this field is not populated. 
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">Message Content Section – *Required when no template is used.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Subject</td>
+            <td>
+                Defines the subject of the message.  The subject also acts as the first line of the SMS message.<br/>
+                Sample Value: Mary had a little lamb.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Body</td>
+            <td>
+                The body of the SMS message being delivered.<br/>
+                Sample Value: And its fleece was white as snow. Everywhere that Mary went, the lamb was sure to check her in 4Square. Soon, Mary was the president of the town.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">Email Section – *Required for email messages</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Body</td>
+            <td>
+                The body of the email message being delivered.<br/>
+                Sample Value: Jack and Jill went up the hill.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Footer</td>
+            <td>
+                The footer of the email message being delivered. Usually used as an area for a signature.<br/>
+                Sample Value: Regards, the well.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Type</td>
+            <td>
+                The type of the email content.<br/>
+                Sample Value: text/plain (default) / text/html.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">Voice Section – *Required for voice messages</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Header</td>
+            <td>
+                The header of the voice content.<br/>
+                Sample Value: The text to speech content of the introduction message for the voice call.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Body</td>
+            <td>
+                The content of the voice message.<br/>
+                Sample Value: The text to speech content of the body message for the voice call.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Type</td>
+            <td>
+                The type parameter defines the other optional elements of the voice call.<br/>
+                Sample Value: ConfCall:ConfAccountNo:ConfPinNo:ConfModPinNo:Pin:
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">Web Section – *Required for web/rich push messages</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Body</td>
+            <td>
+                The body of the web message<br/>
+                Sample Value: The body content of the web message to be delivered.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Type</td>
+            <td>
+                The type of the web message<br/>
+                Sample Value: text/plain (default) / text/html.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+###Response Structure
+
+If the request was successful, the response contains the information for the calling application to retrieve information about the message.
+
+> > If the dynamic message was successful, the following response will be received.
+
+```
+HTTP 1.1 202 Accepted
+Location: https://api.whispir.com/messages/4FBBC384BCE3DAABFE3
+
+Your request has been accepted for processing.
+```
+
+If the request was not successful, the response will contain the information about why the request could not be processed.  This will be as per the standard Whispir API response code rules.
+
+The outcome of this message will be a complete message with placeholder variables @@ replaced with the supplied values.
 
 For more information about sending messages, please consult the documentation under Messaging.

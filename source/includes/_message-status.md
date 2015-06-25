@@ -60,8 +60,16 @@ The first thing a developer must do in order to retrieve the status of a sent me
 ## Retrieve a Message
 
 > Retrieve a message
+> > Use the API to retrieve a sent Message 
+
+```
+HTTP 1.1 GET https://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
 
 ```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com" xmlns:ns3="https://schemas.api.whispir.com/dap">
  <to>61400000000</to>
@@ -97,6 +105,8 @@ The first thing a developer must do in order to retrieve the status of a sent me
 </ns2:message>
 ```
 ```go
+Content-Type: application/vnd.whispir.message-v1+json
+
 {
     "to": "61400000000",
     "subject": "test subject",
@@ -195,7 +205,8 @@ Each of the URLs specified in the response can be accessed using the REL and app
 
 ## Retrieve Summary Status
 
-> Sample Summary Status Request
+> Retrieve Summary Status
+> > This sample of code will retrieve the Summary Status for a message
 
 ```xml
 <ns3:link method="GET" 
@@ -211,6 +222,7 @@ Each of the URLs specified in the response can be accessed using the REL and app
 ```
 
 > Sample Summary Status Response
+> > This sample of code will retrieve the Summary Status for a message
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -296,7 +308,8 @@ Your application can use this information to easily determine the numbers of rec
 
 ## Retrieve Detailed Status
 
-> Sample Detailed Status Request
+> Retrieve Detailed Status
+> > This snippet will retrieve the detailed status for a message.
 
 ```xml
 <ns3:link method="GET" 

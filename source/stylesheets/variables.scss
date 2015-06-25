@@ -24,14 +24,14 @@ under the License.
 // BACKGROUND COLORS
 ////////////////////
 $nav-bg: #000000;
-$examples-bg: #444;
+$examples-bg: #272822;
 $code-bg: #272822;
 $code-annotation-bg: #1c1c1c;
 $nav-subitem-bg: #DEDEDE;
 $nav-active-bg: #FFF;
 $lang-select-border: #000;
-$lang-select-bg: #222;
-$lang-select-active-bg: $examples-bg; // feel free to change this to blue or something
+$lang-select-bg: #000;
+$lang-select-active-bg: #444; // feel free to change this to blue or something
 $lang-select-pressed-bg: #111; // color of language tab bg when mouse is pressed
 $main-bg: #FFF;
 $aside-notice-bg: #8fbcd4;
@@ -53,14 +53,14 @@ $lang-select-pressed-text: #919191; // color of language tab text when mouse is 
 // SIZES
 ////////////////////
 $nav-width: 200px; // width of the navbar
-$examples-width: 50%; // portion of the screen taken up by code examples
+$examples-width: 60%; // portion of the screen taken up by code examples
 $logo-margin: 35px; // margin between nav items and logo, ignored if search is active
 $logo-height: 180px; // Height of the logo image
 $main-padding: 28px; // padding to left and right of content & examples
 $nav-padding: 20px; // padding to left and right of navbar
 $nav-v-padding: 10px; // padding used vertically around search boxes and results
 $nav-indent: 10px; // extra padding for ToC subitems
-$code-annotation-padding: 13px; // padding inside code annotations
+$code-annotation-padding: 0; // padding inside code annotations
 $h1-margin-bottom: 15px; // padding under the largest header tags
 $tablet-width: 930px; // min width before reverting to tablet size
 $phone-width: $tablet-width - $nav-width; // min width before reverting to mobile size
@@ -70,7 +70,7 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 ////////////////////
 %default-font {
   font-family: Arial,sans-serif;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 %header-font {
@@ -79,8 +79,8 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 }
 
 %code-font {
-  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
-  font-size: 14px;
+  font-family: Monaco,Consolas,'Lucida Console',monospace;
+  font-size: 12px;
   line-height: 1.5;
 }
 

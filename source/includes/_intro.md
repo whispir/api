@@ -1,49 +1,65 @@
-# Whispir.io API
+# Whispir API
 
-> Whispir's API requires only 3 parameters within JSON or XML to send an SMS message
+> API Endpoint
 
-
-```go
-{
-   "to" : "61400000000",
-   "subject" : "Test SMS Message",
-   "body" : "This is the body of my test SMS message"
-}
+```
+https://api.whispir.com
 ```
 
-```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
-    <subject>Test SMS Message</subject>    
-    <body>This is the body of my test SMS message</body>
-</ns2:message> 
-```
+> API Authorization
 
-> Using curl, this can be sent using the following command
+> > Users must use an **API Key** and **Authorization Header** to access the Whispir API. These are available by signing up for a free trial at [whispir.io](https://whispir.io).
+
+
+> Summary of Resources
+
+> > The following resource endpoints are accessible when using the Whispir API. 
+
+```
+/messages
+/messages/:id/messagestatus
+/messages/:id/messageresponses
+/templates
+/responserules
+/contacts
+/distributionlists
+/scenarios
+/events
+/imports
+/resources
+/activities
+/users
+/customlists
+/workspaces
+```
+> > **Note:** The **events** endpoint is only available for users with the Events Module.
+
+> Example Request
 
 ```shell
+
 # Authorization and apikey are provided in the registration processes
-
 curl -H "Authorization: Basic <YOUR AUTHORIZATION HEADER>" 
-     -H "Content-Type: application/vnd.whispir.message-v1+json" 
-     -H "Accept: application/vnd.whispir.message-v1+json" 
-     -d "$data" 
      https://api.whispir.com/messages?apikey=<YOUR API KEY>
-
 ```
 
-Built by developers, for developers, Whispir.io is the place where you can easily build accountable messaging into your app – SMS, email, push, voice, chat, web, social, & rich messages.
+> Example Response
 
-Easy to use, Whispir.io presents all the tools you need to develop a communications capability for your app and enable rapid deployment to market. Integrate, test, demonstrate, and commercialise your app, without significant capital investment, with leading messaging API technology.
 
-No other platform enables you to create & send rich messages, personalise cross-channel communications, and enrich your contact data with relevance.
+```text
+HTTP/1.1 200 OK
+```
 
-**We can't wait to see what you build**
+```shell
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+    <status>No records found</status>
+</ns2:return>
+```
 
-### Whispir Communications API
+Built by developers, for developers, Whispir is the place where you can easily build communications into your app – SMS, email, push, voice, chat, web, social, & rich messages.
 
-The Whispir.io Communications API gives developers the ability to:
+The Whispir API gives developers the ability to:
 
 * Create, send and retrieve multi-channel messages over 8 different channels
 * Invoke scenario based communications for quick, effective and targeted communications

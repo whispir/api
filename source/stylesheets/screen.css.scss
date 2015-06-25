@@ -292,7 +292,7 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
+    
   }
 }
 
@@ -300,13 +300,14 @@ html, body {
   background-color: $lang-select-bg;
   width: 100%;
   font-weight: bold;
+  font-size: 1.1em;
   a {
     display: block;
     float:left;
     color: $lang-select-text;
     text-decoration: none;
-    padding: 0 10px;
-    line-height: 30px;
+    padding: 0 20px;
+    line-height: 40px;
     outline: 0;
 
     &:active, &:focus {
@@ -503,7 +504,7 @@ html, body {
   aside:before {
     vertical-align: middle;
     padding-right: 0.5em;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   aside.notice:before {
@@ -554,9 +555,9 @@ button#encode:hover {
 .content {
   pre, blockquote {
     background-color: $code-bg;
-    color: #fff;
+    color: #ddd;
 
-    padding: 2em $main-padding;
+    padding: 0px $main-padding 15px;
     margin: 0;
     width: $examples-width;
 
@@ -571,9 +572,8 @@ button#encode:hover {
     &>p { margin: 0; }
 
     a {
-      color: #fff;
+      color: #3086c8;
       text-decoration: none;
-      border-bottom: dashed 1px #ccc;
     }
   }
 
@@ -582,14 +582,27 @@ button#encode:hover {
   }
 
   blockquote {
+    padding: 10px $main-padding 0px;  
+  }
+
+  //this is the heading for the code snippetss
+  blockquote p {
+    color: #ddd;
+    font-weight: bold;
+    font-size: 1.4em;
+  }
+
+  blockquote blockquote {
+    width: 100%;
+    padding: 3px 0px;
+
     &>p {
-      background-color: $code-annotation-bg;
-      border-radius: 5px;
-      padding: $code-annotation-padding;
-      color: #ccc;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #404040;
+      padding: 0px 0px $main-padding;
+      color: #ddd;
+      font-weight: normal;
+      font-size: 1.1em;
     }
+
   }
 }
 
