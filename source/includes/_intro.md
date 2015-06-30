@@ -30,6 +30,7 @@ https://api.whispir.com
 /activities
 /users
 /customlists
+/callbacks
 /workspaces
 ```
 > > **Note:** The **events** endpoint is only available for users with the Events Module.
