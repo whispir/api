@@ -118,7 +118,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
-   "to" : "61400000000",
+   "to" : "$mobile",
    "subject" : "Test SMS Message",
    "body" : "This is the body of my test SMS message",
    "callbackId" : "JSON Callback"
@@ -133,7 +133,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
+    <to>$mobile</to>
     <subject>Test SMS Message</subject>    
     <body>This is the body of my test SMS message</body>
     <callbackId>JSON Callback</callbackId>

@@ -312,7 +312,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Content-Type: application/vnd.whispir.message-v1+json
 
 { 
-   "to" : "6140000000000",
+   "to" : "$mobile",
    "messageTemplateId" : "BACEB8D46BEF5315"
 }
 ```
@@ -329,7 +329,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>6140000000000</to>
+    <to>$mobile</to>
     <messageTemplateName>Sample SMS Template</messageTemplateName>
 </ns2:message> 
 ```
@@ -337,7 +337,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Content-Type: application/vnd.whispir.message-v1+json
 
 { 
-   "to" : "6140000000000",
+   "to" : "$mobile",
    "messageTemplateName" : "Sample SMS Template"
 }
 ```
@@ -361,7 +361,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>6140000000000</to>
+    <to>$mobile</to>
     <messageTemplateName>Sample SMS Template</messageTemplateName>
     <subject>This will override the template Subject</subject>
     <body>This will override the template SMS Body</body>
@@ -371,7 +371,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Content-Type: application/vnd.whispir.message-v1+json
 
 { 
-   "to" : "6140000000000",
+   "to" : "$mobile",
    "messageTemplateName" : "Sample SMS Template",
    "subject" : "This will override the template Subject",
    "body" : "This will override the template SMS Body"

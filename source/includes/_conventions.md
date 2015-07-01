@@ -371,7 +371,7 @@ HTTP/1.1 200 OK
 Content-Type: application/vnd.whispir.contact-v2+xml
 <contact>
    <name>Neil Armstrong</name>
-   <mobile>+61456838435</mobile>
+   <mobile>$mobile</mobile>
    <email>neil.armstrong@space.com</email>
 </contact>
 ```

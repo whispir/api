@@ -72,7 +72,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com" xmlns:ns3="https://schemas.api.whispir.com/dap">
- <to>61400000000</to>
+ <to>$mobile</to>
  <subject>test subject</subject>
  <body>test body</body>
  <voice/>
@@ -108,7 +108,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
-    "to": "61400000000",
+    "to": "$mobile",
     "subject": "test subject",
     "body": "test body",
     "direction": "OUTGOING",
@@ -341,7 +341,7 @@ Your application can use this information to easily determine the numbers of rec
       </status>
       <status type="sms">
         <acknowlegedTimestamp>2012-09-28T08:47:50+10:00</acknowlegedTimestamp>
-        <destination>61456191351</destination>
+        <destination>$mobile</destination>
         <receivedTimestamp>2012-09-28T08:47:20+10:00</receivedTimestamp>
         <sentTimestamp>2012-09-28T08:47:17+10:00</sentTimestamp>
         <status>READ</status>
@@ -363,7 +363,7 @@ Your application can use this information to easily determine the numbers of rec
       </status>
       <status type="sms">
         <acknowlegedTimestamp>2012-09-28T08:47:49+10:00</acknowlegedTimestamp>
-        <destination>61456191368</destination>
+        <destination>$mobile</destination>
         <receivedTimestamp>2012-09-28T08:47:20+10:00</receivedTimestamp>
         <sentTimestamp>2012-09-28T08:47:17+10:00</sentTimestamp>
         <status>READ</status>
@@ -395,7 +395,7 @@ Your application can use this information to easily determine the numbers of rec
     }, {
       "type" : "sms",
       "status" : "READ",
-      "destination" : "61456191351",
+      "destination" : "$mobile",
       "sentTimestamp" : "2012-09-28T08:47:17+10:00"
       "receivedTimestamp" : "2012-09-28T08:47:20+10:00"
       "acknowlegedTimestamp" : "2012-09-28T08:47:50+10:00"
@@ -418,7 +418,7 @@ Your application can use this information to easily determine the numbers of rec
     }, {
       "type" : "sms",
       "status" : "READ",
-      "destination" : "61456191368",
+      "destination" : "$mobile",
       "sentTimestamp" : "2012-09-28T08:47:17+10:00"
       "receivedTimestamp" : "2012-09-28T08:47:20+10:00"
       "acknowlegedTimestamp" : "2012-09-28T08:47:50+10:00"

@@ -23,7 +23,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com" xmlns:ns3="https://schemas.api.whispir.com/dap">
- <to>61400000000</to>
+ <to>$mobile</to>
  <subject>test subject</subject>
  <body>test body</body>
  <voice/>
@@ -59,7 +59,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
-    "to": "61400000000",
+    "to": "$mobile",
     "subject": "test subject",
     "body": "test body",
     "direction": "OUTGOING",
@@ -261,10 +261,10 @@ Your application can use this information to easily determine the numbers of rec
         <ns2:response>
             <from>
                 <email>jsmith@test.com</email>                
-                <mobile>61000000000</mobile> 
+                <mobile>$mobile</mobile> 
                 <mri>John_Smith.484215.Critical_Incident_Management@Contact.whispir.com</mri>
                 <name>John Smith</name>
-                <voice>61000000000</voice> 
+                <voice>$mobile</voice> 
             </from>
             <responseCategory>noresponse</responseCategory>
             <responseMessage channel="N/A">
@@ -275,10 +275,10 @@ Your application can use this information to easily determine the numbers of rec
         <ns2:response>
             <from>
                 <email>fsmith@test.com</email>
-                <mobile>61000000001</mobile>  
+                <mobile>$mobile</mobile>  
                 <mri>Fred_Smith.341550.Critical_Incident_Management@Contact.whispir.com</mri>
                 <name>Fred Smith</name>
-                <voice>61000000001</voice> 
+                <voice>$mobile</voice> 
             </from>
             <responseCategory>notmatched</responseCategory>
             <responseMessage channel="SMS">
@@ -296,9 +296,9 @@ Your application can use this information to easily determine the numbers of rec
     "from" : {
       "name" : "John Smith",
       "mri" : "John_Smith.484215.Critical_Incident_Management@Contact.whispir.com",
-      "mobile" : "61000000000",
+      "mobile" : "$mobile",
       "email" : "jsmith@test.com",
-      "voice" : "61000000000"
+      "voice" : "$mobile"
     },
     "responseCategory" : "noresponse",
     "responseMessage" : {
@@ -310,9 +310,9 @@ Your application can use this information to easily determine the numbers of rec
     "from" : {
       "name" : "Fred Smith",
       "mri" : "Fred_Smith.341550.Critical_Incident_Management@Contact.whispir.com",
-      "mobile" : "61000000001",
+      "mobile" : "$mobile",
       "email" : "fsmith@test.com",
-      "voice" : "61000000001"
+      "voice" : "$mobile"
     },
     "responseCategory" : "notmatched",
     "responseMessage" : {

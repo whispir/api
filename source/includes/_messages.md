@@ -13,7 +13,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
+    <to>$mobile</to>
     <subject>Test Message</subject>    
     <body>This is the body of my test SMS message</body>
     <email>
@@ -53,7 +53,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
-    "to" : "61400000000",
+    "to" : "$mobile",
     "subject" : "Test Message",
     "body" : "This is the body of my test SMS message",
     "email" : {
@@ -185,7 +185,7 @@ If your application does not require separate workspaces, you can simply send al
             <td><strong>String</strong><br/>
                 Allows the user to modify the message behaviour for replies and DLRs (delivery receipts) e.g.
                 <ul>
-                    <li>defaultNoReply - Used to reject any replies to this message.</li>
+                    <li>defaultNoReply - Used to reject any replies to this message. This is also used to mask the sender's phone number when not using a Message Alias.</li>
                     <li>NoDlr - Used to specify that DLRs should not be enabled for this message.</li>
                 </ul>
             </td>
@@ -223,7 +223,7 @@ Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
+    <to>$mobile</to>
     <subject>Test SMS Message</subject>    
     <body>This is the body of my test SMS message</body>
 </ns2:message> 
@@ -234,7 +234,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
 {
-   "to" : "61400000000",
+   "to" : "$mobile",
    "subject" : "Test SMS Message",
    "body" : "This is the body of my test SMS message"
 }
@@ -501,7 +501,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
+    <to>$mobile</to>
     <subject>Test Voice Call</subject>    
     <voice>
         <header>
@@ -523,7 +523,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
-    "to" : "61400000000",
+    "to" : "$mobile",
     "subject" : "Test Voice Call",
     "voice" : {
         "header" : "This is the introduction of the voice call",
@@ -545,7 +545,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
+    <to>$mobile</to>
     <subject>Test Voice Call</subject>    
     <voice>
         <header>
@@ -568,7 +568,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
-    "to" : "61400000000",
+    "to" : "$mobile",
     "subject" : "Test Voice Call",
     "voice" : {
         "header" : "This is the introduction of the voice call",
@@ -644,7 +644,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
+    <to>$mobile</to>
     <subject>Test Rich Message</subject>    
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
     <web>
@@ -665,7 +665,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
 {
-   "to" : "61400000000",
+   "to" : "$mobile",
    "subject" : "Test Rich Message",
    "body" : "This is some content followed by the Rich Message link @@web_link@@",
    "web" : {
@@ -690,7 +690,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
+    <to>$mobile</to>
     <subject>Test Rich Message</subject>    
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
     <web>
@@ -715,7 +715,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
 {
-   "to" : "61400000000",
+   "to" : "$mobile",
    "subject" : "Test Rich Message",
    "body" : "This is some content followed by the Rich Message link @@web_link@@",
    "web" : {
@@ -798,7 +798,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
+    <to>$mobile</to>
     <subject>Test Web Message</subject>    
     <web> 
         <body>This is web body of my test message</body> 
@@ -819,7 +819,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
-    "to" : "61400000000",
+    "to" : "$mobile",
     "subject" : "Test Web Message",
     "web" : {
         "body" : "This is the body of the web content",
@@ -875,7 +875,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
+    <to>$mobile</to>
     <subject>Test SMS Message with tags</subject>    
     <body>Hi @@first_name@@.  This is your message.</body>
 </ns2:message> 
@@ -886,7 +886,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
 {
-   "to" : "61400000000",
+   "to" : "$mobile",
    "subject" : "Test SMS Message with tags",
    "body" : "Hi @@first_name@@.  This is your message."
 }
@@ -971,7 +971,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="https://schemas.api.whispir.com">
-    <to>61400000000</to>
+    <to>$mobile</to>
     <subject>Test SMS Message with tags</subject>    
     <body>Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
 </ns2:message> 
@@ -982,7 +982,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
 {
-   "to" : "61400000000",
+   "to" : "$mobile",
    "subject" : "Test SMS Message with tags",
    "body" : "Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@."
 }

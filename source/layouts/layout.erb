@@ -82,8 +82,38 @@ under the License.
       <div class="content">
         <%= yield %>
         <% current_page.data.includes && current_page.data.includes.each do |include| %>
-          <%= partial "includes/#{include}" %>
-        <% end %>
+        <%  
+            #get the content from the markdown file
+            content = partial "includes/#{include}"
+            
+
+            #query an external service to get the current user's country
+            response = HTTParty.get('https://api.wipmania.com/json') 
+
+            #parse the response from the website into JSON
+            parsed = JSON.parse(response.body.to_s)
+
+            #Get the country from the parsed json
+            parsedCountry = parsed['address']['country']
+
+            #loop through the countries in the index.md file and see if we've got a match
+            current_page.data.sample_numbers.each do |country|
+
+              #Get the country name from the index.md
+              key = country.keys.first
+
+              #if the key matches, then substitute the relevant mobile number in the document
+              if key == parsedCountry
+                content = content.gsub(/\$mobile/, country.values.first)
+                break
+              end
+
+              #if we get here, then we've had no match, so substitute for the american number
+              content = content.gsub(/\$mobile/, "+10000000000")
+            end
+          %>
+        <%= content %>
+        <% end %> 
       </div>
       <div class="dark-box">
         <% if language_tabs %>
@@ -99,5 +129,10 @@ under the License.
         <% end %>
       </div>
     </div>
+    <script type="text/javascript">
+      $.getJSON('//api.wipmania.com/jsonp?callback=?', function (data) { 
+        $("#country").val(data.address.country); 
+      });
+      </script>
   </body>
 </html>
