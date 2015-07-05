@@ -38,7 +38,6 @@ https://api.whispir.com
 > Example Request
 
 ```shell
-
 # Authorization and apikey are provided in the registration processes
 curl -H "Authorization: Basic <YOUR AUTHORIZATION HEADER>" 
      https://api.whispir.com/messages?apikey=<YOUR API KEY>

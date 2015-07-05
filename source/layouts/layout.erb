@@ -86,15 +86,17 @@ under the License.
             #get the content from the markdown file
             content = partial "includes/#{include}"
             
-
             #query an external service to get the current user's country
-            response = HTTParty.get('https://api.wipmania.com/json') 
+            response = HTTParty.get('//api.wipmania.com/json') 
 
             #parse the response from the website into JSON
             parsed = JSON.parse(response.body.to_s)
 
             #Get the country from the parsed json
-            parsedCountry = parsed['address']['country']
+            userCountry = parsed['address']['country']
+
+            replaceComplete = false
+            defaultCountry = ""
 
             #loop through the countries in the index.md file and see if we've got a match
             current_page.data.sample_numbers.each do |country|
@@ -103,14 +105,22 @@ under the License.
               key = country.keys.first
 
               #if the key matches, then substitute the relevant mobile number in the document
-              if key == parsedCountry
+              if key == userCountry
                 content = content.gsub(/\$mobile/, country.values.first)
-                break
+                replaceComplete = true
               end
 
-              #if we get here, then we've had no match, so substitute for the american number
-              content = content.gsub(/\$mobile/, "+10000000000")
+              if key == "Default"
+                defaultCountry = country.values.first
+              end
             end
+
+            if replaceComplete == false && defaultCountry != ""
+              content = content.gsub(/\$mobile/, defaultCountry)
+            else
+              content = content.gsub(/\$mobile/, "+1000000000")
+            end
+
           %>
         <%= content %>
         <% end %> 
