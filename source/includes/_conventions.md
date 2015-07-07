@@ -284,7 +284,7 @@ The table below describes the response codes that will be issued and gives poten
     </tbody>
 </table>
 
-##Content Types & Versioning
+##Content Types and Versioning
 
 The Whispir.io API has been designed and built to support the wide feature set provided in the current version of the Whispir Platform. 
 

@@ -783,9 +783,9 @@ Response Rules allow you to define pre-canned responses to your message. Your st
 
 More information about Rich Messages and the `Whispir` object is included later in this documentation.
 
-## Web/Social Messaging
+## Web and Social Messaging
 
-> Web/Social Messaging
+> Web and Social Messaging
 > > Social Media Request/Response Example
 
 ```
@@ -1045,9 +1045,9 @@ The following **system tags** can be included in any message:
 Each of these system tags will resolve on send of the message to the system information.  The system tags will only work when sending messages to any recipient.
 
 
-## Dynamic (Bulk) Messages
+## Dynamic Messages
 
-> Dynamic (Bulk) Messages
+> Dynamic Messages
 > > Whispir's API allows users to upload structured data, and process this line by line into outbound communications via SMS, Email, Voice, Web or Social Media.
 
 ```

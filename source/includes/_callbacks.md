@@ -2,9 +2,9 @@
 
 Whispir utilises API Callbacks to send simple notifications to different registered services in the event that some change has occurred on the Whispir Platform.
 
-## What are Callbacks?
+## Callback Overview
 
-> What are Callbacks?
+> Callback Overview
 > > Whispir can notify your application when your SMS, Email or Voice messages receive a reply.
 <br/><br/>
 > > An example callback that your application or service would receive is specified below.
