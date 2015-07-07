@@ -18,6 +18,7 @@ includes:
   - message-status
   - message-responses
   - templates
+  - callbacks
   - other
 
 search: true
