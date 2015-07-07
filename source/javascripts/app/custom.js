@@ -142,6 +142,7 @@ var countries = {
     "Australia" : "+61000000000",
     "Singapore" : "+6500000000",
     "Malaysia" : "+6300000000",
+    "New Zealand" : "+64000000000",
     "Default" : "+1000000000"
 };
 
