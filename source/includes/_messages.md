@@ -4,7 +4,7 @@
 > > Sample to send an SMS, Email, Voice call, and Web Publishing in one request
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<YOUR API KEY>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic <YOUR AUTH HEADER>
 ```
 
@@ -213,7 +213,7 @@ If your application does not require separate workspaces, you can simply send al
 > > Sending SMS messages using Whispir is as easy as providing the destination phone number(s), a message subject, and the content of the message.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -293,7 +293,7 @@ The 'to' field can be provided in the following formats:
 > > **Sending Plain Text Emails**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -330,7 +330,7 @@ Accept: application/vnd.whispir.message-v1+json
 > > **Sending Rich Text (HTML) Emails**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 ```xml
@@ -383,7 +383,7 @@ Only 4 fields are required in order to send an email message.
 > > **Sending Emails with Attachments**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -492,7 +492,7 @@ The attachment element in JSON is also an array, so be sure to add the square br
 > > **Sending Voice Calls**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -536,7 +536,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 > > **Sending Voice Calls with Teleconferences**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -635,7 +635,7 @@ Whispir's Voice Module doesn't include a Conference Call service.  User's can ea
 > > Simple Rich Message using SMS with a Web Link
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -681,7 +681,7 @@ Accept: application/vnd.whispir.message-v1+json
 > > The following example uses javascript to personalise the Rich Message
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -744,7 +744,7 @@ For example;
 
 <img src="https://developer.whispir.com/files/rpm-iphone-shift.jpg" />
 
-Visit our demo site <a href="https://demo.whispir.com/rich-message.php" target="_blank">here</a> for lots of samples of rich messages.
+Visit our demo site <a href="http://demo.whispir.com/rich-message.php" target="_blank">here</a> for lots of samples of rich messages.
 
 The inclusion of the `@@web_link@@` tag anywhere in the body of the SMS or Email will automatically generate a URL and embed any content specified in the web body of the same message.
 
@@ -789,7 +789,7 @@ More information about Rich Messages and the `Whispir` object is included later 
 > > Social Media Request/Response Example
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -866,7 +866,7 @@ For more information about configuring Social Publishing, please contact <a href
 > > Demonstration of sending messages with variables (or tags).
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -962,7 +962,7 @@ For more information about sending messages to Contacts or Distribution Lists, p
 > > Demonstration of sending messages with system variables (or tags).
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -1093,7 +1093,7 @@ The bulk message sending is an easy two-step process.
 **Step 1: Upload the Resource file via API**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/resources?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/resources?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -1139,7 +1139,7 @@ Information about the resources endpoint is documented in the **Resources** sect
 Once the resource file has been uploaded and the location of the resource being returned, applications can use this to populate a dynamic message using the **/messages** endpoint.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 

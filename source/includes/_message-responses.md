@@ -14,7 +14,7 @@ The sections below describe the process to retrieve the responses to any message
 > > Use the API to retrieve a sent Message 
 
 ```
-HTTP 1.1 GET https://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 GET https://api.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 

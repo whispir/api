@@ -18,6 +18,7 @@ includes:
   - message-status
   - message-responses
   - templates
+  - response-rules
   - callbacks
   - other
 

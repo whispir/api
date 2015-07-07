@@ -14,7 +14,7 @@ The simple inclusion of a Message Template can alleviate this completely, allowi
 > > The following API calls allow users to manage Templates using the Whispir API.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/templates?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/templates?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
@@ -302,7 +302,7 @@ Each of these templates will provide the following information:
 > > The following API calls allow users to update Template content using the Whispir API.
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/templates/C37DCBAEFF73FEDA45?apikey=<yourkey>
+HTTP 1.1 PUT https://api.whispir.com/templates/C37DCBAEFF73FEDA45?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 

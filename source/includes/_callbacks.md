@@ -68,7 +68,7 @@ Whispir's Callback Service will forward the content of each message response, al
 > > The following API calls allow users to create new Callbacks using the Whispir API.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/callbacks?apikey=<yourkey>
+HTTP 1.1 POST https://api.whispir.com/callbacks?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
