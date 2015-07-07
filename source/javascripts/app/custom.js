@@ -154,6 +154,10 @@ $(document).ready(function(){
 
         if(data && data.address && data.address.country && data.address.country != "") {
             mobile = countries[data.address.country];
+            
+            if(!mobile) {
+                mobile = countries["Default"];
+            }
         }
 
         $("body *").replaceText(/\$mobile/g,mobile);
