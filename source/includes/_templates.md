@@ -74,6 +74,13 @@ Only **3 fields** are required:
             </td>
         </tr>
         <tr>
+            <td style="text-align: right; font-weight: bold;">responseTemplateId:</td>
+            <td><strong>String</strong><br/>
+                Specifies the ID of the Response Rule that should be associated with this Message Template.<br/><br/>
+                Response Rules are further described later in this documentation.
+            </td>
+        </tr>
+        <tr>
             <td style="text-align: right; font-weight: bold;">subject:</td>
             <td><strong>String</strong><br/>
                 Specifies the first line of the SMS message or Voice call, and the subject of the Email message.
@@ -288,6 +295,225 @@ Each of these templates will provide the following information:
         </tr>
     </tbody>
 </table>
+
+## Updating Templates
+
+> Updating Templates
+> > The following API calls allow users to update Template content using the Whispir API.
+
+```
+HTTP 1.1 PUT https://api.whispir.com/templates/C37DCBAEFF73FEDA45?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
+Content-Type: application/vnd.whispir.template-v1+xml
+Accept: application/vnd.whispir.template-v1+xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<ns3:template xmlns:ns3="https://schemas.api.whispir.com" 
+              xmlns:ns2="https://schemas.api.whispir.com/dap">
+  <messageTemplateName>Sample SMS Template</messageTemplateName>
+  <messageTemplateDescription>
+    Template to provide an example on whispir.io
+  </messageTemplateDescription>
+  <subject>Test SMS Message</subject>
+  <body>This is the body of my test SMS message</body>
+  <email>
+    <type>text/plain</type>
+    <body>
+      This is the content of my plain text email in the template
+    </body>
+  </email>
+  <voice>
+    <!-- Don't put line breaks in this section -->
+    <type>
+        ConfCall:,
+        ConfAccountNo:,
+        ConfPinNo:,
+        ConfModPinNo:,
+        Pin:
+    </type>
+    <header>This is the intro of my voice call</header>
+    <body>This is the content of my voice call</body>
+  </voice>
+  <web> 
+    <body>This is web body of my test message</body> 
+    <type>text/plain</type> 
+  </web> 
+  <social>
+    <social id="social">
+        <body>Twitter Content.</body>
+    </social>
+    <social id="social_long">
+        <body>Facebook Content.</body>
+        <type>text/plain</type>
+    </social>
+  </social>
+  <type>defaultNoReply</type>
+  <features>
+    <pushOptions>
+      <notifications>enabled</notifications>
+      <escalationMins>3</escalationMins>
+    </pushOptions>
+  </features>
+</ns3:template>
+````
+```go
+Content-Type: application/vnd.whispir.template-v1+json
+Accept: application/vnd.whispir.template-v1+json
+
+{ 
+   "messageTemplateName": "Sample SMS Template", 
+   "messageTemplateDescription": "Template to provide an example on whispir.io",
+   "responseTemplateId": "Template to provide an example on whispir.io",
+   "subject": "Test SMS Message",
+   "body" : "This is the body of my test SMS message",
+    "email" : {
+        "body" : "This is the body of my test Email message",
+        "footer" : "This is the footer of my message 
+                    (generally where a signature would go)",
+        "type" : "text/plain"
+    },
+    "voice" : {
+        "header" : "This is the introduction, 
+                    read out prior to any key press",
+        "body" : "This is the body of the voice call, 
+                  read out after the key press",
+        "type" : "ConfCall:,
+                  ConfAccountNo:,
+                  ConfPinNo:,
+                  ConfModPinNo:,
+                  Pin:"
+    },
+    "web" : {
+        "body" : "This is the content of my web publishing 
+                 or Rich Push Message",
+        "type" : "text/plain"
+    },
+    "social" : {
+        "social" : {
+            "id" : "social",
+            "body" : "Twitter Content."
+        },
+        "social" : {
+            "id" : "social_long",
+            "body" : "Facebook Content.",
+            "type" : "text/plain"
+        }
+    },
+    "type" : "defaultNoReply",
+    "features" : {
+        "pushOptions" : {
+            "notifications" : "enabled",
+            "escalationMins" : "3"
+        }
+    }
+}
+```
+
+> > The sample code above will update the message template specified by ID: **C37DCBAEFF73FEDA45** within the default workspace.<br/><br/>
+The expected response to this call is an **HTTP 204 - No Content**.
+
+To update existing message templates, you can use a PUT request the `/templates` endpoint.
+
+The following fields are required:
+
+1. messageTemplateName - the name of the template to be stored
+2. subject - the first line or identifier of the SMS
+3. body - At least one of the **Body** fields must be populated (SMS, Email, Voice or Web).
+
+**Note:** Currently users cannot update templates with the same name as a template that already exists in Whispir. Users can overcome this by saving the updated template with a new name, then either changing this back in a subsequent save, or retaining the updated name.
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">High-Level Request Elements</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">messageTemplateName:</td>
+            <td><strong>String</strong><br/>
+                Specifies the name of the message template to be used within message requests.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">messageTemplateDescription:</td>
+            <td><strong>String</strong><br/>
+                Specifies the description of the message template for others to understand it's purpose.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">responseTemplateId:</td>
+            <td><strong>String</strong><br/>
+                Specifies the ID of the Response Rule that should be associated with this Message Template.<br/><br/>
+                Response Rules are further described later in this documentation.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">subject:</td>
+            <td><strong>String</strong><br/>
+                Specifies the first line of the SMS message or Voice call, and the subject of the Email message.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">body:</td>
+            <td><strong>String</strong><br/>
+                Specifies the content of the SMS message.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">email:</td>
+            <td><strong>Object</strong><br/>
+                Email object described below. Used for sending email messages.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">voice:</td>
+            <td><strong>Object</strong><br/>
+                Voice object described below. Used for sending voice calls to mobile phones and landlines.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">web:</td>
+            <td><strong>Object</strong><br/>
+                Web object described below. Used for web publishing and Rich Messages.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">social:</td>
+            <td><strong>Object</strong><br/>
+                Social object described below. Used for publishing content to social media (Twitter, Facebook, LinkedIn).
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">type:</td>
+            <td><strong>String</strong><br/>
+                Allows the user to modify the message behaviour for replies and DLRs (delivery receipts) e.g.
+                <ul>
+                    <li>defaultNoReply - Used to reject any replies to this message.</li>
+                    <li>noDlr - Used to specify that DLRs should not be enabled for this message.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">features:</td>
+            <td><strong>Object</strong><br/>
+                Allows the user to modify the push notifications properties if these are configured in the company.
+                <br/>
+                <br/>
+                <strong>pushOptions:</strong>
+                <ul>
+                    <li>notifications - enabled/disabled</li>
+                    <li>escalationMins - # mins to await a push notifications response</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+**Note:** All of the options above are the same as provided in the `/messages` endpoint <a href="#communications">here</a>
 
 ##Using Templates
 
