@@ -21,11 +21,4 @@ includes:
   - other
 
 search: true
-
-sample_numbers:
-  - Default: "+10000000000"
-  - Australia: "+61000000000"
-  - Singapore: "+6500000000"
-  - Malaysia: "+6300000000"
-  - United States: "+10000000000" 
 ---

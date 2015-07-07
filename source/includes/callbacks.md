@@ -2,9 +2,12 @@
 
 Whispir utilises API Callbacks to send simple notifications to different registered services in the event that some change has occurred on the Whispir Platform.
 
-## What is a callback?
+## What are Callbacks?
 
-> Whispir can notify your application when your SMS, Email or Voice messages receive a reply.
+> What are Callbacks?
+> > Whispir can notify your application when your SMS, Email or Voice messages receive a reply.
+<br/><br/>
+> > An example callback that your application or service would receive is specified below.
 
 ```xml
 HTTP 1.1 POST http://yourserver/callback.php
@@ -49,62 +52,285 @@ Content-Type: application/json
 }
 ```
 
-Callbacks or Webhooks allow custom applications to register URLs with service providers that are used for notifications when certain events occur e.g. a new contact is created, or a response to a message is received.
-
-Applications can make use of Whispir's Callbacks to reduce the heavy lifting required within their applications by reducing the need to poll different Whispir services to check for changes or updates.
-
-Firstly it might be easier to describe the flow of a message from the Whispir API.
-
-- The user requests the API to send out a message to a group of recipients
-- Whispir receives this message request, and adds it to a queue to be processed 
-- Whispir then responds to the user with an HTTP 202 Accepted (e.g. I've got the message, I'll be sure to process that in just a bit)
-
-   In this response, Whispir also provides the user with a Message ID reference that can be used to look up this message and query some more information.
-
-   Next, what happens is Whispir sends out the message to the intended recipients.  This happens nearly instantly, but it is important to know that it is a queued and asynchronous process.
-
-- After the message has been sent out, the recipients of the message will begin sending in replies.
-
-   These replies are automatically stored in Whispir, and notifications are sent out to the User who initiated the message.
-
-   But what if we want these replies to come back to an **application** that we have developed?  This is where **callbacks** are useful.
+Callbacks allow custom applications to register URLs with Whispir that are used for notifications when certain events occur e.g. a response to a message is received, or a message was undeliverable.
 
 <br/><img src="http://developer.whispir.com/files/Whispir_API_diagram.png"/><br/>
 
-Whispir's Message Response Callback will forward the content of each message response, along with some associated metadata to a URL that the user has pre-registered to receive this information.  
+Whispir's Callback Service will forward the content of each message response, along with some associated metadata to a URL that the user has pre-registered to receive this information.  
 
-Each message response to a sent message will cause this URL to be invoked and the information sent.  This process allows applications to automatically be notified about the responses to messages that they are sending, without the need to poll!
+**Note:** Whispir does not check for a response from this callback server.  On setup it is expected that the server will respond to a GET request with a 200 OK.  Any error response sent from this callback server during general use is not considered.  Users should not expect callbacks to be re-tried on error.
 
-**Note:** Whispir does not check for a response from this callback server.  On setup it is expected that the server will respond to a GET request with a 200 OK.  Any error response sent from this callback server during general use is not considered.  Users should not expect callbacks to be retried on error.
+## Creating new Callbacks
+
+> Creating new Callbacks
+> > The following API calls allow users to create new Callbacks using the Whispir API.
+
+```
+HTTP 1.1 POST https://api.whispir.com/callbacks?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
+Content-Type: application/vnd.whispir.api-callback-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:companyapicallback xmlns:ns2="http://schemas.api.whispir.com" 
+                    xmlns:ns3="http://schemas.api.whispir.com/dap">
+    <name>Callback Name</name>
+    <url>http://myserver.com/mycallback.php</url>
+    <auth>
+        <key>MY_AUTH_KEY</key>
+        <type>querystring</type>
+    </auth>
+    <contentType>json</contentType>
+    <email>me@example.com</email>
+    <callbacks>
+        <reply>enabled</reply>
+        <undeliverable>enabled</undeliverable>
+    </callbacks>
+</ns2:companyapicallback>
+````
+
+```go
+Content-Type: application/vnd.whispir.api-callback-v1+json
+
+{
+  "name" : "Callback Name",
+  "url" : "http://myserver.com/mycallback.php",
+  "auth" : {
+    "type" : "querystring",
+    "key" : "MY_AUTH_KEY"
+  },
+  "contentType" : "json",
+  "email" : "me@example.com",
+  "callbacks" : {
+    "reply" : "enabled",
+    "undeliverable" : "enabled"
+  }
+}
+```
+
+> > The sample code above will create a callback endpoint that can be used within messages being sent from Whispir.<br/><br/>
+The expected response to this call is an **HTTP 201 - Created**.
+
+To create a new API Callback, you can use the `/callbacks` endpoint.
+
+The following table describes the fields that can be used within the request.
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">High-Level Request Elements</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">name:</td>
+            <td><strong>String</strong><br/>
+                Specifies the name (ID) of the callback to be used within message requests.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">url:</td>
+            <td><strong>String</strong><br/>
+                Specifies the service URL that API Callbacks should be forwarded to.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">auth:</td>
+            <td><strong>Object</strong><br/>
+                Specifies the Authorization type that should be used with this endpoint.  The specific elements of this object are described below.<br/><br/>
+                The options for this parameter are:
+                <ul>
+                  <li>querystring</li>
+                  <li>httpheader</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">contentType:</td>
+            <td><strong>String</strong><br/>
+                Specifies the content type that should be sent to this endpoint.<br/><br/>
+                The choices are as follows:
+                <ul>
+                  <li>json</li>
+                  <li>xml</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">email:</td>
+            <td><strong>String</strong><br/>
+                Specifies the email address where failure notifications should be sent.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">callbacks:</td>
+            <td><strong>Object</strong><br/>
+                Object to store the callbacks that should be invoked for this endpoint.  The specific elements of this object are described below. 
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+### Callback Authorization
+
+> Callback Authorization
+> > Callback Servers should validate that the inbound request they are receiving is actually coming from Whispir.<br/><br/>
+> > Callbacks can be authorized using one of two methods: **HTTP Header**, or **URL Query Parameter**
+
+> > **HTTP Header Auth Token**
+> > <br/>Users can specify their Authorization token as an HTTP Header. Whispir will add the **X-Whispir-Callback-Key** Header to the request.
+
+```
+HTTP 1.1 POST https://yourserver/callback.php
+X-Whispir-Callback-Key: MY_AUTH_TOKEN 
+```
+
+```xml
+Content-Type: application/xml
+
+<ns2:deliveryresponse xmlns:ns2="https://schemas.api.whispir.com">
+    <messageid>ABC4857BCCF484575FCA</messageid>
+    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>   
+    <from>
+        <name>Fred Waters</name> 
+        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
+        <mobile>0430984567</mobile> 
+        <email>imacros@test.com</email> 
+        <voice>0761881564</voice> 
+    </from> 
+    <responsemessage> 
+        <channel>SMS</channel> 
+        <acknowledged>09/01/13 13:22</acknowledged> 
+        <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
+    </responsemessage> 
+</ns2:deliveryresponse>
+```
+
+```go
+Content-Type: application/json
+
+{
+  "messageid" : "ABC4857BCCF484575FCA",
+  "location" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
+  "from" : {
+    "name" : "Fred Waters",
+    "mri" : "Fred_Waters.528798.Sandbox@Contact.whispir.com",
+    "mobile" : "$mobile",
+    "email" : "me@example.com",
+    "voice" : "$mobile"
+  },
+  "responseMessage" : {
+    "channel" : "SMS",
+    "acknowledged" : "09/01/13 13:22",
+    "content" : "Yes, I accept. Will I need to bring steel cap boots?"
+  }
+}
+```
+
+> > **URL Query Parameter Auth Token**
+> > <br/>Users can specify their Authorization token as a URL query parameter.  This will come as **`auth=:your_token`** on the URL.
+
+```
+HTTP 1.1 POST https://yourserver/callback.php?auth=MY_AUTH_TOKEN
+```
+
+```xml
+Content-Type: application/xml
+
+<ns2:deliveryresponse xmlns:ns2="https://schemas.api.whispir.com">
+    <messageid>ABC4857BCCF484575FCA</messageid>
+    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>   
+    <from>
+        <name>Fred Waters</name> 
+        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
+        <mobile>0430984567</mobile> 
+        <email>imacros@test.com</email> 
+        <voice>0761881564</voice> 
+    </from> 
+    <responsemessage> 
+        <channel>SMS</channel> 
+        <acknowledged>09/01/13 13:22</acknowledged> 
+        <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
+    </responsemessage> 
+</ns2:deliveryresponse>
+```
+
+```go
+Content-Type: application/json
+
+{
+  "messageid" : "ABC4857BCCF484575FCA",
+  "location" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
+  "from" : {
+    "name" : "Fred Waters",
+    "mri" : "Fred_Waters.528798.Sandbox@Contact.whispir.com",
+    "mobile" : "$mobile",
+    "email" : "me@example.com",
+    "voice" : "$mobile"
+  },
+  "responseMessage" : {
+    "channel" : "SMS",
+    "acknowledged" : "09/01/13 13:22",
+    "content" : "Yes, I accept. Will I need to bring steel cap boots?"
+  }
+}
+```
+
+Whispir Callbacks have been designed to be simple, yet secure.  
+In order to make your Callback Server processing much safer, whispir recommends the following 
+
+ - Use SSL on your Callback URL
+ - IP Whitelisting for Whispir's IP address
+ - Use a unique token
+
+The unique token can/should be an alphanumeric/numeric token generated and assigned specifically foWhispir Callback pur rpose. When provided in the callback settings, Whipir shall include this in every request made to the listening application. The token's presence ensures and confirms that the request has originated truly from Whispir.
+
+There are two options for the Authorization Token:
+
+####HTTP Header
+
+Using an HTTP Header for authorisation is the preferred approach. This method will use a custom HTTP Header **X-Whispir-Callback-Key**.
+
+This can be added to the callback by specifying the code block:
+
+`"auth" : { "type" : "httpheader", "key" : "MY_AUTH_TOKEN" }`
+
+Every request to the specified URL will include the supplied AUTH Token within this Header.  Alternatively, this could be supplied as a query parameter as follows.
+
+####URL Query Parameter
+
+In this method, the Authorization will be passed to the callback server on the query string using an 'Auth' parameter as follows:
+
+`"auth" : { "type" : "querystring", "key" : "MY_AUTH_TOKEN" }`
+
+### Callback Types
+
+Callbacks can be added to any message that is sent from the Whispir API using the `/messages` endpoint.
+
+Each callback can be invoked from one of two actions occurring:
+
+- A message has been replied to, or
+- A message delivery failure occurred
+
+Users can control which of these actions are delivered to the endpoint using the `callbacks` object when registering new callbacks.
+
+The options that are available are:
+
+- reply: enabled/disabled
+- undeliverable: enabled/disabled
+
+When these are enabled, any reply or failed delivery will cause a `GET` request to be invoked on the URL that was provided.
 
 
-### Configuring Whispir to use your callback server
+## Retrieving Callbacks
 
-Whispir has to be configured to ensure that the received replies are routed to a proper endpoint on your application server. This is a very important step and must be performed before one can send any messages and have the subsequent responses routed.
+## Updating Callbacks
 
-From your web browser browse to https://www.whispir.com.  Click on the Sign-In button at the top right of the screen, and log into Whispir using your credentials.
+## Deleting Callbacks
 
-Browse to 'Admin -> Company Settings -> API -> Register a Callback URL'.
-This page shall show the form/options needed to register and also edit a callback url.
-
-> Insert Image here
-
-The fields with ** * ** are mandatory. In this form you need to provide the following information;
-
- - A unique name for your callback. This name will be referenced in your API message requests as ‘callbackId' parameter.
- - The Destination URL to your server e.g. https://myserver.mycompany.com/whispir/callback.php (this must be publicly accessible – reachable from wider internet)
- - If you have an authorization required to access the url you can add this here (details will be discussed in section 3.4.6 below)
- - The type of authorization you want to set up (Query String, or HTTP Header)
- - The Content Type to be POSTed to your application (XML or JSON).
- - A valid and operational email address to notify of any callback failures.
-
-Click **[Test URL]** to ensure your URL is valid, then click Add to store this in Whispir.
-
-> Insert Image here
-
-You should be able to see ‘Success' next to the [Test URL] if all the settings are okay. 
-
-### Using a callback ID in your API message
+## Using Callbacks
 
 With the callback server successfully configured, you can now add the ID of it in your message content whenever you are sending any messages. 
 
@@ -144,89 +370,10 @@ Any responses to the above sent message will be forwarded back to the Callback S
 
 ### Adding Authentication to your callback
 
-Whispir Callbacks have been designed to be simple, yet secure.  
-In order to make your Callback Server processing much safer, whispir recommends the following 
 
- - Use a SSL backed callback URL
- - IP Whitelisting on firewall for Whispir IP address
- - Use a unique token
 
-Make sure your callback URI has a SSL certificate associated with it. This ensures the integrity of data from middle-man-attacks and also brings other encryption benefits.
 
-As every application server these days run behind a firewall, we recommend to whitelist the Whispir IP address (shall be provided separately) and allow HTTP POST request traffic.
 
-The unique token can/should be an alphanumeric/numeric token generated and assigned specifically for Whispir Callback purpose. When provided in the callback settings, Whipir shall include this in every request made to the listening application. The token's presence ensures and confirms that the request has originated truly from Whispir.
-
-First, you'll need to edit your Callback URL configuration within the Whispir Platform to begin sending this new parameter.
-
-Browse to 'Admin -> Company Settings -> API -> Register a Callback URL'.  
-
-In this screen you can enter your desired Authentication Key/Token in the Auth Parameter field provided.
-
-> Insert Image here
-
-As a user, you have two ways to implement this security token to achieve authorization. 
- 
- - HTTP Header using custom X-Whispir-Callback-Key
- - Query Parameter with name as auth
-
-As shown in the figure above, the Authorization Type setting helps you with the ways. The default value is “HTTP header”
-
-####HTTP Header
-
-Using an HTTP Header for authorisation is the preferred approach. This method will use a custom HTTP Header X-Whispir-Callback-Key:
-
-```
-HTTP 1.1 POST https://yourserver/callback.php
-Content-Type: application/xml
-X-Whispir-Callback-Key: 234023490349034 
-
-<ns2:deliveryresponse xmlns:ns2="https://schemas.api.whispir.com">
-    <messageid>ABC4857BCCF484575FCA</messageid>
-    <location>https://api.whispir.com/workspaces/FDD8348CBBED939FCAC/messages/ABC4857BCCF484575FCA</location>   
-    <from>
-        <name>Fred Waters</name> 
-        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
-        <mobile>0430984567</mobile> 
-        <email>imacros@test.com</email> 
-        <voice>0761881564</voice> 
-    </from> 
-    <responsemessage> 
-        <channel>SMS</channel> 
-        <acknowledged>09/01/13 13:22</acknowledged> 
-        <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
-    </responsemessage> 
-</ns2:deliveryresponse>
-```
-
-####Query Parameter
-In this method, the Authorization will be passed to the callback server on the query string using an 'Auth' parameter as follows:
-
-```
-HTTP 1.1 POST https://yourserver/callback.php?auth=234023490349034
-Content-Type: application/xml
-
-<ns2:deliveryresponse xmlns:ns2="https://schemas.api.whispir.com">
-    <messageid>ABC4857BCCF484575FCA</messageid>
-    <location>https://api.whispir.com/workspaces/FDD8348CBBED939FCAC/messages/ABC4857BCCF484575FCA</location>   
-    <from>
-        <name>Fred Waters</name> 
-        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
-        <mobile>0430984567</mobile> 
-        <email>imacros@test.com</email> 
-        <voice>0761881564</voice> 
-    </from> 
-    <responsemessage> 
-        <channel>SMS</channel> 
-        <acknowledged>09/01/13 13:22</acknowledged> 
-        <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
-    </responsemessage> 
-</ns2:deliveryresponse>
-
-```
-It is the responsibility of the receiving script to parse this query string parameter and check against the internal application. 
-
-This method should only be used over HTTPS with other means of Auth including IP whitelisting as it is susceptible to packet sniffing and man-in-the-middle attacks.
 
 The following code example shows how to use the query parameter for authentication -
 
@@ -292,7 +439,7 @@ The following code example shows how to use the query parameter for authenticati
 
 The code checks for the presence of an 'auth' parameter in the URL.  Once this is present and correct, the script will be executed further.  If the auth parameter is not present, or it is incorrect, it shall write the error information to the file and end.
 
-### Getting notified of callback failures
+## Callback Failures
 
 Whispir provides a feature as part of the callback offering where in if the provided callback URI could not be reached or if Whispir has faced any issues in reaching / passing the information as expected to provided URI, it can notify about it.
 
@@ -332,7 +479,7 @@ Whispir Support
 
 ```
 
-###Enhanced Callbacks
+## Enhanced Callbacks
 
 ```xml
 HTTP 1.1 POST http://myapp.com/statusupdate

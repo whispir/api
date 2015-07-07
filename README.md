@@ -11,7 +11,7 @@ No other platform enables you to create & send rich messages, personalise cross-
 
 Documentation available here: [https://whispir.github.io/api/](https://whispir.github.io/api)
 
-## Update 22 April 2015
+## Update 7 July 2015
 
 This documentation is being migrated from [http://developer.whispir.com](http://developer.whispir.com).
 

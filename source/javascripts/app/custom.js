@@ -137,3 +137,33 @@ _utf8_decode : function (utftext) {
 function doEncode() {
 	document.getElementById('result').value = "Basic " + Base64.encode(document.getElementById('username').value + ":" + document.getElementById('password').value);
 }
+
+var countries = {
+    "Australia" : "+61000000000",
+    "Singapore" : "+6500000000",
+    "Malaysia" : "+6300000000",
+    "Default" : "+1000000000"
+};
+
+$(document).ready(function(){
+    $.ajax({
+      url: '//api.wipmania.com/jsonp?callback=?',
+      dataType: 'json',
+      success: function (data) { 
+        var mobile = countries["Default"];
+
+        if(data && data.address && data.address.country && data.address.country != "") {
+            mobile = countries[data.address.country];
+        }
+
+        $("body *").replaceText(/\$mobile/g,mobile);
+      },
+      error: function() {
+        var mobile = countries["Default"];
+        $("body *").replaceText(/\$mobile/g,mobile);
+      },
+      timeout: 3000
+    });
+}) 
+    
+
