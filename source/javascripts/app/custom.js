@@ -1,3 +1,8 @@
+var hostname = "whispir.github.io";
+if ((hostname == window.location.hostname) && (window.location.protocol != "https:")) {
+    window.location.protocol = "https";
+}
+
 var Base64 = {
 
 // private property
