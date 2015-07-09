@@ -362,7 +362,7 @@ Accept: application/vnd.whispir.message-v1+json
     "subject" : "Test Email Message",
     "email" : {
         "body" : "<div id='content'><p>This is my content</p></div>",
-        "type" : "text/plain"
+        "type" : "text/html"
     }
 }
 ```
