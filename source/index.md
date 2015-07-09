@@ -19,6 +19,7 @@ includes:
   - message-responses
   - templates
   - response-rules
+  - contacts
   - distribution-lists
   - callbacks
   - other
