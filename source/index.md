@@ -22,6 +22,7 @@ includes:
   - contacts
   - distribution-lists
   - callbacks
+  - workspaces
   - other
 
 search: true
