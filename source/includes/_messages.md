@@ -12,7 +12,7 @@ Authorization: Basic <YOUR AUTH HEADER>
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Message</subject>    
     <body>This is the body of my test SMS message</body>
@@ -222,7 +222,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS Message</subject>    
     <body>This is the body of my test SMS message</body>
@@ -301,7 +301,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test Email Message</subject>    
     <email>
@@ -337,7 +337,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test Email Message</subject>    
     <email>
@@ -391,7 +391,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test e-mail message with attachment</subject>    
     <email>
@@ -500,7 +500,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Voice Call</subject>    
     <voice>
@@ -544,7 +544,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Voice Call</subject>    
     <voice>
@@ -643,7 +643,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Rich Message</subject>    
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
@@ -689,7 +689,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Rich Message</subject>    
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
@@ -797,7 +797,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Web Message</subject>    
     <web> 
@@ -874,7 +874,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS Message with tags</subject>    
     <body>Hi @@first_name@@.  This is your message.</body>
@@ -970,7 +970,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS Message with tags</subject>    
     <body>Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
@@ -1147,7 +1147,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.bulkmessage-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <resource>
       <resourceId/>
       <smsMappingField/>

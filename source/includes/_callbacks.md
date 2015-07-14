@@ -197,7 +197,7 @@ X-Whispir-Callback-Key: MY_AUTH_TOKEN
 ```xml
 Content-Type: application/xml
 
-<ns2:deliveryresponse xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
     <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>   
     <from>
@@ -246,7 +246,7 @@ HTTP 1.1 POST https://yourserver/callback.php?auth=MY_AUTH_TOKEN
 ```xml
 Content-Type: application/xml
 
-<ns2:deliveryresponse xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
     <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>   
     <from>
@@ -484,7 +484,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS Message</subject>    
     <body>This is the body of my test SMS message</body>

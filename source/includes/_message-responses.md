@@ -22,7 +22,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com" xmlns:ns3="https://schemas.api.whispir.com/dap">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
  <to>$mobile</to>
  <subject>test subject</subject>
  <body>test body</body>
@@ -177,7 +177,7 @@ Each of the URLs specified in the response can be accessed using the REL and app
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="https://schemas.api.whispir.com/dap" xmlns:ns3="https://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <ns2:link method="GET" 
               rel="self" 
               uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=summary&filter=default&apikey=498nadsasdff09fewdsafjaa90f"/>

@@ -34,7 +34,7 @@ Authorization: Basic [your basic auth]
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlists xmlns:ns2="https://schemas.api.whispir.com">
+<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
     <name>My Distribution List</name>
     <description></description>    
     <access>Open</access>
@@ -271,7 +271,7 @@ Authorization: Basic [your basic auth]
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlists xmlns:ns2="https://schemas.api.whispir.com">
+<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
     <name>Rockstar Distribution List</name>
     <description>All the rocks were once stars - astrophysicist inside me</description>    
     <access>Open</access>
@@ -327,7 +327,7 @@ Authorization: Basic [your basic auth]
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="https://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>Docs_Distribution_List.company@list.company.whispir.sg</to>
     <subject>Simple SMS to List of contacts in the distribution list</subject>    
     <body>This is the content of my sample sms message.</body>
