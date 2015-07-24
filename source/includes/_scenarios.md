@@ -15,7 +15,7 @@ The following Content-Types are supported:
 * application/vnd.whispir.scenario-v1+xml
 * application/vnd.whispir.scenario-v1+json
 
-## Creating a Scenario
+## Creating a new Scenario
 
 > Creating Scenario
 
@@ -547,7 +547,7 @@ From the retrieving scenarios call above, we can get all the scenarios in the wo
 Now invoking this scenario is just making a /POST call.  There is no need for a `Content-type` header as the payload is empty.
 
 
-## Updating a Scenario
+## Updating Scenario
 
 To update existing scenario, you can use a PUT request the /scenarios endpoint.
 
@@ -740,7 +740,7 @@ The following fields are required:
 	</tbody>
 </table>
 
-## Deleting a Scenario
+## Deleting Scenario
 
 > Deleting a Scenario
 > > The following API calls allow users to delete Scenarios using the Whispir API.
