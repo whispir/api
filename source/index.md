@@ -23,6 +23,7 @@ includes:
   - distribution-lists
   - callbacks
   - workspaces
+  - scenarios
   - other
 
 search: true
