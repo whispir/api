@@ -149,7 +149,7 @@ HTTP/1.1 GET https://api.whispir.com/workspaces/12345/contacts/67890?apikey=bneo
 Within Whispir's resource model, some resources are nested within one another.  For example; 
 
 - The **Company** resource contains many **Workspaces**.  
-- The **Workspace** resource contains many **Messages**.   
+- The **Workspace** resource contains many **Messages**.
 - Each **Message** resource contains a **MessageStatus**.
 
 Requests can be *nested* in order to provide application clients the ability to access specific resources when they are nested.
@@ -499,13 +499,33 @@ The following table depicts the available mime types that will be accepted throu
 > > Request for the first page of messages:
 
 ```
-HTTP/1.1 GET https://api.whispir.com/?apikey=sbdsfd0sa09fds&limit=20&offset=0
+HTTP/1.1 GET https://api.whispir.com/?apikey=[your-api-key]&limit=20&offset=0
 ```
 
 > > Request for the second page of messages (note the offset is now 20):
 
 ```
-HTTP/1.1 GET https://api.whispir.com/?apikey=sbdsfd0sa09fds&limit=20&offset=20
+HTTP/1.1 GET https://api.whispir.com/?apikey=[your-api-key]&limit=20&offset=20
+```
+
+
+> > Request for the page of messages which does not exist.
+
+```
+HTTP/1.1 GET https://api.whispir.com/workspaces/7311ABEB701E7C60/messages?apikey=[your-api-key]&limit=20&offset=20
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="true"?>
+<ns2:return xmlns:ns3="http://schemas.api.whispir.com" xmlns:ns2="http://schemas.api.whispir.com/dap">
+    <status>No records found</status>
+</ns2:return>
+```
+
+```go
+{
+    "status" : "No records found"
+}
 ```
 
 Requests that contain multiple items will be paginated by default.
@@ -519,9 +539,34 @@ Two parameters can be used to control the number of items retrieved:
 
 Most resources will provide these links at the end of the response object in a `link` array that supplies links with `rel=next` and `rel=prev` attributes.
 
-This makes programatic pagination easy as you can simply detect for the presence of these attributes.
+This makes programatic pagination easy as you can simply detect for the presence of these attributes. You can loop through the pages until you receive a response of 'No messages found'.
 
 **Note:** The following resources aren't paginated for ease of use:
 
 - Workspaces
 - Scenarios
+- Messages
+
+
+### Extra parameters
+
+It's also possible that the messages are older than the default filter that is applied.  At present Whispir provides a default of the last 7 days of messages.  You can ask for older messages by using the following 4 parameters:
+
+> > Requesting for records from 01/01/2015 00:00 – 01/07/2015 23:59
+
+```
+https://api.whispir.com/messages?apikey=[your-api-key]&criteriaFromDate=01/01/2015&criteriaFromTime=00:00&criteriaToDate=01/07/2015&criteriaToTime=23:59
+```
+
+ * criteriaFromDate (format: dd/mm/yyyy)
+ * criteriaFromTime (format: hh:mm)
+ * criteriaToDate (format: dd/mm/yyyy)
+ * criteriaToTime  (format: hh:mm)
+
+All four of these parameters are required for a date search to work e.g.
+
+
+
+You can also use the parameter `viewType=shared` if the messages you are looking for were sent from other users (not the API user).
+
+
