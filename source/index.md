@@ -21,9 +21,9 @@ includes:
   - response-rules
   - contacts
   - distribution-lists
+  - scenarios
   - callbacks
   - workspaces
-  - scenarios
   - other
 
 search: true

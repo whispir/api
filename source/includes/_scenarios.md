@@ -529,7 +529,7 @@ Accept: application/vnd.whispir.scenario-v1+json
 HTTP 1.1 POST https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
 
->> The expected response to this call is an HTTP 204 - No Content.
+> > The expected response to this call is an HTTP 204 - No Content.
 ```
 
 Running a Scenario , in other words, invoking a scenario triggers the communication to the intended recipients. The message (static or dynamic) will be sent on all the provided channels.
@@ -749,7 +749,7 @@ The following fields are required:
 HTTP 1.1 DELETE https://api.whispir.com/scenarios/6EE7F6F2E48B73B4?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
 
->> The expected response to this call is an HTTP 204 - No Content.
+> > The expected response to this call is an HTTP 204 - No Content.
 ```
 
 Deleting a Scenario can be done via a DELETE call to the /scenarios endpoint. The request has to be targeted at a particular Scenario with the Scenario ID in the URI.
