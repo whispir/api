@@ -240,7 +240,11 @@ The table below describes the response codes that will be issued and gives poten
         <tr>
             <td style="text-align: right; font-weight: bold;">403 Forbidden:</td>
             <td><strong>Authorization credentials passed and accepted but account does not have permission</strong><br/>
-                Inspect the authorisation header and ensure that a valid authentication has been provided.
+                <ul>
+                <li>Inspect the authorisation header and ensure that a valid authentication has been provided.</li>
+                <li>returned when HTTP is used instead of HTTPS</li>
+		<li>returned when invalid API Key is used</li>
+                <li>returned when you have tried to make API calls more than your allowed Quota (QPS). refer to <a href="https://whispir.github.io/api/#api-rate-limits" title="api rate limiting">API Rate Limits</a></li>
             </td>
         </tr>
         <tr>
@@ -568,5 +572,6 @@ All four of these parameters are required for a date search to work e.g.
 
 
 You can also use the parameter `viewType=shared` if the messages you are looking for were sent from other users (not the API user).
+
 
 
