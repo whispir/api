@@ -1153,30 +1153,27 @@ Content-Type: application/vnd.whispir.bulkmessage-v1+xml
       <smsMappingField/>
       <emailMappingField/>
       <voiceMappingField>
-   </resource>
-   <messageTemplateId>  
-   <messageContent>
-      <subject></subject>
-      <body></body>
-      <email>
-         <body></body>
-         <footer></footer>
-         <type></type>
-      </email>
-      <voice>
-         <header></header>
-         <body></body>
-         <footer></footer>
-         <other></other>
-         <type></type>
-      </voice>
-      <web>
-         <body></body>
-         <type></type>
-      </web>
-   </messageContent>
-   <callbackId/>
-
+    </resource>
+    <messageTemplateId>  
+    <subject></subject>
+    <body></body>
+    <email>
+        <body></body>
+        <footer></footer>
+        <type></type>
+    </email>
+    <voice>
+        <header></header>
+        <body></body>
+        <footer></footer>
+        <other></other>
+        <type></type>
+    </voice>
+    <web>
+        <body></body>
+        <type></type>
+    </web>
+    <callbackId/>
 </ns2:message> 
 ```
 
@@ -1191,25 +1188,23 @@ Content-Type: application/vnd.whispir.bulkmessage-v1+json
         "voiceMappingField" : ""
     },
     "messageTemplateId" : "",
-    "messageContent" : {
-        "subject" : "",
+    "subject" : "",
+    "body" : "",
+    "email" : {
         "body" : "",
-        "email" : {
-            "body" : "",
-            "footer" : "",
-            "type" : ""
-        },
-        "voice" : {
-            "header" : "",
-            "body" : "",
-            "footer" : "",
-            "other" : "",
-            "type" : ""
-        },
-        "web" : {
-            "body" : "",
-            "type" : ""
-        }
+        "footer" : "",
+        "type" : ""
+    },
+    "voice" : {
+        "header" : "",
+        "body" : "",
+        "footer" : "",
+        "other" : "",
+        "type" : ""
+    },
+    "web" : {
+        "body" : "",
+        "type" : ""
     },
     "callbackId" : ""
 }
