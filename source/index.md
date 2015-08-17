@@ -24,6 +24,7 @@ includes:
   - scenarios
   - callbacks
   - workspaces
+  - activities
   - other
 
 search: true

@@ -331,7 +331,7 @@ Each of these activities will provide the following information:
 <table>
     <thead>
         <tr>
-            <th style="width: 50%" colspan="2">High-Level Request Elements</th>
+            <th style="width: 50%" colspan="2">High-Level Response Elements</th>
         </tr>
     </thead>
     <tbody>
@@ -382,12 +382,24 @@ Each of these activities will provide the following information:
 				The date and time of the activity in the format: dd/mm/yy hh:mm.
 			</td>
 		</tr>
+		<tr>
+			<td style="text-align: right; font-weight: bold;">link:</td>
+			<td><strong>Array</strong><br/>
+				Provides a list of URLs that can be used to manipulate or access the activity. 
+				<br>
+				<ul>
+					<li>uri - the link to access the activity</li>
+					<li>rel - the descriptor for what the link will do</li>
+					<li>method - the HTTP method to use with this particular link</li>
+				</ul>
+			</td>
+		</tr>
 	</tbody>
 </table>
 
 **Note:** The API currently results in a `404 Not Found` when there are no activities present in the log for a given search criteria. This should not be not confused with a failed response. But rather as `No Data Found`.
 
-### restricting to only a workspace
+### Restricting to only a single workspace
 
 ```
 HTTP 1.1 GET https://api.whispir.com/activities?apikey=[your_api_key]
@@ -423,7 +435,7 @@ By default, `GET /activities` returns all the activities at company level. This 
 	</tbody>
 </table>
 
-## Searching for Activity
+## Search/Filter on Activity Logs
 
 Activity logs can become quickly huge owing to the amount of actions performed. In such cases, to have a proper filtering of data during a GET /activities, Whispir API provides very neat filtering options on the data. 
 

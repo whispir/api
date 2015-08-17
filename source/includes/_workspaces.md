@@ -214,7 +214,7 @@ Each of these workspace will provide the following information:
 <table>
     <thead>
         <tr>
-            <th style="width: 50%" colspan="2">High-Level Request Elements</th>
+            <th style="width: 50%" colspan="2">High-Level Response Elements</th>
         </tr>
     </thead>
     <tbody>
@@ -252,7 +252,7 @@ Each of these workspace will provide the following information:
 				Provides a list of URLs that can be used to manipulate or access the workspace. 
 				<br>
 				<ul>
-					<li>uri - the link to access the message template</li>
+					<li>uri - the link to access the workspace</li>
 					<li>rel - the descriptor for what the link will do</li>
 					<li>method - the HTTP method to use with this particular link</li>
 				</ul>
