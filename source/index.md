@@ -25,6 +25,7 @@ includes:
   - callbacks
   - workspaces
   - activities
+  - custom-lists
   - other
 
 search: true
