@@ -7,8 +7,6 @@ Every account upon creation is given a default workspace. All operations are usu
 
 Each of these work areas are independent from one another and can be governed by user permissions. So, users can be assigned access to these workspaces to restrict the control of information as needed. So, the information, assets, contacts, actions performed in workspace does not or cannot be accessed from another one. This allows the applications to be independent and audited much effectively with proper permissions and keys.
 
-Workspaces can only be created and retrieved. They cannot be updated or deleted via the API.
-
 
 ## Creating a new workspace
 
@@ -35,7 +33,7 @@ Content-Type: application/vnd.whispir.workspace-v1+json
 
 {
   "projectName": "A Space Odessey",
-  "projectNumber": "2000",
+  "projectNumber": "2001",
   "status": "A",
   "billingcostcentre": "Hollywood"
 }
@@ -262,3 +260,9 @@ Each of these workspace will provide the following information:
 		</tr>
 	</tbody>
 </table>
+
+## Updating, Deleting a workspace
+
+Workspaces can only be created and retrieved. They **cannot** be updated or deleted via the API. 
+
+One has to use the Platform for this need.
