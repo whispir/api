@@ -4,7 +4,7 @@ Contacts form the core of the Whispir offerings. They make up the base data to w
 
 The Whispir API provides secure cloud based storage for your contact information.  This can then easily be retrieved by any application or device that requires access, and has permission to do so.
 
-##Creating new Contacts`
+##Creating new Contacts
 
 > Creating new Contacts
 > > Users can easily create new contacts by using the following request structure
@@ -47,7 +47,7 @@ Content-Type: application/vnd.whispir.contact-v1+xml
         </messagingoption>
     </messagingoptions>
 </ns2:contact>
-````
+```
 
 ```go
 Content-Type: application/vnd.whispir.contact-v1+json
@@ -74,7 +74,7 @@ Content-Type: application/vnd.whispir.contact-v1+json
           "primary": "WorkMobilePhone1"
     }]
 }
-````
+```
 
 > > The successful response will be a 201 with the details of the contact created and its associated unique `mri`.
 
@@ -121,7 +121,7 @@ Content-Type: application/vnd.whispir.contact-v1+json
     <ns3:link uri="https://api.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]" rel="self" method="GET"/>
     <ns3:link uri="https://api.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]" rel="updateContact" method="PUT" type="application/vnd.whispir.contact-v1+json,application/vnd.whispir.contact-v1+xml"/>
     <ns3:link uri="https://api.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]" rel="deleteContact" method="DELETE"/>
-````
+```
 
 ```go
 {
@@ -178,7 +178,7 @@ Content-Type: application/vnd.whispir.contact-v1+json
     }
   ]
 }
-````
+```
 
 To create a new contact, you can use the `/contacts` endpoint. The method is POST. Ensure that the following mandatory fields are provided for.
 
@@ -269,7 +269,7 @@ The following fields are required:
 		<tr>
 			<td style="text-align: right; font-weight: bold;">Work Place Address:</td>
 			<td><strong>String</strong><br/>
-				Specifies the primary and Secondary values for each respective type. Of all these the <b>workEmailAddress1</b> > is the mandatory field.
+				Specifies the primary and Secondary values for each respective type. Of all these the <b>workEmailAddress1</b> is the mandatory field.
 				<ul>
 					<li>workEmailAddress1, workEmailAddress2</li>
 					<li>workAddress1, workAddress2</li>
@@ -284,7 +284,7 @@ The following fields are required:
 		<tr>
 			<td style="text-align: right; font-weight: bold;">Work Place Phones:</td>
 			<td><strong>Number</strong><br/>
-				Specifies the primary and Secondary values for each respective type. Of all these the <b>workMobilePhone1</b> > is the mandatory field.
+				Specifies the primary and Secondary values for each respective type. Of all these the <b>workMobilePhone1</b> is the mandatory field.
 				<ul>
 					<li>workMobilePhone1, workMobilePhone2</li>
 					<li>workPhoneAreaCode1, workPhone1</li>
@@ -423,9 +423,9 @@ Each messaging options allows to specify the following 3 configuration settings
 	<dt>primary</dt>
 	<dd>workMobilePhone1 (Can be any of the valid attribute which has a value in it)</dd>
 	<dt>secondary</dt>
-	<dd> > <i>optional</i> > - workMobilePhone2</dd>
+	<dd><i>optional</i> - workMobilePhone2</dd>
 	<dt>tertiary</dt>
-	<dd> > <i>optional</i> > - personalMobilePhone1</dd>
+	<dd><i>optional</i> - personalMobilePhone1</dd>
 </dl>
 
 
@@ -458,7 +458,7 @@ Accept: application/vnd.whispir.contact-v1+xml
         </ns2:contact>
     </ns2:contacts>
 </ns2:return>
-````
+```
 
 ```go
 Accept: application/vnd.whispir.contact-v1+json
@@ -480,7 +480,7 @@ Accept: application/vnd.whispir.contact-v1+json
     }
   ]
 }
-````
+```
 
 Contacts can be retrieved quite easily with a GET request to the `/contacts`. A simple /contacts will result in all contacts being retrieved with all of their information. No filters are applied.
 
@@ -731,7 +731,7 @@ HTTP 1.1 DELETE https://api.whispir.com/contacts/124F6B2D46A5A268?apikey=<your_a
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
-Updating a contact can be performed using a DELETE request to the /contacts/{id} endpoint. So, to perform this, one must be knowing the exact “link” associated with the contact.
+Deleting a contact can be performed using a DELETE request to the /contacts/{id} endpoint. So, to perform this, one must be knowing the exact “link” associated with the contact.
 
 After performing this request, the response does not contain any information other than the headers as it is not necessary.
 
