@@ -3,13 +3,17 @@
 Access to use the Whispir API, Platform and its features is strictly limited to user permission set. One needs to have 
 proper permissions to access all the features provided by the platform, and when using the API, have appropriate permissions to modify the user attributes of themselves or others in their company workspaces.
 
+> Invalid Permission Error
+> > If the API user account does not have the permissions needed to operate on an user account, the API will give a `403 Forbidden` response. So make sure the account has all the necessary permissions. Use Whispir Platform Environment URL given in the whispir.io apps screen to login and manage the permissions
+
 The Whispir API provides the /users endpoint to serve the purpose of managing the users of the platform. One can
+ - Retrieve users of a workspace
  - Add new users
  - Modify user status (except their own)
  - Modify user's information
  - Delete user
 
-An User ability to access the features is limited to the status he/she is assigned to. They can have only one status at any given point of time and the change of status is controlled by the "user state machine" The state machine follows the following tabulated rules -
+An User ability to access the features is limited to the `STATUS` he/she is assigned to. They can have only one status at any given point of time and the change of status is controlled by the "user state machine". The state machine follows the following tabulated rules -
 
 <table>
     <thead>
@@ -19,61 +23,55 @@ An User ability to access the features is limited to the status he/she is assign
     </thead>
     <tbody>
     <tr>
-      <td style="text-align: right; font-weight: bold;">PENDING</td>
+      <td style="text-align: right; font-weight: bold;">PENDING (P)</td>
       <td>User has been just created and this is the default status one will be given.<br/>
       Status can be modified to - 
       <ul>
-        <li>InActive</li>
-        <li>Deleted</li>
-        <li>Pending</li>
+        <li>INACTIVE</li>
+        <li>DELETED</li>
       </ul>
       </td>
     </tr>
     <tr>
-      <td style="text-align: right; font-weight: bold;">INACTIVE</td>
+      <td style="text-align: right; font-weight: bold;">INACTIVE (I)</td>
       <td>User has been set to Inactive Status. During this state they CANNOT access the platform until they are set to Active again.<br/>
       Status can be modified to - 
       <ul>
-        <li>Active</li>
-        <li>Deleted</li>
-        <li>InActive</li>
+        <li>ACTIVE</li>
+        <li>DELETED</li>
       </ul>
     <br/>
     <b>Note:</b> If you are the user who is changing your status, beware that setting yourself to InActive results you in being locked out of your own account. Always use another account in your company to change your account status. Have a beer to get this slide down your throat. I did too.
       </td>
     </tr>
     <tr>
-      <td style="text-align: right; font-weight: bold;">SUSPENDED</td>
+      <td style="text-align: right; font-weight: bold;">SUSPENDED (B)</td>
       <td>User has been Suspended. In this State they can access the platform, but cannot use the features on the platform<br/>
       Status can be modified to - 
       <ul>
-        <li>Active</li>
-        <li>Deleted</li>
-        <li>Suspended</li>
+        <li>ACTIVE</li>
+        <li>DELETED</li>
       </ul>
       </td>
     </tr>
     <tr>
-      <td style="text-align: right; font-weight: bold;">DELETED</td>
+      <td style="text-align: right; font-weight: bold;">DELETED (D)</td>
       <td>User has been Deleted. This is Soft delete, so their record exists, but they are deleted<br/>
       Status cannot be modified once set to Deleted.
       </td>
     </tr>
     <tr>
-      <td style="text-align: right; font-weight: bold;">ACTIVE</td>
+      <td style="text-align: right; font-weight: bold;">ACTIVE (A)</td>
       <td>User is Active. They can use all the features (they are assigned/allowed to) on the platform.<br/>
       Status can be modified to - 
       <ul>
-        <li>Suspended</li>
-        <li>Deleted</li>
-        <li>Active</li>
+        <li>SUSPENDED</li>
+        <li>DELETED</li>
       </ul> 
       </td>
     </tr>
   </tbody>
 </table>
-
-In a pictorial representation -
 
 So for example -
 
@@ -93,7 +91,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:contact xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:user xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <firstName>John</firstName>
     <lastName>Wick</lastName>
     <userName>John.Wick</userName>
@@ -102,7 +100,7 @@ Content-Type: application/vnd.whispir.user-v1+xml
     <workEmailAddress1>jsmith@testcompany.com</workEmailAddress1>
     <workMobilePhone1>61423456789</workMobilePhone1>
     <workCountry>Australia</workCountry>
-</ns2:contact>
+</ns2:user>
 ```
 
 ```go
@@ -178,9 +176,9 @@ Content-Type: application/vnd.whispir.user-v1+json
 }
 ```
 
-To create a new user, you can use the `/users` endpoint. The method is POST. Ensure that the following mandatory fields are provided for.
+To create a new user, you can use the `/users` endpoint. The method is POST. Ensure that the necessary permissions are provided to the API account to create or modify user accounts.
 
-The following fields are required:
+When creating an account, the following fields are mandatory:
 
 - userName
 - password
@@ -250,11 +248,11 @@ The following fields are required:
       <td><strong>String</strong><br/>
         Specifies the validity status of the user. The status can be one of - 
         <ul>
-          <li>Active</li>
-          <li>InActive</li>
-          <li>Pending</li>
-          <li>Suspended</li>
-          <li>Deleted</li>
+          <li>Active (A)</li>
+          <li>InActive (I)</li>
+          <li>Pending (P)</li>
+          <li>Suspended (B)</li>
+          <li>Deleted (D)</li>
         </ul>
         <b>Note: </b>The default status is PENDING. One cannot set the status while creation of account. Read `User State Machine` again mentioned above.
       </td>
@@ -388,7 +386,7 @@ Accept: application/vnd.whispir.user-v1+xml
 <ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 1 of 1</status>
     <ns2:Users>
-        <ns2:contact>
+        <ns2:user>
             <id>AF48A9EC3F02E43C</id>
             <firstName>Fred</firstName>
             <lastName>Smith</lastName>
@@ -398,7 +396,10 @@ Accept: application/vnd.whispir.user-v1+xml
             <ns2:link method="GET" 
                       rel="self" 
                       uri="http://api.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>"/>
-        </ns2:contact>
+        </ns2:user>
+
+		...
+
     </ns2:Users>
 </ns2:return>
 ````
@@ -421,16 +422,19 @@ Accept: application/vnd.whispir.user-v1+json
         "rel": "self",
         "uri": "http://api.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>"
       }
-    }
+    },
+
+	...
+
   ]
 }
 ````
 
-Users can be retrieved quite easily with a GET request to the `/users`. A simple /users will result in all users being retrieved with all of their basic identity information. No filters are applied.
+Users can be retrieved quite easily with a GET request to the `/users`. A simple /users will result in all users being retrieved with all of their basic identity information. The result will only be limited to users with ACTIVE status. User's with other status will not be listed in the results.
 
-Once the request is placed, the response will be a list of url's to each of the users that the API user has access to/or has requested for via the search criteria.  
+Once the request is placed, the response will be a list of url's to each of the users that the API user has access to/or has requested for via the search criteria. 
 
-**Note:** The sample request here shows users from the company the existing API user is associated with. You cannot retreive users list from outside of your company.
+**Note:** The sample request here shows users from the company the existing API user is associated with. You cannot retrieve users list from outside of your company and users with status != ACTIVE.
 
 ### Get a specific user
 
@@ -481,6 +485,99 @@ To get details of a specific user, the URI must be passed with the ID of the use
 
 Where `AF48A9EC3F02E43C` is the user id.
 
+### Retrieving workspace users
+
+> Retrieving list of users having access on a workspace
+
+> > To retrieve the list of users, the request is made to via GET to `/workspaces/{:id}/users` endpoint.
+> > By default there will be a limit of 20 users returned in a request.
+> > The user will use the limit and offset query parameters to determine how many users they would like to receive. (default when not provided will be limit=20 & offset=0)
+
+```
+HTTP 1.1 GET https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/?apiKey=<your_api_key>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
+Accept: application/vnd.whispir.user-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+    <status>1 to 20 of 28</status>
+    <ns2:link uri="https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/?apikey=<your_api_key>&offset=20&limit=20" rel="next" method="GET"/>
+    <ns2:users>
+        <ns2:user>
+            <id>AF48A9EC3F02E43C</id>
+            <firstName>Fred</firstName>
+            <lastName>Smith</lastName>
+            <companyName>Whispir Pte Ltd</companyName>
+            <workEmailAddress1>fsmith@whispir.com</workEmailAddress1>
+            <workMobilePhone1>6512348765</workMobilePhone1>
+            <ns2:link uri="https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/AF48A9EC3F02E43C?apikey=<your_api_key>" rel="self" method="GET"/>
+        </ns2:user>
+        <ns2:user>
+            <id>DFC878BCB2EF9258</id>
+            <firstName>John</firstName>
+            <lastName>Wick</lastName>
+            <companyName>SHIELD</companyName>
+            <workEmailAddress1>jwick@whispir.com</workEmailAddress1>
+            <ns2:link uri="https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/DFC878BCB2EF9258?apikey=<your_api_key>" rel="self" method="GET"/>
+        </ns2:user>
+
+        ...
+
+    </ns2:users>
+</ns2:return>
+```
+
+```go
+Accept: application/vnd.whispir.user-v1+json
+
+{
+  "users": [
+    {
+      "id": "AF48A9EC3F02E43C",
+      "firstName": "Fred",
+      "lastName": "Smith",
+      "companyName": "Whispir Pte Ltd",
+      "workEmailAddress1": "fsmith@whispir.com",
+      "workMobilePhone1": "6512348765",
+      "link": [
+        {
+          "uri": "https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/AF48A9EC3F02E43C?apikey=<your_api_key>",
+          "rel": "self",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "id": "DFC878BCB2EF9258",
+      "firstName": "John",
+      "lastName": "Wick",
+      "companyName": "",
+      "workEmailAddress1": "jwick@whispir.com",
+      "link": [
+        {
+          "uri": "https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/DFC878BCB2EF9258?apikey=<your_api_key>",
+          "rel": "self",
+          "method": "GET"
+        }
+      ]
+    },
+
+    ...
+
+    "status": "1 to 20 of 28",
+    "link": [
+    {
+      "uri": "https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/?apikey=<your_api_key>&offset=10&limit=10",
+      "rel": "next",
+      "method": "GET"
+    }
+  ]
+}
+```
+
 ## Searching for users
 
 > Searching for users
@@ -499,9 +596,30 @@ Accept: application/vnd.whispir.user-v1+xml
 Accept: application/vnd.whispir.user-v1+json
 ```
 
-Users can be searched for in a given company by passing in valid search criteria. The search criteria usually can be any of the user elements (field names) and will be sent in as part of the URI as query parameters.
+Users can be searched for in a given company by passing in valid search criteria. The search criteria usually can be any of the following user elements (field names) and will be sent in as part of the URI as query parameters.
 
-This searching mechanism can be useful to see if any users exist in the system with a specific email address, phone number, or job role and so on. Simply to state, the API can help you search based on any attribute associated with the user.
+
+- First Name
+- Last Name
+- Title
+- Job Title
+- Country
+- Timezone
+- Organization Name
+- Division
+- Business Unit
+- Department
+- Team Name
+- Role
+- Additional Team Name
+- Additional Role
+- Work Email Address 1
+- Work Mobile Phone 1
+- Work Phone Area Code 1
+- Work Phone 1
+- Status * (see *note* below)
+
+This searching mechanism can be useful to see if any users exist in the system with a specific email address, phone number, or job role and so on.
 
 The key parameters that are required on the URL to facilitate this search are as follows:
 
@@ -515,7 +633,7 @@ The key parameters that are required on the URL to facilitate this search are as
 		<tr>
 			<td style="text-align: right; font-weight: bold;">fieldname:</td>
 			<td><strong>String</strong><br/>
-				Specifies the field name of the user object. The field name could be any thing as long as it is a valid user object.
+				Specifies on this field name of the user object.
 				<br><br>
 				<b>Ex:</b><br>
 				http://api.whispir.com/users?apikey=<your_api_key><b>&firstName=Sam</b>
@@ -538,6 +656,8 @@ The key parameters that are required on the URL to facilitate this search are as
 		</tr>
 	</tbody>
 </table>
+
+**Note:** While searching for users via status, use the short code 'A' for ACTIVE, similarly, 'I' for INACTIVE, rather than the full words ACTIVE, INACTIVE, etc. so, it is `&status=A` not `&status=ACTIVE`.
 
 ## Updating users
 
@@ -600,7 +720,7 @@ So the standard process for updating a user record is -
 
 The response to the PUT request upon success is usually a `204` with no content being provided.
 
-### Deleting an user
+## Deleting an user
 
 An User can be deleted by calling the DELETE /users/{id} end point.
 
@@ -645,6 +765,10 @@ An user when created is assigned the PENDING status. SO, to set the user to ACTI
 3. PUT /users/{id} with STATUS set to 'INACTIVE' - using the user object retreived in step 2
 4. PUT /users/{id} with STATUS set to 'ACTIVE' - using the user object retreived in step 2
 
+**Note:** The status text is case sensitive. Lowercase or mixed case text is invalid. Always use uppercase.
+
+**Ex:** active != ACTIVE; inActive != INACTIVE
+
 > Activating an newly created user using the `user state machine` rules
 > > The following steps have to followed in exacct order.
 
@@ -682,3 +806,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 [userobject]
 status : 'ACTIVE'
 ```
+
+## Assigning an user to workspace
+
+This is currently not supported via the API right now. One can only do this via the Whispir Platform interface.
