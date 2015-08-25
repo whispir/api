@@ -26,6 +26,8 @@ includes:
   - workspaces
   - activities
   - custom-lists
+  - users
+  - events
   - other
 
 search: true
