@@ -1,5 +1,31 @@
 #Users
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/users/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.user-v1+xml
+```
+
+```go
+https://api.whispir.com/users/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.user-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/users/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.user-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/users/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.user-v1+json
+```
+
 Access to use the Whispir API, Platform and its features is strictly limited to user permission set. One needs to have 
 proper permissions to access all the features provided by the platform, and when using the API, have appropriate permissions to modify the user attributes of themselves or others in their company workspaces.
 
@@ -56,7 +82,7 @@ An User ability to access the features is limited to the `STATUS` he/she is assi
     </tr>
     <tr>
       <td style="text-align: right; font-weight: bold;">DELETED (D)</td>
-      <td>User has been Deleted. This is Soft delete, so their record exists, but they are deleted<br/>
+      <td>User has been Deleted. This is Soft delete, so their record exists, but they are marked as deleted.<br/>
       Status cannot be modified once set to Deleted.
       </td>
     </tr>

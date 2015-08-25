@@ -1,5 +1,31 @@
 # Events
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/events/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.event-v1+xml
+```
+
+```go
+https://api.whispir.com/events/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.event-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/events/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.event-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/events/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.event-v1+json
+```
+
 Whispir’s Events API allows users to capture, create and manage Events (including Incidents, Issues, Places, and Assets). Link multi-channel communications to each event to track report and disseminate information textually and Geo-spatially.
 
 The Whispir Events module allows customers to easily input, invoke and track communications about current events that are taking place within their organisation. The Events can be customized to accept events and associated information from external systems or to capture more complex information around an event.
@@ -17,7 +43,7 @@ An example of an event could be an outage of an internal system or service, or a
 
 As Whispir works with each organisation to build out the requirements of the events module, the required fields are minimal. The bulk of the event information is from fields that are generic, and only applicable to the customer that is using the module.
 
-Events have sub sections under them called as 'actions' (maximum of 10). When an Event occurs/is triggered, the related actions are to be performed. Each action has an owner, a set time, and details associated with it. The owner or responsible person for the event could be a ![contact](/#contacts) in the system. This ensures that proper communication is sent to the individual based on their preferred channel (message, email, voice) automatically without having to key in the phone, email, and other communication information again.
+Events have sub sections under them called as 'actions' (maximum of 10). When an Event occurs/is triggered, the related actions are to be performed. Each action has an owner, a set time, and details associated with it. The owner or responsible person for the event could be a `/contacts` in the system. This ensures that proper communication is sent to the individual based on their preferred channel (message, email, voice) automatically without having to key in the phone, email, and other communication information again.
 
 The Events module captures information specific to an event so the information can be used in as part of messaging for the duration of the event. The Events module can be customized to accept events and associated information from external systems or to capture more complex information around an event.
 
@@ -65,6 +91,7 @@ Most importantly, to create an event, one must have the create access for Incide
 - Event Status – The current status of the event e.g. 'Open' or 'Inactive'
 
 and one set of Actions for this event
+
 - Action Date - The date and time of the action
 - Action Owner - The contact who is responsible for this action execution
 - Action Detail - The details of the action
@@ -194,7 +221,7 @@ Content-Type: application/vnd.whispir.event-v1+json
     } ]
 }
 ```
-> The request if successful shall return a `201 Created` along with the complete event object.
+> > The request if successful shall return a `201 Created` along with the complete event object.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -658,11 +685,8 @@ Content-Type: application/vnd.whispir.event-v1+json
       <td><strong>String</strong><br/>
         Specifies the status of the event. The status can be one of - 
         <ul>
-          <li>Open</li>
-          <li>In Progress</li>
-          <li>Incomplete</li>
-          <li>Closed</li>
-          <li>Completed</li>
+          <li>Active</li>
+          <li>Resolved</li>
         </ul>
         <b>Note: </b>The default status is Open.
       </td>
@@ -995,14 +1019,15 @@ The API also supports to use this listing to query the different messages for st
 
 
 > Sending in request to retrieve Event Messages
+
 ```
-HTTP1.1 GET https://api.whispir.com/messages?label=657126%20Outage%20of%20systems%20in%20Sydney?apikey=<your_api_key>
+HTTP 1.1 GET https://api.whispir.com/messages?label=657126%20Outage%20of%20systems%20in%20Sydney?apikey=<your_api_key>
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
 ```
 
 > > response
 
-```
+```xml
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -1025,7 +1050,7 @@ Accept: application/vnd.whispir.message-v1+xml
 </ns2:return>
 ```
 
-```
+```go
 Accept: application/vnd.whispir.message-v1+json
 
 HTTP 1.1 200 OK
@@ -1064,6 +1089,7 @@ HTTP 1.1 DELETE https://api.whispir.com/workspaces/{id}/events/SODFNODS092FDS298
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 > > response
+
 ```
 HTTP 1.1 204 No Content
 ```
