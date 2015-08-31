@@ -30,6 +30,9 @@ Content-Type: application/vnd.whispir.template-v1+xml
   </messageTemplateDescription>
   <subject>Test SMS Message</subject>
   <body>This is the body of my test SMS message</body>
+  <email></email>
+  <voice></voice>
+  <web></web>
 </ns3:template>
 ````
 ```go
@@ -38,8 +41,11 @@ Content-Type: application/vnd.whispir.template-v1+json
 { 
    "messageTemplateName": "Sample SMS Template", 
    "messageTemplateDescription": "Template to provide an example on whispir.io",
-   "subject": "Test SMS Message",
-   "body": "This is the body of my test SMS message"
+   "subject" : "Test SMS Message",
+   "body" : "This is the body of my test SMS message"
+   "email" : {},
+   "voice" : {},
+   "web" : {}
 }
 ```
 
@@ -48,11 +54,14 @@ The expected response to this call is an **HTTP 201 - Created**.
 
 To create a new message template, you can use the `/templates` endpoint.
 
-Only **3 fields** are required:
+The following fields are required:
 
 1. messageTemplateName - the name of the template to be stored
 2. subject - the first line or identifier of the SMS
 3. body - At least one of the **Body** fields must be populated (SMS, Email, Voice or Web).
+4. email - The email content for the message. If no email is required, an empty object must be presented.
+5. voice - The voice content for the message. If no voice call is required, an empty object must be presented.
+6. web - The web content for the message. If no web content is required, an empty object must be presented.
 
 <table>
     <thead>
