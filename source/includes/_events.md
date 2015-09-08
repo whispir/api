@@ -26,6 +26,21 @@ https://api.whispir.com/workspaces/{:id}/events/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.event-v1+json
 ```
 
+```
+> Resource type
+
+- application/vnd.whispir.event-v1+xml
+- application/vnd.whispir.event-v1+json
+
+
+> Methods supported
+
+- GET
+- POST
+- PUT
+- DELETE
+```
+
 Whispir’s Events API allows users to capture, create and manage Events (including Incidents, Issues, Places, and Assets). Link multi-channel communications to each event to track report and disseminate information textually and Geo-spatially.
 
 The Whispir Events module allows customers to easily input, invoke and track communications about current events that are taking place within their organisation. The Events can be customized to accept events and associated information from external systems or to capture more complex information around an event.
