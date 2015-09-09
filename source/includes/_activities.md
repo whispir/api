@@ -34,8 +34,6 @@ Content-Type: application/vnd.whispir.activity-v1+xml
     <status>Successful</status>
     <description>Message sent via the Whispir's Java library</description>
 </ns3:activity>
-
-> Response will be `201 Created`
 ```
 
 ```go
@@ -47,8 +45,10 @@ Content-Type: application/vnd.whispir.activity-v1+json
   "status" : "Successful",
   "description" : "Message sent via the Whispir's Java library"
 }
+```
 
-> Response will be 201 Created
+```
+> Response will be `201 Created`
 ```
 
 To create a new workspace, you can use the /activities endpoint.

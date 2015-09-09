@@ -1,5 +1,46 @@
 # Templates
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/templates/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.template-v1+xml
+```
+
+```go
+https://api.whispir.com/templates/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.template-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/templates/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.template-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/templates/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.template-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.template-v1+xml
+- application/vnd.whispir.template-v1+json
+
+
+> Methods supported
+
+- GET
+- POST
+- PUT
+- DELETE
+```
+
 Using the Whispir.io API, messages can be stored as Message Templates that can be easily referenced within your API calls.
 
 The purpose of using a Message Template rather than including your content directly into your messages API call is to ensure a separation of message content/design and application code.
@@ -30,6 +71,9 @@ Content-Type: application/vnd.whispir.template-v1+xml
   </messageTemplateDescription>
   <subject>Test SMS Message</subject>
   <body>This is the body of my test SMS message</body>
+  <email></email>
+  <voice></voice>
+  <web></web>
 </ns3:template>
 ````
 ```go
@@ -38,8 +82,11 @@ Content-Type: application/vnd.whispir.template-v1+json
 { 
    "messageTemplateName": "Sample SMS Template", 
    "messageTemplateDescription": "Template to provide an example on whispir.io",
-   "subject": "Test SMS Message",
-   "body": "This is the body of my test SMS message"
+   "subject" : "Test SMS Message",
+   "body" : "This is the body of my test SMS message",
+   "email" : {},
+   "voice" : {},
+   "web" : {}
 }
 ```
 
@@ -48,11 +95,14 @@ The expected response to this call is an **HTTP 201 - Created**.
 
 To create a new message template, you can use the `/templates` endpoint.
 
-Only **3 fields** are required:
+The following fields are required:
 
 1. messageTemplateName - the name of the template to be stored
 2. subject - the first line or identifier of the SMS
 3. body - At least one of the **Body** fields must be populated (SMS, Email, Voice or Web).
+4. email - The email content for the message. If no email is required, an empty object must be presented.
+5. voice - The voice content for the message. If no voice call is required, an empty object must be presented.
+6. web - The web content for the message. If no web content is required, an empty object must be presented.
 
 <table>
     <thead>
@@ -515,7 +565,28 @@ The following fields are required:
 
 **Note:** All of the options above are the same as provided in the `/messages` endpoint <a href="#communications">here</a>
 
-##Using Templates
+## Deleting Template
+
+```
+> Deleting a template
+
+> > Exact URI of the template has to be provided. 
+
+HTTP 1.1 DELETE https://api.whispir.com/templates/C37DCBAEFF73FEDA45?apikey=[your_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```
+> Response
+
+> > 204 No Content
+```
+
+Deleting a template is done via the `DELETE` method. The exact link url of the specific template has to be used as the end point. To get it, one can perform a `GET /templates` which returns the list of all templates and their link url. If the template is within a workspace, ensure that the workspace is included in the URI.
+
+**Note:** When a template is DELETED, all the associated Scenarios, events, and references of template use in other endpoints will fail. So, ensure that the template is not used anywhere before it is deleted. Whispir **will not** do that check before it deletes the template.
+
+## Using Templates
 
 > Using Templates
 > > The following methods allow you to use the templates that you've created in your Whispir Messages
