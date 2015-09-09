@@ -1,9 +1,46 @@
 # Distribution Lists
 
-> Distribution Lists
-> > Distribution lists can easily be created by executing a POST request to the `/distributionlists` endpoint in Whispir.
-<br/><br/>
-Distribution lists can contain **Contacts**, **Users**, or nested **Distribution Lists** to create any structure that is required within your environment.
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/distributionlists/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.distributionlist-v1+xml
+```
+
+```go
+https://api.whispir.com/distributionlists/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.distributionlist-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/distributionlists/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.distributionlist-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/distributionlists/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.distributionlist-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.distributionlist-v1+xml
+- application/vnd.whispir.distributionlist-v1+json
+
+
+> Methods supported
+
+- GET
+- POST
+- PUT
+- DELETE
+```
+
 
 Whispir's API allows users to categorise their contacts into different groups to simplify the distribution of messages. This allows for 
 
@@ -15,12 +52,7 @@ These logical groups can help to target specific communications to specific peop
 
 Distribution lists can easily be created by executing a `POST` request to the `/distributionlists` endpoint in Whispir.
 
-The following Content-Types are supported:
-
-- application/vnd.whispir.distributionlist-v1+xml
-- application/vnd.whispir.distributionlist-v1+json
-
-##Creating Distribution lists
+Distribution lists can contain **Contacts**, **Users**, or nested **Distribution Lists** to create any structure that is required within your environment.##Creating Distribution lists
 
 > Creating Distribution Lists
 > > Distribution Lists can contain lists of Contacts, Users or other Distribution Lists

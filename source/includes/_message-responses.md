@@ -1,5 +1,43 @@
 # Message Responses
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/messages/{:messageId}/messageresponses/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.messageresponse-v1+xml
+```
+
+```go
+https://api.whispir.com/messages/{:messageId}/messageresponses/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.messageresponse-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/messages/{:messageId}/messageresponses/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.messageresponse-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/messages/{:messageId}/messageresponses/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.messageresponse-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.messageresponse-v1+xml
+- application/vnd.whispir.messageresponse-v1+json
+
+
+> Methods supported
+
+- GET
+```
+
 Recipients of Whispir Messages have the ability to respond directly to the message via the channels that they received the message on.  
 
 If they received the message via SMS, they can respond directly to the SMS message, and this will be visible through the Whispir.io API.

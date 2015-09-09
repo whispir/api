@@ -1,5 +1,45 @@
 # Messages
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/messages/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.message-v1+xml
+```
+
+```go
+https://api.whispir.com/messages/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.message-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/messages/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.message-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/messages/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.message-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.message-v1+xml
+- application/vnd.whispir.message-v1+json
+
+
+> Methods supported
+
+- GET
+- POST
+- DELETE
+```
+
 > Messages
 > > Sample to send an SMS, Email, Voice call, and Web Publishing in one request
 
@@ -1082,7 +1122,7 @@ This file could be saved and uploaded to Whispir's bulk messaging engine.  As a 
 The user then has the option to construct a message using this information, and Whispir will dynamically replace these variables at send time.  For example your message content could be as follows:
 
 <br/>
-###Sending Dynamic Messages
+### Sending Dynamic Messages
 
 The bulk message sending is an easy two-step process.
 
@@ -1131,7 +1171,7 @@ Applications can use this endpoint to store the source files for dynamic message
 
 **Note:** The types of files allowed are - CSV, JSON, XML, Images [JPEG, PNG], and WAV.
 
-Information about the resources endpoint is documented in the **Resources** section of the documentation.
+Information about the resources endpoint is documented in the [Resources](https://whispir.github.io/api/#resources) section of the documentation.
 
 <br/>
 **Step 2: Invoke the bulk message with reference to the resource ID and the desired content**
@@ -1210,9 +1250,9 @@ Content-Type: application/vnd.whispir.bulkmessage-v1+json
 }
 ```
 
-###Dynamic Messaging
+### Dynamic Messaging
 
-###Method Definition and Descriptions 
+#### Method Definition and Descriptions 
 
 <table>
     <thead>
@@ -1307,8 +1347,7 @@ The structure of the Bulk Message is used to define the resource that should be 
                 The id of the callback to be used for responses to this message.<br/>
                 Sample Value: SampleCallback
                 <br/><br/>
-                **Note:** callback IDs are configured by Administrators within the Whispir Platform. 
-
+                <b>Note:</b> callback IDs are configured by Administrators within the Whispir Platform. 
             </td>
         </tr>
     </tbody>
@@ -1468,7 +1507,7 @@ The structure of the Bulk Message is used to define the resource that should be 
     </tbody>
 </table>
 
-###Response Structure
+### Response Structure
 
 If the request was successful, the response contains the information for the calling application to retrieve information about the message.
 
@@ -1485,4 +1524,4 @@ If the request was not successful, the response will contain the information abo
 
 The outcome of this message will be a complete message with placeholder variables @@ replaced with the supplied values.
 
-For more information about sending messages, please consult the documentation under Messaging.
+For more information about retrieving the responses and status of the sent message, refer to [message status](https://whispir.github.io/api/#message-status) below.

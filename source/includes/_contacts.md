@@ -1,5 +1,46 @@
 #Contacts
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/contacts/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.contact-v1+xml
+```
+
+```go
+https://api.whispir.com/contacts/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.contact-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/contacts/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.contact-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/contacts/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.contact-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.contact-v1+xml
+- application/vnd.whispir.contact-v1+json
+
+
+> Methods supported
+
+- GET
+- POST
+- PUT
+- DELETE
+```
+
 Contacts form the core of the Whispir offerings. They make up the base data to which and from all the communications are performed.
 
 The Whispir API provides secure cloud based storage for your contact information.  This can then easily be retrieved by any application or device that requires access, and has permission to do so.
@@ -836,5 +877,4 @@ When requesting the contact information, a simple GET request on the /contact AP
 To get all the details or fields other than the ones given by default, you have to follow the `link` and do another GET request. This can be easily skipped, by asking the API to give you specific fields and data right away in the first `GET \contact` call itself.
 
 This can be done by passing the required fields in the URL via the `fields` parameter. You can also use this in conjunction with the search criteria. An Example use could be to get the mobile  number and the email of all contacts with firstname as 'Sam'.
-
 

@@ -1,5 +1,43 @@
 # Custom Lists
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/customlists/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.customlist-v1+xml
+```
+
+```go
+https://api.whispir.com/customlists/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.customlist-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/customlists/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.customlist-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/customlists/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.customlist-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.customlist-v1+xml
+- application/vnd.whispir.customlist-v1+json
+
+
+> Methods supported
+
+- GET
+```
+
 Custom Lists are user specific translations or preferred options in the various list controls used in the platform tool. These provide the freedom for the user to customize the list options in various modules like Messages, Events. These custom list either can complement or completely overwrite the existing list items.
 
 A quick example -

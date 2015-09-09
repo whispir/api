@@ -1,5 +1,46 @@
 # Response Rules
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/responserules/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.responserule-v1+xml
+```
+
+```go
+https://api.whispir.com/responserules/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.responserule-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/responserules/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.responserule-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/responserules/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.responserule-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.responserule-v1+xml
+- application/vnd.whispir.responserule-v1+json
+
+
+> Methods supported
+
+- GET
+- POST
+- PUT
+- DELETE
+```
+
 Using Response Rules in combination with Message Templates allows users to automatically group responses to messages into different response groups for reporting purposes.
 
 Response Rules are useful when users are sending messages with known responses, e.g. Ratings (1-5), Yes/No, or Accept/Decline.
@@ -166,4 +207,3 @@ After creating a Response Rule, you must create a new Message Template (or updat
 This association of Response Rule to Message Template is performed using the `responseTemplateId` field within the Message Template.
 
 For more information on Creating Message Templates, click <a href="#creating-templates">here</a>.
-

@@ -1,5 +1,43 @@
 #Message Status
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.messagestatus-v1+xml
+```
+
+```go
+https://api.whispir.com/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.messagestatus-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.messagestatus-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.messagestatus-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.messagestatus-v1+xml
+- application/vnd.whispir.messagestatus-v1+json
+
+
+> Methods supported
+
+- GET
+```
+
 Whispir will automatically monitor the status of each message after it has been sent to each recipient.  Using the message status information, you are able to determine who received the message, what exact time they received it, on what message channel (SMS, Email, Voice, Web, Push Notification), whether they replied to the message, what time they replied, and on what messaging channel.
 
 Each message progresses through various states, from Pending to Acknowledged.

@@ -1,5 +1,46 @@
 #Scenarios
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/scenarios/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.scenario-v1+xml
+```
+
+```go
+https://api.whispir.com/scenarios/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.scenario-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/scenarios/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.scenario-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/scenarios/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.scenario-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.scenario-v1+xml
+- application/vnd.whispir.scenario-v1+json
+
+
+> Methods supported
+
+- GET
+- POST
+- PUT
+- DELETE
+```
+
 Scenarios allows users to simplify the message delivery processes through automated one click communications. The process involves creating a fixed message Or a message template combined with a contact or a distribution list. When the scenario is executed, the message is sent to the contacts.
 
 Such use cases are widely useful in emergency notification scenarios where time is of essence. Not just messages (text), one can trigger Email, Voice and Social Media posts too suitable for different target audience as part of the scenario process.
@@ -9,11 +50,6 @@ Such use cases are widely useful in emergency notification scenarios where time 
 The contacts can be picked as a static distribution list or a rule based dynamic distribution list, or just direct available numbers. This improves the effectiveness of the scenario's target group reach.
 
 Not just an emergency, but any scenario where a fixed content/Rich Message has to be sent to a pool of contacts, Whispir's "Scenario" comes very handy.
-
-The following Content-Types are supported:
-
-* application/vnd.whispir.scenario-v1+xml
-* application/vnd.whispir.scenario-v1+json
 
 ## Creating a new Scenario
 

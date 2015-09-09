@@ -1,5 +1,44 @@
 # Activities
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/activities/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.activity-v1+xml
+```
+
+```go
+https://api.whispir.com/activities/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.activity-v1+json
+```
+
+> > - limited to a workspace
+
+```xml
+https://api.whispir.com/workspaces/{:id}/activities/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.activity-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/{:id}/activities/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.activity-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.activity-v1+xml
+- application/vnd.whispir.activity-v1+json
+
+
+> Methods supported
+
+- GET
+- POST
+```
+
 Activities are all the individual changes, tasks, calls, messages.. just about everything performed in a given company workspaces. Each Activity log entry contains information about the workspace, the module(message, email, IVR..), the user who performed it, time stamps, description of the activity, and its status (success, fail) etc.
 
 All of these helps in fulfilling the auditing, standards compliance and also change tracking. For example -

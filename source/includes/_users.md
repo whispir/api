@@ -26,6 +26,21 @@ https://api.whispir.com/workspaces/{:id}/users/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.user-v1+json
 ```
 
+```
+> Resource type
+
+- application/vnd.whispir.user-v1+xml
+- application/vnd.whispir.user-v1+json
+
+
+> Methods supported
+
+- GET
+- POST
+- PUT
+- DELETE
+```
+
 Access to use the Whispir API, Platform and its features is strictly limited to user permission set. One needs to have 
 proper permissions to access all the features provided by the platform, and when using the API, have appropriate permissions to modify the user attributes of themselves or others in their company workspaces.
 

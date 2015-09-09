@@ -1,5 +1,31 @@
 #Workspaces
 
+> API Endpoint
+
+> > - generic
+
+```xml
+https://api.whispir.com/workspaces/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.workspace-v1+xml
+```
+
+```go
+https://api.whispir.com/workspaces/?apikey=<your_api_key>
+Content-Type: application/vnd.whispir.workspace-v1+json
+```
+
+```
+> Resource type
+
+- application/vnd.whispir.workspace-v1+xml
+- application/vnd.whispir.workspace-v1+json
+
+
+> Methods supported
+
+- GET
+- POST
+```
 
 Workspace allows application developers to create new work areas for the varying use cases of their application. They provides different functions that can be provided to users of the application, e.g. creating messages, executing scenarios, or viewing distribution lists. 
 

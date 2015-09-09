@@ -28,6 +28,8 @@ includes:
   - custom-lists
   - users
   - events
+  - resources
+  - imports
   - other
 
 search: true
