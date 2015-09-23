@@ -18,7 +18,7 @@ Content-Type: application/xml
 
 <ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
-    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>   
+    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>
     <from>
         <name>Fred Waters</name> 
         <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
@@ -58,9 +58,15 @@ Callbacks allow custom applications to register URLs with Whispir that are used 
 
 <br/><img src="http://developer.whispir.com/files/Whispir_API_diagram.png"/><br/>
 
-Whispir's Callback Service will forward the content of each message response, along with some associated metadata to a URL that the user has pre-registered to receive this information.  
+Whispir's Callback Service will forward the content of each message response, along with some associated metadata to a URL that the user has pre-registered to receive this information.
 
-**Note:** Whispir does not check for a response from this callback server.  On setup it is expected that the server will respond to a GET request with a 200 OK.  Any error response sent from this callback server during general use is not considered.  Users should not expect callbacks to be re-tried on error.
+**Note:** Whispir does not check for a response from this callback server. On setup, it is expected that the callback server will respond with a 200 OK to a GET request. Any error response sent from this callback server during general use is not considered. Users should not expect callbacks to be re-tried on error.
+
+Some other points to follow -
+
+1. Always use a domain name for the callback. Do not use an IP.
+2. Limit the port to 80 or 443. Do no use any other ports.
+3. Depending on the type chosen 'json' or 'xml' for the Content-Type, whispir would make a similar GET (and subequently POST) calls. So, please ensure that your your web server is configured to handle such MIME type. 
 
 ## Creating new Callbacks
 
@@ -91,7 +97,7 @@ Content-Type: application/vnd.whispir.api-callback-v1+xml
         <undeliverable>enabled</undeliverable>
     </callbacks>
 </ns2:companyapicallback>
-````
+```
 
 ```go
 Content-Type: application/vnd.whispir.api-callback-v1+json
@@ -199,7 +205,7 @@ Content-Type: application/xml
 
 <ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
-    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>   
+    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>
     <from>
         <name>Fred Waters</name> 
         <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
@@ -248,7 +254,7 @@ Content-Type: application/xml
 
 <ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
-    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>   
+    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>
     <from>
         <name>Fred Waters</name> 
         <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
@@ -285,7 +291,7 @@ Content-Type: application/json
 }
 ```
 
-Whispir Callbacks have been designed to be simple, yet secure.  
+Whispir Callbacks have been designed to be simple, yet secure.
 
 In order to make your Callback Server processing much safer, whispir recommends the following security measures:
 
@@ -413,8 +419,8 @@ To retrieve a list of callbacks from the Whispir API you can execute an **HTTP G
 
 You will need to supply one of the following headers (for retrieving JSON or XML):
 
-- `Accept: application/vnd.whispir.api-callback-v1+xml`
-- `Accept: application/vnd.whispir.api-callback-v1+json`
+- Accept: application/vnd.whispir.api-callback-v1+xml
+- Accept: application/vnd.whispir.api-callback-v1+json
 
 An array of Callbacks will be returned to you in the HTTP response body.
 
@@ -486,7 +492,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
-    <subject>Test SMS Message</subject>    
+    <subject>Test SMS Message</subject>
     <body>This is the body of my test SMS message</body>
     <callbackId>Sample Callback 1</callbackId>
 </ns2:message> 
@@ -502,11 +508,11 @@ Any responses to the above sent message will be forwarded back to the URL within
 > > Whispir will automatically send notifications to your nominated email address in the event of a failure to access your callback server.
 
 ```
-Dear Customer,  
+Dear Customer,
 
-Your callback <callback_id> failed on <date> with response: <response>.  
+Your callback <callback_id> failed on <date> with response: <response>.
 
-The callback that failed is as follows:  
+The callback that failed is as follows:
 
 URL: https://yourserver/callback.php?auth=12345 
 Location: https://api.whispir.com/messages/ABC4857BCCF484575FCA 
@@ -516,7 +522,7 @@ Email: me@example.com
 Channel: SMS 
 Content: Yes, I accept. Will I need to bring steel cap boots? 
 
-Please take the necessary steps to ensure your callback is configured correctly.  
+Please take the necessary steps to ensure your callback is configured correctly.
 
 If this callback URL continues to fail, Whispir may remove this until the service is resolved. 
 
