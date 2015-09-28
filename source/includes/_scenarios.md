@@ -51,6 +51,7 @@ The contacts can be picked as a static distribution list or a rule based dynamic
 
 Not just an emergency, but any scenario where a fixed content/Rich Message has to be sent to a pool of contacts, Whispir's "Scenario" comes very handy.
 
+
 ## Creating a new Scenario
 
 > Creating Scenario

@@ -52,7 +52,9 @@ These logical groups can help to target specific communications to specific peop
 
 Distribution lists can easily be created by executing a `POST` request to the `/distributionlists` endpoint in Whispir.
 
-Distribution lists can contain **Contacts**, **Users**, or nested **Distribution Lists** to create any structure that is required within your environment.##Creating Distribution lists
+Distribution lists can contain **Contacts**, **Users**, or nested **Distribution Lists** to create any structure that is required within your environment.
+
+##Creating Distribution lists
 
 > Creating Distribution Lists
 > > Distribution Lists can contain lists of Contacts, Users or other Distribution Lists
