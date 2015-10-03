@@ -24,15 +24,15 @@ HTTP/1.1 401 Unauthorized
 HTTP/1.1 403 Forbidden
 ```
 
-The Whispir.io API supports multiple methods of authentication to cater for varying client needs.  Authentication is necessary for users of the API to ensure that only valid and legal requests are processed by the Whispir messaging engine.
+The Whispir.io API supports multiple methods of authentication to cater for varying client needs. Authentication is necessary for users of the API to ensure that only valid and legal requests are processed by the Whispir messaging engine.
 
 ### Basic Authentication over HTTPS
 
 The basic authentication process is offered for use with clients that already have an ‘up and running’ application, and would like to integrate Whispir as a messaging provider in a quick and simple fashion.
 
-Basic access authentication over HTTPS involves the application client sending an encoded Username and Password with when requesting resources from the server.
+Basic access authentication over HTTPS involves the application client sending an encoded Username and Password when requesting resources from the server.
 
-Clients will also be required to provide the API Key that is provided when the application is registered within Mashery.  This API Key is used to determine the application that is making the request, and whether it is allowed to make requests, it is still within the request thresholds, and is a valid API Key. 
+Clients will also be required to provide the API Key that is provided when the application is registered within Mashery. This API Key is used to determine the application that is making the request, and whether it is allowed to make requests, it is still within the request thresholds, and is a valid API Key. 
 
 Once this has been confirmed, the request is forwarded on to Whispir for Basic authentication processing.
 

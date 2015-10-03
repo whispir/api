@@ -54,7 +54,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
-    <subject>Test Message</subject>    
+    <subject>Test Message</subject>
     <body>This is the body of my test SMS message</body>
     <email>
         <body>This is the body of my test Email message</body>
@@ -264,7 +264,7 @@ Accept: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
-    <subject>Test SMS Message</subject>    
+    <subject>Test SMS Message</subject>
     <body>This is the body of my test SMS message</body>
 </ns2:message> 
 ```
@@ -343,7 +343,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
-    <subject>Test Email Message</subject>    
+    <subject>Test Email Message</subject>
     <email>
         <body>Email Body goes here.</body>
         <footer>Email signature goes here.</footer>

@@ -762,7 +762,7 @@ So the standard process for updating a contact record is -
 
 The response to the PUT request upon success is usually a `204` with no content being provided.
 
-### Deleting a contact
+## Deleting a contact
 
 > Deleting a contact
 > > The following statement allows users to delete contacts using the Whispir API.  Please note, this contact will only be deleted from the current workspace.  Any mappings to other workspaces will need to be deleted there.  There is no **Delete All** support within the Whispir API.
