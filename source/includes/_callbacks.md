@@ -38,7 +38,7 @@ Content-Type: application/xml
 Content-Type: application/json
 {
     "messageId":"ABC4857BCCF484575FCA",
-    "location" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
+    "messageLocation" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
     "from":{
           "name":"Fred Waters",
           "mri":"Fred_Waters.528798.Sandbox@Contact.whispir.com",
@@ -205,7 +205,7 @@ Content-Type: application/xml
 
 <ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
-    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>
+    <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <from>
         <name>Fred Waters</name> 
         <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
@@ -226,7 +226,7 @@ Content-Type: application/json
 
 {
   "messageid" : "ABC4857BCCF484575FCA",
-  "location" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
+  "messagelocation" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
   "from" : {
     "name" : "Fred Waters",
     "mri" : "Fred_Waters.528798.Sandbox@Contact.whispir.com",
@@ -254,7 +254,7 @@ Content-Type: application/xml
 
 <ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
-    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>
+    <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <from>
         <name>Fred Waters</name> 
         <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
@@ -275,7 +275,7 @@ Content-Type: application/json
 
 {
   "messageid" : "ABC4857BCCF484575FCA",
-  "location" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
+  "messageLocation" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
   "from" : {
     "name" : "Fred Waters",
     "mri" : "Fred_Waters.528798.Sandbox@Contact.whispir.com",
@@ -539,3 +539,98 @@ Whispir will automatically send an email in the following circumstances:
 - If the authorization to the Callback Server fails (e.g. returns an HTTP 400 level error) 
 - If the Callback Server does not connect within 5 seconds.
 - If the Callback Server does not return a response within 60 seconds.
+
+## Example Flow
+
+Imagine a workflow where the same user gets more than 1 message in a quick time frame, how does whispir know "to which message did this user respond to ?". 
+
+Explanation -
+
+
+ - For communications sent via Email, or web, Whispir has a clear 1:1 relationship, ensuring each outbound communication is unique, with any reply to that communication (regardless of the order of response, or length of time between message send and response) be threaded against the original outbound message.
+
+ - For communications sent via SMS, things get slightly more complex.  Whispir uses a pool of mobile numbers, with Whispir retaining knowledge as to which recipient SMS was sent which message via whispir pool number.  This provides Whispir the ability to know which reply from which recipient is for which initial outbound message – it’s pretty clever. The only challenge is where you have very high volumes of messages being issued to the same recipient (e.g. a new sms sent to the same number every 5 minutes), and the list of pool numbers is exhausted with Whispir needing to re-use pool numbers.  This is a highly unlikely communication use case, but a principal which needs to be understood.
+
+```
+{
+	"to": "$mobile",
+	"subject": "Whispir",
+	"body": "Hello there. Reply Y",
+	"callbackId": "callbackA"
+}
+
+{
+	"to": "$mobile",
+	"subject": "Whispir",
+	"body": "Goodbye. Reply Y",
+	"callbackId": "callbackB"
+}
+```
+
+### Scenario 1:
+
+Assuming in a span of 10 seconds, these 2 SMSes were sent
+
+If user $mobile replies “Y”, which callbackId would be called ?
+
+ - Two separate messages are sent to the same mobile number, with the both including a callbackid. 
+ - Each message will have been received by the recipient via two different sender numbers.
+ - Assuming the recipient responds to the first message they received, Whispir will trigger the callback ‘callbackA’. 
+ - If they respond to the second message they received, Whispir will trigger the callback ‘callbackB’
+
+
+### Scenario 2:
+
+> > SMS sent:
+
+```
+{
+	"to": "$mobile",
+	"subject": "Whispir",
+	"body": "Hello there. Reply Y",
+	"callbackId": "callbackA"
+}
+```
+> > Another SMS sent half hour later (#scenario 2):
+
+```
+{
+	"to": "$mobile",
+	"subject": "Whispir",
+	"body": "Goodbye. Reply Y",
+	"callbackId": "callbackB"
+}
+```
+
+If user $mobile replies “Y”, which callbackId would be called?
+
+ - Two separate messages are sent to the same mobile number with a gap of 30 mins, with the both including a callbackid. 
+ - Each message will have been received by the recipient via two different sender numbers.
+ - Assuming the recipient responds to the first message they received, Whispir will trigger the callback ‘callbackA’.
+ - If they respond to the second message they received, Whispir will trigger the callback ‘callbackB’
+
+
+### Scenario 3:
+
+> > SMS sent (#scenario 3):
+
+```
+{
+	"to": "$mobile",
+	"subject": "Whispir",
+	"body": "Hello there. Reply Y",
+	"callbackId": "callbackA"
+}
+```
+
+User $mobile replies “Y” half hour later, would the callbackId still be relevant?
+
+ - Assuming this was the only message sent to the recipient in the 30 minutes, the response will trigger the callback ‘callbackA’
+
+How about 1 hour, 2 hours later?
+
+ - The duration between when the message is sent, and the reply received has no significance.
+ - The challenge in matching outbound messages and their inbound responses is only relevant when the entire pool of numbers (which continues to grow) is exhausted.
+ - Recipients can respond days (max 7) after the message send out occurred and Whispir will still track the correct message that the reply is relevant to.
+
+
