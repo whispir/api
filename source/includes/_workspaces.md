@@ -90,7 +90,8 @@ Note: There is no limit to the amount of workspaces each API user can create.
 		<tr>
 			<td style="text-align: right; font-weight: bold;">projectNumber:</td>
 			<td><strong>String</strong><br/>
-				Specifies the ID of the workspace, generally not used.
+				Specifies the reference ID for the workspace from the User Side. Generally not used. <br>
+<b>Note</b>: This is not the actual workspace ID. It is just a custom reference ID given by you for your own purposes.
 			</td>
 		</tr>
 		<tr>
@@ -253,7 +254,8 @@ Each of these workspace will provide the following information:
 		<tr>
 			<td style="text-align: right; font-weight: bold;">projectNumber:</td>
 			<td><strong>String</strong><br/>
-				Specifies the ID of the workspace, generally not used.
+				Specifies the reference ID for the workspace from the User Side. Generally not used. <br>
+<b>Note</b>: This is not the actual workspace ID. It is just a custom reference ID given by you for your own purposes.
 			</td>
 		</tr>
 		<tr>
