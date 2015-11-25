@@ -409,7 +409,7 @@ When creating an account, the following fields are mandatory:
   </tbody>
 </table>
 
-```
+
 ## Retrieving Users
 
 > Retrieving a list of Users
@@ -469,7 +469,7 @@ Accept: application/vnd.whispir.user-v1+json
 
   ]
 }
-````
+```
 
 Users can be retrieved quite easily with a GET request to the `/users`. A simple /users will result in all users being retrieved with all of their basic identity information. The result will only be limited to users with ACTIVE status. User's with other status will not be listed in the results.
 
@@ -520,19 +520,13 @@ Accept: application/vnd.whispir.user-v1+json
 }
 ```
 
-To get details of a specific user, the URI must be passed with the ID of the user. So, the URI shall be:
-
-`https://api.whispir.com/users/AF48A9EC3F02E43C` 
-
+To get details of a specific user, the URI must be passed with the ID of the user. So, the URI shall be: `https://api.whispir.com/users/AF48A9EC3F02E43C` 
 Where `AF48A9EC3F02E43C` is the user id.
 
 ### Retrieving workspace users
 
 > Retrieving list of users having access on a workspace
-
-> > To retrieve the list of users, the request is made to via GET to `/workspaces/{:id}/users` endpoint.
-> > By default there will be a limit of 20 users returned in a request.
-> > The user will use the limit and offset query parameters to determine how many users they would like to receive. (default when not provided will be limit=20 & offset=0)
+> > 
 
 ```
 HTTP 1.1 GET https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/?apiKey=<your_api_key>
@@ -618,6 +612,12 @@ Accept: application/vnd.whispir.user-v1+json
   ]
 }
 ```
+
+To retrieve the list of users, the request is made to via GET to `/workspaces/{:id}/users` endpoint.
+
+By default there will be a limit of 20 users returned in a request.
+
+The user will use the limit and offset query parameters to determine how many users they would like to receive. (default when not provided will be limit=20 & offset=0)
 
 ## Searching for users
 
@@ -799,6 +799,49 @@ The delete a user if successful shall respond with a `204 No Content`.
 
 ### Activating an User after the creation
 
+> Activating an newly created user using the "user state machine" rules
+> > The following steps have to followed in exact order.
+
+> > Step 1
+
+```
+HTTP 1.1 POST https://api.whispir.com/users?apikey=<your_api_key>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+
+{user object}
+```
+
+> > capture the Location header value
+
+
+> > Step 2
+
+```
+HTTP 1.1 GET https://api.whispir.com/users/{:id}?apikey=<your_api_key>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+> > This step retreives the newly created user object
+
+> > Step 3
+
+```
+HTTP 1.1 PUT https://api.whispir.com/users/{:id}?apikey=<your_api_key>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+
+{userobject}
+status : 'INACTIVE'
+```
+
+> > Step 4
+
+```
+HTTP 1.1 PUT https://api.whispir.com/users/{:id}?apikey=<your_api_key>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+
+{userobject}
+status : 'ACTIVE'
+```
+
 An user when created is assigned the PENDING status. SO, to set the user to ACTIVE, one has to follow the "user state machine" rules. Here's how we do it - 
 
 1. POST /users for user account creation. Capture the `Location` header value which is the unique link to the User record. This is used in Step 2
@@ -809,44 +852,6 @@ An user when created is assigned the PENDING status. SO, to set the user to ACTI
 **Note:** The status text is case sensitive. Lowercase or mixed case text is invalid. Always use uppercase.
 
 **Ex:** active != ACTIVE; inActive != INACTIVE
-
-> Activating an newly created user using the `user state machine` rules
-> > The following steps have to followed in exacct order.
-
-> > Step 1
-```
-HTTP 1.1 POST https://api.whispir.com/users?apikey=<your_api_key>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
-
-[user object]
-```
-> > capture the Location header value
-
-
-> > Step 2
-```
-HTTP 1.1 GET https://api.whispir.com/users/{:id}?apikey=<your_api_key>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
-```
-> > This step retreives the newly created user object
-
-> > Step 3
-```
-HTTP 1.1 PUT https://api.whispir.com/users/{:id}?apikey=<your_api_key>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
-
-[userobject]
-status : 'INACTIVE'
-```
-
-> > Step 4
-```
-HTTP 1.1 PUT https://api.whispir.com/users/{:id}?apikey=<your_api_key>
-Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
-
-[userobject]
-status : 'ACTIVE'
-```
 
 ## Assigning an user to workspace
 
