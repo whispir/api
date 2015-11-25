@@ -784,8 +784,6 @@ For example;
 
 <img src="https://developer.whispir.com/files/rpm-iphone-shift.jpg" />
 
-Visit our demo site <a href="http://demo.whispir.com/rich-message.php" target="_blank">here</a> for lots of samples of rich messages.
-
 The inclusion of the `@@web_link@@` tag anywhere in the body of the SMS or Email will automatically generate a URL and embed any content specified in the web body of the same message.
 
 ### Requirements to use Rich Messaging
