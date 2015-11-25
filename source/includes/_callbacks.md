@@ -1,6 +1,14 @@
 #Callbacks
 
-Whispir utilises API Callbacks to send simple notifications to different registered services in the event that some change has occurred on the Whispir Platform.
+Whispir utilises API Callbacks to send simple notifications to different registered services in the event that some change has occurred on the Whispir Platform. Callback in Whispir is akin to Web Hooks. The benefits of callback are - 
+
+* Whispir will instantly notify your callback server when there is change occured in Whispir platform.
+* You save on your daily API call limits by NOT having to call the /messageresponses or /messagestatus endpoints.
+* Response based workflows can be built quickly and effectively.
+
+*Callback word is termed to make understand the point that Whispir will call you back on your callback server.* 
+
+So, it is you who creates an endpoint (a page in your application) that Whispir shall callback upon an event happening. That endpoint can simply be your existing application (as mentioned earlier) or another application that needs/processes the response information. 
 
 ## Callback Overview
 
@@ -64,9 +72,11 @@ Whispir's Callback Service will forward the content of each message response, al
 
 Some other points to follow -
 
-1. Always use a domain name for the callback. Do not use an IP.
-2. Limit the port to 80 or 443. Do no use any other ports.
-3. Depending on the type chosen 'json' or 'xml' for the Content-Type, whispir would make a similar GET (and subequently POST) calls. So, please ensure that your your web server is configured to handle such MIME type. 
+1. Always use a domain name for the callback. Do NOT use an IP.
+2. Ensure that your callback server is reachable on the internet. It should not be `localhost` or an intranet only application that cannot be reached from the WWW.
+3. Limit the port to 80 or 443. Do no use any other ports.
+4. Depending on the type chosen 'json' or 'xml' for the Content-Type, whispir would make a similar GET (and subsequently POST) calls. So, please ensure that your your web server is configured to handle such MIME type. 
+5. Most importantly, if your application infrastructure is behind a firewall, then make sure that the firewall allows an incoming POST request. Ensure that atleast Whispir domain is whitelisted for this purpose.
 
 ## Creating new Callbacks
 
@@ -186,14 +196,21 @@ The following table describes the fields that can be used within the request.
     </tbody>
 </table>
 
+*Note:*
+
+1. The callback server must be expecting and accepting both GET and POST requests.
+2. During the callback creation, Whispir shall make a GET request to ensure the callback URL provided is valid. The responseCode for this request should be `200`. Any other code is considered a failure and the callback creation will fail.
+3. This is the only time a GET request is made. Subsequent requests (callbacks) will all be POST requests.
+
 ### Callback Authorization
 
 > Callback Authorization
 > > Callback Servers should validate that the inbound request they are receiving is actually coming from Whispir.<br/><br/>
-> > Callbacks can be authorized using one of two methods: **HTTP Header**, or **URL Query Parameter**
 
 > > **HTTP Header Auth Token**
 > > <br/>Users can specify their Authorization token as an HTTP Header. Whispir will add the **X-Whispir-Callback-Key** Header to the request.
+
+> > Below is an example of callback made by Whispir. The example shows the response object format that will be sent to your callback server.
 
 ```
 HTTP 1.1 POST https://yourserver/callback.php
@@ -297,7 +314,7 @@ In order to make your Callback Server processing much safer, whispir recommends 
 
  - Use SSL on your Callback URL
  - IP Whitelisting for Whispir's IP address
- - Use a unique token
+ - Use an unique token
 
 The unique token should be an alphanumeric string generated and assigned specifically for Whispir Callbacks. 
 
