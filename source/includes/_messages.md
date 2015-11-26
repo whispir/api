@@ -685,7 +685,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
-    <subject>Test Rich Message</subject>    
+    <subject>Test Rich Message</subject>
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
     <web>
         <type>text/html</type>
@@ -731,7 +731,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
-    <subject>Test Rich Message</subject>    
+    <subject>Test Rich Message</subject>
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
     <web>
         <type>text/html</type>
@@ -1192,7 +1192,7 @@ Content-Type: application/vnd.whispir.bulkmessage-v1+xml
       <emailMappingField/>
       <voiceMappingField>
     </resource>
-    <messageTemplateId>  
+    <messageTemplateId>
     <subject></subject>
     <body></body>
     <email>
@@ -1505,21 +1505,60 @@ The structure of the Bulk Message is used to define the resource that should be 
     </tbody>
 </table>
 
-### Response Structure
+## Response Structure
 
-If the request was successful, the response contains the information for the calling application to retrieve information about the message.
-
-> > If the dynamic message was successful, the following response will be received.
+> > If the /message call is successful, the following response will be received.
 
 ```
 HTTP 1.1 202 Accepted
-Location: https://api.whispir.com/messages/4FBBC384BCE3DAABFE3
+Location: https://api.whispir.com/messages/4FBBC384BCE3DAABFE3?apikey=<your_api_key>
 
 Your request has been accepted for processing.
 ```
 
+> > The Location value in the Header contains the messageId (for the sent message) as shown in the response above.
+
+If the request was successful, the response contains the information for the calling application to retrieve information about the message.
+
 If the request was not successful, the response will contain the information about why the request could not be processed.  This will be as per the standard Whispir API response code rules.
 
-The outcome of this message will be a complete message with placeholder variables @@ replaced with the supplied values.
+In case of a dynamic message, the outcome of this message will be a complete message with placeholder variables @@ replaced with the supplied values.
 
-For more information about retrieving the responses and status of the sent message, refer to [message status](https://whispir.github.io/api/#message-status) below.
+For more information about retrieving the responses and status of the sent message, refer to [message status](/#message-status) below.
+
+## Recipient Information
+
+Using the Whispir API, users can send message to either ad-hoc or predefined recipients. 
+
+The details below describe how these can be used in the `<to>` field for any type of message.
+
+**For ad-hoc recipients:**
+
+Any valid E-mail address
+
+ * <to>jsmtih@test.com</to>
+ 
+Any valid Mobile number for SMS or Voice calls (countrycode prefixed)
+
+ * <to>61423589146,6596624876</to>
+
+Any valid Landline number for Voice calls only (countrycode prefixed)
+
+ * <to>6197468794</to>
+
+
+**For pre-entered Whispir recipients:**
+
+Contacts can be used as a message recipient simply by specifying any valid Whispir Contact MRI
+
+ * <to>John_Smith.782749@Contact.whispir.com</to>
+
+Users can be used as a message recipient simply by specifying any valid Whispir User MRI
+
+ * <to>John_Smith@User.whispir.com</to>
+
+Distribution Lists can be used as a message recipient simply by specifying any valid Whispir Distribution List MRI
+
+ * <to>Crisis_Management.Critical_Incident_Management@list.project.whispir.com</to>
+
+Each of these can be found by using the Whispir API to search for the resource type and locate the MRI field in the response.
