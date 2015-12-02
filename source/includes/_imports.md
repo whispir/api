@@ -103,9 +103,9 @@ These two stages are further explained below.
 
 ### Create a resource specifying the contact information
 
-Applications can upload a valid CSV, XML or JSON resource containing the contact information that will be imported into the Whispir Platform. Whispir will return the resource ID which can be used to import or update contacts within a workspace through the imports endpoint as described below.
+> Sample Data File
 
-#### Request Structure
+> > The following data file could be produced or created from data in your internal system that needs to be imported into Whispir.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -152,6 +152,20 @@ Applications can upload a valid CSV, XML or JSON resource containing the contact
 }
 ```
 
+> > The data could alternatively be provided in a CSV format
+
+```
+firstName,lastName,workEmailAddress1,workMobilePhone1,workCountry,timezone
+John,Smith,john.smith@testcompany.com,61423456789,Australia,+10
+Jane,Smith,jane.smith@testcompany,com,61498765432,Australia,+10
+```
+
+> > You can then use the `/resources` endpoint to upload this information as a Resource in Whispir.
+
+Applications can upload a valid CSV, XML or JSON resource containing the contact information that will be imported into the Whispir Platform. Whispir will return the resource ID which can be used to import or update contacts within a workspace through the imports endpoint as described below.
+
+#### Request Structure
+
 Firstly, the application needs to upload a resource using the Creating Resources.
 
 The resource that needs to be provided for contact importing should be in one the following format:
@@ -160,23 +174,15 @@ The resource that needs to be provided for contact importing should be in one th
 - JSON
 - CSV
 
-```
-> > CSV format
-
-firstName,lastName,workEmailAddress1,workMobilePhone1,workCountry,timezone
-John,Smith,john.smith@testcompany.com,61423456789,Australia,+10
-Jane,Smith,jane.smith@testcompany,com,61498765432,Australia,+10
-```
-
 Once this resource has been imported with the appropriate mime type, the application can reference this resource within the import request.
 
 ### Import a resource using the imports endpoint
 
-```
 > Import
 
 > > Doing an import by mapping the respective data columns to contact fields
 
+```
 HTTP 1.1 POST https://api.whispir.com/imports?apikey=DFD0FD90u809SDF90832FDS
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
 Accept: application/vnd.whispir.import-v1+json
@@ -186,11 +192,11 @@ Accept: application/vnd.whispir.import-v1+json
     "importType" : "contact",
     "importOptions": {
         "fieldMapping" : {
-            "firstName": "name",
-            "lastName": "surname",
-            "workMobilePhone1": "work_mobile",
-            "country": "Australia",
-            "timezone": "+10"
+            "firstName": "firstName",
+            "lastName": "lastName",
+            "workMobilePhone1": "workEmailAddress1",
+            "workCountry": "workCountry",
+            "timezone": "timezone"
         },
         "importMode" : "replace"
     }
@@ -198,9 +204,9 @@ Accept: application/vnd.whispir.import-v1+json
 }
 ```
 
-```
 > > If the request was successful, the response contains the information for the calling application to retrieve information about the import process that has been started.
 
+```
 ...
 HTTP 1.1 202 Accepted
 ...
@@ -294,10 +300,8 @@ Once the application has an appropriate resource ID to use within the import end
 			</td>
 		</tr>
 		<tr>
-			<td style="text-align: left; font-weight: bold;" colspan="2">importMode</td>
-		</tr>
-		<tr>
-			<td colspan="2">
+			<td style="text-align: right; font-weight: bold;">importMode</td>
+			<td>
 				Description
 				<ul>
 					<li>
@@ -319,10 +323,8 @@ Once the application has an appropriate resource ID to use within the import end
 			</td>
 		</tr>
 		<tr>
-			<td style="text-align: left; font-weight: bold;" colspan="2">fieldMapping</td>
-		</tr>
-		<tr>
-			<td colspan="2">
+			<td style="text-align: right; font-weight: bold;">fieldMapping</td>
+			<td>
 				Description
 				<ul>
 					<li>
@@ -435,7 +437,7 @@ The complete listing of Contact fields are defined within the [contacts](https:/
 				</ul>
 				Sample value
 				<ul>
-					<li>Australia</li>
+					<li>workCountry</li>
 				</ul>
 			</td>
 		</tr>
@@ -456,7 +458,7 @@ The complete listing of Contact fields are defined within the [contacts](https:/
 				</ul>
 				Sample value
 				<ul>
-					<li> +10 </li>
+					<li>timezone</li>
 				</ul>
 			</td>
 		</tr>
