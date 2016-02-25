@@ -2,39 +2,46 @@
 
 > API Endpoint
 
-> > - generic
+> > The following calls describe how to access messages from within your workspaces
 
 ```xml
+<!-- From the default workspace -->
+
 https://api.whispir.com/messages/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
+// From the default workspace
+
 https://api.whispir.com/messages/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.message-v1+json
 ```
 
-> > - limited to a workspace
-
 ```xml
+<!-- Or from a defined workspace -->
+
 https://api.whispir.com/workspaces/{:id}/messages/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
+// Or from a defined workspace
+
 https://api.whispir.com/workspaces/{:id}/messages/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.message-v1+json
 ```
 
-```
-> Resource type
+> > The following resource types are supported for messages.
 
+```
 - application/vnd.whispir.message-v1+xml
 - application/vnd.whispir.message-v1+json
+```
 
+> > The following methods are supported for the messages endpoint.
 
-> Methods supported
-
+```
 - GET
 - POST
 - DELETE

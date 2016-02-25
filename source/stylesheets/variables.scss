@@ -52,7 +52,7 @@ $lang-select-pressed-text: #919191; // color of language tab text when mouse is 
 
 // SIZES
 ////////////////////
-$nav-width: 200px; // width of the navbar
+$nav-width: 220px; // width of the navbar
 $examples-width: 60%; // portion of the screen taken up by code examples
 $logo-margin: 35px; // margin between nav items and logo, ignored if search is active
 $logo-height: 180px; // Height of the logo image
@@ -69,13 +69,13 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 // FONTS
 ////////////////////
 %default-font {
-  font-family: Arial,sans-serif;
+  font-family: "proxima-nova", "Helvetica Neue", sans-serif;
   font-size: 13px;
 }
 
 %header-font {
   @extend %default-font;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 %code-font {

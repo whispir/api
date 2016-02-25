@@ -36,7 +36,7 @@ Now that you've got your App API key, you can check your connectivity to the API
 
 > Connect to the API
 
-> > Using the information on the left, you can execute the following curl statment: 
+> > Using the information on the left, you can execute the following curl statement: 
 
 ```shell
 curl -H "Authorization: <Your Authorization Header>" 

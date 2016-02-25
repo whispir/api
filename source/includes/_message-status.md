@@ -2,39 +2,46 @@
 
 > API Endpoint
 
-> > - generic
+> > The following calls describe how to access message status information from within your message resource
 
 ```xml
+<!-- From the default workspace -->
+
 https://api.whispir.com/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.messagestatus-v1+xml
 ```
 
 ```go
+//From the default workspace
+
 https://api.whispir.com/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.messagestatus-v1+json
 ```
 
-> > - limited to a workspace
-
 ```xml
+<!-- or from a defined workspace -->
+
 https://api.whispir.com/workspaces/{:id}/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.messagestatus-v1+xml
 ```
 
 ```go
+//or from a defined workspace
+
 https://api.whispir.com/workspaces/{:id}/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.messagestatus-v1+json
 ```
 
-```
-> Resource type
+> > The following resource types are supported for messages status
 
+```
 - application/vnd.whispir.messagestatus-v1+xml
 - application/vnd.whispir.messagestatus-v1+json
+```
 
+> > The following methods are supported for the message status endpoint
 
-> Methods supported
-
+```
 - GET
 ```
 
