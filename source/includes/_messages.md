@@ -418,7 +418,7 @@ Only 4 fields are required in order to send an email message.
 3. Body - the content of the email (either HTML or Plain Text content).
 4. Type - either 'text/plain' or 'text/html' to describe the content of the message.
 
-###Whispir's support of Rich (HTML) Emails
+### Whispir's support of Rich (HTML) Emails
 
 > > **Sending Emails with Attachments**
 
@@ -507,7 +507,7 @@ AABJRU5ErkJggg=="
 * Images must be referenced through absolute web urls, any other mechanism will not work on most email clients.
 <br/><br/>**Note:** Whispir does not host images for clients, you must use another hosting service and reference the URL in your Whispir request payload.
 
-###Including attachments in e-mail messages
+### Including attachments in e-mail messages
 
 The Whispir API provides users with the ability to compose e-mail messages that also contain message attachments.
 
@@ -515,7 +515,7 @@ Attachments can be of any type (e.g. PDF, Images, Documents), and can be up to 1
 
 Attachments must be provided in the payload of the message.  URLs can be referenced in the Email, but will not be added as message attachments.
 
-###Notes:
+### Notes:
 
 * attachmentName - The name of the file being attached (mandatory)
 * attachmentDesc - An optional description of the file being attached
@@ -628,7 +628,7 @@ Whispir supports both **Text to Speech** and **Pre-recorded WAV file** approache
 
 Using Whispir's Voice Module, you can easily connect all recipients onto a single bridged call, simplifying your teleconferences and ensuring your message gets through.
 
-###Notes:
+### Notes:
 
 * The Subject field is Mandatory.
 * The Body field is Mandatory.
@@ -668,6 +668,92 @@ Your account must be enabled to use the Voice capability within Whispir for this
 <aside class="notice">
 Whispir's Voice Module doesn't include a Conference Call service.  User's can easily integrate existing conference call services using the fields provided.
 </aside>
+
+### Using custom WAV files as the content for Voice Calls
+
+The Whispir API provides users with the ability to compose voice calls using Text-To-Speech (TTS) as well as allowing users to provide custom WAV files to be played over the phone.
+
+Attachments must be WAV files and can be up to 10MB in size (maximum for all attachments).
+
+Each Voice Call is made up of four parts:
+
+ 1. Message Introduction - Either TTS or WAV file, mandatory for all messages
+ 2. Message Acceptance - Requests the recipient to press a button to accept the message
+ 3. Message Content - The concatenation of the Message Subject and Message Body (either TTS or WAV file)
+ 4. Message Response - Allows the recipient to provide an acknowledgement to the message, either default options or based off a response rule
+
+```
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>61423568958</to>
+    <subject>Test voice call with attachment</subject>    
+    <voice>
+        <body>Will be replaced by the voicebody.wav file</body>
+        <header>Will be replaced by the voiceintro.wav file</header>
+        <type>ConfCall:,ConfAccountNo:,ConfPinNo:,ConfModPinNo:,Pin:</type>
+        <resources>
+            <attachment>
+                <attachmentName>Introduction.wav</attachmentName>
+                <attachmentDesc>voiceintro.wav</attachmentDesc>
+                <deferUri>...</deferUri>
+            </attachment>
+            <attachment>
+                <attachmentName>Body.wav</attachmentName>
+                <attachmentDesc>voicebody.wav</attachmentDesc>
+                <deferUri>...</deferUri>
+            </attachment>
+        </resources>
+    </voice>
+</ns2:message> 
+```
+
+```go
+Content-Type: application/vnd.whispir.message-v1+json
+
+
+{
+    "to" : "61423568958",
+    "subject" : "Test voice call with attachments",
+    "voice" : {
+        "body" : "Will be replaced by the voicebody.wav file",
+        "header" : "Will be replaced by the voiceintro.wav file",
+        "type" : "ConfCall:,ConfAccountNo:,ConfPinNo:,ConfModPinNo:,Pin:",
+        "resources" : {
+            "attachment" : [{
+                "attachmentName" : "Introduction.wav",
+                "attachmentDesc" : "voiceintro.wav",
+                "deferUri" : "..."
+            },{
+                "attachmentName" : "Body.wav",
+                "attachmentDesc" : "voicebody.wav",
+                "deferUri" : "..."
+            }]
+        }
+    }
+}
+```
+
+#### WAV File Criteria
+
+Before a WAV file will be played, it needs to conform to a certain criteria. 
+
+ - All WAV files must be 8bit, 8000Hz, 1ch, 64kbps MAX.
+ - If the WAV is supplied outside of these criteria, the TTS will be used instead.  It is vital that TTS is provided even when using WAV files.
+
+### Notes:
+
+* attachmentName - The name of the file being attached (mandatory)
+* attachmentDesc - For the WAV file to be played as the introduction, this must be voiceintro.wav
+* attachmentDesc - For the WAV file to be played as the body, this must be voicebody.wav
+* deferUri - The base64 representation of the WAV file being played
+* in case of JSON, The attachment element is also an array, so be sure to add the square bracket in there!
 
 ## Rich Messages
 
@@ -898,6 +984,119 @@ Whispir can automatically publish content to your pre-configured Twitter and Fac
 
 For more information about configuring Social Publishing, please contact <a href="mailto:support@whispir.io">support@whispir.io</a>.
 
+
+## Schedule Delivery
+
+> Sending messages at a later date
+> > ONCE
+
+```
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+    <to>john.smith@test.com</to>
+    <subject>Test scheduled e-mail message</subject>
+    <email>
+        <body>This is my scheduled content</body>
+        <type>text/plain</type>
+    </email>
+    <messageType>SCHEDULED</messageType>
+    <scheduleType>ONCE</scheduleType>
+    <scheduleDate>14/02/2017 15:55</scheduleDate>
+</ns2:message>
+```
+
+```go
+Content-Type: application/vnd.whispir.message-v1+json
+
+{
+    "to" : "john.smith@test.com",
+    "subject" : "Test scheduled e-mail message",
+    "email" : {
+        "body" : "This is my scheduled content",
+        "type" : "text/plain"
+    },
+    "messageType" : "SCHEDULED",
+    "scheduleType" : "ONCE",
+    "scheduleDate" : "14/02/207 15:55"
+}
+```
+
+### Scheduling messages to be delivered later
+
+Using the Whispir API, users can schedule messages to be sent later.
+
+Users can configure the schedule of message delivery as part of the message sendout.
+
+For example. the code will schedule a single message to be delivered at 3:55pm on the 14th February 2017.
+
+* Using this method, messages can be easily scheduled so that the message is delivered when the recipient requires it.
+
+### Scheduling messages for repeated delivery
+
+> > REPEAT
+
+```
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+    <to>john.smith@test.com</to>
+    <subject>Test scheduled e-mail message</subject>
+    <email>
+        <body>This is my scheduled content</body>
+        <type>text/plain</type>
+    </email>
+    <messageType>SCHEDULED</messageType>
+    <scheduleType>REPEAT</scheduleType>
+    <scheduleDate>14/02/2017 15:55</scheduleDate>
+    <repetitionCount>10</repetitionCount>
+    <repeatDays>0</repeatDays>
+    <repeatHrs>1</repeatHrs>
+    <repeatMin>0</repeatMin> 
+</ns2:message>
+```
+
+```go
+Content-Type: application/vnd.whispir.message-v1+json
+
+{
+    "to" : "john.smith@test.com",
+    "subject" : "Test scheduled e-mail message",
+    "email" : {
+        "body" : "This is my scheduled content",
+        "type" : "text/plain"
+    },
+    "messageType" : "SCHEDULED",
+    "scheduleType" : "REPEAT",
+    "scheduleDate" : "14/02/2017 15:55",
+    "repetitionCount" : "10",
+    "repeatDays" : "0",
+    "repeatHrs" : "1",
+    "repeatMin" : "0" 
+}
+```
+
+A second method of scheduling messages, users can schedule messages to be sent multiple times (e.g. every hour, every day or every 7 days).
+
+Users can configure the repeat rate of the message delivery as part of the message sendout.
+
+For example. the code will schedule a single message to be delivered at 3:55pm on the 14th February 2017, and repeated every hour for 10 times.
+
+* Using this method, users can easily schedule a message to be delivered multiple times starting from a date and continuing until desired.
+
+
+
 ## Message Variables
 
 > Message Variables
@@ -913,8 +1112,8 @@ Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
-    <to>$mobile</to>
-    <subject>Test SMS Message with tags</subject>    
+    <to>John_Wick.1143139@Contact.whispir.sg</to>
+    <subject>Test SMS Message with tags</subject>
     <body>Hi @@first_name@@.  This is your message.</body>
 </ns2:message> 
 ```
@@ -924,13 +1123,15 @@ Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
 {
-   "to" : "$mobile",
+   "to" : "John_Wick.1143139@Contact.whispir.sg",
    "subject" : "Test SMS Message with tags",
    "body" : "Hi @@first_name@@.  This is your message."
 }
 ```
 
 When sending messages using the Whispir API, users have the ability to automatically include recipient information as part of the message.  This is facilitated using **tags**.
+
+* One has to use the contact mri/ user mri from the Whispir system to resolve these variables.
 
 The following **tags** can be included in any SMS, Email or Voice message:
 
@@ -988,7 +1189,7 @@ The following **tags** can be included in any SMS, Email or Voice message:
     </tbody>
 </table>
 
-Each of these tags will resolve on send of the message to the individual recipient's information.  As Whispir needs to know about this information prior to sending the message, the tags will only work when sending messages to Contacts or Distribution Lists.
+Each of these tags will resolve on send of the message to the individual recipient's information.  As Whispir needs to know about this information prior to sending the message, the tags will only work when sending messages to **Contacts** or **Distribution Lists**.
 
 For more information about sending messages to Contacts or Distribution Lists, please consult the documentation under Messaging.
 
@@ -1010,8 +1211,8 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
-    <subject>Test SMS Message with tags</subject>    
-    <body>Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
+    <subject>Test SMS Message with tags</subject>
+    <body>The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
 </ns2:message> 
 ```
 
@@ -1022,7 +1223,7 @@ Accept: application/vnd.whispir.message-v1+json
 {
    "to" : "$mobile",
    "subject" : "Test SMS Message with tags",
-   "body" : "Hi @@first_name@@.  The date is @@dd@@ / @@mm@@ / @@yyyy@@."
+   "body" : "The date is @@dd@@ / @@mm@@ / @@yyyy@@."
 }
 ```
 
@@ -1081,7 +1282,6 @@ The following **system tags** can be included in any message:
 </table>
 
 Each of these system tags will resolve on send of the message to the system information.  The system tags will only work when sending messages to any recipient.
-
 
 ## Dynamic Messages
 
@@ -1321,7 +1521,7 @@ Content-Type: application/vnd.whispir.bulkmessage-v1+json
 
 **Note**: The endpoint does not support PUT and DELETE in bulk messages. Similarly there is no POST for the **/messages/{id}**.
 
-###Request Components
+### Request Components
 
 The structure of the Bulk Message is used to define the resource that should be used in the sendout, while also giving the user the capability to override the message content in the event a message template is not desired.
 

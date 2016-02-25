@@ -557,6 +557,94 @@ Whispir will automatically send an email in the following circumstances:
 - If the Callback Server does not connect within 5 seconds.
 - If the Callback Server does not return a response within 60 seconds.
 
+
+## Sending custom parameters in callback response
+The callback API also provides a way to pass in customparameters which can be returned as is via the callback response.
+
+To explain in simple scenario driven terms –
+
+- App sends a POST /messages request to Whispir for sending a message to the Customer
+- App gets a location, messageID over a 202
+- Whispir Queues the request and executes it at the next execution cycle (usually immediate)
+- Customer receives the message and responds to it
+- Whispir receives the message and pushes the response to App via the callback URI
+- App needs to identify who is the customer that has responded
+- App uses the messageID provided earlier (in step 2) to cross check and identify
+
+As evident in the scenario, messageID plays a key role in identifying the message – response chain. Rather than using the Whispir provided messageID, the App can send in its own customparameters like customerID or a unique hash that corresponds to a specific transaction, or just about anything that can be a unique value in the perspective of the App. 
+
+Whispir shall take note of these customparameters, and when the response is returned via the callback URI, these parameters are also added to the payload. 
+
+This makes it easy for the App to identify the user data from the single / multiple / follow-on response of a conversation.
+
+```
+HTTP 1.1 POST /messages
+Content-Type: application/vnd.whispir.message-v1+json
+{
+   "to" : "0423556682",
+   "subject" : "Test SMS",
+   "body" : "This is the SMS",
+   "callbackId" : "This is my callback",
+   **"callbackParameters" : {**
+      **"CustomID" : "890h0ef0fe09efw90e0jsdj0"**
+   **}**
+}
+
+```
+
+The data is provided via the ‘callbackParameters' param and it is an array format with each data unit set in a name, value pair.
+If there are more than one set of values, the data shall be sent in the following way –
+
+```
+HTTP 1.1 POST /messages
+Content-Type: application/vnd.whispir.message-v1+json
+
+{
+   "to" : "0423556682",
+   "subject" : "Test SMS",
+   "body" : "This is the SMS",
+   "callbackId" : "This is my callback",
+   **"callbackParameters" : {
+      "CustomID" : "890h0ef0fe09efw90e0jsdj0",
+      "CustomID2" : "9ef0fe09efw90e0jsdjsd43fw"
+   }**
+}
+
+```
+
+In the `Response`, The callback shall include these passed params. Below is an example response –
+
+```
+HTTP 1.1 POST https://yourserver/callback.php
+Content-Type: application/json
+{
+    "messageId":"ABC4857BCCF4CA",
+    "location" : "https://api.whispir.com/messages/ABC4857BCCF4CA",
+    "from":{
+          "name":"Fred Waters",
+          "mri":"Fred_Waters.528798.Sandbox@Contact.whispir.com",
+          "mobile":"0430984567",
+          "email":"imacros@test.com",
+          "voice":"0761881564"
+         },
+    "responseMessage":{
+           "channel":"SMS",
+           "acknowledged":"09/01/13 13:22",
+           "content":"Yes, I accept. Will I need to bring steel cap boots?"
+    },
+    **"customParamters" : [{
+        "CustomID" : "890h0ef0fe09efw90e0jsdj0",
+        "CustomID2" : "9ef0fe09efw90e0jsdjsd43fw"
+    }]**
+}
+```
+
+*Note*: 
+- The calling App can supply any number of custom parameters.
+- The information will be passed back to the application every time a response is triggered.
+- The response type will always be string, even when an integer is used.
+- If no custom parameters are specified, this section will not be included in the callback JSON or XML (backwards compatibility)
+
 ## Example Flow
 
 Imagine a workflow where the same user gets more than 1 message in a quick time frame, how does whispir know "to which message did this user respond to ?". 
