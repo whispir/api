@@ -559,64 +559,120 @@ Whispir will automatically send an email in the following circumstances:
 
 
 ## Sending custom parameters in callback response
+
+> Custom Parameters in callback response
+
+> > a single callback parameter
+
+```
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```go
+Content-Type: application/vnd.whispir.message-v1+json
+{
+   "to" : "$mobile",
+   "subject" : "Test SMS",
+   "body" : "This is the SMS",
+   "callbackId" : "Sample Callback 1",
+   "callbackParameters" : {
+      "CustomID" : "890h0ef0fe09efw90e0jsdj0"
+   }
+}
+
+```
+
+```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>$mobile</to>
+    <subject>Test SMS</subject>
+    <body>This is the SMS</body>
+    <callbackId>Sample Callback 1</callbackId>
+    <callbackParameters>
+        <CustomId>890h0ef0fe09efw90e0jsdj0</CustomId>
+    </callbackParameters>
+</ns2:message> 
+```
+
 The callback API also provides a way to pass in customparameters which can be returned as is via the callback response.
 
-To explain in simple scenario driven terms –
+To explain in simple scenario driven terms;
 
 - App sends a POST /messages request to Whispir for sending a message to the Customer
-- App gets a location, messageID over a 202
+- App gets a location, messageID with responseCode as `202`. Means the message is received by Whispir successfully.
 - Whispir Queues the request and executes it at the next execution cycle (usually immediate)
+
+then 
+
 - Customer receives the message and responds to it
 - Whispir receives the message and pushes the response to App via the callback URI
+
+then
+
 - App needs to identify who is the customer that has responded
 - App uses the messageID provided earlier (in step 2) to cross check and identify
 
-As evident in the scenario, messageID plays a key role in identifying the message – response chain. Rather than using the Whispir provided messageID, the App can send in its own customparameters like customerID or a unique hash that corresponds to a specific transaction, or just about anything that can be a unique value in the perspective of the App. 
+As evident in the scenario, messageID plays a key role in identifying the message – response chain. 
 
-Whispir shall take note of these customparameters, and when the response is returned via the callback URI, these parameters are also added to the payload. 
+However, rather than using just the Whispir provided messageID, the App can send in its own custom parameters like customerID or a unique hash that corresponds to a specific transaction, or just about anything that can be a unique value in the perspective of the App. 
+
+Whispir shall take note of these custom parameters, and when the response is returned via the callback URI, these parameters are also added to the payload. These custom parameters are sent along with the message request as `callbackParameters` object.
 
 This makes it easy for the App to identify the user data from the single / multiple / follow-on response of a conversation.
 
-```
-HTTP 1.1 POST /messages
-Content-Type: application/vnd.whispir.message-v1+json
-{
-   "to" : "0423556682",
-   "subject" : "Test SMS",
-   "body" : "This is the SMS",
-   "callbackId" : "This is my callback",
-   **"callbackParameters" : {**
-      **"CustomID" : "890h0ef0fe09efw90e0jsdj0"**
-   **}**
-}
 
-```
-
-The data is provided via the ‘callbackParameters' param and it is an array format with each data unit set in a name, value pair.
+The data provided via the ‘callbackParameters' param and it is an object format with each data unit set in a name, value pair.
 If there are more than one set of values, the data shall be sent in the following way –
 
+> > multiple callback parameters
+
 ```
-HTTP 1.1 POST /messages
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```go
 Content-Type: application/vnd.whispir.message-v1+json
 
 {
-   "to" : "0423556682",
+   "to" : "$mobile",
    "subject" : "Test SMS",
    "body" : "This is the SMS",
    "callbackId" : "This is my callback",
-   **"callbackParameters" : {
+   "callbackParameters" : {
       "CustomID" : "890h0ef0fe09efw90e0jsdj0",
       "CustomID2" : "9ef0fe09efw90e0jsdjsd43fw"
-   }**
+   }
 }
 
+```
+
+```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>$mobile</to>
+    <subject>Test SMS</subject>
+    <body>This is the SMS</body>
+    <callbackId>Sample Callback 1</callbackId>
+    <callbackParameters>
+        <CustomId>890h0ef0fe09efw90e0jsdj0</CustomId>
+        <CustomId2>9ef0fe09efw90e0jsdjsd43fw</CustomId2>
+    </callbackParameters>
+</ns2:message> 
 ```
 
 In the `Response`, The callback shall include these passed params. Below is an example response –
 
-```
+```go
 HTTP 1.1 POST https://yourserver/callback.php
 Content-Type: application/json
+
 {
     "messageId":"ABC4857BCCF4CA",
     "location" : "https://api.whispir.com/messages/ABC4857BCCF4CA",
@@ -632,11 +688,36 @@ Content-Type: application/json
            "acknowledged":"09/01/13 13:22",
            "content":"Yes, I accept. Will I need to bring steel cap boots?"
     },
-    **"customParamters" : [{
+    "callbackParameters" : {
         "CustomID" : "890h0ef0fe09efw90e0jsdj0",
         "CustomID2" : "9ef0fe09efw90e0jsdjsd43fw"
-    }]**
+    }
 }
+```
+
+```xml
+Content-Type: application/xml
+
+<ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
+    <messageid>ABC4857BCCF484575FCA</messageid>
+    <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
+    <from>
+        <name>Fred Waters</name> 
+        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
+        <mobile>$mobile</mobile> 
+        <email>me@example.com</email> 
+        <voice>$mobile</voice> 
+    </from> 
+    <responsemessage> 
+        <channel>SMS</channel> 
+        <acknowledged>09/01/13 13:22</acknowledged> 
+        <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
+    </responsemessage>
+    <callbackParameters>
+        <CustomId>890h0ef0fe09efw90e0jsdj0</CustomId>
+        <CustomId2>9ef0fe09efw90e0jsdjsd43fw</CustomId2>
+    </callbackParameters>
+</ns2:deliveryresponse>
 ```
 
 *Note*: 
