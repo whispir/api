@@ -207,3 +207,89 @@ After creating a Response Rule, you must create a new Message Template (or updat
 This association of Response Rule to Message Template is performed using the `responseTemplateId` field within the Message Template.
 
 For more information on Creating Message Templates, click <a href="#creating-templates">here</a>.
+
+## Matched Rule
+
+> Matched Rule
+
+> > Sending a message using template and callback
+
+```
+HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>$mobile</to>
+    <messageTemplateName>ReplyYesNoTemplate</messageTemplateName>
+    <callbackId>myCallbackName</callbackId>
+</ns2:message> 
+```
+
+```go
+Content-Type: application/vnd.whispir.message-v1+json
+
+{ 
+   "to" : "$mobile",
+   "messageTemplateName" : "ReplyYesNoTemplate",
+   "callbackId" : "myCallbackName"
+}
+```
+
+If a message is sent using a template and associated ResponseRule, it would be helpful to know what response rule condition has matched when the reply is recieved from the end user. Whispir API facilitates this to be know in real time via the /callbacks endpoint.
+
+How to use a callback to get the matched response rule condition?
+
+- Create a response rule with required conditions
+- Create a template/use and existing template - with the above responserule id added to it
+- Create a callback/use an existing callback
+- Send a message using the messages endpoint specifying the to, template, and callbackId values
+
+**After the Message is received:**
+
+- The user has replied to the message
+- Message is received by Whispir
+- Response Rules are applied to the response
+- Callback is invoked
+- Response body contains the response given by the user, the channel, timestamps (refer to callback Documentation) and *customParameters*
+
+> > Custom Parameters in Callback specifying the matched rule and category
+
+```xml
+<customParameters>
+    <entry>
+      <key>matchedCategory</key>
+      <value>Reserved</value>
+    </entry>
+    <entry>
+      <key>responseRule</key>
+      <value>Reserved Words</value>
+    </entry>
+
+    ...
+
+</customParameters>
+```
+
+```go
+"customParameters" : {
+    "matchedCategory" : "Reserved",
+    "responseRule" : "Reserved Words",
+
+    ...
+}
+```
+
+**What is inside the custom Parameters?**
+
+- Custom Parameters gives you details of various processing/processed values associated with the message
+- While many parameters are sent, the ones that are associated with response rules are :
+
+    - **responseRule** - the name of responseRule that has matched
+    - **matchedCategory** - the category/condition inside the responseRule that has matched
+
+For more details on the callbackParameters, refer to the /callbacks endpoint.

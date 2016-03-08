@@ -24,9 +24,9 @@ HTTP 1.1 POST http://yourserver/callback.php
 ```xml
 Content-Type: application/xml
 
-<ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
-    <messageid>ABC4857BCCF484575FCA</messageid>
-    <location>https://api.whispir.com/messages/ABC4857BCCF484575FCA</location>
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
+    <messageId>ABC4857BCCF484575FCA</messageId>
+    <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <from>
         <name>Fred Waters</name> 
         <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
@@ -34,12 +34,12 @@ Content-Type: application/xml
         <email>me@example.com</email> 
         <voice>$mobile</voice> 
     </from> 
-    <responsemessage> 
+    <responseMessage> 
         <channel>SMS</channel> 
         <acknowledged>09/01/13 13:22</acknowledged> 
         <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
-    </responsemessage> 
-</ns2:deliveryresponse>
+    </responseMessage> 
+</ns2:deliveryResponse>
 ```
 
 ```go
@@ -220,8 +220,8 @@ X-Whispir-Callback-Key: MY_AUTH_TOKEN
 ```xml
 Content-Type: application/xml
 
-<ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
-    <messageid>ABC4857BCCF484575FCA</messageid>
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
+    <messageId>ABC4857BCCF484575FCA</messageId>
     <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <from>
         <name>Fred Waters</name> 
@@ -230,12 +230,12 @@ Content-Type: application/xml
         <email>me@example.com</email> 
         <voice>$mobile</voice> 
     </from> 
-    <responsemessage> 
+    <responseMessage> 
         <channel>SMS</channel> 
         <acknowledged>09/01/13 13:22</acknowledged> 
         <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
-    </responsemessage> 
-</ns2:deliveryresponse>
+    </responseMessage> 
+</ns2:deliveryResponse>
 ```
 
 ```go
@@ -269,8 +269,8 @@ HTTP 1.1 POST https://yourserver/callback.php?auth=MY_AUTH_TOKEN
 ```xml
 Content-Type: application/xml
 
-<ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
-    <messageid>ABC4857BCCF484575FCA</messageid>
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
+    <messageId>ABC4857BCCF484575FCA</messageId>
     <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <from>
         <name>Fred Waters</name> 
@@ -279,19 +279,19 @@ Content-Type: application/xml
         <email>me@example.com</email> 
         <voice>$mobile</voice> 
     </from> 
-    <responsemessage> 
+    <responseMessage> 
         <channel>SMS</channel> 
         <acknowledged>09/01/13 13:22</acknowledged> 
         <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
-    </responsemessage> 
-</ns2:deliveryresponse>
+    </responseMessage> 
+</ns2:deliveryResponse>
 ```
 
 ```go
 Content-Type: application/json
 
 {
-  "messageid" : "ABC4857BCCF484575FCA",
+  "messageId" : "ABC4857BCCF484575FCA",
   "messageLocation" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
   "from" : {
     "name" : "Fred Waters",
@@ -322,7 +322,7 @@ When provided in the callback payload, Whipir will include this in every request
 
 There are two options for the location of this Authorization Token:
 
-####HTTP Header
+#### HTTP Header
 
 Using an HTTP Header for authorisation is the preferred approach. This method will use a custom HTTP Header **X-Whispir-Callback-Key**.
 
@@ -557,10 +557,9 @@ Whispir will automatically send an email in the following circumstances:
 - If the Callback Server does not connect within 5 seconds.
 - If the Callback Server does not return a response within 60 seconds.
 
+## Callback Parameters
 
-## Sending custom parameters in callback response
-
-> Custom Parameters in callback response
+> callback parameters in callback response
 
 > > a single callback parameter
 
@@ -593,40 +592,13 @@ Content-Type: application/vnd.whispir.message-v1+xml
     <body>This is the SMS</body>
     <callbackId>Sample Callback 1</callbackId>
     <callbackParameters>
-        <CustomId>890h0ef0fe09efw90e0jsdj0</CustomId>
+      <entry>
+        <key>CustomId</key>
+        <value>890h0ef0fe09efw90e0jsdj0</value>
+      </entry>
     </callbackParameters>
 </ns2:message> 
 ```
-
-The callback API also provides a way to pass in customparameters which can be returned as is via the callback response.
-
-To explain in simple scenario driven terms;
-
-- App sends a POST /messages request to Whispir for sending a message to the Customer
-- App gets a location, messageID with responseCode as `202`. Means the message is received by Whispir successfully.
-- Whispir Queues the request and executes it at the next execution cycle (usually immediate)
-
-then 
-
-- Customer receives the message and responds to it
-- Whispir receives the message and pushes the response to App via the callback URI
-
-then
-
-- App needs to identify who is the customer that has responded
-- App uses the messageID provided earlier (in step 2) to cross check and identify
-
-As evident in the scenario, messageID plays a key role in identifying the message – response chain. 
-
-However, rather than using just the Whispir provided messageID, the App can send in its own custom parameters like customerID or a unique hash that corresponds to a specific transaction, or just about anything that can be a unique value in the perspective of the App. 
-
-Whispir shall take note of these custom parameters, and when the response is returned via the callback URI, these parameters are also added to the payload. These custom parameters are sent along with the message request as `callbackParameters` object.
-
-This makes it easy for the App to identify the user data from the single / multiple / follow-on response of a conversation.
-
-
-The data provided via the ‘callbackParameters' param and it is an object format with each data unit set in a name, value pair.
-If there are more than one set of values, the data shall be sent in the following way –
 
 > > multiple callback parameters
 
@@ -661,13 +633,83 @@ Content-Type: application/vnd.whispir.message-v1+xml
     <body>This is the SMS</body>
     <callbackId>Sample Callback 1</callbackId>
     <callbackParameters>
-        <CustomId>890h0ef0fe09efw90e0jsdj0</CustomId>
-        <CustomId2>9ef0fe09efw90e0jsdjsd43fw</CustomId2>
+      <entry>
+        <key>CustomId</key>
+        <value>890h0ef0fe09efw90e0jsdj0</value>
+      </entry>
+      <entry>
+        <key>CustomId2</key>
+        <value>9ef0fe09efw90e0jsdjsd43fw</value>
+      </entry>
     </callbackParameters>
 </ns2:message> 
 ```
 
-In the `Response`, The callback shall include these passed params. Below is an example response –
+The callback API allows you to pass in any values (parameters), which you want to be returned as is - included in the callback response.
+
+To explain this in a simple scenario driven terms;
+
+- App sends a POST /messages request to Whispir for sending a message to the Customer
+- App gets a location, messageID with responseCode as `202`. Means the message is received by Whispir successfully.
+- Whispir Queues the request and executes it at the next execution cycle (usually immediate)
+
+then 
+
+- Customer receives the message and responds to it
+- Whispir receives the message and pushes the response to App via the callback URI
+
+then
+
+- App needs to identify who is the customer that has responded
+- App uses the messageID provided earlier (in step 2) to cross check and identify
+
+As evident in the scenario, messageID plays a key role in identifying the message – response chain. 
+
+However, rather than using just the Whispir provided messageID, the App can send in its own free-will callback parameters like 
+
+ - customerID or 
+ - an unique hash that corresponds to a specific transaction, or 
+ - just about anything that can be a unique value in the perspective of your App. 
+
+Whispir shall take note of these callback parameters, and when the response is returned via the callback URI, these parameters are included into the payload and sent as `callbackParameters` which is an object. This makes it easy for the App to identify the user data from the single / multiple / follow-on response of a conversation.
+
+The data provided via the ‘callbackParameters' is set as: 
+ - in JSON as
+
+`{ Key : Value }`
+
+ - in XML as
+
+ `
+<entry>
+  <key>
+  <value>
+</entry>
+ `
+
+If there are more than one set of values, the data shall be set as:
+
+ - in JSON as
+
+`{ Key : Value }, { Key : Value }`
+
+ - in XML as
+
+ `
+<entry>
+  <key>
+  <value>
+</entry>
+`
+`
+<entry>
+  <key>
+  <value>
+</entry>
+ `
+
+### Receiving them in Response
+
 
 ```go
 HTTP 1.1 POST https://yourserver/callback.php
@@ -688,9 +730,10 @@ Content-Type: application/json
            "acknowledged":"09/01/13 13:22",
            "content":"Yes, I accept. Will I need to bring steel cap boots?"
     },
-    "callbackParameters" : {
-        "CustomID" : "890h0ef0fe09efw90e0jsdj0",
-        "CustomID2" : "9ef0fe09efw90e0jsdjsd43fw"
+    "customParameters" : {
+        "CustomerId" : "890h0ef0fe09efw90e0jsdj0",
+        "TransactionId" : "9ef0fe09efw90e0jsdjsd43fw",
+        ...
     }
 }
 ```
@@ -698,8 +741,8 @@ Content-Type: application/json
 ```xml
 Content-Type: application/xml
 
-<ns2:deliveryresponse xmlns:ns2="http://schemas.api.whispir.com">
-    <messageid>ABC4857BCCF484575FCA</messageid>
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
+    <messageId>ABC4857BCCF484575FCA</messageId>
     <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <from>
         <name>Fred Waters</name> 
@@ -708,24 +751,316 @@ Content-Type: application/xml
         <email>me@example.com</email> 
         <voice>$mobile</voice> 
     </from> 
-    <responsemessage> 
+    <responseMessage> 
         <channel>SMS</channel> 
         <acknowledged>09/01/13 13:22</acknowledged> 
         <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
-    </responsemessage>
-    <callbackParameters>
-        <CustomId>890h0ef0fe09efw90e0jsdj0</CustomId>
-        <CustomId2>9ef0fe09efw90e0jsdjsd43fw</CustomId2>
-    </callbackParameters>
-</ns2:deliveryresponse>
+    </responseMessage>
+    <customParameters>
+      <entry>
+        <key>CustomerId</key>
+        <value>890h0ef0fe09efw90e0jsdj0</value>
+      </entry>
+      <entry>
+        <key>TransactionId</key>
+        <value>9ef0fe09efw90e0jsdjsd43fw</value>
+      </entry>
+      ...
+    </customParameters>
+</ns2:deliveryResponse>
 ```
 
+When the callback is invoked for a reply/delivery failure, the callbackParameters passed are sent in the response call to your callback server.
+
+An important point to note is that - these values shall be part of `customParameters` object. The response does not contain the `callbackParameters` object. The naming convention could be a bit confusing at times, but the naming convention is kept from logical premise.
+
+ - You are passing in parameters that are custom to a specific message in the /messages call. The parameters are sent included in the callback object. So, you include them in the callbackParameters at source and when you receive them, you get them as `customParameters`. the way they are intended. `while(1) { read again; }` :)
+
 *Note*: 
-- The calling App can supply any number of custom parameters.
+
+- The calling App can supply any number of callback parameters.
 - The information will be passed back to the application every time a response is triggered.
 - The response type will always be string, even when an integer is used.
-- If no custom parameters are specified, this section will not be included in the callback JSON or XML (backwards compatibility)
+- Apart from the callback parameters specified in the /messages request, the API also gives other set of values, that are used to process it.
 
+
+## Custom Parameters
+
+Custom Parameters are different from callbackParameters. To make it clear again -
+
+- callbackParameters is used by you in /messages endpoint to pass in any custom values that you need to receive back in the callback reponse
+- customParameters in used by Whispir in the callback response to pass back the callbackParameters (and other values) that you have passed in earlier
+
+This is important, so you may read that again or have a coffee and read that again. I needed a chocolate to get that going. ;)
+
+Custom Parameters are included in the response object of a callback POST that Whispir makes to your server. These parameters contain important information about 
+
+- the dynamically processed values that whispir used to fulfill your request (the sender, receiver channels, timestamps, and destination email address or phone number)
+- the message response rule, and condition that was applied to the response (refer to [Matched Rules](/#matched-rule))
+- the callbackParameters (refer to [Callback Parameters](/#callback-parameters))
+
+In Detail -
+
+- **the dynamically processed values that whispir used to fulfill your request**
+
+Whispir allows [bulk messaging or dynamic messaging](https://whispir.github.io/api/#dynamic-messages) via the /resources and /messages endpoint. When you use that, you would need to know the processed values that are used by Whispir to replace the @@placeholders@@ used in that specific message template against each row of your csv, json, xml data.
+
+To facilitate that Whispir gives those values in the callback response under customParameters. The list of custom Parameters provided by Whispir are -
+
+```go
+"customParameters": {
+  "sender_full_name": "John Wick",
+  "sender_first_name": "John",
+  "sender_last_name": "Wick",
+  "sender_sms": "614235552323",
+  "sender_email": "JohnWick@example.com",
+  "recipient_full_name": "John Wick",
+  "recipient_first_name": "John",
+  "recipient_last_name": "Wick",
+  "recipient_sms": "6593556682",
+  "recipient_email": "jWick@whispir.com",
+  "recipient_voice": "6593556682",
+  "date": "2016-03-04",
+  "time": "10:36",
+  "yyyy": "2016",
+  "month": "March",
+  "day": "Friday",
+  "yy": "16",
+  "mm": "03",
+  "dd": "04",
+  "hrs": "10",
+  "min": "36",
+  "sec": "01",
+  "matchedCategory": "Reserved",
+  "responseRule": "Reserved Words",
+  "first_name": "John",
+  "last_name": "Wick"
+}
+
+```
+
+```xml
+<customParameters>
+    <entry>
+      <key>sender_full_name</key>
+      <value>John Wick</value>
+    </entry>
+    <entry>
+      <key>sender_first_name</key>
+      <value>John</value>
+    </entry>
+    <entry>
+      <key>sender_last_name</key>
+      <value>Wick</value>
+    </entry>
+    <entry>
+      <key>sender_sms</key>
+      <value>614235552323</value>
+    </entry>
+    <entry>
+      <key>sender_email</key>
+      <value>JohnWick@example.com</value>
+    </entry>
+    <entry>
+      <key>recipient_full_name</key>
+      <value>John Wick</value>
+    </entry>
+    <entry>
+      <key>recipient_first_name</key>
+      <value>John</value>
+    </entry>
+    <entry>
+      <key>recipient_last_name</key>
+      <value>Wick</value>
+    </entry>
+    <entry>
+      <key>recipient_sms</key>
+      <value>6593556682</value>
+    </entry>
+    <entry>
+      <key>recipient_email</key>
+      <value>jWick@whispir.com</value>
+    </entry>
+    <entry>
+      <key>recipient_voice</key>
+      <value>6593556682</value>
+    </entry>
+    <entry>
+      <key>date</key>
+      <value>2016-03-04</value>
+    </entry>
+    <entry>
+      <key>time</key>
+      <value>10:36</value>
+    </entry>
+    <entry>
+      <key>yyyy</key>
+      <value>2016</value>
+    </entry>
+    <entry>
+      <key>month</key>
+      <value>March</value>
+    </entry>
+    <entry>
+      <key>day</key>
+      <value>Friday</value>
+    </entry>
+    <entry>
+      <key>yy</key>
+      <value>16</value>
+    </entry>
+    <entry>
+      <key>mm</key>
+      <value>03</value>
+    </entry>
+    <entry>
+      <key>dd</key>
+      <value>04</value>
+    </entry>
+    <entry>
+      <key>hrs</key>
+      <value>10</value>
+    </entry>
+    <entry>
+      <key>min</key>
+      <value>36</value>
+    </entry>
+    <entry>
+      <key>sec</key>
+      <value>01</value>
+    </entry>
+    <entry>
+      <key>matchedCategory</key>
+      <value>Reserved</value>
+    </entry>
+    <entry>
+      <key>responseRule</key>
+      <value>Reserved Words</value>
+    </entry>
+    <entry>
+      <key>first_name</key>
+      <value>John</value>
+    </entry>
+    <entry>
+      <key>last_name</key>
+      <value>Wick</value>
+    </entry>
+</customParameters>
+```
+
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">High-Level Custom Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">sender_full_name:</td>
+      <td><strong>String</strong><br/>
+        Specifies the full name of the sender. This is the name of the user account that was used to make the API call.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">sender_first_name:</td>
+      <td><strong>String</strong><br/>
+      Specifies the first name of the sender account.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">sender_last_name:</td>
+      <td><strong>String</strong><br/>
+      Specifies the last name of the sender account.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">sender_sms:</td>
+      <td><strong>String</strong><br/>
+      Specifies the phone number of the sender account.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">sender_email:</td>
+      <td><strong>String</strong><br/>
+        Specifies the email address of the sender. This is email address of the user account that was used to make the API call.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">recipient_full_name:</td>
+      <td><strong>String</strong><br/>
+        Specifies the full name of the recipient. If only the recipient is already a contact/user in the Whispir Platform under your account.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">recipient_first_name:</td>
+      <td><strong>String</strong><br/>
+      Specifies the first name of the recipient account. If only the recipient is already a contact/user in the Whispir Platform under your account.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">recipient_last_name:</td>
+      <td><strong>String</strong><br/>
+      Specifies the last name of the recipient account. If only the recipient is already a contact/user in the Whispir Platform under your account.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">recipient_sms:</td>
+      <td><strong>String</strong><br/>
+      Specifies the phone number of the recipient. If only the channel is SMS or the recipient is already a contact/user in the Whispir Platform under your account.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">recipient_email:</td>
+      <td><strong>String</strong><br/>
+        Specifies the email address of the recipient. If only the channel is EMAIL or the recipient is already a contact/user in the Whispir Platform under your account
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">recipient_voice:</td>
+      <td><strong>String</strong><br/>
+        Specifies the phone number of the recipient. If only the channel is SMS/Voice or the recipient is already a contact/user in the Whispir Platform under your account
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">date:</td>
+      <td><strong>String</strong><br/>
+        Specifies the date value in YYYY-MM-DD format. <br><br>  Ex. 2016-03-04.<br><br>   This is the date when the message was sent. This helps to know the sent date when the message is a <a href="/#schedule-delivery">SCHEDULED</a> message
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">time:</td>
+      <td><strong>String</strong><br/>
+        Specifies the time value in HH:MI format. <br> <br>  Ex. 10:36. <br><br>  This is the time when the message was sent. This helps to know the sent time when the message is a <a href="/#schedule-delivery">SCHEDULED</a> message
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">Individual broken-down values for Date and Time:</td>
+      <td><strong>String</strong><br/>
+        Apart from the date and time values above, the API also provides broken down values for use. <br><br>
+        <ul>
+          <li>yyyy - year (in 4 digit format) <b>Eg.</b> 2016</li>
+          <li>month - month (in full month name format) <b>Eg.</b> March</li>
+          <li>day - day (in full week day format) <b>Eg.</b> Tuesday</li>
+        </ul>
+        <br>
+        <ul>
+          <li>yy - year (in 2 digit format) <b>Eg.</b> 16</li>
+          <li>mm - month <b>Eg.</b> 03</li>
+          <li>dd - date <b>Eg.</b> 08</li>
+        </ul>
+        <ul>
+          <li>hrs - hours <b>Eg.</b> 16</li>
+          <li>min - minutes <b>Eg.</b> 39</li>
+          <li>sec - seconds <b>Eg.</b> 50</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+- ****
 ## Example Flow
 
 Imagine a workflow where the same user gets more than 1 message in a quick time frame, how does whispir know "to which message did this user respond to ?". 
