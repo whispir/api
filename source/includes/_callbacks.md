@@ -1,14 +1,14 @@
 #Callbacks
 
-Whispir utilises API Callbacks to send simple notifications to different registered services in the event that some change has occurred on the Whispir Platform. Callback in Whispir is akin to Web Hooks. The benefits of callback are - 
+Whispir utilises API Callbacks to send simple notifications to different registered services in the event that some change has occurred on the Whispir Platform. Callback in Whispir is akin to Web Hooks. The benefits of callback are -
 
 * Whispir will instantly notify your callback server when there is change occured in Whispir platform.
 * You save on your daily API call limits by NOT having to call the /messageresponses or /messagestatus endpoints.
 * Response based workflows can be built quickly and effectively.
 
-*Callback word is termed to make understand the point that Whispir will call you back on your callback server.* 
+*Callback word is termed to make understand the point that Whispir will call you back on your callback server.*
 
-So, it is you who creates an endpoint (a page in your application) that Whispir shall callback upon an event happening. That endpoint can simply be your existing application (as mentioned earlier) or another application that needs/processes the response information. 
+So, it is you who creates an endpoint (a page in your application) that Whispir shall callback upon an event happening. That endpoint can simply be your existing application (as mentioned earlier) or another application that needs/processes the response information.
 
 ## Callback Overview
 
@@ -28,17 +28,17 @@ Content-Type: application/xml
     <messageId>ABC4857BCCF484575FCA</messageId>
     <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <from>
-        <name>Fred Waters</name> 
-        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
-        <mobile>$mobile</mobile> 
-        <email>me@example.com</email> 
-        <voice>$mobile</voice> 
-    </from> 
-    <responseMessage> 
-        <channel>SMS</channel> 
-        <acknowledged>09/01/13 13:22</acknowledged> 
-        <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
-    </responseMessage> 
+        <name>Fred Waters</name>
+        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri>
+        <mobile>$mobile</mobile>
+        <email>me@example.com</email>
+        <voice>$mobile</voice>
+    </from>
+    <responseMessage>
+        <channel>SMS</channel>
+        <acknowledged>09/01/13 13:22</acknowledged>
+        <content>Yes, I accept. Will I need to bring steel cap boots?</content>
+    </responseMessage>
 </ns2:deliveryResponse>
 ```
 
@@ -75,8 +75,8 @@ Some other points to follow -
 1. Always use a domain name for the callback. Do NOT use an IP.
 2. Ensure that your callback server is reachable on the internet. It should not be `localhost` or an intranet only application that cannot be reached from the WWW.
 3. Limit the port to 80 or 443. Do no use any other ports.
-4. Depending on the type chosen 'json' or 'xml' for the Content-Type, whispir would make a similar GET (and subsequently POST) calls. So, please ensure that your your web server is configured to handle such MIME type. 
-5. Most importantly, if your application infrastructure is behind a firewall, then make sure that the firewall allows an incoming POST request. Ensure that atleast Whispir domain is whitelisted for this purpose.
+4. Depending on the type chosen 'json' or 'xml' for the Content-Type, whispir would make a similar GET (and subsequently POST) calls. So, please ensure that your your web server is configured to handle such MIME type.
+5. Most importantly, if your application infrastructure is behind a firewall, then make sure that the firewall allows an incoming POST request.
 
 ## Creating new Callbacks
 
@@ -92,7 +92,7 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 Content-Type: application/vnd.whispir.api-callback-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:companyapicallback xmlns:ns2="http://schemas.api.whispir.com" 
+<ns2:companyapicallback xmlns:ns2="http://schemas.api.whispir.com"
                     xmlns:ns3="http://schemas.api.whispir.com/dap">
     <name>Callback Name</name>
     <url>http://myserver.com/mycallback.php</url>
@@ -214,7 +214,7 @@ The following table describes the fields that can be used within the request.
 
 ```
 HTTP 1.1 POST https://yourserver/callback.php
-X-Whispir-Callback-Key: MY_AUTH_TOKEN 
+X-Whispir-Callback-Key: MY_AUTH_TOKEN
 ```
 
 ```xml
@@ -224,17 +224,17 @@ Content-Type: application/xml
     <messageId>ABC4857BCCF484575FCA</messageId>
     <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <from>
-        <name>Fred Waters</name> 
-        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
-        <mobile>$mobile</mobile> 
-        <email>me@example.com</email> 
-        <voice>$mobile</voice> 
-    </from> 
-    <responseMessage> 
-        <channel>SMS</channel> 
-        <acknowledged>09/01/13 13:22</acknowledged> 
-        <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
-    </responseMessage> 
+        <name>Fred Waters</name>
+        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri>
+        <mobile>$mobile</mobile>
+        <email>me@example.com</email>
+        <voice>$mobile</voice>
+    </from>
+    <responseMessage>
+        <channel>SMS</channel>
+        <acknowledged>09/01/13 13:22</acknowledged>
+        <content>Yes, I accept. Will I need to bring steel cap boots?</content>
+    </responseMessage>
 </ns2:deliveryResponse>
 ```
 
@@ -273,17 +273,17 @@ Content-Type: application/xml
     <messageId>ABC4857BCCF484575FCA</messageId>
     <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <from>
-        <name>Fred Waters</name> 
-        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
-        <mobile>$mobile</mobile> 
-        <email>me@example.com</email> 
-        <voice>$mobile</voice> 
-    </from> 
-    <responseMessage> 
-        <channel>SMS</channel> 
-        <acknowledged>09/01/13 13:22</acknowledged> 
-        <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
-    </responseMessage> 
+        <name>Fred Waters</name>
+        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri>
+        <mobile>$mobile</mobile>
+        <email>me@example.com</email>
+        <voice>$mobile</voice>
+    </from>
+    <responseMessage>
+        <channel>SMS</channel>
+        <acknowledged>09/01/13 13:22</acknowledged>
+        <content>Yes, I accept. Will I need to bring steel cap boots?</content>
+    </responseMessage>
 </ns2:deliveryResponse>
 ```
 
@@ -313,10 +313,9 @@ Whispir Callbacks have been designed to be simple, yet secure.
 In order to make your Callback Server processing much safer, whispir recommends the following security measures:
 
  - Use SSL on your Callback URL
- - IP Whitelisting for Whispir's IP address
  - Use an unique token
 
-The unique token should be an alphanumeric string generated and assigned specifically for Whispir Callbacks. 
+The unique token should be an alphanumeric string generated and assigned specifically for Whispir Callbacks.
 
 When provided in the callback payload, Whipir will include this in every request made to the listening application. The token's presence ensures and confirms that the request has originated truly from Whispir.
 
@@ -512,10 +511,10 @@ Content-Type: application/vnd.whispir.message-v1+xml
     <subject>Test SMS Message</subject>
     <body>This is the body of my test SMS message</body>
     <callbackId>Sample Callback 1</callbackId>
-</ns2:message> 
+</ns2:message>
 ```
 
-Callbacks can be added to messages by simply specifying the callback name within the request to the `/messages` endpoint. 
+Callbacks can be added to messages by simply specifying the callback name within the request to the `/messages` endpoint.
 
 Any responses to the above sent message will be forwarded back to the URL within the Callback named `Sample Callback 1`.
 
@@ -531,19 +530,19 @@ Your callback <callback_id> failed on <date> with response: <response>.
 
 The callback that failed is as follows:
 
-URL: https://yourserver/callback.php?auth=12345 
-Location: https://api.whispir.com/messages/ABC4857BCCF484575FCA 
-Name: Fred Waters 
-Mobile: $mobile 
+URL: https://yourserver/callback.php?auth=12345
+Location: https://api.whispir.com/messages/ABC4857BCCF484575FCA
+Name: Fred Waters
+Mobile: $mobile
 Email: me@example.com
-Channel: SMS 
-Content: Yes, I accept. Will I need to bring steel cap boots? 
+Channel: SMS
+Content: Yes, I accept. Will I need to bring steel cap boots?
 
 Please take the necessary steps to ensure your callback is configured correctly.
 
-If this callback URL continues to fail, Whispir may remove this until the service is resolved. 
+If this callback URL continues to fail, Whispir may remove this until the service is resolved.
 
-Regards, 
+Regards,
 Whispir Support
 
 ```
@@ -553,7 +552,7 @@ In the event the provided callback URL could not be reached or the connection to
 Whispir will automatically send an email in the following circumstances:
 
 - If the Callback Server returns anything other than an HTTP 200 OK.
-- If the authorization to the Callback Server fails (e.g. returns an HTTP 400 level error) 
+- If the authorization to the Callback Server fails (e.g. returns an HTTP 400 level error)
 - If the Callback Server does not connect within 5 seconds.
 - If the Callback Server does not return a response within 60 seconds.
 
@@ -597,7 +596,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
         <value>890h0ef0fe09efw90e0jsdj0</value>
       </entry>
     </callbackParameters>
-</ns2:message> 
+</ns2:message>
 ```
 
 > > multiple callback parameters
@@ -642,7 +641,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
         <value>9ef0fe09efw90e0jsdjsd43fw</value>
       </entry>
     </callbackParameters>
-</ns2:message> 
+</ns2:message>
 ```
 
 The callback API allows you to pass in any values (parameters), which you want to be returned as is - included in the callback response.
@@ -653,7 +652,7 @@ To explain this in a simple scenario driven terms;
 - App gets a location, messageID with responseCode as `202`. Means the message is received by Whispir successfully.
 - Whispir Queues the request and executes it at the next execution cycle (usually immediate)
 
-then 
+then
 
 - Customer receives the message and responds to it
 - Whispir receives the message and pushes the response to App via the callback URI
@@ -663,17 +662,17 @@ then
 - App needs to identify who is the customer that has responded
 - App uses the messageID provided earlier (in step 2) to cross check and identify
 
-As evident in the scenario, messageID plays a key role in identifying the message – response chain. 
+As evident in the scenario, messageID plays a key role in identifying the message – response chain.
 
-However, rather than using just the Whispir provided messageID, the App can send in its own free-will callback parameters like 
+However, rather than using just the Whispir provided messageID, the App can send in its own free-will callback parameters like
 
- - customerID or 
- - an unique hash that corresponds to a specific transaction, or 
- - just about anything that can be a unique value in the perspective of your App. 
+ - customerID or
+ - an unique hash that corresponds to a specific transaction, or
+ - just about anything that can be a unique value in the perspective of your App.
 
 Whispir shall take note of these callback parameters, and when the response is returned via the callback URI, these parameters are included into the payload and sent as `callbackParameters` which is an object. This makes it easy for the App to identify the user data from the single / multiple / follow-on response of a conversation.
 
-The data provided via the ‘callbackParameters' is set as: 
+The data provided via the ‘callbackParameters' is set as:
  - in JSON as
 
 `{ Key : Value }`
@@ -745,16 +744,16 @@ Content-Type: application/xml
     <messageId>ABC4857BCCF484575FCA</messageId>
     <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <from>
-        <name>Fred Waters</name> 
-        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri> 
-        <mobile>$mobile</mobile> 
-        <email>me@example.com</email> 
-        <voice>$mobile</voice> 
-    </from> 
-    <responseMessage> 
-        <channel>SMS</channel> 
-        <acknowledged>09/01/13 13:22</acknowledged> 
-        <content>Yes, I accept. Will I need to bring steel cap boots?</content> 
+        <name>Fred Waters</name>
+        <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri>
+        <mobile>$mobile</mobile>
+        <email>me@example.com</email>
+        <voice>$mobile</voice>
+    </from>
+    <responseMessage>
+        <channel>SMS</channel>
+        <acknowledged>09/01/13 13:22</acknowledged>
+        <content>Yes, I accept. Will I need to bring steel cap boots?</content>
     </responseMessage>
     <customParameters>
       <entry>
@@ -776,7 +775,7 @@ An important point to note is that - these values shall be part of `customParame
 
  - You are passing in parameters that are custom to a specific message in the /messages call. The parameters are sent included in the callback object. So, you include them in the callbackParameters at source and when you receive them, you get them as `customParameters`. the way they are intended. `while(1) { read again; }` :)
 
-*Note*: 
+*Note*:
 
 - The calling App can supply any number of callback parameters.
 - The information will be passed back to the application every time a response is triggered.
@@ -793,7 +792,7 @@ Custom Parameters are different from callbackParameters. To make it clear again 
 
 This is important, so you may read that again or have a coffee and read that again. I needed a chocolate to get that going. ;)
 
-Custom Parameters are included in the response object of a callback POST that Whispir makes to your server. These parameters contain important information about 
+Custom Parameters are included in the response object of a callback POST that Whispir makes to your server. These parameters contain important information about
 
 - the dynamically processed values that whispir used to fulfill your request (the sender, receiver channels, timestamps, and destination email address or phone number)
 - the message response rule, and condition that was applied to the response (refer to [Matched Rules](/#matched-rule))
@@ -1063,7 +1062,7 @@ To facilitate that Whispir gives those values in the callback response under cus
 - ****
 ## Example Flow
 
-Imagine a workflow where the same user gets more than 1 message in a quick time frame, how does whispir know "to which message did this user respond to ?". 
+Imagine a workflow where the same user gets more than 1 message in a quick time frame, how does whispir know "to which message did this user respond to ?".
 
 Explanation -
 
@@ -1094,9 +1093,9 @@ Assuming in a span of 10 seconds, these 2 SMSes were sent
 
 If user $mobile replies “Y”, which callbackId would be called ?
 
- - Two separate messages are sent to the same mobile number, with the both including a callbackid. 
+ - Two separate messages are sent to the same mobile number, with the both including a callbackid.
  - Each message will have been received by the recipient via two different sender numbers.
- - Assuming the recipient responds to the first message they received, Whispir will trigger the callback ‘callbackA’. 
+ - Assuming the recipient responds to the first message they received, Whispir will trigger the callback ‘callbackA’.
  - If they respond to the second message they received, Whispir will trigger the callback ‘callbackB’
 
 
@@ -1125,7 +1124,7 @@ If user $mobile replies “Y”, which callbackId would be called ?
 
 If user $mobile replies “Y”, which callbackId would be called?
 
- - Two separate messages are sent to the same mobile number with a gap of 30 mins, with the both including a callbackid. 
+ - Two separate messages are sent to the same mobile number with a gap of 30 mins, with the both including a callbackid.
  - Each message will have been received by the recipient via two different sender numbers.
  - Assuming the recipient responds to the first message they received, Whispir will trigger the callback ‘callbackA’.
  - If they respond to the second message they received, Whispir will trigger the callback ‘callbackB’
@@ -1153,5 +1152,3 @@ How about 1 hour, 2 hours later?
  - The duration between when the message is sent, and the reply received has no significance.
  - The challenge in matching outbound messages and their inbound responses is only relevant when the entire pool of numbers (which continues to grow) is exhausted.
  - Recipients can respond days (max 7) after the message send out occurred and Whispir will still track the correct message that the reply is relevant to.
-
-
