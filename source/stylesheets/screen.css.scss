@@ -80,7 +80,7 @@ html, body {
   background-image: linear-gradient(to right bottom, #000000 0%,#444444 100%);
   background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #000000),color-stop(100%, #444444));
   background-image: -webkit-linear-gradient(left top, #000000 0%,#444444 100%);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
 
   // language selector for mobile devices
@@ -176,7 +176,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    line-height: 38px;
   }
 
   li {
@@ -200,7 +200,7 @@ html, body {
     font-weight: 500;
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
-      font-size: 12px;
+      font-size: 15px;
       color: $main-text;
     }
 
@@ -293,7 +293,7 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    
+
   }
 }
 
@@ -350,8 +350,8 @@ html, body {
     padding: 0 $main-padding;
     @include box-sizing(border-box);
     display: block;
-    @include text-shadow($main-embossed-text-shadow);
 
+    line-height: 1.6;
     @extend %left-col;
   }
 
@@ -530,15 +530,15 @@ html, body {
 }
 
 button#encode {
-  background-color: #03f; 
+  background-color: #03f;
   border: 1px solid #03f;
-  width: 100%; 
-  padding: 15px; 
+  width: 60%;
+  padding: 15px;
   color: #fff;
 }
 
 button#encode:hover {
-  background-color: #fff; 
+  background-color: #fff;
   color: #03f;
   webkit-transition: all 300ms;
   -moz-transition: all 300ms;
@@ -582,7 +582,7 @@ button#encode:hover {
   }
 
   blockquote {
-    padding: 10px $main-padding 0px;  
+    padding: 10px $main-padding 0px;
   }
 
   //this is the heading for the code snippetss
@@ -600,7 +600,7 @@ button#encode:hover {
       padding: 0px 0px $main-padding;
       color: #ddd;
       font-weight: normal;
-      font-size: 1.1em;
+      font-size: 1em;
     }
 
   }
@@ -633,6 +633,7 @@ button#encode:hover {
     padding-top: 0.3em;
     padding-bottom: 0.3em;
   }
+
 }
 
 @media (max-width: $phone-width) {
@@ -660,4 +661,5 @@ button#encode:hover {
   %right-col + %left-col {
     margin-top: $main-padding;
   }
+
 }

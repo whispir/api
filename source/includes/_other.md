@@ -1,11 +1,9 @@
-# Other Resources
+# Contact Us
 
-<aside class="notice">
-	Updated 9 September 2015
-</aside>
+As much as we try to keep this documentation up to date, it's possible that some features are not listed or aren't completely documented.
 
-This API documentation is being migrated from [https://developer.whispir.com/docs](https://developer.whispir.com/docs).
+If you cannot find the information you're after, or you generally have a question you'd like to ask, please send us an email at [support@whispir.io](mailto:support@whispir.io), or tweet @whispir.
 
-If the information about the resource you are looking for is not yet listed here, please check the previous documentation.
+Thanks!
 
-If you still cannot find the information you're after, please send us an email at [support@whispir.io](mailto:support@whispir.io).
+The Whispir.io Team

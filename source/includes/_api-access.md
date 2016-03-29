@@ -15,7 +15,7 @@ Simply log in to ([whispir.io](https://whispir.io/login)) and create an app insi
 
 If you're a new customer and are interested in using the API, sign up for our ([Free 30 Day Trial](https://whispir.io/register)). No Credit Card Required.  
 
-## Create an app 
+## Create an app
 
 Follow these simple steps to create your first Whispir.io Application.
 
@@ -36,24 +36,24 @@ Now that you've got your App API key, you can check your connectivity to the API
 
 > Connect to the API
 
-> > Using the information on the left, you can execute the following curl statement: 
+> > Using the information on the left, you can execute the following curl statement:
 
 ```shell
-curl -H "Authorization: <Your Authorization Header>" 
+curl -H "Authorization: <Your Authorization Header>"
      https://api.whispir.com?apikey=<Your App API Key>
 
 # with sample values
 
 curl -H "Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk"  
-     https://api.whispir.com?apikey=89asdfohasd89023rsd 
+     https://api.whispir.com?apikey=89asdfohasd89023rsd
 
 # If all is correct, the following response should be expected (The API defaults to an XML response)
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:company xmlns="http://schemas.api.whispir.com/dap" 
+<ns2:company xmlns="http://schemas.api.whispir.com/dap"
              xmlns:ns2="http://schemas.api.whispir.com">
-    <link method="GET" 
-          rel="retrieveWorkspaces" 
+    <link method="GET"
+          rel="retrieveWorkspaces"
           uri="https://api.whispir.com/workspaces?apikey=89asdfohasd89023rsd"/>
     ...
 </ns2:company>
@@ -63,16 +63,16 @@ The first thing you'll need to do is generate your **Authorization Header** for 
 
 **Whispir uses Basic HTTP Authentication for all API requests.**
 
-You can generate the Authorization header in most programming languages very easily, however for simplicity you can generate it here by filling in the form below. 
+You can generate the Authorization header in most programming languages very easily, however for simplicity you can generate it here by filling in the form below.
 
-**Note:** Your Whispir authentication information is not submitted or stored, it is only used as part of an algorithm to automatically generate your header. 
+**Note:** Your Whispir authentication information is not submitted or stored, it is only used as part of an algorithm to automatically generate your header.
 
-**Whispir Username:**&nbsp;<input id="username" name="username" style="width: 60%; margin-bottom: 3px;" type="text"> <br/>
-**Whispir Password:**&nbsp;<input id="password" name="password" style="width: 60%" type="password">
+Whispir Username:<br/><input id="username" name="username" style="width: 60%; margin-bottom: 3px;" type="text"> <br/>
+Whispir Password:<br/><input id="password" name="password" style="width: 60%" type="password">
 
 <button onclick="doEncode()" name="encode" id="encode">Generate your Authorization Header</button>
 
-**Authorization Header:**&nbsp;<input id="result" name="result" style="width: 60%" type="text"> <br/>
+Authorization Header:<br/><input id="result" name="result" style="width: 60%" type="text"> <br/>
 
 Once you have generated this header, you can use it in a request to the API. This will ensure everything is working correctly. To do this you can use a programming lanugage, a curl script, or a generic REST client.
 
@@ -149,14 +149,14 @@ If you get a different response than **HTTP 200 OK**, perform the following:
 > > Send your first message using curl.
 
 ```shell
-curl -H "Authorization: Basic <YOUR AUTH HEADER>" 
-     -H "Content-Type: application/vnd.whispir.message-v1+json" 
-     -H "Accept: application/vnd.whispir.message-v1+json" 
-     -d '{ 
+curl -H "Authorization: Basic <YOUR AUTH HEADER>"
+     -H "Content-Type: application/vnd.whispir.message-v1+json"
+     -H "Accept: application/vnd.whispir.message-v1+json"
+     -d '{
             "to": "<DESTINATION PHONE NUMBER(S)>",
             "subject": "This is the first line of my SMS",
             "body": "This is the content of my SMS"
-         }' 
+         }'
      https://api.whispir.com/messages?apikey=<YOUR API KEY>
 ```
 
@@ -169,11 +169,11 @@ curl -H "Authorization: Basic <YOUR AUTH HEADER>"
 
 By now you should be able to connect to the API and can issue requests and receive responses. Based on this, you can now send your first SMS message using the API.
 
-This is very similar to the previous request you executed to test your connectivity, but instead of using an **HTTP GET** to retrieve information, this time you're going to use an **HTTP POST** to ask Whispir to do something. 
+This is very similar to the previous request you executed to test your connectivity, but instead of using an **HTTP GET** to retrieve information, this time you're going to use an **HTTP POST** to ask Whispir to do something.
 
 As you're sending a message, you need to tell Whispir *who* to send it to, and *what* the type of content it is.
 
-You're going to use the URL `https://api.whispir.com/messages` as the API endpoint. 
+You're going to use the URL `https://api.whispir.com/messages` as the API endpoint.
 
 ### Content Type
 
@@ -191,7 +191,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Accept: application/vnd.whispir.message-v1+json
 
 {
-    "to": "<DESTINATION PHONE NUMBER>", 
+    "to": "<DESTINATION PHONE NUMBER>",
     "subject": "This is the first line of my SMS",
     "body": "This is the content of my SMS"
 }
@@ -206,7 +206,7 @@ Accept: application/vnd.whispir.message-v1+xml
     <to>[DESTINATION PHONE NUMBER]</to>
     <subject>This is the first line of my SMS</subject>    
     <body>This is the content of my SMS</body>
-</ns2:message> 
+</ns2:message>
 
 ```
 
@@ -230,4 +230,3 @@ Be sure to include the correct headers for the desired content type:
 * JSON - `application/vnd.whispir.message-v1+json`
 
 For more information on Messages and all the other Whispir resources please continue through the documentation, or browse straight to Messages resource documentation for more information.
-
