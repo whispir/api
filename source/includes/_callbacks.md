@@ -202,7 +202,26 @@ The following table describes the fields that can be used within the request.
 2. During the callback creation, Whispir shall make a GET request to ensure the callback URL provided is valid. The responseCode for this request should be `200`. Any other code is considered a failure and the callback creation will fail.
 3. This is the only time a GET request is made. Subsequent requests (callbacks) will all be POST requests.
 
-### Callback Authorization
+### **Callback creation Error**
+
+Usually callback creation is simple and straight forward. But you may face errors at times when the configuration details given in the API are malformed.
+
+#### *400 Malformed Error*
+
+This is the common error that you may face when creating a callback. If you get this issue, then check for the following:
+
+1. Read the error detail in the response body. It will give you the hint on what the issue is - immediately.
+2. Is the callback URL reachable from outside of your intranet ? Try again one more time from outside of your network.
+3. Is the response for a GET request to the URL a 200? Try it in your browser and see what is the status you get in the Network tab of Developer Tools (F12). Or you may use cURL.
+
+	a. If the GET request does not receive a 200 response, Whispir will consider the Callback creation request a failure and throws a 400 Malformed Request.
+
+	b. The "request" is malformed - in the sense that the URL given is not working and so a bad configuration/malformed detail is given to Whispir.
+
+4. A callback with the same name already exists in the Whispir under your account.
+
+
+### **Callback Authorization**
 
 > Callback Authorization
 > > Callback Servers should validate that the inbound request they are receiving is actually coming from Whispir.<br/><br/>
@@ -321,9 +340,9 @@ When provided in the callback payload, Whipir will include this in every request
 
 There are two options for the location of this Authorization Token:
 
-#### HTTP Header
+#### 1. HTTP Header
 
-Using an HTTP Header for authorisation is the preferred approach. This method will use a custom HTTP Header **X-Whispir-Callback-Key**.
+Using an HTTP Header for authorisation is the preferred approach. This method will use a custom HTTP Header *X-Whispir-Callback-Key*.
 
 This can be added to the callback by specifying the code block:
 
@@ -331,13 +350,13 @@ This can be added to the callback by specifying the code block:
 
 Every request to the specified URL will include the supplied AUTH Token within this Header.  Alternatively, this could be supplied as a query parameter as follows.
 
-####URL Query Parameter
+#### 2. URL Query Parameter
 
 In this method, the Authorization will be passed to the callback server on the query string using an 'Auth' parameter as follows:
 
 `"auth" : { "type" : "querystring", "key" : "MY_AUTH_TOKEN" }`
 
-### Callback Types
+### **Callback Types**
 
 Callbacks can be added to any message that is sent from the Whispir API using the `/messages` endpoint.
 

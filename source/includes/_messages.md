@@ -1035,7 +1035,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 }
 ```
 
-### Scheduling messages to be delivered later
+### Scheduling messages to be **delivered later**
 
 Using the Whispir API, users can schedule messages to be sent later.
 
@@ -1043,9 +1043,9 @@ Users can configure the schedule of message delivery as part of the message send
 
 For example. the code will schedule a single message to be delivered at 3:55pm on the 14th February 2017.
 
-* Using this method, messages can be easily scheduled so that the message is delivered when the recipient requires it.
+* Using this method, messages can be easily scheduled so that the message is delivered when the recipient requires it. Or based on their preference time of day.
 
-### Scheduling messages for repeated delivery
+### Scheduling messages for **repeated delivery**
 
 > > REPEAT
 
@@ -1094,7 +1094,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 }
 ```
 
-A second method of scheduling messages, users can schedule messages to be sent multiple times (e.g. every hour, every day or every 7 days).
+A second method of scheduling messages is where users can schedule messages to be sent multiple times/repeatedly (e.g. every hour, every day or every 7 days).
 
 Users can configure the repeat rate of the message delivery as part of the message sendout.
 
@@ -1102,6 +1102,22 @@ For example. the code will schedule a single message to be delivered at 3:55pm o
 
 * Using this method, users can easily schedule a message to be delivered multiple times starting from a date and continuing until desired.
 
+### **Time Zone**
+
+When a message is scheduled, it is scheduled as per the timezone setting of the user who initiated the message request. Each user in Whispir has a timezone set in their profile. So, messages are sent relative to the user's timezone, not from the timezone from where the user is located now.
+
+For ex:
+
+- If the user timezone setting is UTC, then messages are scheduled to be sent as per UTC, even if the user has triggered the message sitting in Singapore (+8). 
+
+This is very important and has to be understood as Whispir does not honor the timezone the recipient is located in. So ensure that communication is sent in appropriate/preferred time given by them.
+
+*Note:* Changing the user timezone after the message is triggered DOES NOT change the original scheduled time.
+
+### **Bulk Sending**
+Both of the schedule types are also allowed in bulk messaging. You can upload a [resource](#resources) and trigger a [bulk message](#dynamic-&-bulk-messages) to be sent using that resource at a scheduled time. 
+
+However, at this point of time, Whispir does not allow each message row inside the resource file to be sent at different time. They should all be sent at once.
 
 
 ## Message Variables
@@ -1290,7 +1306,7 @@ The following **system tags** can be included in any message:
 
 Each of these system tags will resolve on send of the message to the system information.  The system tags will only work when sending messages to any recipient.
 
-## Dynamic Messages
+## Dynamic & Bulk Messages
 
 > Dynamic Messages
 > > Whispir's API allows users to upload structured data, and process this line by line into outbound communications via SMS, Email, Voice, Web or Social Media.
