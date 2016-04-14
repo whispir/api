@@ -136,11 +136,11 @@ If you get a different response than **HTTP 200 OK**, perform the following:
 
 * Your Authorization header may not be quite right, verify your username and password browsing to [Whispir.io](https://whispir.io) and clicking 'Log In'
 * If you can successfully log in, then try and re-generate the Base64 encoded username and password using the form above.
-* If you cannot log in, then it's possible your account isn't active. Contact your Whispir Administrator, or send a message to our support team at [apisupport@whispir.com](mailto:apisupport@whispir.com).
+* If you cannot log in, then it's possible your account isn't active. Contact your Whispir Administrator, or send a message to our support team at [support@whispir.io](mailto:support@whispir.io).
 
 **Other HTTP errors or no connectivity at all**
 
-* If you're still having issues, please contact us at [apisupport@whispir.com](mailto:apisupport@whispir.com).
+* If you're still having issues, please contact us at [support@whispir.io](mailto:support@whispir.io).
 
 ## Sending Messages
 
