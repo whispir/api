@@ -102,7 +102,7 @@ Content-Type: application/vnd.whispir.message-v1+json
     "body": "test body",
     "direction": "OUTGOING",
     "responseCount": "0",
-    "createdTime": "2012-09-24T15:36:16+10:00",
+    "createdTime": "1460070991",
     "link": [{
       "method": "GET",
       "rel": "self",

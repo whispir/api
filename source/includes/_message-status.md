@@ -158,7 +158,7 @@ Content-Type: application/vnd.whispir.message-v1+json
     "body": "test body",
     "direction": "OUTGOING",
     "responseCount": "0",
-    "createdTime": "2012-09-24T15:36:16+10:00",
+    "createdTime": "1460070991",
     "link": [{
       "method": "GET",
       "rel": "self",
@@ -441,9 +441,9 @@ Your application can use this information to easily determine the numbers of rec
       "type" : "sms",
       "status" : "READ",
       "destination" : "$mobile",
-      "sentTimestamp" : "2012-09-28T08:47:17+10:00"
-      "receivedTimestamp" : "2012-09-28T08:47:20+10:00"
-      "acknowlegedTimestamp" : "2012-09-28T08:47:50+10:00"
+      "sentTimestamp" : "1460070991",
+      "receivedTimestamp" : "1460070991",
+      "acknowlegedTimestamp" : "1460070991"
     }, {
       "type" : "voice",
       "status" : "",
@@ -464,9 +464,9 @@ Your application can use this information to easily determine the numbers of rec
       "type" : "sms",
       "status" : "READ",
       "destination" : "$mobile",
-      "sentTimestamp" : "2012-09-28T08:47:17+10:00"
-      "receivedTimestamp" : "2012-09-28T08:47:20+10:00"
-      "acknowlegedTimestamp" : "2012-09-28T08:47:50+10:00"
+      "sentTimestamp" : "1460070991",
+      "receivedTimestamp" : "1460070991",
+      "acknowlegedTimestamp" : "1460070991"
     }, {
       "type" : "voice",
       "status" : "",
