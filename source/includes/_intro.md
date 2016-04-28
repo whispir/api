@@ -1,4 +1,4 @@
-# Whispir API
+# Whispir Platform API
 
 > API Endpoint
 
@@ -13,7 +13,7 @@ https://api.whispir.com
 
 > Summary of Resources
 
-> > The following resource endpoints are accessible when using the Whispir API. 
+> > The following resource endpoints are accessible when using the Whispir API.
 
 ```
 /messages
@@ -39,7 +39,7 @@ https://api.whispir.com
 
 ```shell
 # Authorization and apikey are provided in the registration processes
-curl -H "Authorization: Basic <YOUR AUTHORIZATION HEADER>" 
+curl -H "Authorization: Basic <YOUR AUTHORIZATION HEADER>"
      https://api.whispir.com/messages?apikey=<YOUR API KEY>
 ```
 
@@ -71,7 +71,7 @@ The Whispir API gives developers the ability to:
 The Whispir.io Template API gives developers the ability to:
 
 * Create rich, cross-channel message templates that can be managed by designers within the Whispir Rich Message Studio.
-* Ensure a DRY (don't repeat yourself) pattern within developer code by separating the communication content from code 
+* Ensure a DRY (don't repeat yourself) pattern within developer code by separating the communication content from code
 * Reduce code change by managing content elsewhere
 
 ### Event Management API
@@ -90,4 +90,3 @@ The Whispir.io API provides developers with the ability to manage the recipients
 * Use standards based methods to create, update, and delete contact information
 * Build forms to allow contacts to self-register and manage their account, with auto-generated email notifications
 * Create, update and delete distribution lists that can be accessed for messaging at a later date
-

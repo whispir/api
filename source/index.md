@@ -1,5 +1,5 @@
 ---
-title: Whispir API Documentation
+title: Whispir Platform API
 
 language_tabs:
   - go: json
