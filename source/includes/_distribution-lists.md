@@ -363,7 +363,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>Docs_Distribution_List.company@list.company.whispir.sg</to>
-    <subject>Simple SMS to List of contacts in the distribution list</subject>    
+    <subject>Simple SMS to List of contacts in the distribution list</subject>
     <body>This is the content of my sample sms message.</body>
 </ns2:message>
 ```
@@ -402,3 +402,66 @@ Authorization: Basic [your basic auth]
 Deleting the distribution is done via a `DELETE /distributionlist/{id}` endpoint. 
 
 You can only delete the distribution list that you have created or a valid userId associated with the specific distribution list.
+
+## Location Tags for Distribution Lists
+
+Distribution Lists allow to add Locations as their property. This can be useful to geo-tag a group of users or assets in a single location. The location data can be set of multiple values with each entry specifying the lat, lon values and the type of data. There is no TTL attached to these values, so using the 'type' of location can help with proper identification and data stale ness.
+
+
+Type can be:
+
+1. 'CurrentLocation' - used to specify that the data is latest and is nearest best last known location of the DL asset
+2. '-any-key-identifier' - can be any custom identifier key name that you can use to identify/associate the location value with. Like 'AlternativeLocation' or 'LocationB' or 'LocationX' etc.
+
+> Creating Distribution Lists with Location values
+> > Distribution Lists can contain lists of Contacts, Users or other Distribution Lists
+
+```
+POST https://api.whispir.com/distributionlists?apikey=[your api key]
+Authorization: Basic [your basic auth]
+```
+
+```xml
+Content-Type: application/vnd.whispir.distributionlist-v1+xml
+ 
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
+    <name>My Distribution List</name>
+    <description></description>
+    <access>Open</access>
+    <visibility>Public</visibility>
+    <contactIds></contactIds>
+    <userIds></userIds>
+    <distListIds></distListIds>
+    <locations>
+	<location>
+		<latitude>47.6204232</latitude>
+		<longitude>-122.3493552</longitude>
+		<type>CurrentLocation</type>
+	</location>
+    </locations>
+</ns1:distributionlists>
+```
+```go
+Content-Type: application/vnd.whispir.distributionlist-v1+json
+ 
+{
+    "name" : "My Distribution List",
+    "description" : "",
+    "access" : "Open",
+    "visibility" : "Public",
+    "contactIds" : "",
+    "userIds" : "",
+    "distListIds" : "",
+    "locations": [
+        {
+          "longitude": -122.3493552,
+          "latitude": 47.6204232,
+          "type": "CurrentLocation"
+        }
+    ]
+}
+```
+
+> > Users should expect a `201 Created` response after executing this request. Or `204 No Content` in case of a distribution lost update using `PUT`
+
