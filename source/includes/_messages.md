@@ -80,10 +80,10 @@ Content-Type: application/vnd.whispir.message-v1+xml
             Pin:
         </type>
     </voice>
-    <web> 
-        <body>This is web body of my test message</body> 
-        <type>text/plain</type> 
-    </web> 
+    <web>
+        <body>This is web body of my test message</body>
+        <type>text/plain</type>
+    </web>
     <social>
         <social id="social">
             <body>Twitter Content.</body>
@@ -105,14 +105,14 @@ Content-Type: application/vnd.whispir.message-v1+json
     "body" : "This is the body of my test SMS message",
     "email" : {
         "body" : "This is the body of my test Email message",
-        "footer" : "This is the footer of my message 
+        "footer" : "This is the footer of my message
                     (generally where a signature would go)",
         "type" : "text/plain"
     },
     "voice" : {
-        "header" : "This is the introduction, 
+        "header" : "This is the introduction,
                     read out prior to any key press",
-        "body" : "This is the body of the voice call, 
+        "body" : "This is the body of the voice call,
                   read out after the key press",
         "type" : "ConfCall:,
                   ConfAccountNo:,
@@ -121,7 +121,7 @@ Content-Type: application/vnd.whispir.message-v1+json
                   Pin:"
     },
     "web" : {
-        "body" : "This is the content of my web publishing 
+        "body" : "This is the content of my web publishing
                  or Rich Push Message",
         "type" : "text/plain"
     },
@@ -167,7 +167,7 @@ These are described in more detail below:
 
 As message resources can exist in the default (Company) workspace or other workspace, messages have two access URLs:
 
-`https://api.whispir.com/messages` - for Company Workspace messages 
+`https://api.whispir.com/messages` - for Company Workspace messages
 `https://api.whispir.com/workspaces/:id/messages` - for other Workspace messages
 
 If your application does not require separate workspaces, you can simply send all messages from the default Company workspace.
@@ -273,7 +273,7 @@ Accept: application/vnd.whispir.message-v1+xml
     <to>$mobile</to>
     <subject>Test SMS Message</subject>
     <body>This is the body of my test SMS message</body>
-</ns2:message> 
+</ns2:message>
 ```
 
 ```go
@@ -327,7 +327,7 @@ The 'to' field can be provided in the following formats:
 
 ###Notes:
 
-* Each SMS message can contain up to **1600&#42;** characters 
+* Each SMS message can contain up to **1600&#42;** characters
 * The Subject field is Mandatory.
 * The Body field is Mandatory.
 * MRI (Message Resource Identifier) is the unique Whispir address for the Contact, User or Distribution List.
@@ -356,7 +356,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
         <footer>Email signature goes here.</footer>
         <type>text/plain</type>
     </email>
-</ns2:message> 
+</ns2:message>
 ```
 
 ```go
@@ -397,7 +397,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
         </body>
         <type>text/html</type>
     </email>
-</ns2:message> 
+</ns2:message>
 ```
 
 ```go
@@ -472,7 +472,7 @@ AABJRU5ErkJggg==</derefUri>
 ```
 ```go
 Content-Type: application/vnd.whispir.message-v1+json
-Accept: application/vnd.whispir.message-v1+json 
+Accept: application/vnd.whispir.message-v1+json
 
 {
     "to" : "jsmith@test.com",
@@ -564,7 +564,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
             Pin:
         </type>
     </voice>
-</ns2:message> 
+</ns2:message>
 ```
 ```go
 Content-Type: application/vnd.whispir.message-v1+json
@@ -609,7 +609,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
             Pin:0000
         </type>
     </voice>
-</ns2:message> 
+</ns2:message>
 ```
 ```go
 Content-Type: application/vnd.whispir.message-v1+json
@@ -718,7 +718,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
             </attachment>
         </resources>
     </voice>
-</ns2:message> 
+</ns2:message>
 ```
 
 ```go
@@ -749,7 +749,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 
 #### WAV File Criteria
 
-Before a WAV file will be played, it needs to conform to a certain criteria. 
+Before a WAV file will be played, it needs to conform to a certain criteria.
 
  - All WAV files must be 8bit, 8000Hz, 1ch, 64kbps MAX.
  - If the WAV is supplied outside of these criteria, the TTS will be used instead.  It is vital that TTS is provided even when using WAV files.
@@ -790,7 +790,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
             ]]>
         </body>
     </web>
-</ns2:message> 
+</ns2:message>
 ```
 
 ```go
@@ -804,7 +804,7 @@ Accept: application/vnd.whispir.message-v1+json
    "web" : {
       "type" : "text/html",
       "body" : "<div class='content'>This is the body of my Rich Message</div>"
-   } 
+   }
 }
 ```
 
@@ -840,7 +840,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
             ]]>
         </body>
     </web>
-</ns2:message> 
+</ns2:message>
 ```
 
 ```go
@@ -854,7 +854,7 @@ Accept: application/vnd.whispir.message-v1+json
    "web" : {
       "type" : "text/html",
       "body" : "<div id='content'><p>Hi <span id='first_name'></span></p><p>This is the body of my Rich Message</p><script type='text/javascript'>document.getElementById('first_name').innerHTML = Whispir.data.profile.firstname;</script></div>"
-   } 
+   }
 }
 ```
 ```php
@@ -869,9 +869,9 @@ Accept: application/vnd.whispir.message-v1+json
 </div>
 ```
 
-Whispir's Rich Messages provide you with the capability to seamlessly 'push' HTML content to your audience. 
+Whispir's Rich Messages provide you with the capability to seamlessly 'push' HTML content to your audience.
 
-This can be in the form of a simple web page, through to a mini web application with interactive widgets such as video, a data visualisation, or map. 
+This can be in the form of a simple web page, through to a mini web application with interactive widgets such as video, a data visualisation, or map.
 
 For example;
 
@@ -895,7 +895,7 @@ Whispir allows you to control the entire content to be delivered to the end user
 
 * Build to a responsive design that works across your target devices. Ensure you test across these devices.
 * Whispir strips body and doctype tags, and replaces them with tags suitable to render on mobile devices. The final DOCTYPE is delivered as a HTML 5 doctype.
-* Use style tags at the **bottom** of the HTML content (rather than in the head tag or inline styles). 
+* Use style tags at the **bottom** of the HTML content (rather than in the head tag or inline styles).
 * Custom javascript should be included at the bottom of the content if possible (speeds up viewing).
 
 ### HTML Resources
@@ -931,18 +931,18 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Web Message</subject>    
-    <web> 
-        <body>This is web body of my test message</body> 
-        <type>text/plain</type> 
-    </web> 
-    <social> 
-        <social id="social"> 
+    <web>
+        <body>This is web body of my test message</body>
+        <type>text/plain</type>
+    </web>
+    <social>
+        <social id="social">
             <body>This is the content of social message for Twitter</body>
-         </social> 
-        <social id="social_long"> 
+         </social>
+        <social id="social_long">
             <body>This is the content of social message for Facebook</body>
-            <type>text/plain</type> 
-        </social> 
+            <type>text/plain</type>
+        </social>
     </social>
 </ns2:message>
 ```
@@ -1070,7 +1070,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
     <repetitionCount>10</repetitionCount>
     <repeatDays>0</repeatDays>
     <repeatHrs>1</repeatHrs>
-    <repeatMin>0</repeatMin> 
+    <repeatMin>0</repeatMin>
 </ns2:message>
 ```
 
@@ -1090,7 +1090,7 @@ Content-Type: application/vnd.whispir.message-v1+json
     "repetitionCount" : "10",
     "repeatDays" : "0",
     "repeatHrs" : "1",
-    "repeatMin" : "0" 
+    "repeatMin" : "0"
 }
 ```
 
@@ -1108,14 +1108,14 @@ When a message is scheduled, it is scheduled as per the timezone setting of the 
 
 For ex:
 
-- If the user timezone setting is UTC, then messages are scheduled to be sent as per UTC, even if the user has triggered the message sitting in Singapore (+8). 
+- If the user timezone setting is UTC, then messages are scheduled to be sent as per UTC, even if the user has triggered the message sitting in Singapore (+8).
 
 This is very important and has to be understood as Whispir does not honor the timezone the recipient is located in. So ensure that communication is sent in appropriate/preferred time given by them.
 
 *Note:* Changing the user timezone after the message is triggered DOES NOT change the original scheduled time.
 
 ### **Bulk Sending**
-Both of the schedule types are also allowed in bulk messaging. You can upload a [resource](#resources) and trigger a [bulk message](#dynamic-&-bulk-messages) to be sent using that resource at a scheduled time. 
+Both of the schedule types are also allowed in bulk messaging. You can upload a [resource](#resources) and trigger a [bulk message](#dynamic-and-bulk-messages) to be sent using that resource at a scheduled time.
 
 However, at this point of time, Whispir does not allow each message row inside the resource file to be sent at different time. They should all be sent at once.
 
@@ -1138,7 +1138,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
     <to>John_Wick.1143139@Contact.whispir.sg</to>
     <subject>Test SMS Message with tags</subject>
     <body>Hi @@first_name@@.  This is your message.</body>
-</ns2:message> 
+</ns2:message>
 ```
 
 ```go
@@ -1236,7 +1236,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
     <to>$mobile</to>
     <subject>Test SMS Message with tags</subject>
     <body>The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
-</ns2:message> 
+</ns2:message>
 ```
 
 ```go
@@ -1306,18 +1306,18 @@ The following **system tags** can be included in any message:
 
 Each of these system tags will resolve on send of the message to the system information.  The system tags will only work when sending messages to any recipient.
 
-## Dynamic & Bulk Messages
+## Dynamic and Bulk Messages
 
 > Dynamic Messages
 > > Whispir's API allows users to upload structured data, and process this line by line into outbound communications via SMS, Email, Voice, Web or Social Media.
 
 ```
-|------------|------------|-------------|-------------|------------| 
+|------------|------------|-------------|-------------|------------|
 | First Name | Last Name  | Mobile      | Amount Owed | Date Due   |
-|------------|------------|-------------|-------------|------------| 
+|------------|------------|-------------|-------------|------------|
 | Jono       | Johnson    | +6590091234 | S$1000      | 21/08/2015 |
 | Steve      | Smith      | +6590091235 | S$1100      | 22/08/2015 |
-|------------|------------|-------------|-------------|------------| 
+|------------|------------|-------------|-------------|------------|
 ```
 
 > > After processing, the first recipient would receive a message that looks as follows:
@@ -1386,7 +1386,7 @@ Accept: application/vnd.whispir.resource-v1+json
 
 > > This will return a Resource ID that applications can use in the next step.
 
-To upload a file to Whispir's API, users will make an API call to the `/resources` endpoint. 
+To upload a file to Whispir's API, users will make an API call to the `/resources` endpoint.
 
 Applications can use this endpoint to store the source files for dynamic messages. This endpoint can also be used to store any file based data (e.g. images, pdf documents, spreadsheets) for an unlimited amount of time.
 
@@ -1435,7 +1435,7 @@ Content-Type: application/vnd.whispir.bulkmessage-v1+xml
         <type></type>
     </web>
     <callbackId/>
-</ns2:message> 
+</ns2:message>
 ```
 
 ```go
@@ -1446,7 +1446,10 @@ Content-Type: application/vnd.whispir.bulkmessage-v1+json
         "resourceId" : "",
         "smsMappingField" : "",
         "emailMappingField" : "",
-        "voiceMappingField" : ""
+        "voiceMappingField" : "",
+        "options" : {
+            "resolveRecipients" : ""
+        }
     },
     "messageTemplateId" : "",
     "subject" : "",
@@ -1473,7 +1476,7 @@ Content-Type: application/vnd.whispir.bulkmessage-v1+json
 
 ### Dynamic Messaging
 
-#### Method Definition and Descriptions 
+#### Method Definition and Descriptions
 
 <table>
     <thead>
@@ -1568,7 +1571,7 @@ The structure of the Bulk Message is used to define the resource that should be 
                 The id of the callback to be used for responses to this message.<br/>
                 Sample Value: SampleCallback
                 <br/><br/>
-                <b>Note:</b> callback IDs are configured by Administrators within the Whispir Platform. 
+                <b>Note:</b> callback IDs are configured by Administrators within the Whispir Platform.
             </td>
         </tr>
     </tbody>
@@ -1603,7 +1606,7 @@ The structure of the Bulk Message is used to define the resource that should be 
                 The column name from within the CSV file that refers to the field on each row that should be used for Email messages.<br/>
                 Sample Value: Email
                 <br/><br/>
-                <strong>Note:</strong> This field will default to ‘email’ if present in the file and this field is not populated. 
+                <strong>Note:</strong> This field will default to ‘email’ if present in the file and this field is not populated.
             </td>
         </tr>
         <tr>
@@ -1612,7 +1615,17 @@ The structure of the Bulk Message is used to define the resource that should be 
                 The column name from within the CSV file that refers to the field on each row that should be used for Voice messages.<br/>
                 Sample Value: Mobile
                 <br/><br/>
-                <strong>Note:</strong> This field will default to ‘mobile’ if present in the file and this field is not populated. 
+                <strong>Note:</strong> This field will default to ‘mobile’ if present in the file and this field is not populated.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">options</td>
+            <td>
+                This specifies other options that are available within this bulk message.
+                <br/>
+                <ul>
+                  <li>resolveRecipients (true/false) - Whether recipients should be resolved to contacts in the Whispir Workspace. Default: true for less than 5000 recipients</li>
+                </ul>
             </td>
         </tr>
     </tbody>
@@ -1621,7 +1634,7 @@ The structure of the Bulk Message is used to define the resource that should be 
 <table>
     <thead>
         <tr>
-            <th style="width: 50%" colspan="2">Message Content Section – *Required when no template is used.</th>
+            <th style="width: 50%" colspan="2">Message Content Section – *Required when no template is used.*</th>
         </tr>
     </thead>
     <tbody>
@@ -1645,7 +1658,7 @@ The structure of the Bulk Message is used to define the resource that should be 
 <table>
     <thead>
         <tr>
-            <th style="width: 50%" colspan="2">Email Section – *Required for email messages</th>
+            <th style="width: 50%" colspan="2">Email Section – *Required for email messages*</th>
         </tr>
     </thead>
     <tbody>
@@ -1676,7 +1689,7 @@ The structure of the Bulk Message is used to define the resource that should be 
 <table>
     <thead>
         <tr>
-            <th style="width: 50%" colspan="2">Voice Section – *Required for voice messages</th>
+            <th style="width: 50%" colspan="2">Voice Section – *Required for voice messages*</th>
         </tr>
     </thead>
     <tbody>
@@ -1707,7 +1720,7 @@ The structure of the Bulk Message is used to define the resource that should be 
 <table>
     <thead>
         <tr>
-            <th style="width: 50%" colspan="2">Web Section – *Required for web/rich push messages</th>
+            <th style="width: 50%" colspan="2">Web Section – *Required for web/rich push messages*</th>
         </tr>
     </thead>
     <tbody>
@@ -1751,7 +1764,7 @@ For more information about retrieving the responses and status of the sent messa
 
 ## Recipient Information
 
-Using the Whispir API, users can send message to either ad-hoc or predefined recipients. 
+Using the Whispir API, users can send message to either ad-hoc or predefined recipients.
 
 The details below describe how these can be used in the `<to>` field for any type of message.
 
@@ -1760,7 +1773,7 @@ The details below describe how these can be used in the `<to>` field for any typ
 Any valid E-mail address
 
  * <to>jsmtih@test.com</to>
- 
+
 Any valid Mobile number for SMS or Voice calls (countrycode prefixed)
 
  * <to>61423589146,6596624876</to>

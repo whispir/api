@@ -63,7 +63,7 @@ Authorization: Basic asdf98nf89asdvasd2r398h8sdf
 ```
 
 ```xml
-Content-Type: application/vnd.whispir.activity-v1+xml 
+Content-Type: application/vnd.whispir.activity-v1+xml
 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -107,98 +107,98 @@ Only **3 fields** are required:
         </tr>
     </thead>
     <tbody>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">action :</td>
-			<td><strong>String</strong><br/>
-				Specifies the action performed during this activity.
-				The following are the list of actions that can be performed -
-				<ul>
-					<li>Create</li>
-					<li>Update</li>
-					<li>Move</li>
-					<li>Copy</li>
-					<li>Draft</li>
-					<li>Send</li>
-					<li>Modified</li>
-					<li>Delete</li>
-					<li>Contact Import File</li>
-					<li>Login</li>
-					<li>Approve</li>
-					<li>Reject</li>
-					<li>Dispatch</li>
-					<li>Register</li>
-					<li>Accept</li>
-					<li>Closed</li>
-					<li>Map</li>
-					<li>Un-map</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">module:</td>
-			<td><strong>String</strong><br/>
-				Specifies the module to which this activity belongs to.
-				The following are the list of actions that can be performed -
-				<ul>
-					<li>System</li>
-					<li>Message</li>
-					<li>Scheduled Message</li>
-					<li>User</li>
-					<li>Contact</li>
-					<li>DistributionList</li>
-					<li>Template</li>
-					<li>Workspace</li>
-					<li>Event</li>
-					<li>WebService</li>
-					<li>Settings</li>
-					<li>Conversation</li>
-					<li>Gateway</li>
-					<li>Workspace Mapping</li>
-					<li>Folders</li>
-					<li>Team</li>
-					<li>RSS</li>
-					<li>API Mapping</li>
-					<li>Asset</li>
-					<li>Instruction</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">workspace:</td>
-			<td><strong>String</strong><br/>
-				The workspace in which this activity is performed. This will usually be the API user's default workspace
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">user:</td>
-			<td><strong>String</strong><br/>
-				The username of the person who performed this activity.	This will usually be the API user invoking the creation.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">status:</td>
-			<td><strong>String</strong><br/>
-				Specifies the status of the activity. The status can be one of - 
-				<ul>
-					<li>Successful</li>
-					<li>Failed</li>
-					<li>Rejected</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">description:</td>
-			<td><strong>String</strong><br/>
-				The description of the activity. This is a free text that details about the activity. <br><br> <b>Note:</b> If this is not provided during the creation of the activity, this field will not exist for the specific activity. As updating an activity is not allowed, care has to be taken to ensure that absence of this field is justified as per your audit - compliance needs.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">time:</td>
-			<td><strong>String</strong><br/>
-				The date and time of the activity in the format: dd/mm/yy hh:mm. This will be defaulted to the time at which this activity is created.
-			</td>
-		</tr>
-	</tbody>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">action :</td>
+      <td><strong>String</strong><br/>
+        Specifies the action performed during this activity.
+        The following are the list of actions that can be performed -
+        <ul>
+          <li>Create</li>
+          <li>Update</li>
+          <li>Move</li>
+          <li>Copy</li>
+          <li>Draft</li>
+          <li>Send</li>
+          <li>Modified</li>
+          <li>Delete</li>
+          <li>Contact Import File</li>
+          <li>Login</li>
+          <li>Approve</li>
+          <li>Reject</li>
+          <li>Dispatch</li>
+          <li>Register</li>
+          <li>Accept</li>
+          <li>Closed</li>
+          <li>Map</li>
+          <li>Un-map</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">module:</td>
+      <td><strong>String</strong><br/>
+        Specifies the module to which this activity belongs to.
+        The following are the list of actions that can be performed -
+        <ul>
+          <li>System</li>
+          <li>Message</li>
+          <li>Scheduled Message</li>
+          <li>User</li>
+          <li>Contact</li>
+          <li>DistributionList</li>
+          <li>Template</li>
+          <li>Workspace</li>
+          <li>Event</li>
+          <li>WebService</li>
+          <li>Settings</li>
+          <li>Conversation</li>
+          <li>Gateway</li>
+          <li>Workspace Mapping</li>
+          <li>Folders</li>
+          <li>Team</li>
+          <li>RSS</li>
+          <li>API Mapping</li>
+          <li>Asset</li>
+          <li>Instruction</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">workspace:</td>
+      <td><strong>String</strong><br/>
+        The workspace in which this activity is performed. This will usually be the API user's default workspace
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">user:</td>
+      <td><strong>String</strong><br/>
+        The username of the person who performed this activity.	This will usually be the API user invoking the creation.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">status:</td>
+      <td><strong>String</strong><br/>
+        Specifies the status of the activity. The status can be one of -
+        <ul>
+          <li>Successful</li>
+          <li>Failed</li>
+          <li>Rejected</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">description:</td>
+      <td><strong>String</strong><br/>
+        The description of the activity. This is a free text that details about the activity. <br><br> <b>Note:</b> If this is not provided during the creation of the activity, this field will not exist for the specific activity. As updating an activity is not allowed, care has to be taken to ensure that absence of this field is justified as per your audit - compliance needs.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">time:</td>
+      <td><strong>String</strong><br/>
+        The date and time of the activity in the format: dd/mm/yy hh:mm. This will be defaulted to the time at which this activity is created.
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 ## Retrieving Activities
@@ -245,7 +245,7 @@ Accept: application/vnd.whispir.activity-v1+xml
             <workspaceName>Whispir</workspaceName>
             <ns2:link uri="https://api.whispir.com/activities/19F603F21E8A7D536D577A6B4DBCFE3F?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:activity>
-		<ns2:activity>
+    <ns2:activity>
             <user>markm</user>
             <time>22/12/14 11:37</time>
             <action>Logout</action>
@@ -321,7 +321,7 @@ Accept: application/vnd.whispir.activity-v1+json
         }
       ]
     },
-	{
+  {
       "user": "markm",
       "time": "22/12/14 11:37",
       "action": "Logout",
@@ -337,7 +337,7 @@ Accept: application/vnd.whispir.activity-v1+json
         }
       ]
     },
-	{
+  {
       "user": "markm",
       "time": "22/12/14 11:20",
       "action": "Login",
@@ -374,66 +374,66 @@ Each of these activities will provide the following information:
         </tr>
     </thead>
     <tbody>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">action :</td>
-			<td><strong>String</strong><br/>
-				Specifies the action performed during this activity.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">module:</td>
-			<td><strong>String</strong><br/>
-				Specifies the module to which this activity belongs to.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">workspace:</td>
-			<td><strong>String</strong><br/>
-				The workspace in which this activity is performed.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">user:</td>
-			<td><strong>String</strong><br/>
-				The username of the person who performed this activity.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">status:</td>
-			<td><strong>String</strong><br/>
-				Specifies the status of the activity. The status can be one of - 
-				<ul>
-					<li>Successful</li>
-					<li>Failed</li>
-					<li>Rejected</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">description:</td>
-			<td><strong>String</strong><br/>
-				The description of the activity.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">time:</td>
-			<td><strong>String</strong><br/>
-				The date and time of the activity in the format: dd/mm/yy hh:mm.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">link:</td>
-			<td><strong>Array</strong><br/>
-				Provides a list of URLs that can be used to manipulate or access the activity. 
-				<br>
-				<ul>
-					<li>uri - the link to access the activity</li>
-					<li>rel - the descriptor for what the link will do</li>
-					<li>method - the HTTP method to use with this particular link</li>
-				</ul>
-			</td>
-		</tr>
-	</tbody>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">action :</td>
+      <td><strong>String</strong><br/>
+        Specifies the action performed during this activity.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">module:</td>
+      <td><strong>String</strong><br/>
+        Specifies the module to which this activity belongs to.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">workspace:</td>
+      <td><strong>String</strong><br/>
+        The workspace in which this activity is performed.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">user:</td>
+      <td><strong>String</strong><br/>
+        The username of the person who performed this activity.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">status:</td>
+      <td><strong>String</strong><br/>
+        Specifies the status of the activity. The status can be one of -
+        <ul>
+          <li>Successful</li>
+          <li>Failed</li>
+          <li>Rejected</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">description:</td>
+      <td><strong>String</strong><br/>
+        The description of the activity.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">time:</td>
+      <td><strong>String</strong><br/>
+        The date and time of the activity in the format: dd/mm/yy hh:mm.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">link:</td>
+      <td><strong>Array</strong><br/>
+        Provides a list of URLs that can be used to manipulate or access the activity.
+        <br>
+        <ul>
+          <li>uri - the link to access the activity</li>
+          <li>rel - the descriptor for what the link will do</li>
+          <li>method - the HTTP method to use with this particular link</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 **Note:** The API currently results in a `404 Not Found` when there are no activities present in the log for a given search criteria. This should not be not confused with a failed response. But rather as `No Data Found`.
@@ -459,24 +459,24 @@ By default, `GET /activities` returns all the activities at company level. This 
         </tr>
     </thead>
     <tbody>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">Request</td>
-			<td style="text-align: left; font-weight: bold;">Description</td>
-		</tr>
-		<tr>
-			<td style="text-align: right;;">/activities</td>
-			<td>Only returns activity that took place in My Company</td>
-		</tr>
-		<tr>
-			<td style="text-align: right;;">/workspaces/:id/activities</td>
-			<td>Only returns activity that took place in the specified workspace</td>
-		</tr>
-	</tbody>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">Request</td>
+      <td style="text-align: left; font-weight: bold;">Description</td>
+    </tr>
+    <tr>
+      <td style="text-align: right;;">/activities</td>
+      <td>Only returns activity that took place in My Company</td>
+    </tr>
+    <tr>
+      <td style="text-align: right;;">/workspaces/:id/activities</td>
+      <td>Only returns activity that took place in the specified workspace</td>
+    </tr>
+  </tbody>
 </table>
 
-## Search/Filter on Activity Logs
+## Search or Filter on Activity Logs
 
-Activity logs can become quickly huge owing to the amount of actions performed. In such cases, to have a proper filtering of data during a GET /activities, Whispir API provides very neat filtering options on the data. 
+Activity logs can become quickly huge owing to the amount of actions performed. In such cases, to have a proper filtering of data during a GET /activities, Whispir API provides very neat filtering options on the data.
 
 ```
 HTTP 1.1 GET https://api.whispir.com/activities?apikey=[your_api_key]&field=value
@@ -492,43 +492,43 @@ All filter options are to be passed in as URL query parameters.
         </tr>
     </thead>
     <tbody>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">action :</td>
-			<td>/activities?action=Map</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">module:</td>
-			<td>/activities?module=Message</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">user:</td>
-			<td>/activities?user=james</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">workspace:</td>
-			<td>/activities?workspace=Whispir. <br/><br/>One can also refer to <i>restricting to only a workspace</i> section above</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">status:</td>
-			<td>/activities?status=Successful</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">description:</td>
-			<td>/activities?description=Imported</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">Start time:</td>
-			<td>The date and time to start searching from in the format: dd/mm/yyyy hh:mm. This will search on the `time` field <br/><br/>
-				/activities?startTime=01/01/2015%2000:00
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">End time:</td>
-			<td>The date and time to start searching from in the format: dd/mm/yyyy hh:mm<br/><br/>
-				/activities?endTime=01/01/2015%2000:00
-			</td>
-		</tr>
-	</tbody>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">action :</td>
+      <td>/activities?action=Map</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">module:</td>
+      <td>/activities?module=Message</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">user:</td>
+      <td>/activities?user=james</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">workspace:</td>
+      <td>/activities?workspace=Whispir. <br/><br/>One can also refer to <i>restricting to only a workspace</i> section above</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">status:</td>
+      <td>/activities?status=Successful</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">description:</td>
+      <td>/activities?description=Imported</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">Start time:</td>
+      <td>The date and time to start searching from in the format: dd/mm/yyyy hh:mm. This will search on the `time` field <br/><br/>
+        /activities?startTime=01/01/2015%2000:00
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">End time:</td>
+      <td>The date and time to start searching from in the format: dd/mm/yyyy hh:mm<br/><br/>
+        /activities?endTime=01/01/2015%2000:00
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 **Note:** The API currently results in a `404 Not Found` when there are no activities present in the log for a given search criteria. This should not be not confused with a failed response. But rather as `No Data Found`.

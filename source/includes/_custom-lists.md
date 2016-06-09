@@ -50,21 +50,21 @@ In the Events, You have a "Priority" field that the user has to fill to specify 
 - Priority 2 (<1 day resolution)
 - Priority 1 (<2hr resolution)
 
-If this is not the standard for the company, the values can be changed to suit your needs. This is where custom lists come in to help. Just Create a custom list and via company settings set the custom list to override the existing list. When this is done, the user using the interface shall only see the new custom list values in place of the standard list.These custom lists can be associated to message attributes, event fields, contact fields. 
+If this is not the standard for the company, the values can be changed to suit your needs. This is where custom lists come in to help. Just Create a custom list and via company settings set the custom list to override the existing list. When this is done, the user using the interface shall only see the new custom list values in place of the standard list.These custom lists can be associated to message attributes, event fields, contact fields.
 
 **Translations within Voice Module -**
 
 The custom lists can also be used to do translations during the Voice Module usage. During the call, options can be read out in various languages depending on the user preference of language. In this case, the standard list is replaced with a custom list that is merely a translation in the target language word to word. Instead of the English, the specific language words are read out, making it easier to communicate with end customers from multiple language groups.
 
-Permission Rules applicable on the Custom Lists - 
+Permission Rules applicable on the Custom Lists -
 
 - Any API user will be able to perform a GET on /customlists
 - If the user is a Company Admin or Company Leader, they will receive a 200 OK with the valid response
 - If the user is a Company Member or Company Guest, they will receive a 403 Forbidden advising they don't have permission to access this resource
 
-CONTENT (type) - 
+CONTENT (type) -
 
-The customlists will contain all lists in the company across the following places 
+The customlists will contain all lists in the company across the following places
 - RSS Custom Lists
 - Incident Custom Lists (Events/Assets)
 - Message Attribute Custom Lists
@@ -225,7 +225,7 @@ You will need to supply one of the following headers (for retrieving JSON or XML
  * Accept: application/vnd.whispir.customlist-v1+xml
  * Accept: application/vnd.whispir.customlist-v1+json
 
-An array of Custom Lists will be returned to you in the HTTP response body. 
+An array of Custom Lists will be returned to you in the HTTP response body.
 
 
 <table>
@@ -235,64 +235,64 @@ An array of Custom Lists will be returned to you in the HTTP response body.
         </tr>
     </thead>
     <tbody>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">id:</td>
-			<td><strong>Number</strong><br/>
-				Specifies the unique id of the List.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">name:</td>
-			<td><strong>String</strong><br/>
-				Specifies the name of the List.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">type:</td>
-			<td><strong>String</strong><br/>
-				Specifies the type. The type can be one of - 
-				<ul>
-					<li>INCIDENT</li>
-					<li>MESSAGE</li>
-					<li>CONTACT</li>
-					<li>RSS</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">sorttype:</td>
-			<td><strong>String</strong><br/>
-				Specifies the sorting order. The order can be one of - 
-				<ul>
-					<li>As Displayed</li>
-					<li>Ascending</li>
-					<li>Descending</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">linked:</td>
-			<td><strong>String</strong><br/>
-				Specifies the linked status. Linked list item values are dependent on other lists. The linked can be one of - 
-				<ul>
-					<li>disabled</li>
-					<li><i>list id to which this is linked with</i></li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">link:</td>
-			<td><strong>Array</strong><br/>
-				Provides a list of URLs that can be used to manipulate or access the list. 
-				<br>
-				<ul>
-					<li>uri - the link to access the list</li>
-					<li>rel - the descriptor for what the link will do</li>
-					<li>method - the HTTP method to use with this particular link</li>
-				</ul>
-			</td>
-		</tr>
-	</tbody>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">id:</td>
+      <td><strong>Number</strong><br/>
+        Specifies the unique id of the List.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">name:</td>
+      <td><strong>String</strong><br/>
+        Specifies the name of the List.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">type:</td>
+      <td><strong>String</strong><br/>
+        Specifies the type. The type can be one of -
+        <ul>
+          <li>INCIDENT</li>
+          <li>MESSAGE</li>
+          <li>CONTACT</li>
+          <li>RSS</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">sorttype:</td>
+      <td><strong>String</strong><br/>
+        Specifies the sorting order. The order can be one of -
+        <ul>
+          <li>As Displayed</li>
+          <li>Ascending</li>
+          <li>Descending</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">linked:</td>
+      <td><strong>String</strong><br/>
+        Specifies the linked status. Linked list item values are dependent on other lists. The linked can be one of -
+        <ul>
+          <li>disabled</li>
+          <li><i>list id to which this is linked with</i></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">link:</td>
+      <td><strong>Array</strong><br/>
+        Provides a list of URLs that can be used to manipulate or access the list.
+        <br>
+        <ul>
+          <li>uri - the link to access the list</li>
+          <li>rel - the descriptor for what the link will do</li>
+          <li>method - the HTTP method to use with this particular link</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 
@@ -375,79 +375,79 @@ To retrieve the details of a specific list, the end point must be passed with th
         </tr>
     </thead>
     <tbody>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">id:</td>
-			<td><strong>Number</strong><br/>
-				Specifies the unique id of the List.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">name:</td>
-			<td><strong>String</strong><br/>
-				Specifies the name of the List.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">type:</td>
-			<td><strong>String</strong><br/>
-				Specifies the type. The type can be one of - 
-				<ul>
-					<li>INCIDENT</li>
-					<li>MESSAGE</li>
-					<li>CONTACT</li>
-					<li>RSS</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">createdDate:</td>
-			<td><strong>String</strong><br/>
-				Specifies the date of the List creation.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">sorttype:</td>
-			<td><strong>String</strong><br/>
-				Specifies the sorting order. The order can be one of - 
-				<ul>
-					<li>As Displayed</li>
-					<li>Ascending</li>
-					<li>Descending</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">linked:</td>
-			<td><strong>String</strong><br/>
-				Specifies the linked status. Linked list item values are dependent on other lists. The linked can be one of - 
-				<ul>
-					<li>disabled</li>
-					<li><i>list id to which this is linked with</i></li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">customlabellists:</td>
-			<td><strong>Object</strong><br/>
-				Contains the individual list items that make up this list. <br><br>The `name` is the text that is shown to the user, where as the `value` is the internally passed in value.
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">link:</td>
-			<td><strong>Array</strong><br/>
-				Provides a list of URLs that can be used to manipulate or access the list. 
-				<br>
-				<ul>
-					<li>uri - the link to access the list</li>
-					<li>rel - the descriptor for what the link will do</li>
-					<li>method - the HTTP method to use with this particular link</li>
-				</ul>
-			</td>
-		</tr>
-	</tbody>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">id:</td>
+      <td><strong>Number</strong><br/>
+        Specifies the unique id of the List.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">name:</td>
+      <td><strong>String</strong><br/>
+        Specifies the name of the List.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">type:</td>
+      <td><strong>String</strong><br/>
+        Specifies the type. The type can be one of -
+        <ul>
+          <li>INCIDENT</li>
+          <li>MESSAGE</li>
+          <li>CONTACT</li>
+          <li>RSS</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">createdDate:</td>
+      <td><strong>String</strong><br/>
+        Specifies the date of the List creation.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">sorttype:</td>
+      <td><strong>String</strong><br/>
+        Specifies the sorting order. The order can be one of -
+        <ul>
+          <li>As Displayed</li>
+          <li>Ascending</li>
+          <li>Descending</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">linked:</td>
+      <td><strong>String</strong><br/>
+        Specifies the linked status. Linked list item values are dependent on other lists. The linked can be one of -
+        <ul>
+          <li>disabled</li>
+          <li><i>list id to which this is linked with</i></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">customlabellists:</td>
+      <td><strong>Object</strong><br/>
+        Contains the individual list items that make up this list. <br><br>The `name` is the text that is shown to the user, where as the `value` is the internally passed in value.
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">link:</td>
+      <td><strong>Array</strong><br/>
+        Provides a list of URLs that can be used to manipulate or access the list.
+        <br>
+        <ul>
+          <li>uri - the link to access the list</li>
+          <li>rel - the descriptor for what the link will do</li>
+          <li>method - the HTTP method to use with this particular link</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
-## Search/Filter on Custom Lists
+## Search or Filter on Custom Lists
 
 API allows you to be able to query the `GET /customlists` endpoint using the following filters.
 
@@ -465,15 +465,15 @@ All filter options are to be passed in as URL query parameters.
         </tr>
     </thead>
     <tbody>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">name:</td>
-			<td>/customlists?name=Category</td>
-		</tr>
-		<tr>
-			<td style="text-align: right; font-weight: bold;">type:</td>
-			<td>/customlists?type=Message</td>
-		</tr>
-	</tbody>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">name:</td>
+      <td>/customlists?name=Category</td>
+    </tr>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">type:</td>
+      <td>/customlists?type=Message</td>
+    </tr>
+  </tbody>
 </table>
 
 **Note:** The API currently results in a `404 Not Found` when there are no activities present in the log for a given search criteria. This should not be not confused with a failed response. But rather as `No Data Found`.

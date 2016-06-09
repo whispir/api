@@ -421,7 +421,7 @@ Location: http://api.whispir.com/resources/ABD435DBFCD663DEDEFF?apikey=<your_api
 
 ```
 
-## Sending Messages using template & resources
+## Sending Messages using template and resources
 
 Apart from use in the [Dynamic Messages](https://whispir.github.io/api/#dynamic-messages), resources can be equally used sending dynamic messages with or without a template.
 
