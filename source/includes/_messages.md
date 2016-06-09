@@ -1414,6 +1414,9 @@ Content-Type: application/vnd.whispir.bulkmessage-v1+xml
       <smsMappingField/>
       <emailMappingField/>
       <voiceMappingField>
+      <options>
+        <resolveRecipients/>
+      </options>
     </resource>
     <messageTemplateId>
     <subject></subject>
