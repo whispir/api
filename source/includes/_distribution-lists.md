@@ -70,7 +70,7 @@ Content-Type: application/vnd.whispir.distributionlist-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
     <name>My Distribution List</name>
-    <description></description>    
+    <description></description>
     <access>Open</access>
     <visibility>Public</visibility>
     <contactIds></contactIds>
@@ -291,13 +291,62 @@ Both these operations can be performed by passing in the relevant search paramet
 * **&description=** - to search by description
 
 
-## Adding Contacts
+## Modifying Distribution Lists
 
-> Adding Contacts
-> > Contacts can be added to Distribution Lists when the list is created, or by using a `PUT` request at a later stage.
+> Getting the DL
+
+> > Request
 
 ```
-POST https://api.whispir.com/distributionlists?apikey=[your api key]
+GET https://api.whispir.com/distributionlists/CF5AF1AE49ED07A6?apikey=[your api key]
+Authorization: Basic [your basic auth]
+```
+> > Response
+
+```xml
+Accept: application/vnd.whispir.distributionlist-v1+xml
+ 
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
+    <id>CF5AF1AE49ED07A6</id>
+    <name>Rockstar Distribution List</name>
+    <description>All the rocks were once stars - astrophysicist inside me</description>
+    <access>Open</access>
+    <visibility>Public</visibility>
+    <contactIds>7CC205AE17FFDC8A,92XC05AE154FDC8A</contactIds>
+    <userIds></userIds>
+    <distListIds></distListIds>
+...
+</ns1:distributionlists>
+```
+
+```go
+Accept: application/vnd.whispir.distributionlist-v1+json
+{
+    "id": "CF5AF1AE49ED07A6",
+    "name" : "Rockstar Distribution List",
+    "description" : "All the rocks were once stars - astrophysicist inside me",
+    "access" : "Open",
+    "visibility" : "Public",
+    "contactIds" : "7CC205AE17FFDC8A,92XC05AE154FDC8A",
+    "userIds" : "",
+    "distListIds" : "",
+...
+}
+```
+
+> Updating the DL
+
+> > Lets do the following in a single request
+
+> > 1. Remove a contactId
+> > 2. Add two new UserId values
+
+> > Request
+
+
+```
+PUT https://api.whispir.com/distributionlists/CF5AF1AE49ED07A6?apikey=[your api key]
 Authorization: Basic [your basic auth]
 ```
 
@@ -306,46 +355,77 @@ Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
+    <id>CF5AF1AE49ED07A6</id>
     <name>Rockstar Distribution List</name>
-    <description>All the rocks were once stars - astrophysicist inside me</description>    
+    <description>All the rocks were once stars - astrophysicist inside me</description>
     <access>Open</access>
     <visibility>Public</visibility>
     <contactIds>7CC205AE17FFDC8A,92XC05AE154FDC8A</contactIds>
     <userIds></userIds>
     <distListIds></distListIds>
+...
 </ns1:distributionlists>
 ```
 
+
 ```go
 Content-Type: application/vnd.whispir.distributionlist-v1+json
- 
+
 {
+    "id": "CF5AF1AE49ED07A6",
     "name" : "Rockstar Distribution List",
     "description" : "All the rocks were once stars - astrophysicist inside me",
     "access" : "Open",
     "visibility" : "Public",
-    "contactIds" : "7CC205AE17FFDC8A,92XC05AE154FDC8A",
-    "userIds" : "",
-    "distListIds" : ""
+    "contactIds" : "7CC205AE17FFDC8A",
+    "userIds" : "F0547F6F2E4839F8,900972D1C916FE84",
+    "distListIds" : "",
+...
 }
 ```
 
-A contact can be added to the distribution list in two ways. 
+> > Response
 
-While creating the distribution list by passing the following 3 values:
+```
+204 No Content
+```
 
-- **ContactIds** string is a comma separated list of Contact IDs that you would like added to the list.
-- **UserIds** specifies the Whispir Users that should also be notified when this list is used.
-- **DistListIds** specifies the nested lists that are contained within this distribution list.
+A distribution list allows you to associate the following -
 
-Or, after the distribution list is created by performing these steps:
+- **ContactIds** (type: String) is a comma separated list of Contact IDs that you would like added to the list.
+- **UserIds** (type: String) specifies the Whispir Users that should also be notified when this list is used.
+- **DistListIds** (type: String) specifies the nested lists that are contained within this distribution list.
 
-- A **PUT** request is placed with the distribution list ID specified in the URL.
-- The contactIds, userIds, distListIds can be passed all together in a single request.
+Any or all three of these can be updated via the PUT method along with the DL properties (name, description, location etc).
 
-> > If an existing contactId is again added, it does neither throws an error, nor create two entries. The contactId is just neglected and only 1 record is maintained.
+The steps usually are -
 
-If the PUT request was successful, the expected response code is a `204 No Content`
+1. Create a Distribution List (DL)
+2. While creating the DL itself, you can put in the ContactIds, UserIds, distListIds (nested) so that the DL is created with those values readily placed in.
+
+1. After the DL is created, if you want to add/update the values, then
+2. Do a GET request to retrieve the specific DL.
+
+	a. GET https://api.whispir.com/workspaces/{id}/distributionlists/{id}?apikey=xxxx
+
+	b. This will return you the DL object
+
+3. Modify the DL properties (name, description, contactIds, UserIds, dlIds, location etc) as needed
+4. Do a PUT request to update the DL details
+
+	a. PUT https://api.whispir.com/workspaces/{id}/distributionlists/{id}?apikey=xxxx
+
+	b. Successful update gives you a 204 No Content
+
+	c. The contactIds, userIds, distListIds can be passed all together in a single request.
+
+Note:
+
+1. If an existing contactId is again added, it does neither throws an error, nor create two entries. The contactId is just neglected and only 1 record is maintained.
+
+2. If the PUT request was successful, the expected response code is a `204 No Content`
+
+3. For Modifying the Location Information refer to <a href="http://10.0.2.15:4567/#location-tags-for-distribution-lists">Location Tags for Distribution Lists</a>
 
 ## Sending Messages
 
