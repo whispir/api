@@ -69,7 +69,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
         <type>text/plain</type>
     </email>
     <voice>
-        <header>test header</header>        
+        <header>test header</header>
         <body>This is test voice body</body>
         <footer>test footer</footer>
         <type>
@@ -386,7 +386,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
-    <subject>Test Email Message</subject>    
+    <subject>Test Email Message</subject>
     <email>
         <body>
             <![CDATA[
@@ -440,7 +440,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
-    <subject>Test e-mail message with attachment</subject>    
+    <subject>Test e-mail message with attachment</subject>
     <email>
         <body>Test Message Content</body>
         <type>text/plain</type>
@@ -549,11 +549,11 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
-    <subject>Test Voice Call</subject>    
+    <subject>Test Voice Call</subject>
     <voice>
         <header>
             This is the introduction of the voice call
-        </header>        
+        </header>
         <body>This is the body of the message</body>
         <!-- Do not include line breaks in your API calls -->
         <type>
@@ -593,11 +593,11 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
-    <subject>Test Voice Call</subject>    
+    <subject>Test Voice Call</subject>
     <voice>
         <header>
             This is the introduction of the voice call
-        </header>        
+        </header>
         <body>This is body of the message</body>
         <footer>This is the footer of the message</footer>
         <!-- Do not include line breaks in your API calls -->
@@ -930,7 +930,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
-    <subject>Test Web Message</subject>    
+    <subject>Test Web Message</subject>
     <web>
         <body>This is web body of my test message</body>
         <type>text/plain</type>
@@ -1801,3 +1801,67 @@ Distribution Lists can be used as a message recipient simply by specifying any v
  * <to>Crisis_Management.Critical_Incident_Management@list.project.whispir.com</to>
 
 Each of these can be found by using the Whispir API to search for the resource type and locate the MRI field in the response.
+
+## Retrieve a previously sent Message
+
+```
+HTTP 1.1 GET https://api.whispir.com/messages/069BF68E5E0FE99B?apikey=[your_key]
+Authorization: Basic <YOUR AUTH HEADER>
+```
+
+```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+    <to>$mobile</to>
+    <subject>Test Message</subject>
+    <body>This is the body of my test SMS message</body>
+    <label/> 
+    <voice/>
+    <from></from>
+    <direction>OUTGOING</direction>
+    <responseCount>0</responseCount>
+    <social/>
+    <createdTime>2012-09-24T15:36:16+10:00</createdTime>
+    
+    ...
+    
+    <ns3:link method="GET" 
+       rel="self" 
+       uri="http://api.whispir.com/messages/069BF68E5E0FE99B?apikey=[your-api-key]"/>
+</ns2:message> 
+````
+```go
+Content-Type: application/vnd.whispir.message-v1+json
+
+{
+    "to" : "$mobile",
+    "subject" : "Test Message",
+    "body" : "This is the body of my test SMS message",
+    "label" : "",
+    "voice" : "",
+    "web" : "",
+    "from" : "",
+    "direction" : "OUTGOING",
+    "social" : "",
+    "createdTime" : "1469414786000"
+    "responseCount" : 0,
+    
+    ...
+    
+    "link": [
+        {
+          "uri": "https://api.whispir.com/messages/069BF68E5E0FE99B?apikey=[your-api-key]",
+          "rel": "self",
+          "method": "GET"
+        }
+      ]
+}
+````
+
+A call to GET /messages gives you the list of last 20 sent messages. You can use the <a href="#pagination">Pagination</a> to retrieve further messages.
+
+If a specific message has to retrieved then, you must know the message ID of the message. This can be done by retrieving the list of messages using *GET /messages* (include workspace if needed) and then loop through them to get details of each and every individual message.
+
+*Note:* GET /messages will only retrieve the messages sent by you. But if you want to retrieve all the messages sent in the workspace (sent by others aswell), then append `&viewType=shared` in the URL query.
