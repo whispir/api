@@ -1357,9 +1357,9 @@ _Reminder: your invitation to the Acme Event will expire on 13/06/2014._
 
 The API call to populate this without Message Attributes could look as shown in the code example-
 
-### Using Templates to add in variables
+### Using Templates to add in attributes
 
-> > Using Templates to add in variables
+> > Using Templates to add in attributes
 
 ```
 HTTP 1.1 POST http://api.whispir.com/templates?apikey=<yourkey>
