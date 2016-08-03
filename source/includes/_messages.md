@@ -1316,7 +1316,124 @@ The following **system tags** can be included in any message:
     </tbody>
 </table>
 
-Each of these system tags will resolve on send of the message to the system information.  The system tags will only work when sending messages to any recipient.
+Each of these system tags will resolve on send of the message to the system information. The system tags will only work when sending messages to any recipient.
+
+
+## Message Attributes
+
+> Message Attributes
+> > Sending an invitation message
+
+```
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=[your_api_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```go
+Content-Type: application/vnd.whispir.message-v1+json
+
+{
+   "to" : "john@api-example.com", 
+   "subject" : "Reminder:", 
+   "body" : "Your invitation to the Acme Event will expire on 13/06/2014.", 
+   "email" : { 
+      "type" : "text/plain", 
+      "body" : "Your invitation to the Acme Event will expire on 13/06/2014." 
+   }
+}
+```
+Whispir's API customers who have Message Attributes configured within the Whispir Platform have the ability to simplify their API message requests by using the Message Attributes directly from the API.
+
+Using Message Attributes allows developers to focus on the data behind a message, rather than focusing on the presentation or messaging channels within the message. 
+
+This separation ensures that the marketing or communications teams within an organisation can focus on what they are best at, and the developers can ensure the system integrations are working as effectively as possible.
+
+- For example:
+
+A message could contain some content, and a potential variable such as the expiry of the invitation:
+
+_Reminder: your invitation to the Acme Event will expire on 13/06/2014._
+
+
+The API call to populate this without Message Attributes could look as shown in the code example-
+
+### Using Templates to add in variables
+
+> > Using Templates to add in variables
+
+```
+HTTP 1.1 POST http://api.whispir.com/templates?apikey=<yourkey>
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```go
+Content-Type: application/vnd.whispir.template-v1+json
+
+{ 
+   "messageTemplateName" : "Event Reminder", 
+   "subject" : "Reminder:", 
+   "body" : "Your invitation to the Acme Event will expire on @@event_expiry@@.", 
+   "email" : { 
+      "type" : "text/plain", 
+      "body" : "Your invitation to the Acme Event will expire on @@event_expiry@@." 
+   }
+}
+```
+
+> > Response - Template Created
+
+```
+HTTP 1.1 201 Created
+Location: http://api.whispir.com/templates/DACADB02209CC93C
+```
+
+```go
+{ 
+   "id": "DACADB02209CC93C", 
+   "messageTemplateName" : "Event Reminder", 
+   "subject" : "Reminder:", 
+   "body" : "Your invitation to the Acme Event will expire on @@event_expiry@@.", 
+   "email" : { 
+      "type" : "text/plain", 
+      "body" : "Your invitation to the Acme Event will expire on @@event_expiry@@." 
+   }
+}
+```
+
+Using Message Attributes and Message Templates allows developers to cleanly separate these responsibilities. This is done by combining both the channels being selected for the message, and the data driving the message.
+
+- For example: 
+
+The same message could be saved into a Whispir Message Template (see code example).
+
+Using this Message Template ID and now using the Message Attribute @@event_expiry@@, the updated is far simpler to implement and is more efficient.
+
+> Using Template (with attributes) 
+> > to send the Message
+
+```
+HTTP 1.1 POST http://api.whispir.com/messages?apikey=[your_api_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```go
+Content-Type: application/vnd.whispir.message-v1+json
+
+{ 
+   "to" : "john@api-example.com", 
+   "messageTemplateId" : "DACADB02209CC93C", 
+   "messageattributes" : {
+      "attribute" : [{
+         "name" : "event_expiry",     
+         "value" : "13/06/2014"   
+      }]
+   } 
+} 
+```
+
+*Note:* Message Attributes are not enabled by default for Whispir Customers. These can be configured in your account with some cost - by contacting your Whispir Representative or <a href="mailto:sales@whispir.com">sales@whispir.com</a>
+
+
 
 ## Dynamic and Bulk Messages
 
