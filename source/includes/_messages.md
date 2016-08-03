@@ -286,6 +286,11 @@ Accept: application/vnd.whispir.message-v1+json
    "body" : "This is the body of my test SMS message"
 }
 ```
+
+```
+Response: 202 Accepted
+Location: https://api.whispir.com/messages/{id}?apikey=[your_key]
+```
 Sending SMS from Whispir is as easy as providing the recipient information and the content of the message.
 
 Only **3 fields** are required:
@@ -325,7 +330,7 @@ The 'to' field can be provided in the following formats:
     </tbody>
 </table>
 
-###Notes:
+### Notes:
 
 * Each SMS message can contain up to **1600&#42;** characters
 * The Subject field is Mandatory.
@@ -333,6 +338,13 @@ The 'to' field can be provided in the following formats:
 * MRI (Message Resource Identifier) is the unique Whispir address for the Contact, User or Distribution List.
 
 &#42; SMS character counts are limited in some countries. Contact your local Whispir Representative for information about the supported number of characters in your region.
+
+### Response
+
+* If the response is `202 Accepted`, then the `location` header contains the reference to the message request. This value can be used to retrieve the message status, responses later on.
+* For any other response codes, please refer to the <a href="#http-response-codes">HTTP Response Codes</a> section.
+* If you have failed to capture the `location` header value, then refer to <a href="#retrieve-a-previously-sent-message"> How to Retrieve previously sent messages? </a>
+* This process is same for sms, email, voice, push notifications.
 
 ## Email Messages
 

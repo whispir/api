@@ -180,13 +180,13 @@ The table below describes the response codes that will be issued and gives poten
         <tr>
             <td style="text-align: right; font-weight: bold;">201 Created:</td>
             <td><strong>Successfully created the resource.</strong><br/>
-                The requested resource has been successfully created and can be found via the URL in the ‘Location’ header
+                The requested resource has been successfully created and can be found via the URL in the 'Location' header
             </td>
         </tr>
         <tr>
             <td style="text-align: right; font-weight: bold;">202 Accepted:</td>
             <td><strong>Successfully accepted the request for processing</strong><br/>
-                The request has been accepted for processing by the asynchronous processor.
+                The request has been accepted for processing by the asynchronous processor. The request's unique identifier can be found via the URL in the 'Location' header
             </td>
         </tr>
         <tr>
