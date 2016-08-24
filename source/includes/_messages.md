@@ -1408,7 +1408,7 @@ The same message could be saved into a Whispir Message Template (see code exampl
 
 Using this Message Template ID and now using the Message Attribute @@event_expiry@@, the updated is far simpler to implement and is more efficient.
 
-> Using Template (with attributes) 
+> Using Template (with attributes)
 > > to send the Message
 
 ```
@@ -1431,7 +1431,10 @@ Content-Type: application/vnd.whispir.message-v1+json
 } 
 ```
 
-*Note:* Message Attributes are not enabled by default for Whispir Customers. These can be configured in your account with some cost - by contacting your Whispir Representative or <a href="mailto:sales@whispir.com">sales@whispir.com</a>
+*Note:* 
+
+* User-defined attributes available through the API are configured at the account level and require Whispir administrative assistance to enable. 
+* You can start using user-defined attributes through the api by contacting your Whispir Customer Success Representative or <a href="mailto:sales@whispir.com">sales@whispir.com</a>
 
 
 

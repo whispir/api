@@ -694,6 +694,7 @@ Accept: application/vnd.whispir.api-callback-v1+json
       "id": "B3EDFE83DF389DFE",
       "messageId": "ABC4857BCCF484575FCA",
       "messageLocation": "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
+      "status": "FAILED",
       "from": {
         "name": "Fred Waters",
         "mri": "Fred_Waters.528798.Sandbox@Contact.whispir.com",
@@ -728,8 +729,6 @@ Accept: application/vnd.whispir.api-callback-v1+json
   }]
 }
 ```
-
-To retrieve a list of attempted API calls from the Whispir API you can execute an **HTTP GET** using the `/calls` endpoint on a specific `callback`.
 
 You will need to supply one of the following headers (for retrieving JSON or XML):
 
@@ -832,6 +831,49 @@ Each of these calls will provide the following information:
     </tbody>
 </table>
 
+**Retrieving the list of calls based on their Status**
+
+> Retrieve based on Status
+
+> > Failed Calls
+
+```
+HTTP 1.1 GET https://api.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[your_api_key]&status=FAILED
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+> > Success Calls
+
+```
+HTTP 1.1 GET https://api.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[your_api_key]&status=SUCCESS
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+To retrieve a list of attempted API calls from the Whispir API you can execute an **HTTP GET** using the `/calls` endpoint on a specific `callback`.
+
+To specifically retrieve the FAILED/SUCCESS calls, one can pass a **status** query param in the URL.
+
+<table>
+  <thead>
+      <tr>
+          <th style="width: 50%" colspan="2">Query params</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right; font-weight: bold;">status:</td>
+      <td><strong>String</strong><br/>
+          The status value can be one of:
+          <ul>
+            <li>&status=SUCCESS</li>
+            <li>&status=FAILED</li>
+          </ul>
+          Only calls with requested STATUS will be present in the response.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 **Updating the status of calls to a callback**
 
 As every call to a callback endpoint is now stored within the `calls` endpoint, it's possible that when failed calls are successfully processed through a manual exercise, that these calls will then need to be updated to reflect the current status.
@@ -852,7 +894,7 @@ This process can be facilitated with the use of a `PUT` request to the `/calls` 
 > > The following API Methods allow you to update callback attempts via the API
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[YOUR_API_KEY]&id[]=YOUR_CALL_ID
+HTTP 1.1 PUT https://api.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[YOUR_API_KEY]&id=YOUR_CALL_ID
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
