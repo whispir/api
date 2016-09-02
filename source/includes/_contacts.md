@@ -390,7 +390,7 @@ The following fields are required:
 		<tr>
 			<td style="text-align: right; font-weight: bold;">Other Fields :</td>
 			<td><strong>String</strong><br/>
-				Whispir allows external developers to build a 'Self-Subscription' portal to allow their own contacts to self-register for internal systems. To support this feature, the following fields are provided.<br>
+				Whispir allows external developers to build a 'Self-Subscription' portal to allow their own contacts to self-register for internal systems. This is only applicable for customers using Whispir's "Contact Portal" Product. To support this feature, the following fields are provided.<br>
 				<ul>
 					<li>username - must be unique within the company (users and active contacts)</li>
 					<li>password - mandatory only in conjunction with the username</li>
