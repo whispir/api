@@ -358,13 +358,13 @@ Your application can use this information to easily determine the numbers of rec
 
 ```xml
 <ns3:link method="GET" 
-   rel="summaryStatus" 
+   rel="detailedStatus" 
    uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"/>
 ```
 ```go
 {
   	"method": "GET",
-  	"rel": "summaryStatus",
+  	"rel": "detailedStatus",
   	"uri": "https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"
 }
 ```
