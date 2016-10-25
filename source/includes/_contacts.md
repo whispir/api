@@ -166,6 +166,7 @@ Content-Type: application/vnd.whispir.contact-v1+json
 
 ```go
 {
+  "id": "CB4558257DD86D09",
   "type": "COMPANY",
   "firstName": "John",
   "lastName": "Wick",
