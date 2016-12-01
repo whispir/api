@@ -721,12 +721,12 @@ Content-Type: application/vnd.whispir.message-v1+xml
             <attachment>
                 <attachmentName>Introduction.wav</attachmentName>
                 <attachmentDesc>voiceintro.wav</attachmentDesc>
-                <deferUri>...</deferUri>
+                <derefUri>...</derefUri>
             </attachment>
             <attachment>
                 <attachmentName>Body.wav</attachmentName>
                 <attachmentDesc>voicebody.wav</attachmentDesc>
-                <deferUri>...</deferUri>
+                <derefUri>...</derefUri>
             </attachment>
         </resources>
     </voice>
@@ -748,11 +748,11 @@ Content-Type: application/vnd.whispir.message-v1+json
             "attachment" : [{
                 "attachmentName" : "Introduction.wav",
                 "attachmentDesc" : "voiceintro.wav",
-                "deferUri" : "..."
+                "derefUri" : "..."
             },{
                 "attachmentName" : "Body.wav",
                 "attachmentDesc" : "voicebody.wav",
-                "deferUri" : "..."
+                "derefUri" : "..."
             }]
         }
     }
