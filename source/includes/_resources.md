@@ -216,7 +216,7 @@ The following are the mandatory fields needed to create a resource -
 - Name
 - Scope
 - mimeType
-- deferUri
+- derefUri
 
 <table>
     <thead>
@@ -1032,7 +1032,7 @@ Updating a resource involves the same process as in creating a resource. The pro
 
 The change is doing a `PUT` to the existing resource URL that needs to be updated. Please be careful that doing an update overwrites the previous resource. There is no versioning available in Whispir for the resources.
 
-Any or all of the 4 values can be changed. **i.e,** name, scope, mimeType, deferUri, but all 4 are mandatory values to be sent.
+Any or all of the 4 values can be changed. **i.e,** name, scope, mimeType, derefUri, but all 4 are mandatory values to be sent.
 
 ## Deleting a resource
 
