@@ -1043,7 +1043,7 @@ Content-Type: application/vnd.whispir.message-v1+json
     },
     "messageType" : "SCHEDULED",
     "scheduleType" : "ONCE",
-    "scheduleDate" : "14/02/207 15:55"
+    "scheduleDate" : "14/02/2017 15:55"
 }
 ```
 
