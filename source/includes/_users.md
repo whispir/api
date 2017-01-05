@@ -14,18 +14,6 @@ https://api.whispir.com/users/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.user-v1+json
 ```
 
-> > - limited to a workspace
-
-```xml
-https://api.whispir.com/workspaces/{:id}/users/?apikey=<your_api_key>
-Content-Type: application/vnd.whispir.user-v1+xml
-```
-
-```go
-https://api.whispir.com/workspaces/{:id}/users/?apikey=<your_api_key>
-Content-Type: application/vnd.whispir.user-v1+json
-```
-
 ```
 > Resource type
 
