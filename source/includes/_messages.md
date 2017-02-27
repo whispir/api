@@ -126,15 +126,17 @@ Content-Type: application/vnd.whispir.message-v1+json
         "type" : "text/plain"
     },
     "social" : {
-        "social" : {
-            "id" : "social",
-            "body" : "Twitter Content."
-        },
-        "social" : {
-            "id" : "social_long",
-            "body" : "Facebook Content.",
-            "type" : "text/plain"
-        }
+        "social" : [
+		{
+		    "id" : "social",
+		    "body" : "Twitter Content."
+		},
+		{
+		    "id" : "social_long",
+		    "body" : "Facebook Content.",
+		    "type" : "text/plain"
+		}
+	]
     },
     "type" : "defaultNoReply",
     "features" : {
