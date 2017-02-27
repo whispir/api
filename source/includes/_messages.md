@@ -15,7 +15,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 // From the default workspace
 
 https://api.whispir.com/messages/?apikey=<your_api_key>
-Content-Type: application/vnd.whispir.message-v1+json
+Accept: application/vnd.whispir.message-v1+json
 ```
 
 ```xml
@@ -1045,7 +1045,7 @@ Content-Type: application/vnd.whispir.message-v1+json
     },
     "messageType" : "SCHEDULED",
     "scheduleType" : "ONCE",
-    "scheduleDate" : "14/02/207 15:55"
+    "scheduleDate" : "14/02/2017 15:55"
 }
 ```
 
