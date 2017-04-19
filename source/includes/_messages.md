@@ -1454,6 +1454,32 @@ Content-Type: application/vnd.whispir.message-v1+json
 |------------|------------|-------------|-------------|------------|
 ```
 
+```xml
+"Content-Type": "application/vnd.whispir.bulkmessage-v1+json"
+"Accept": "application/vnd.whispir.bulkmessage-v1+json"
+
+#ToDo
+```
+
+```go
+"Content-Type": "application/vnd.whispir.bulkmessage-v1+json"
+"Accept": "application/vnd.whispir.bulkmessage-v1+json"
+
+{
+  "resource" : {
+    "resourceId" : resource_id,  # From the resource you created
+    "smsMappingField" : "mobile",
+    "emailMappingField" : "",
+    "voiceMappingField" : "",
+    "options" : {
+        "resolveRecipients" : ""
+      }
+  },
+  "subject" : "Bulk Send Example,
+  "body" : "Hi @@first_name@@. Your account is currently outstanding, with the amount @@amount_due@@ being due on @@due_date@@.  Please make every effort to pay your account on time.  If you would like more information, please contact us on 1800 000 000, regards.",
+}
+```
+
 > > After processing, the first recipient would receive a message that looks as follows:
 
 ```
@@ -1493,8 +1519,8 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
 ```xml
-Content-Type: application/vnd.whispir.message-v1+xml
-Accept: application/vnd.whispir.message-v1+xml
+Content-Type: application/vnd.whispir.resource-v1+xml
+Accept: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
