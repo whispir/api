@@ -130,28 +130,32 @@ Accept: application/vnd.whispir.workspace-v1+xml
     <status>1 to 4 of 4</status>
     <ns2:workspaces>
         <ns2:workspace>
-            <projectName>Sales Lead Notifications</projectName>
+	    <id>BB9ECBE5BA73CD81</id>
+	    <projectName>Sales Lead Notifications</projectName>
             <projectNumber></projectNumber>
             <status>A</status>
             <billingcostcentre>test</billingcostcentre>
             <ns2:link uri="https://api.whispir.com/workspaces/BB9ECBE5BA73CD81?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:workspace>
         <ns2:workspace>
-            <projectName>Product Release Management</projectName>
+            <id>7311ABEB701E7C60</id>
+	    <projectName>Product Release Management</projectName>
             <projectNumber></projectNumber>
             <status>A</status>
             <billingcostcentre>0</billingcostcentre>
             <ns2:link uri="https://api.whispir.com/workspaces/7311ABEB701E7C60?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:workspace>
         <ns2:workspace>
-            <projectName>CAAS</projectName>
+            <id>26B1A09C1FEC20A2</id>
+	    <projectName>CAAS</projectName>
             <projectNumber></projectNumber>
             <status>A</status>
             <billingcostcentre>0</billingcostcentre>
             <ns2:link uri="https://api.whispir.com/workspaces/26B1A09C1FEC20A2?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:workspace>
         <ns2:workspace>
-            <projectName>Business Working Group</projectName>
+            <id>A358845BF004C113</id>
+	    <projectName>Business Working Group</projectName>
             <projectNumber></projectNumber>
             <status>A</status>
             <billingcostcentre>CLSA</billingcostcentre>
@@ -174,6 +178,7 @@ Accept: application/vnd.whispir.workspace-v1+json
 {
   "workspaces": [
     {
+      "id": "7311ABEB701E7C60",
       "projectName": "Sales Lead Notifications",
       "projectNumber": "",
       "status": "A",
@@ -187,6 +192,7 @@ Accept: application/vnd.whispir.workspace-v1+json
       ]
     },
     {
+      "id": "26B1A09C1FEC20A2",
       "projectName": "Product Release Management",
       "projectNumber": "",
       "status": "A",
@@ -200,6 +206,7 @@ Accept: application/vnd.whispir.workspace-v1+json
       ]
     },
     {
+      "id": "A358845BF004C113",
       "projectName": "Business Working Group",
       "projectNumber": "",
       "status": "A",
@@ -213,6 +220,7 @@ Accept: application/vnd.whispir.workspace-v1+json
       ]
     },
     {
+      "id": "B7BFEF555F0F7F81",
       "projectName": "Critical Incident Management",
       "projectNumber": "",
       "status": "A",
