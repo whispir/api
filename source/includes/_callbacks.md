@@ -1457,7 +1457,6 @@ To facilitate that Whispir gives those values in the callback response under cus
 </table>
 
 
-- ****
 ## Example Flow
 
 Imagine a workflow where the same user gets more than 1 message in a quick time frame, how does whispir know "to which message did this user respond to ?".
