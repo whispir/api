@@ -685,7 +685,7 @@ Accept: application/vnd.whispir.api-call-v1+xml
 
 ```
 ```go
-Accept: application/vnd.whispir.api-callback-v1+json
+Accept: application/vnd.whispir.api-call-v1+json
 
 {
   "status": "1 to 1 of 1",
