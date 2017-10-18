@@ -76,6 +76,8 @@ Authorization Header:<br/><input id="result" name="result" style="width: 60%" ty
 
 Once you have generated this header, you can use it in a request to the API. This will ensure everything is working correctly. To do this you can use a programming lanugage, a curl script, or a generic REST client.
 
+> NOTE: When you change your password, you'll need a new authorization header.
+
 ### Connect using a programming language
 
 Whispir.io provides some basic code samples in a range of languages to assist users in geting started with the API.  Once you have created your App in the Whispir.io Dashboard, simply click on the *Code* tab on the left side of the screen.
