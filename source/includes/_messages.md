@@ -150,7 +150,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 
 Communications are the core of what the Whispir.io API offers as a service to customers.
 
-Whispir has the ability to send communications across 7 different channels in a single API request:
+Whispir has the ability to send communications across 8 different channels in a single API request:
 
 **SMS** - up to 1600&#42; characters per message, premium routes, delivery receipts<br/>
 **Email** - free email messaging with HTML and Plain Text support<br/>
@@ -158,7 +158,8 @@ Whispir has the ability to send communications across 7 different channels in a 
 **Rich Messages** - personalised, targeted rich messaging to drive conversations<br/>
 **Twitter** - support for instant publishing to multiple twitter accounts<br/>
 **Facebook** - simplify the process of publishing to multiple facebook accounts instantaneously<br/>
-**RSS** - easily generate RSS feeds for consumption by other services
+**RSS** - easily generate RSS feeds for consumption by other services<br/>
+**Push** - easily sent push notifications to your apps
 
 All communications are driven from the `/messages` endpoint within the API.  This endpoint allows a user to perform the following tasks:
 
