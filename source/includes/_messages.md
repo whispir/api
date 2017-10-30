@@ -156,10 +156,11 @@ Whispir has the ability to send communications across 8 different channels in a 
 **Email** - free email messaging with HTML and Plain Text support<br/>
 **Voice** - high quality outbound voice calls delivered to mobiles and landlines within seconds<br/>
 **Rich Messages** - personalised, targeted rich messaging to drive conversations<br/>
+**Push** - easily sent push notifications to your apps
 **Twitter** - support for instant publishing to multiple twitter accounts<br/>
 **Facebook** - simplify the process of publishing to multiple facebook accounts instantaneously<br/>
 **RSS** - easily generate RSS feeds for consumption by other services<br/>
-**Push** - easily sent push notifications to your apps
+
 
 All communications are driven from the `/messages` endpoint within the API.  This endpoint allows a user to perform the following tasks:
 
