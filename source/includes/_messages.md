@@ -156,7 +156,7 @@ Whispir has the ability to send communications across 8 different channels in a 
 **Email** - free email messaging with HTML and Plain Text support<br/>
 **Voice** - high quality outbound voice calls delivered to mobiles and landlines within seconds<br/>
 **Rich Messages** - personalised, targeted rich messaging to drive conversations<br/>
-**Push** - easily sent push notifications to your apps
+**Push** - easily sent push notifications to your apps<br/>
 **Twitter** - support for instant publishing to multiple twitter accounts<br/>
 **Facebook** - simplify the process of publishing to multiple facebook accounts instantaneously<br/>
 **RSS** - easily generate RSS feeds for consumption by other services<br/>
@@ -929,6 +929,49 @@ Response Rules allow you to define pre-canned responses to your message. Your st
 * A message with Response Rules displays a response button at the bottom on the page. So ensure your message has at least 60px at the bottom of the page content.
 
 More information about Rich Messages and the `Whispir` object is included later in this documentation.
+
+## Push Messages
+
+> Push Messages
+
+Sending Push notifcation is done via the /messages endpoint in the REST api. A push can only be sent to the contact MRI value, nothing else. 
+
+>> Push Messages
+Sending Push notifcation is done via the /messages endpoint in the REST api. A push can only be sent to the contact MRI value, nothing else. 
+
+```go
+POST /workspaces/{workspaceid}/messages?apikey=xxx
+Content-Type: application/vnd.whispir.message-v1+json
+ 
+{
+    "to" : "contact-mri-value",
+    "subject" : "Test Push Message",
+    "body" : "This is the body of my test Push message",
+    "features" : {
+        "pushOptions" : {
+            "notifications" : "enabled",
+            "appId" : "{appId}"
+        }
+    }
+}
+```
+
+> > Or if you have a template, which has the details already set (in the mobile channel), and the features too set, which states the appId and has the notifications set to enabled, you can do.
+
+```go
+{
+    "to" : "contact-mri-value",
+    "messageTemplateName" : "Name-Of-the-Template-Goes-Here"
+}
+```
+
+### What is Whispir doing here ?
+* Whispir looks for the contact based on the MRI value in the given workspace (only).
+* It loads all the devices under that contact
+* Filters them down to the device(s) that has the same appId as passed in the message payload Or set in the template
+* Sends a push to all the device(s) matched in the previous step.
+* There is NO option to sepcifically pick a single device. If you need to do that, just register only 1 device for that contact.
+* If Whispir does not find any devices under the said contact, the status will be PENDING and the info will be "No valid receipients found for this message"
 
 ## Web and Social Messaging
 
