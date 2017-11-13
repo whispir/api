@@ -33,7 +33,7 @@ GEM
     eventmachine (1.2.5)
     execjs (2.7.0)
     ffi (1.9.18)
-    haml (5.0.3)
+    haml (5.0.4)
       temple (>= 0.8.0)
       tilt
     hike (1.2.3)
@@ -109,6 +109,7 @@ GEM
     redcarpet (3.2.3)
     ref (2.0.0)
     rouge (1.7.2)
+    ruby18_source_location (0.2)
     sass (3.4.25)
     sprockets (2.12.4)
       hike (~> 1.2)
@@ -129,7 +130,7 @@ GEM
     tilt (1.4.1)
     timers (4.0.4)
       hitimes
-    tzinfo (1.2.3)
+    tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uber (0.0.15)
     uglifier (2.7.2)
@@ -153,4 +154,4 @@ DEPENDENCIES
   wdm (~> 0.1.0)
 
 BUNDLED WITH
-   1.15.4
+   1.16.0

@@ -14,7 +14,7 @@ tmp
 *.DS_STORE
 build/
 .cache
-Gemfile.lock
+*.lock
 
 # YARD artifacts
 .yardoc
