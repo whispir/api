@@ -1241,7 +1241,7 @@ Authorization: Basic &lt;YOUR AUTH HEADER&gt;
 <strong>Email</strong> - free email messaging with HTML and Plain Text support<br/>
 <strong>Voice</strong> - high quality outbound voice calls delivered to mobiles and landlines within seconds<br/>
 <strong>Rich Messages</strong> - personalised, targeted rich messaging to drive conversations<br/>
-<strong>Push</strong> - easily sent push notifications to your apps
+<strong>Push</strong> - easily sent push notifications to your apps<br/>
 <strong>Twitter</strong> - support for instant publishing to multiple twitter accounts<br/>
 <strong>Facebook</strong> - simplify the process of publishing to multiple facebook accounts instantaneously<br/>
 <strong>RSS</strong> - easily generate RSS feeds for consumption by other services<br/></p>
@@ -2026,6 +2026,58 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 </ul>
 
 <p>More information about Rich Messages and the <code class="prettyprint">Whispir</code> object is included later in this documentation.</p>
+
+<h2 id="push-messages">Push Messages</h2>
+
+<blockquote>
+<p>Push Messages</p>
+</blockquote>
+
+<p>Sending Push notifcation is done via the /messages endpoint in the REST api. A push can only be sent to the contact MRI value, nothing else. </p>
+
+<blockquote>
+<blockquote>
+<p>Push Messages
+Sending Push notifcation is done via the /messages endpoint in the REST api. A push can only be sent to the contact MRI value, nothing else. </p>
+</blockquote>
+</blockquote>
+<pre><code class="highlight go"><span class="n">POST</span><span class="x"> </span><span class="o">/</span><span class="n">workspaces</span><span class="o">/</span><span class="p">{</span><span class="n">workspaceid</span><span class="p">}</span><span class="o">/</span><span class="n">messages</span><span class="err">?</span><span class="n">apikey</span><span class="o">=</span><span class="n">xxx</span><span class="x">
+</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">message</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
+
+</span><span class="p">{</span><span class="x">
+    </span><span class="s">"to"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"contact-mri-value"</span><span class="p">,</span><span class="x">
+    </span><span class="s">"subject"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"Test Push Message"</span><span class="p">,</span><span class="x">
+    </span><span class="s">"body"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"This is the body of my test Push message"</span><span class="p">,</span><span class="x">
+    </span><span class="s">"features"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="s">"pushOptions"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="p">{</span><span class="x">
+            </span><span class="s">"notifications"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"enabled"</span><span class="p">,</span><span class="x">
+            </span><span class="s">"appId"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"{appId}"</span><span class="x">
+        </span><span class="p">}</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre>
+
+<blockquote>
+<blockquote>
+<p>Or if you have a template, which has the details already set (in the mobile channel), and the features too set, which states the appId and has the notifications set to enabled, you can do.</p>
+</blockquote>
+</blockquote>
+<pre><code class="highlight go"><span class="p">{</span><span class="x">
+    </span><span class="s">"to"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"contact-mri-value"</span><span class="p">,</span><span class="x">
+    </span><span class="s">"messageTemplateName"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"Name-Of-the-Template-Goes-Here"</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre>
+
+<h3 id="what-is-whispir-doing-here-?">What is Whispir doing here ?</h3>
+
+<ul>
+<li>Whispir looks for the contact based on the MRI value in the given workspace (only).</li>
+<li>It loads all the devices under that contact</li>
+<li>Filters them down to the device(s) that has the same appId as passed in the message payload Or set in the template</li>
+<li>Sends a push to all the device(s) matched in the previous step.</li>
+<li>There is NO option to sepcifically pick a single device. If you need to do that, just register only 1 device for that contact.</li>
+<li>If Whispir does not find any devices under the said contact, the status will be PENDING and the info will be &ldquo;No valid receipients found for this message&rdquo;</li>
+</ul>
 
 <h2 id="web-and-social-messaging">Web and Social Messaging</h2>
 
