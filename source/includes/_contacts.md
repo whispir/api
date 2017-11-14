@@ -766,7 +766,7 @@ The response to the PUT request upon success is usually a `204` with no content 
 ## Deleting a contact
 
 > Deleting a contact
-> > The following statement allows users to delete contacts using the Whispir API.  Please note, this contact will only be deleted from the current workspace.  
+> > The following statement allows users to delete contacts using the Whispir API.  Please note, this contact will only be deleted from the current workspace.
 
 ```
 HTTP 1.1 DELETE https://api.whispir.com/contacts/124F6B2D46A5A268?apikey=<your_api_key>

@@ -164,17 +164,20 @@ Whispir has the ability to send communications across 8 different channels in a 
 
 All communications are driven from the `/messages` endpoint within the API.  This endpoint allows a user to perform the following tasks:
 
-1. Create and Send a new message
-2. Retrieve a list of previously sent messages
+1. Create and Send a new message in a given workspace
+2. Retrieve a list of previously sent messages in the given workspace
 
 These are described in more detail below:
 
 As message resources can exist in the default (Company) workspace or other workspace, messages have two access URLs:
 
 `https://api.whispir.com/messages` - for Company Workspace messages
-`https://api.whispir.com/workspaces/:id/messages` - for other Workspace messages
 
-If your application does not require separate workspaces, you can simply send all messages from the default Company workspace.
+`https://api.whispir.com/workspaces/:id/messages` - for other Workspace messages where `:id` is the id of the specific workspace.
+
+<aside class="notice">
+Whispir strongly recommends use of workspaces for all messaging needs. Refer <a href="#workspaces">workspaces</a>. If not followed, this may lead to billing and data privacy concerns within your company account.
+</aside>
 
 <table>
     <thead>
@@ -234,11 +237,25 @@ If your application does not require separate workspaces, you can simply send al
         <tr>
             <td style="text-align: right; font-weight: bold;">type:</td>
             <td><strong>String</strong><br/>
-                Allows the user to modify the message behaviour for replies and DLRs (delivery receipts) e.g.
+                Allows the user to modify the message behaviour for replies e.g.
                 <ul>
                     <li>defaultNoReply - Used to reject any replies to this message. This is also used to mask the sender's phone number when not using a Message Alias.</li>
+                </ul>
+            </td>
+        </tr>
+	<tr>
+            <td style="text-align: right; font-weight: bold;">dlr:</td>
+            <td><strong>Object</strong><br/>
+                Allows the user to specify the turn ON or turn OFF the DLRs (delivery receipts) via the `type` option e.g.
+                <ul>
                     <li>NoDlr - Used to specify that DLRs should not be enabled for this message.</li>
                 </ul>
+		<br/>
+		Usage: 
+		<ul>
+                    <li>for XML: <pre><li><dlr><type>NoDlr</type></dlr></pre></li>
+                    <li>for JSON: <pre><li>"dlr":{ "type": "NoDlr" }</pre></li>
+		</ul>
             </td>
         </tr>
         <tr>
@@ -251,6 +268,7 @@ If your application does not require separate workspaces, you can simply send al
                 <ul>
                     <li>notifications - enabled/disabled</li>
                     <li>escalationMins - # mins to await a push notifications response</li>
+                    <li>appId - the appId to which the push notifications has to be sent to</li>
                 </ul>
             </td>
         </tr>
@@ -333,6 +351,10 @@ The 'to' field can be provided in the following formats:
         </tr>
     </tbody>
 </table>
+
+<aside class="notice">
+Whispir strongly recommends use of workspaces for all messaging needs. Refer <a href="#workspaces">workspaces</a>.
+</aside>
 
 ### Notes:
 
@@ -440,6 +462,10 @@ Only 4 fields are required in order to send an email message.
 2. Subject - the subject line of the email message.
 3. Body - the content of the email (either HTML or Plain Text content).
 4. Type - either 'text/plain' or 'text/html' to describe the content of the message.
+
+<aside class="notice">
+Whispir strongly recommends use of workspaces for all messaging needs. Refer <a href="#workspaces">workspaces</a>.
+</aside>
 
 ### Whispir's support of Rich (HTML) Emails
 
@@ -716,7 +742,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>61423568958</to>
-    <subject>Test voice call with attachment</subject>    
+    <subject>Test voice call with attachment</subject>
     <voice>
         <body>Will be replaced by the voicebody.wav file</body>
         <header>Will be replaced by the voiceintro.wav file</header>
@@ -932,17 +958,34 @@ More information about Rich Messages and the `Whispir` object is included later 
 
 ## Push Messages
 
-> Push Messages
-
-Sending Push notifcation is done via the /messages endpoint in the REST api. A push can only be sent to the contact MRI value, nothing else. 
-
 >> Push Messages
-Sending Push notifcation is done via the /messages endpoint in the REST api. A push can only be sent to the contact MRI value, nothing else. 
+
+
+```
+HTTP 1.1 POST https://api.whispir.com/workspaces/{:wid}/messages?apikey=[your_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+```xml
+Content-Type: application/vnd.whispir.message-v1+xml
+Accept: application/vnd.whispir.message-v1+xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>contact-mri-value</to>
+    <subject>Test Push Message</subject>
+    <body>This is the body of my test Push message</body>
+    <features>
+        <notifications>enabled</notifications>
+        <appId>{:appId}</appId>
+    </features>
+</ns2:message>
+```
 
 ```go
-POST /workspaces/{workspaceid}/messages?apikey=xxx
 Content-Type: application/vnd.whispir.message-v1+json
- 
+Accept: application/vnd.whispir.message-v1+json
+
 {
     "to" : "contact-mri-value",
     "subject" : "Test Push Message",
@@ -956,7 +999,68 @@ Content-Type: application/vnd.whispir.message-v1+json
 }
 ```
 
+```
+Response: 202 Accepted
+Location: https://api.whispir.com/workspaces/{:wid}/messages/{:mid}?apikey=[your_key]
+```
+
+
+Whispir allows to send Push notifications to any IOS, and Android based apps. Sending Push notifcation is done via the /messages endpoint in the REST api, and the recipient is usually a Whispir contact MRI. 
+
+Setting up the platform to do Push involves some 1 time steps, and some periodically repeated steps (updating push tokens). Please refer to the <a href="#apps">Apps</a> endpoint to get a clear understanding of the related steps, and endpoints. Whispir does not support sending push to device tokens directly. Read more in the <a href="#contact-devices">Contact Devices</a> on how to register the device tokens under contacts.
+
+The following fields are required:
+
+1. To - the Whispir Contact MRI value
+2. Subject - the first line or the badge header text in the Push Note
+3. Body - the remainder of the Push Content
+4. appId - the id given by Whispir upon your app registration at the <a href="#apps">\apps</a> endpoint
+
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">High-Level Request Elements</th>
+        </tr>
+    </thead>
+    <tbody>
+		<tr>
+			<td style="text-align: right; font-weight: bold;">to:</td>
+			<td><strong>String</strong><br/>
+				Specifies the mri value of the contact whose devices needs to receive the push
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right; font-weight: bold;">subject:</td>
+			<td><strong>String</strong><br/>
+				Specifies the first line or the badge header text in the Push Note 
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right; font-weight: bold;">Body:</td>
+			<td><strong>String</strong><br/>
+				Specifies the text that goes into the "alert"/"data" section of push structure
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right; font-weight: bold;">appId:</td>
+			<td><strong>String</strong><br/>
+				Specifies the appId of the registered app in Whispir
+			</td>
+		</tr>
+	</tbody>
+</table>
+
 > > Or if you have a template, which has the details already set (in the mobile channel), and the features too set, which states the appId and has the notifications set to enabled, you can do.
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+    <to>contact-mri-value</to>
+    <messageTemplateName>Name-Of-the-Template-Goes-Here</messageTemplateName>
+</ns2:message> 
+
+```
 
 ```go
 {
@@ -965,13 +1069,21 @@ Content-Type: application/vnd.whispir.message-v1+json
 }
 ```
 
-### What is Whispir doing here ?
+### So what happens in the background ?
 * Whispir looks for the contact based on the MRI value in the given workspace (only).
 * It loads all the devices under that contact
 * Filters them down to the device(s) that has the same appId as passed in the message payload Or set in the template
 * Sends a push to all the device(s) matched in the previous step.
-* There is NO option to sepcifically pick a single device. If you need to do that, just register only 1 device for that contact.
-* If Whispir does not find any devices under the said contact, the status will be PENDING and the info will be "No valid receipients found for this message"
+* There is NO option to specifically pick a single device. If you need to do that, just register only 1 device for that contact.
+* If Whispir does not find any devices under the said contact, the message status will be "PENDING" and the info will be "No valid receipients found for this message"
+
+### Notes
+* You must register your app with Whispir under the `\apps` endpoint. Refer to <a href="#apps">Apps</a>
+* You must register the device token generated by your app with Whispir as a contact's device. Refer to <a href="#contact-devices">Contact Devices</a>
+* You must be sending the push to a contact MRI only. So, refer to the <a href="#contacts">Contacts</a> for getting the MRI value.
+* The maximum push content length is 256 bytes for both IOS and Android. This includes the payload structure as well.
+* Whispir allows sending of custom message attributes with the payload, however these are not available by default, and needs to be configured by Whispir for you.
+* Support for other mobile app platforms (Windows is provided upon request via separate enablement process.
 
 ## Web and Social Messaging
 

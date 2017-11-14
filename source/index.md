@@ -14,16 +14,18 @@ includes:
   - api-access
   - rate-limiting
   - conventions
+  - workspaces
   - messages
   - message-status
   - message-responses
   - templates
   - response-rules
   - contacts
+  - contact-devices
   - distribution-lists
-  - scenarios
   - callbacks
-  - workspaces
+  - apps
+  - scenarios
   - activities
   - custom-lists
   - users
