@@ -39,7 +39,7 @@ Content-Type: application/vnd.whispir.app-v1+json
 
 To understand the relationship between your app and Whispir endpoints, refer to this image.
 
-<br/><p style="text-align: left"><img src="../images/Push relationship.png"/><br/></p>
+<br/><p style="text-align: left"><img src="images/Push-relationship.png"/><br/></p>
 
 ## Registering an App
 

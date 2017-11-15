@@ -69,7 +69,7 @@ Content-Type: application/json
 
 Callbacks allow custom applications to register URLs with Whispir that are used for notifications when certain events occur e.g. a response to a message is received, or a message was undeliverable.
 
-<br/><p style="text-align: center"><img src="http://developer.whispir.com/files/Whispir_API_diagram.png"/><br/></p>
+<br/><p style="text-align: center"><img src="images/Whispir_API_diagram.png"/><br/></p>
 
 Whispir's Callback Service will forward the content of each message response, along with some associated metadata to a URL that the user has pre-registered to receive this information.
 
