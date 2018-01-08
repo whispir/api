@@ -37,7 +37,7 @@ Content-Type: application/vnd.whispir.resource-v1+json
 
 Using Whispir’s API, one can submit data payloads to be stored by Whispir and used in various API calls. These files are uploaded through the `/resources` endpoint.
 
-Using the  Resources endpoint, application developers can submit, retrieve, update, and delete resources. These resources can be used as part of either Whispir Bulk (Dynamic) Messages, or to be used for importing Contacts.  
+Using the  Resources endpoint, application developers can submit, retrieve, update, and delete resources. These resources can be used as part of either Whispir Bulk (Dynamic) Messages, or to be used for importing Contacts.
 
 <table>
     <thead>
@@ -266,7 +266,7 @@ The following are the mandatory fields needed to create a resource -
 
 - Maximum of 10MB per file being uploaded.
 - Transactions will have an enforced timeout.
-- Resources will be available in the Whispir Platform for a limited timeframe (30 days). These will then be automatically cleaned. This will be a configurable setting for Whispir Administrators.
+- Resources will be available in the Whispir Platform for a limited timeframe (90 days). These will then be automatically cleaned. This will be a configurable setting for Whispir Administrators.
 
 ### Example resources
 
