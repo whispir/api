@@ -741,7 +741,7 @@ Content-Type: application/vnd.whispir.contact-v1+json
 
 > > The response to the PUT request upon success is a `204 No Content` with no content being provided.
 
-Updating a contact can be performed using a PUT request to the `/contacts/{id}` endpoint. So, to perform this, one must be knowing the exact “link” associated with the contact.
+Updating a contact can be performed using a PUT request to the `/contacts/{id}` endpoint. So, to perform this, one must be knowing the exact "link" associated with the contact.
 
 The application must provide all the fields during the update request, even if they are not being updated. 
 
@@ -773,15 +773,41 @@ HTTP 1.1 DELETE https://api.whispir.com/contacts/124F6B2D46A5A268?apikey=<your_a
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 ```
 
-Deleting a contact can be performed using a DELETE request to the /contacts/{id} endpoint. So, to perform this, one must be knowing the exact “link” associated with the contact.
+Deleting a contact can be performed using a DELETE request to the /contacts/{id} endpoint. So, to perform this, one must be knowing the exact "link" associated with the contact.
 
 After performing this request, the response does not contain any information other than the headers as it is not necessary.
 
 The user has requested to delete a contact, and when the response of `204 No Content` is returned, the contact is successfully deleted.
 
+You can also delete a contact from all mapped workspace in a single api call. Please refer to the _Advanced Options > Deleting a contact from all workspaces_ topic below.
+
 ## Advanced Options
 
 Whispir API provides some advanced options to perform search and data related queries on the contact information. These options can be performed by adding relevant query parameters to the URL.
+
+### Deleting a contact from all workspaces
+
+> Deleting a contact from all workspaces
+> > The following statement allows users to delete a given contact from all mapped/copied workspaces using the API. Please note, this process is asynchronous and cannot be terminated once triggered.
+
+```
+HTTP 1.1 DELETE https://api.whispir.com/workspaces/A51D76194DDC09CC/contacts/124F6B2D46A5A268?apikey=<your_api_key>&action=deleteAll 
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+```
+
+Whispir API allows to delete a contact from one workspace only by default at a time. However, due to certain business scenarios, there could be a need to delete all the references of a given contact from all workspaces in the company. Usually such references are made when there is a contact mapping rule (either automated, or via contact api) is in place. 
+
+To accomodate such a case, and also avoid calling DELETE /contacts/{id} repeatedly on all workspaces, Whispir API allows a "Delete All" functionality for contacts.
+
+The API call involves passing a _action=deleteAll_ parameter in the url query params. Once this action is triggered, all the contact references in all the workspaces for a given contact{id} are deleted, asynchronously. There is no way to stop the process once it is triggered. So, use it wisely and only when you are sure of a need to delete the contact in all workspaces. *You have been warned.*
+
+The following are the types of contact that can be deleted:
+
+* Mapped contacts
+* Copied contacts
+* Mapped contacts by contact mapping rules
+* Mapped contacts via SFTP and contact mapping rules
+* Mapped contacts of a customized company Account
 
 ### Searching with multiple criteria
 
