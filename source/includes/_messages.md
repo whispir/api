@@ -795,6 +795,7 @@ Before a WAV file will be played, it needs to conform to a certain criteria.
 
  - All WAV files must be 8bit, 8000Hz, 1ch, 64kbps MAX.
  - If the WAV is supplied outside of these criteria, the TTS will be used instead.  It is vital that TTS is provided even when using WAV files.
+ - All of the WAV files combined, may not exceed 10MB in total file size.
 
 ### Notes:
 
