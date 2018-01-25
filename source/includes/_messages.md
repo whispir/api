@@ -1594,7 +1594,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 *Note:* 
 
 * User-defined attributes available through the API are configured at the account level and require Whispir administrative assistance to enable. 
-* You can start using user-defined attributes through the api by contacting your Whispir Customer Success Representative or <a href="mailto:sales@whispir.com">sales@whispir.com</a>
+* You can start using user-defined attributes through the api by contacting your Whispir Customer Success Representative or <a href="mailto:support@whispir.com">support@whispir.com</a>
 
 
 
