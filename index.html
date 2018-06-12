@@ -3607,22 +3607,22 @@ Authorization: Basic &lt;YOUR AUTH HEADER&gt;
 <pre><code class="highlight xml"><span class="c">&lt;!-- From the default workspace --&gt;</span>
 
 https://api.whispir.com/messages/{:messageId}/messagestatus/?apikey=<span class="nt">&lt;your_api_key&gt;</span>
-Content-Type: application/vnd.whispir.messagestatus-v1+xml
+Accept: application/vnd.whispir.messagestatus-v1+xml
 </code></pre>
 <pre><code class="highlight go"><span class="c">//From the default workspace</span><span class="x">
 
 </span><span class="n">https</span><span class="o">:</span><span class="c">//api.whispir.com/messages/{:messageId}/messagestatus/?apikey=&lt;your_api_key&gt;</span><span class="x">
-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">messagestatus</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
+</span><span class="n">Accept</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">messagestatus</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
 </span></code></pre>
 <pre><code class="highlight xml"><span class="c">&lt;!-- or from a defined workspace --&gt;</span>
 
 https://api.whispir.com/workspaces/{:id}/messages/{:messageId}/messagestatus/?apikey=<span class="nt">&lt;your_api_key&gt;</span>
-Content-Type: application/vnd.whispir.messagestatus-v1+xml
+Accept: application/vnd.whispir.messagestatus-v1+xml
 </code></pre>
 <pre><code class="highlight go"><span class="c">//or from a defined workspace</span><span class="x">
 
 </span><span class="n">https</span><span class="o">:</span><span class="c">//api.whispir.com/workspaces/{:id}/messages/{:messageId}/messagestatus/?apikey=&lt;your_api_key&gt;</span><span class="x">
-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">messagestatus</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
+</span><span class="n">Accept</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">messagestatus</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
 </span></code></pre>
 
 <blockquote>
@@ -4112,10 +4112,10 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml">https://api.whispir.com/messages/{:messageId}/messageresponses/?apikey=<span class="nt">&lt;your_api_key&gt;</span>
-Content-Type: application/vnd.whispir.messageresponse-v1+xml
+Accept: application/vnd.whispir.messageresponse-v1+xml
 </code></pre>
 <pre><code class="highlight go"><span class="n">https</span><span class="o">:</span><span class="c">//api.whispir.com/messages/{:messageId}/messageresponses/?apikey=&lt;your_api_key&gt;</span><span class="x">
-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">messageresponse</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
+</span><span class="n">Accept</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">messageresponse</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
 </span></code></pre>
 
 <blockquote>
@@ -4126,10 +4126,10 @@ Content-Type: application/vnd.whispir.messageresponse-v1+xml
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml">https://api.whispir.com/workspaces/{:id}/messages/{:messageId}/messageresponses/?apikey=<span class="nt">&lt;your_api_key&gt;</span>
-Content-Type: application/vnd.whispir.messageresponse-v1+xml
+Accept: application/vnd.whispir.messageresponse-v1+xml
 </code></pre>
 <pre><code class="highlight go"><span class="n">https</span><span class="o">:</span><span class="c">//api.whispir.com/workspaces/{:id}/messages/{:messageId}/messageresponses/?apikey=&lt;your_api_key&gt;</span><span class="x">
-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">messageresponse</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
+</span><span class="n">Accept</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">messageresponse</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
 </span></code></pre>
 <pre><code class="highlight plaintext">&gt; Resource type
 
