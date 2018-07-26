@@ -50,9 +50,15 @@ Whispir's API allows users to categorise their contacts into different groups to
 
 These logical groups can help to target specific communications to specific people. A contact can be part of any number of groups.
 
-Distribution lists can easily be created by executing a `POST` request to the `/distributionlists` endpoint in Whispir.
+Whispir supports 3 types of distribution lists.
 
-Distribution lists can contain **Contacts**, **Users**, or nested **Distribution Lists** to create any structure that is required within your environment.
+ - **Static** : In a static distribution list you manually add contacts and, if required, one or more existing distribution lists. The contacts on the list don’t change unless you manually add or remove them (unlike a dynamic distribution list).
+ - **Dynamic** : In a dynamic distribution list you add contacts based on rules relating to information saved in their Whispir profiles. The list of contacts updates automatically if those specified details change in any profiles. For example, if you add contacts based on a specific role (such as ‘trainer’) and a contact moves to a different role, the list will exclude that contact when the message is sent.
+ - **Shared** : You can create a shared distribution list that’s made up of manually selected recipients, like a static distribution list. This list is then available for sharing with other workspaces (unlike static lists).
+
+<aside class="notice">
+Only Static, and Dynamic Distribution lists are allowed to be created via the API. Shared Distribution list creation is limited to the Platform UI only.
+</aside>
 
 ##Creating Distribution lists
 
@@ -94,17 +100,86 @@ Content-Type: application/vnd.whispir.distributionlist-v1+json
 
 > > Users should expect a `201 Created` response after executing this request.
 
-Distribution lists can be created within the Default Workspace, or within a Specific Workspace.  More information on Workspaces will be provided later in this documentation. 
+
+> Creating Dynamic Distribution Lists
+> > Dynamic Distribution Lists contains rules with filters to determine the members dynamically
+
+```
+POST https://api.whispir.com/distributionlists?apikey=[your api key]
+Authorization: Basic [your basic auth]
+```
+
+```xml
+Content-Type: application/vnd.whispir.distributionlist-v1+xml
+ 
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:distributionlist xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+   <name>My Dynamic DistributionList</name>
+   <description>My Distribution list</description>
+   <access>Open</access>
+   <type>dynamic</type>
+   <entityType>Contact</entityType>
+   <visibility>Public</visibility>
+   <rules>
+       <ruleContent>sales</ruleContent>
+       <ruleFilter>division</ruleFilter>
+       <ruleFilterActualName>Division</ruleFilterActualName>
+   </rules>
+   <rules>
+       <ruleContent>apac</ruleContent>
+       <ruleFilter>businessUnit</ruleFilter>
+       <ruleFilterActualName>Business Unit</ruleFilterActualName>
+   </rules>
+</ns1:distributionlist>
+```
+```go
+Content-Type: application/vnd.whispir.distributionlist-v1+json
+ 
+  {
+    "name" : "My Dynamic DistributionList",
+    "description" : "My Distribution list",
+    "access" : "Open",
+    "visibility" : "Public",
+    "type" : "dynamic",
+    "entityType" : "Contact",
+	"rules" : [{
+			"ruleFilter" : "division",
+			"ruleFilterActualName" : "Division",
+			"ruleContent" : "sales"
+		},{
+			"ruleFilter" : "businessUnit",
+			"ruleFilterActualName" : "Business Unit",
+			"ruleContent" : "apac"
+		}]
+}
+```
+
+> > Users should expect a `201 Created` response after executing this request. If the rules are incorrectly passed, then a `422 Unprocessible Entity` is thrown.
+
+Distribution lists can be created within the Default Workspace, or within a Specific Workspace. Distribution lists can contain **Contacts**, **Users**, or nested **Distribution Lists** to create any structure that is required within your environment. 
+
 
 The MRI value is important here. It is the required unique identifier for any communications that are to be sent out to this distribution list.
 
 To create a new distribution list, you can use the /distributionlists endpoint.
 
-Only **3 fields** are required:
+Only **4 fields** are required:
 
  1. name - the name of the distribution list to be created 
  2. access - Open Or Restricted 
  3. visibility - Private Or Public
+ 4. type - Static or Dynamic
+
+In the case of _**Dynamic Distribution list**_, the required fields will be more than usual. As following - 
+
+ 1. name - the name of the distribution list to be created 
+ 2. access - Open Or Restricted 
+ 3. visibility - Private Or Public
+ 4. type - Dynamic
+ 5. entityType - contact (limited to contacts only at the moment)
+ 6. rules - The rules is an object that specifies the rules that should be applied on the entityType values to pick the appropriate contact at the moment of usage (not creation). The rules contain an array of rule definitions with a minimum of one rule to be defined. If not done so, a 422 unprocessable entity is returned by the API duuring the distribution list creation/edit.
+
+**Note**: The contactIds, userIds, and distListIds values are ignored when the _type_ is _dynamic_, as the rules govern the members of the Distribution list
 
 <table>
     <thead>
@@ -117,7 +192,7 @@ Only **3 fields** are required:
             <td style="text-align: right; font-weight: bold;">name</td>
             <td>
             <strong>String</strong> <br>
-               Specifies the name of the distribution list. This has to be unique.
+               Specifies the name of the distribution list. This has to be unique, and should not contain any special characters (except space) in it.
             </td>
         </tr>
         <tr>
@@ -152,6 +227,37 @@ Only **3 fields** are required:
             </td>
         </tr>
         <tr>
+            <td style="text-align: right; font-weight: bold;">type</td>
+            <td>
+            <strong>String</strong> <br>
+            Allows the user to specify the type for this DL. Default is `static`<br>
+            
+            <ol>
+				<li><strong>Static</strong> - The contacts on the list don’t change unless you manually add or remove them (unlike a dynamic distribution list).</li>
+				<li><strong>Dynamic</strong> - The contacts on the list change based on the rulesFilter applied at the time of usage. There is good likelyhood of contacts changing for each run depending on the rules</li>
+			 </ol>
+            </td>
+        </tr>
+	<tr>
+            <td style="text-align: right; font-weight: bold;">entityTpe</td>
+            <td>
+            <strong>String</strong> <br>
+            Only mandatory when the type is dynamic. The value is currently strictly limited to "contact".
+            </td>
+        </tr>
+	<tr>
+            <td style="text-align: right; font-weight: bold;">rules</td>
+            <td>
+            <strong>Object</strong><br>
+		The rules contains array (child) of rule definitions. Each rule is a object with 3 keys in them. 
+            <ol>
+		<li><strong>ruleFilter</strong> - contains any of the contact profile elements that are available for searching e.g. Division, Department, Role.</li>
+		<li><strong>ruleFilterActualName</strong> - contains the matching string to be compared for the distribution list.</li>
+		<li><strong>ruleContent</strong> - contains the matching string to be compared with the contact element for being a part of the Distribution list</li>
+            </ol>
+            </td>
+        </tr>
+        <tr>
             <td style="text-align: right; font-weight: bold;">contactIds</td>
             <td>
             <strong>String</strong> <br>
@@ -174,6 +280,81 @@ Only **3 fields** are required:
         </tr>
     </tbody>
 </table>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">List of common ruleFilter and ruleFilterActualName values</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Common Values</td>
+            <td>
+            If your company has custom contact properties, that you want to include in the DL ruleFilter, then please reach out to Whispir Support or your Account Manager for the details.<br>
+<ul>
+		<li>ruleFilter : ruleFilterActualName</li>
+</ul>
+               <ol>
+		<li>businessUnit : Business Unit</li>
+		<li>companyName : Organization Name</li>
+		<li>createdtime__timestamp : Created Time</li>
+		<li>department : Department</li>
+		<li>division : Division</li>
+		<li>firstName : First Name</li>
+		<li>group_messagingoption_active__boolean : Is Active</li>
+		<li>group_messagingoption_fieldmapping : Mapped Field</li>
+		<li>group_messagingoption_type__dropdown : Type</li>
+		<li>jobTitle : Job Title</li>
+		<li>lastName : Last Name</li>
+		<li>lastmodifiedtime__timestamp : Last Updated Time</li>
+		<li>personalAddress1 : Personal Address1</li>
+		<li>personalAddress2 : Personal Address2</li>
+		<li>personalCountry : Personal Country</li>
+		<li>personalEmailAddress1 : Personal Email Address</li>
+		<li>personalEmailAddress2 : Personal Email Address Secondary</li>
+		<li>personalMobilePhone1 : Personal Mobile Phone Primary</li>
+		<li>personalMobilePhone2 : Personal Mobile Phone Secondary</li>
+		<li>personalPhone1 : Personal Phone Primary</li>
+		<li>personalPhone2 : Personal Phone Secondary</li>
+		<li>personalPhoneAreaCode1 : Personal Phone Areacode Primary</li>
+		<li>personalPhoneAreaCode2 : Personal Phone Areacode Secondary</li>
+		<li>personalPostCode : Personal Postcode</li>
+		<li>personalState : Personal State</li>
+		<li>personalSuburb : Personal Suburb</li>
+		<li>role1 : Role</li>
+		<li>role2 : Additional Role</li>
+		<li>teamName1 : Team Name</li>
+		<li>teamName2 : Additional Team Name</li>
+		<li>timezone : Timezone</li>
+		<li>workAddress1 : Work Address1</li>
+		<li>workAddress2 : Work Address2</li>
+		<li>workCountry : Work Country</li>
+		<li>workEmailAddress1 : Work Email Address Primary</li>
+		<li>workEmailAddress2 : Work Email Address Secondary</li>
+		<li>workMobilePhone1 : Work Mobile Phone Primary</li>
+		<li>workMobilePhone2 : Work Mobile Phone Secondary</li>
+		<li>workOtherPhone : Phone Other</li>
+		<li>workPhone1 : Work Phone Primary</li>
+		<li>workPhone2 : Work Phone Secondary</li>
+		<li>workPhoneAreaCode1 : Work Phone Areacode Primary</li>
+		<li>workPhoneAreaCode2 : Work Phone Areacode Secondary</li>
+		<li>workPostCode : Work Postcode</li>
+		<li>workPostalAddress1 : Work Postal Address1</li>
+		<li>workPostalAddress2 : Work Postal Address2</li>
+		<li>workPostalCountry : Work Postal Country</li>
+		<li>workPostalPostCode : Work Postal PostCode</li>
+		<li>workPostalState : Work Postal State</li>
+		<li>workPostalSuburb : Work Postal Suburb</li>
+		<li>workSetellitePhone : Satellite Phone</li>
+		<li>workState : Work State</li>
+		<li>workSuburb : Work Suburb</li>
+		</ol>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 
 ## Retrieving Distribution Lists
 
