@@ -6898,9 +6898,17 @@ Content-Type: application/vnd.whispir.distributionlist-v1+xml
 
 <p>These logical groups can help to target specific communications to specific people. A contact can be part of any number of groups.</p>
 
-<p>Distribution lists can easily be created by executing a <code class="prettyprint">POST</code> request to the <code class="prettyprint">/distributionlists</code> endpoint in Whispir.</p>
+<p>Whispir supports 3 types of distribution lists.</p>
 
-<p>Distribution lists can contain <strong>Contacts</strong>, <strong>Users</strong>, or nested <strong>Distribution Lists</strong> to create any structure that is required within your environment.</p>
+<ul>
+<li><strong>Static</strong> : In a static distribution list you manually add contacts and, if required, one or more existing distribution lists. The contacts on the list don’t change unless you manually add or remove them (unlike a dynamic distribution list).</li>
+<li><strong>Dynamic</strong> : In a dynamic distribution list you add contacts based on rules relating to information saved in their Whispir profiles. The list of contacts updates automatically if those specified details change in any profiles. For example, if you add contacts based on a specific role (such as ‘trainer’) and a contact moves to a different role, the list will exclude that contact when the message is sent.</li>
+<li><strong>Shared</strong> : You can create a shared distribution list that’s made up of manually selected recipients, like a static distribution list. This list is then available for sharing with other workspaces (unlike static lists).</li>
+</ul>
+
+<aside class="notice">
+Only Static, and Dynamic Distribution lists are allowed to be created via the API. Shared Distribution list creation is limited to the Platform UI only.
+</aside>
 
 <h2 id="creating-distribution-lists">Creating Distribution lists</h2>
 
@@ -6944,21 +6952,92 @@ Authorization: Basic [your basic auth]
 <blockquote>
 <p>Users should expect a <code class="prettyprint">201 Created</code> response after executing this request.</p>
 </blockquote>
+
+<p>Creating Dynamic Distribution Lists</p>
+
+<blockquote>
+<p>Dynamic Distribution Lists contains rules with filters to determine the members dynamically</p>
+</blockquote>
+</blockquote>
+<pre><code class="highlight plaintext">POST https://api.whispir.com/distributionlists?apikey=[your api key]
+Authorization: Basic [your basic auth]
+</code></pre>
+<pre><code class="highlight xml">Content-Type: application/vnd.whispir.distributionlist-v1+xml
+
+<span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
+<span class="nt">&lt;ns1:distributionlist</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;name&gt;</span>My Dynamic DistributionList<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;description&gt;</span>My Distribution list<span class="nt">&lt;/description&gt;</span>
+   <span class="nt">&lt;access&gt;</span>Open<span class="nt">&lt;/access&gt;</span>
+   <span class="nt">&lt;type&gt;</span>dynamic<span class="nt">&lt;/type&gt;</span>
+   <span class="nt">&lt;entityType&gt;</span>Contact<span class="nt">&lt;/entityType&gt;</span>
+   <span class="nt">&lt;visibility&gt;</span>Public<span class="nt">&lt;/visibility&gt;</span>
+   <span class="nt">&lt;rules&gt;</span>
+       <span class="nt">&lt;ruleContent&gt;</span>sales<span class="nt">&lt;/ruleContent&gt;</span>
+       <span class="nt">&lt;ruleFilter&gt;</span>division<span class="nt">&lt;/ruleFilter&gt;</span>
+       <span class="nt">&lt;ruleFilterActualName&gt;</span>Division<span class="nt">&lt;/ruleFilterActualName&gt;</span>
+   <span class="nt">&lt;/rules&gt;</span>
+   <span class="nt">&lt;rules&gt;</span>
+       <span class="nt">&lt;ruleContent&gt;</span>apac<span class="nt">&lt;/ruleContent&gt;</span>
+       <span class="nt">&lt;ruleFilter&gt;</span>businessUnit<span class="nt">&lt;/ruleFilter&gt;</span>
+       <span class="nt">&lt;ruleFilterActualName&gt;</span>Business Unit<span class="nt">&lt;/ruleFilterActualName&gt;</span>
+   <span class="nt">&lt;/rules&gt;</span>
+<span class="nt">&lt;/ns1:distributionlist&gt;</span>
+</code></pre>
+<pre><code class="highlight go"><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">distributionlist</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
+
+  </span><span class="p">{</span><span class="x">
+    </span><span class="s">"name"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"My Dynamic DistributionList"</span><span class="p">,</span><span class="x">
+    </span><span class="s">"description"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"My Distribution list"</span><span class="p">,</span><span class="x">
+    </span><span class="s">"access"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"Open"</span><span class="p">,</span><span class="x">
+    </span><span class="s">"visibility"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"Public"</span><span class="p">,</span><span class="x">
+    </span><span class="s">"type"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"dynamic"</span><span class="p">,</span><span class="x">
+    </span><span class="s">"entityType"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"Contact"</span><span class="p">,</span><span class="x">
+    </span><span class="s">"rules"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="p">[{</span><span class="x">
+            </span><span class="s">"ruleFilter"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"division"</span><span class="p">,</span><span class="x">
+            </span><span class="s">"ruleFilterActualName"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"Division"</span><span class="p">,</span><span class="x">
+            </span><span class="s">"ruleContent"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"sales"</span><span class="x">
+        </span><span class="p">},{</span><span class="x">
+            </span><span class="s">"ruleFilter"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"businessUnit"</span><span class="p">,</span><span class="x">
+            </span><span class="s">"ruleFilterActualName"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"Business Unit"</span><span class="p">,</span><span class="x">
+            </span><span class="s">"ruleContent"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"apac"</span><span class="x">
+        </span><span class="p">}]</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre>
+
+<blockquote>
+<blockquote>
+<p>Users should expect a <code class="prettyprint">201 Created</code> response after executing this request. If the rules are incorrectly passed, then a <code class="prettyprint">422 Unprocessible Entity</code> is thrown.</p>
+</blockquote>
 </blockquote>
 
-<p>Distribution lists can be created within the Default Workspace, or within a Specific Workspace.  More information on Workspaces will be provided later in this documentation. </p>
+<p>Distribution lists can be created within the Default Workspace, or within a Specific Workspace. Distribution lists can contain <strong>Contacts</strong>, <strong>Users</strong>, or nested <strong>Distribution Lists</strong> to create any structure that is required within your environment. </p>
 
 <p>The MRI value is important here. It is the required unique identifier for any communications that are to be sent out to this distribution list.</p>
 
 <p>To create a new distribution list, you can use the /distributionlists endpoint.</p>
 
-<p>Only <strong>3 fields</strong> are required:</p>
+<p>Only <strong>4 fields</strong> are required:</p>
 
 <ol>
 <li>name - the name of the distribution list to be created </li>
 <li>access - Open Or Restricted </li>
 <li>visibility - Private Or Public</li>
+<li>type - Static or Dynamic</li>
 </ol>
+
+<p>In the case of <em><strong>Dynamic Distribution list</strong></em>, the required fields will be more than usual. As following - </p>
+
+<ol>
+<li>name - the name of the distribution list to be created </li>
+<li>access - Open Or Restricted </li>
+<li>visibility - Private Or Public</li>
+<li>type - Dynamic</li>
+<li>entityType - contact (limited to contacts only at the moment)</li>
+<li>rules - The rules is an object that specifies the rules that should be applied on the entityType values to pick the appropriate contact at the moment of usage (not creation). The rules contain an array of rule definitions with a minimum of one rule to be defined. If not done so, a 422 unprocessable entity is returned by the API duuring the distribution list creation/edit.</li>
+</ol>
+
+<p><strong>Note</strong>: The contactIds, userIds, and distListIds values are ignored when the <em>type</em> is <em>dynamic</em>, as the rules govern the members of the Distribution list</p>
 
 <table>
     <thead>
@@ -6971,7 +7050,7 @@ Authorization: Basic [your basic auth]
             <td style="text-align: right; font-weight: bold;">name</td>
             <td>
             <strong>String</strong> <br>
-               Specifies the name of the distribution list. This has to be unique.
+               Specifies the name of the distribution list. This has to be unique, and should not contain any special characters (except space) in it.
             </td>
         </tr>
         <tr>
@@ -7006,6 +7085,37 @@ Authorization: Basic [your basic auth]
             </td>
         </tr>
         <tr>
+            <td style="text-align: right; font-weight: bold;">type</td>
+            <td>
+            <strong>String</strong> <br>
+            Allows the user to specify the type for this DL. Default is `static`<br>
+            
+            <ol>
+                <li><strong>Static</strong> - The contacts on the list don’t change unless you manually add or remove them (unlike a dynamic distribution list).</li>
+                <li><strong>Dynamic</strong> - The contacts on the list change based on the rulesFilter applied at the time of usage. There is good likelyhood of contacts changing for each run depending on the rules</li>
+             </ol>
+            </td>
+        </tr>
+    <tr>
+            <td style="text-align: right; font-weight: bold;">entityTpe</td>
+            <td>
+            <strong>String</strong> <br>
+            Only mandatory when the type is dynamic. The value is currently strictly limited to &ldquo;contact&rdquo;.
+            </td>
+        </tr>
+    <tr>
+            <td style="text-align: right; font-weight: bold;">rules</td>
+            <td>
+            <strong>Object</strong><br>
+        The rules contains array (child) of rule definitions. Each rule is a object with 3 keys in them. 
+            <ol>
+        <li><strong>ruleFilter</strong> - contains any of the contact profile elements that are available for searching e.g. Division, Department, Role.</li>
+        <li><strong>ruleFilterActualName</strong> - contains the matching string to be compared for the distribution list.</li>
+        <li><strong>ruleContent</strong> - contains the matching string to be compared with the contact element for being a part of the Distribution list</li>
+            </ol>
+            </td>
+        </tr>
+        <tr>
             <td style="text-align: right; font-weight: bold;">contactIds</td>
             <td>
             <strong>String</strong> <br>
@@ -7024,6 +7134,80 @@ Authorization: Basic [your basic auth]
             <td>
             <strong>String</strong> <br>
             Comma separated list of Distribution List IDs which can be nested distribution list to this DL.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50%" colspan="2">List of common ruleFilter and ruleFilterActualName values</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">Common Values</td>
+            <td>
+            If your company has custom contact properties, that you want to include in the DL ruleFilter, then please reach out to Whispir Support or your Account Manager for the details.<br>
+<ul>
+        <li>ruleFilter : ruleFilterActualName</li>
+</ul>
+               <ol>
+        <li>businessUnit : Business Unit</li>
+        <li>companyName : Organization Name</li>
+        <li>createdtime__timestamp : Created Time</li>
+        <li>department : Department</li>
+        <li>division : Division</li>
+        <li>firstName : First Name</li>
+        <li>group_messagingoption_active__boolean : Is Active</li>
+        <li>group_messagingoption_fieldmapping : Mapped Field</li>
+        <li>group_messagingoption_type__dropdown : Type</li>
+        <li>jobTitle : Job Title</li>
+        <li>lastName : Last Name</li>
+        <li>lastmodifiedtime__timestamp : Last Updated Time</li>
+        <li>personalAddress1 : Personal Address1</li>
+        <li>personalAddress2 : Personal Address2</li>
+        <li>personalCountry : Personal Country</li>
+        <li>personalEmailAddress1 : Personal Email Address</li>
+        <li>personalEmailAddress2 : Personal Email Address Secondary</li>
+        <li>personalMobilePhone1 : Personal Mobile Phone Primary</li>
+        <li>personalMobilePhone2 : Personal Mobile Phone Secondary</li>
+        <li>personalPhone1 : Personal Phone Primary</li>
+        <li>personalPhone2 : Personal Phone Secondary</li>
+        <li>personalPhoneAreaCode1 : Personal Phone Areacode Primary</li>
+        <li>personalPhoneAreaCode2 : Personal Phone Areacode Secondary</li>
+        <li>personalPostCode : Personal Postcode</li>
+        <li>personalState : Personal State</li>
+        <li>personalSuburb : Personal Suburb</li>
+        <li>role1 : Role</li>
+        <li>role2 : Additional Role</li>
+        <li>teamName1 : Team Name</li>
+        <li>teamName2 : Additional Team Name</li>
+        <li>timezone : Timezone</li>
+        <li>workAddress1 : Work Address1</li>
+        <li>workAddress2 : Work Address2</li>
+        <li>workCountry : Work Country</li>
+        <li>workEmailAddress1 : Work Email Address Primary</li>
+        <li>workEmailAddress2 : Work Email Address Secondary</li>
+        <li>workMobilePhone1 : Work Mobile Phone Primary</li>
+        <li>workMobilePhone2 : Work Mobile Phone Secondary</li>
+        <li>workOtherPhone : Phone Other</li>
+        <li>workPhone1 : Work Phone Primary</li>
+        <li>workPhone2 : Work Phone Secondary</li>
+        <li>workPhoneAreaCode1 : Work Phone Areacode Primary</li>
+        <li>workPhoneAreaCode2 : Work Phone Areacode Secondary</li>
+        <li>workPostCode : Work Postcode</li>
+        <li>workPostalAddress1 : Work Postal Address1</li>
+        <li>workPostalAddress2 : Work Postal Address2</li>
+        <li>workPostalCountry : Work Postal Country</li>
+        <li>workPostalPostCode : Work Postal PostCode</li>
+        <li>workPostalState : Work Postal State</li>
+        <li>workPostalSuburb : Work Postal Suburb</li>
+        <li>workSetellitePhone : Satellite Phone</li>
+        <li>workState : Work State</li>
+        <li>workSuburb : Work Suburb</li>
+        </ol>
             </td>
         </tr>
     </tbody>
