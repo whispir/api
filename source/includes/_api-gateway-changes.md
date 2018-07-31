@@ -31,7 +31,7 @@ AP - https://api.ap.whispir.com
 AP1 - https://api.ap1.whispir.com
 NZ - https://api.nz.whispir.com
 US - https://api.us.whispir.com
-IT - https://api.app.whispir.it
+IT - https://api.it.whispir.com
 EDU - https://api.education.whispir.com
 ```
 
@@ -50,7 +50,7 @@ The region and its corresponding URL is as following -
 		<tr><td>AP1</td><td>https://api.ap1.whispir.com</td><tr>
 		<tr><td>NZ</td><td>https://api.nz.whispir.com</td><tr>
 		<tr><td>US</td><td>https://api.us.whispir.com</td><tr>
-		<tr><td>IT</td><td>https://api.app.whispir.it</td><tr>
+		<tr><td>IT</td><td>https://api.it.whispir.com</td><tr>
 		<tr><td>EDU</td><td>https://api.education.whispir.com</td><tr>
 	</tbody>
 </table>

@@ -14,7 +14,7 @@ AP - https://api.ap.whispir.com
 AP1 - https://api.ap1.whispir.com
 NZ - https://api.nz.whispir.com
 US - https://api.us.whispir.com
-IT - https://api.app.whispir.it
+IT - https://api.it.whispir.com
 EDU - https://api.education.whispir.com
 ```
 
@@ -34,6 +34,7 @@ EDU - https://api.education.whispir.com
 /templates
 /responserules
 /contacts
+/contacts/:id/devices
 /distributionlists
 /scenarios
 /events
@@ -45,6 +46,7 @@ EDU - https://api.education.whispir.com
 /callbacks
 /callbacks/:id/calls
 /workspaces
+/apps
 ```
 > > **Note:** The **events** endpoint is only available for users with the Events Module.
 
