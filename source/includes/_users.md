@@ -5,12 +5,12 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/users/?apikey=<your_api_key>
+https://api.<region>.whispir.com/users/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.user-v1+xml
 ```
 
 ```go
-https://api.whispir.com/users/?apikey=<your_api_key>
+https://api.<region>.whispir.com/users/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.user-v1+json
 ```
 
@@ -112,15 +112,16 @@ If an user has been newly created, the default status is PENDING (P). Now, to Ac
 > > Users can easily be created by using the following request structure
 
 ```
-POST https://api.whispir.com/users?apikey=[your api key]
+POST https://api.<region>.whispir.com/users?apikey=[your api key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:user xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:user xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <firstName>John</firstName>
     <lastName>Wick</lastName>
     <userName>John.Wick</userName>
@@ -150,7 +151,7 @@ Content-Type: application/vnd.whispir.user-v1+json
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:user xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns3:user xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <userName>John.Wick</userName>
     <password></password>
     <status>PENDING</status>
@@ -163,9 +164,9 @@ Content-Type: application/vnd.whispir.user-v1+json
     <workCountry>Australia</workCountry>
     <workPostalCountry>Australia</workPostalCountry>
     <timezone>Australia/Melbourne</timezone>
-    <ns2:link uri="https://api.whispir.com/users/AF48A9EC3F02E43C?apikey=[your api key]" rel="self" method="GET"/>
-    <ns2:link uri="https://api.whispir.com/users?apikey=[your api key]" rel="updateUser" method="PUT" type="application/vnd.whispir.user-v1+xml,application/vnd.whispir.user-v1+json"/>
-    <ns2:link uri="https://api.whispir.com/users/AF48A9EC3F02E43C?apikey=[your api key]" rel="deleteUser" method="DELETE"/>
+    <ns2:link uri="https://api.<region>.whispir.com/users/AF48A9EC3F02E43C?apikey=[your api key]" rel="self" method="GET"/>
+    <ns2:link uri="https://api.<region>.whispir.com/users?apikey=[your api key]" rel="updateUser" method="PUT" type="application/vnd.whispir.user-v1+xml,application/vnd.whispir.user-v1+json"/>
+    <ns2:link uri="https://api.<region>.whispir.com/users/AF48A9EC3F02E43C?apikey=[your api key]" rel="deleteUser" method="DELETE"/>
 </ns3:user>
 
 ```
@@ -186,18 +187,18 @@ Content-Type: application/vnd.whispir.user-v1+json
   "timezone": "Australia/Melbourne",
   "link": [
     {
-      "uri": "https://api.whispir.com/users/AF48A9EC3F02E43C?apikey=[your api key]",
+      "uri": "https://api.<region>.whispir.com/users/AF48A9EC3F02E43C?apikey=[your api key]",
       "rel": "self",
       "method": "GET"
     },
     {
-      "uri": "https://api.whispir.com/users/AF48A9EC3F02E43C?apikey=[your api key]",
+      "uri": "https://api.<region>.whispir.com/users/AF48A9EC3F02E43C?apikey=[your api key]",
       "rel": "updateUser",
       "method": "PUT",
       "type": "application/vnd.whispir.user-v1+xml,application/vnd.whispir.user-v1+json"
     },
     {
-      "uri": "https://api.whispir.com/users/AF48A9EC3F02E43C?apikey=[your api key]",
+      "uri": "https://api.<region>.whispir.com/users/AF48A9EC3F02E43C?apikey=[your api key]",
       "rel": "deleteUser",
       "method": "DELETE"
     }
@@ -404,15 +405,16 @@ When creating an account, the following fields are mandatory:
 > > Users can easily be retrieved from the Whispir API using the following endpoints:
 
 ```
-HTTP 1.1 GET https://api.whispir.com/users?apikey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/users?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 1 of 1</status>
     <ns2:Users>
         <ns2:user>
@@ -424,7 +426,7 @@ Accept: application/vnd.whispir.user-v1+xml
             <workMobilePhone1>61423456789</workMobilePhone1> 
             <ns2:link method="GET" 
                       rel="self" 
-                      uri="http://api.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>"/>
+                      uri="http://api.<region>.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>"/>
         </ns2:user>
 
 		...
@@ -449,7 +451,7 @@ Accept: application/vnd.whispir.user-v1+json
       "link": {
         "method": "GET",
         "rel": "self",
-        "uri": "http://api.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>"
+        "uri": "http://api.<region>.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>"
       }
     },
 
@@ -471,15 +473,16 @@ Once the request is placed, the response will be a list of url's to each of the 
 > > Users can retrieve a specific user by supplying the user ID in the URL.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:user xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:user xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
    <id>AF48A9EC3F02E43C</id>
    <firstName>Fred</firstName>
    <lastName>Smith</lastName>
@@ -487,7 +490,7 @@ Accept: application/vnd.whispir.user-v1+xml
    ... remaining of the user object
    <ns2:link method="GET" 
              rel="self" 
-             uri="http://api.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>"/>
+             uri="http://api.<region>.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>"/>
 </ns2:user>
 ```
 
@@ -503,12 +506,12 @@ Accept: application/vnd.whispir.user-v1+json
    "link": {
      "method": "GET",
      "rel": "self",
-     "uri": "http://api.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>"
+     "uri": "http://api.<region>.whispir.com/users/AF48A9EC3F02E43C?apikey=<your_api_key>"
    }
 }
 ```
 
-To get details of a specific user, the URI must be passed with the ID of the user. So, the URI shall be: `https://api.whispir.com/users/AF48A9EC3F02E43C` 
+To get details of a specific user, the URI must be passed with the ID of the user. So, the URI shall be: `https://api.<region>.whispir.com/users/AF48A9EC3F02E43C` 
 Where `AF48A9EC3F02E43C` is the user id.
 
 ### Retrieving workspace users
@@ -517,17 +520,18 @@ Where `AF48A9EC3F02E43C` is the user id.
 > > 
 
 ```
-HTTP 1.1 GET https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/?apiKey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/workspaces/C727BCE3A813E2B1/users/?apiKey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 20 of 28</status>
-    <ns2:link uri="https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/?apikey=<your_api_key>&offset=20&limit=20" rel="next" method="GET"/>
+    <ns2:link uri="https://api.<region>.whispir.com/workspaces/C727BCE3A813E2B1/users/?apikey=<your_api_key>&offset=20&limit=20" rel="next" method="GET"/>
     <ns2:users>
         <ns2:user>
             <id>AF48A9EC3F02E43C</id>
@@ -536,7 +540,7 @@ Accept: application/vnd.whispir.user-v1+xml
             <companyName>Whispir Pte Ltd</companyName>
             <workEmailAddress1>fsmith@whispir.com</workEmailAddress1>
             <workMobilePhone1>6512348765</workMobilePhone1>
-            <ns2:link uri="https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/AF48A9EC3F02E43C?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/workspaces/C727BCE3A813E2B1/users/AF48A9EC3F02E43C?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:user>
         <ns2:user>
             <id>DFC878BCB2EF9258</id>
@@ -544,7 +548,7 @@ Accept: application/vnd.whispir.user-v1+xml
             <lastName>Wick</lastName>
             <companyName>SHIELD</companyName>
             <workEmailAddress1>jwick@whispir.com</workEmailAddress1>
-            <ns2:link uri="https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/DFC878BCB2EF9258?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/workspaces/C727BCE3A813E2B1/users/DFC878BCB2EF9258?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:user>
 
         ...
@@ -567,7 +571,7 @@ Accept: application/vnd.whispir.user-v1+json
       "workMobilePhone1": "6512348765",
       "link": [
         {
-          "uri": "https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/AF48A9EC3F02E43C?apikey=<your_api_key>",
+          "uri": "https://api.<region>.whispir.com/workspaces/C727BCE3A813E2B1/users/AF48A9EC3F02E43C?apikey=<your_api_key>",
           "rel": "self",
           "method": "GET"
         }
@@ -581,7 +585,7 @@ Accept: application/vnd.whispir.user-v1+json
       "workEmailAddress1": "jwick@whispir.com",
       "link": [
         {
-          "uri": "https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/DFC878BCB2EF9258?apikey=<your_api_key>",
+          "uri": "https://api.<region>.whispir.com/workspaces/C727BCE3A813E2B1/users/DFC878BCB2EF9258?apikey=<your_api_key>",
           "rel": "self",
           "method": "GET"
         }
@@ -593,7 +597,7 @@ Accept: application/vnd.whispir.user-v1+json
     "status": "1 to 20 of 28",
     "link": [
     {
-      "uri": "https://api.whispir.com/workspaces/C727BCE3A813E2B1/users/?apikey=<your_api_key>&offset=10&limit=10",
+      "uri": "https://api.<region>.whispir.com/workspaces/C727BCE3A813E2B1/users/?apikey=<your_api_key>&offset=10&limit=10",
       "rel": "next",
       "method": "GET"
     }
@@ -613,8 +617,9 @@ The user will use the limit and offset query parameters to determine how many us
 > > Users can easily use further query parameters to search for specific users within Whispir.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/users?apikey=<your_api_key>&firstName=Sam&sortOrder=desc&sortFields=workEmailAddressPrimary
+HTTP 1.1 GET https://api.<region>.whispir.com/users?apikey=<your_api_key>&firstName=Sam&sortOrder=desc&sortFields=workEmailAddressPrimary
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -665,7 +670,7 @@ The key parameters that are required on the URL to facilitate this search are as
 				Specifies on this field name of the user object.
 				<br><br>
 				<b>Ex:</b><br>
-				http://api.whispir.com/users?apikey=<your_api_key><b>&firstName=Sam</b>
+				http://api.<region>.whispir.com/users?apikey=<your_api_key><b>&firstName=Sam</b>
 			</td>
 		</tr>
 		<tr>
@@ -680,7 +685,7 @@ The key parameters that are required on the URL to facilitate this search are as
 				The fields that you require the ordering to be performed on. Multiple fields can be provided, separated by a comma.
 				<br><br>
 				<b>Ex:</b><br>
-				http://api.whispir.com/users?apikey=<your_api_key>&firstName=Sam<b>&sortFields=lastName,jobTitle</b>
+				http://api.<region>.whispir.com/users?apikey=<your_api_key>&firstName=Sam<b>&sortFields=lastName,jobTitle</b>
 			</td>
 		</tr>
 	</tbody>
@@ -694,15 +699,16 @@ The key parameters that are required on the URL to facilitate this search are as
 > > The following endpoints allow users to update users using the Whispir API.
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/users/CB4558257DD86D09?apikey=<your_api_key>
+HTTP 1.1 PUT https://api.<region>.whispir.com/users/CB4558257DD86D09?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:user xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:user xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <firstName>John</firstName>
     <lastName>Wick</lastName>
     <timeZone>+8</timezone>
@@ -757,8 +763,9 @@ An User can be deleted by calling the DELETE /users/{id} end point.
 > > The following statement allows users to delete users using the Whispir API.
 
 ```
-HTTP 1.1 DELETE https://api.whispir.com/users/124F6B2D46A5A268?apikey=<your_api_key>
+HTTP 1.1 DELETE https://api.<region>.whispir.com/users/124F6B2D46A5A268?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 Deleting an user can be performed using a DELETE request to the /users/{id} endpoint. So, to perform this, one must be knowing the exact "link" associated with the user.
@@ -775,8 +782,9 @@ All users in the company can be deleted with a single API call.
 > > The following statement allows a user to delete all users in their company using the Whispir API.
 
 ```
-HTTP 1.1 DELETE https://api.whispir.com/users/?apikey=<your_api_key>
+HTTP 1.1 DELETE https://api.<region>.whispir.com/users/?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 Deleting an user can be performed using a DELETE request to the /users/{id} endpoint. So, to perform this, one must be knowing the exact "link" associated with the user.
@@ -793,8 +801,9 @@ The delete a user if successful shall respond with a `204 No Content`.
 > > Step 1
 
 ```
-HTTP 1.1 POST https://api.whispir.com/users?apikey=<your_api_key>
+HTTP 1.1 POST https://api.<region>.whispir.com/users?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 
 {user object}
 ```
@@ -805,16 +814,18 @@ Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
 > > Step 2
 
 ```
-HTTP 1.1 GET https://api.whispir.com/users/{:id}?apikey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/users/{:id}?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 > > This step retreives the newly created user object
 
 > > Step 3
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/users/{:id}?apikey=<your_api_key>
+HTTP 1.1 PUT https://api.<region>.whispir.com/users/{:id}?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 
 {userobject}
 status : 'INACTIVE'
@@ -823,8 +834,9 @@ status : 'INACTIVE'
 > > Step 4
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/users/{:id}?apikey=<your_api_key>
+HTTP 1.1 PUT https://api.<region>.whispir.com/users/{:id}?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 
 {userobject}
 status : 'ACTIVE'

@@ -5,24 +5,24 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/imports/?apikey=<your_api_key>
+https://api.<region>.whispir.com/imports/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.import-v1+xml
 ```
 
 ```go
-https://api.whispir.com/imports/?apikey=<your_api_key>
+https://api.<region>.whispir.com/imports/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.import-v1+json
 ```
 
 > > - limited to a workspace
 
 ```xml
-https://api.whispir.com/workspaces/{:id}/imports/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/imports/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.import-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:id}/imports/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/imports/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.import-v1+json
 ```
 
@@ -109,8 +109,8 @@ These two stages are further explained below.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:import xmlns:ns2="http://schemas.api.whispir.com" 
-             xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:import xmlns:ns2="http://schemas.api.<region>.whispir.com" 
+             xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <ns2:contacts>
         <ns2:contact>
             <firstName>John</firstName>
@@ -183,8 +183,9 @@ Once this resource has been imported with the appropriate mime type, the applica
 > > Doing an import by mapping the respective data columns to contact fields
 
 ```
-HTTP 1.1 POST https://api.whispir.com/imports?apikey=DFD0FD90u809SDF90832FDS
+HTTP 1.1 POST https://api.<region>.whispir.com/imports?apikey=<your_api_key>
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 Accept: application/vnd.whispir.import-v1+json
 
 {

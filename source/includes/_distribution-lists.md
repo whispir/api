@@ -5,24 +5,24 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/distributionlists/?apikey=<your_api_key>
+https://api.<region>.whispir.com/distributionlists/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
 ```
 
 ```go
-https://api.whispir.com/distributionlists/?apikey=<your_api_key>
+https://api.<region>.whispir.com/distributionlists/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.distributionlist-v1+json
 ```
 
 > > - limited to a workspace
 
 ```xml
-https://api.whispir.com/workspaces/{:id}/distributionlists/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/distributionlists/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:id}/distributionlists/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/distributionlists/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.distributionlist-v1+json
 ```
 
@@ -66,15 +66,16 @@ Only Static, and Dynamic Distribution lists are allowed to be created via the AP
 > > Distribution Lists can contain lists of Contacts, Users or other Distribution Lists
 
 ```
-POST https://api.whispir.com/distributionlists?apikey=[your api key]
-Authorization: Basic [your basic auth]
+POST https://api.<region>.whispir.com/distributionlists?apikey=[your_api_key]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
+<ns1:distributionlists xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <name>My Distribution List</name>
     <description></description>
     <access>Open</access>
@@ -105,15 +106,16 @@ Content-Type: application/vnd.whispir.distributionlist-v1+json
 > > Dynamic Distribution Lists contains rules with filters to determine the members dynamically
 
 ```
-POST https://api.whispir.com/distributionlists?apikey=[your api key]
-Authorization: Basic [your basic auth]
+POST https://api.<region>.whispir.com/distributionlists?apikey=[your_api_key]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlist xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns1:distributionlist xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
    <name>My Dynamic DistributionList</name>
    <description>My Distribution list</description>
    <access>Open</access>
@@ -363,14 +365,15 @@ In the case of _**Dynamic Distribution list**_, the required fields will be more
 
 ```
 HTTP 1.1 GET /distributionlists?apikey=<your_api_key>
-Authorization: Basic [your basic auth]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 2 of 2</status>
     <ns2:distributionLists>
         <ns2:distributionList>
@@ -381,7 +384,7 @@ Content-Type: application/vnd.whispir.distributionlist-v1+xml
             <memberCount>4</memberCount>
             <access>ByApproval</access>
             <visibility>Private</visibility>
-            <ns2:link uri="https://api.whispir.com/distributionlists/CF5AF1AE49ED07A6?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/distributionlists/CF5AF1AE49ED07A6?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:distributionList>
         <ns2:distributionList>
             <id>9FF7C2B470CCEC1E</id>
@@ -391,7 +394,7 @@ Content-Type: application/vnd.whispir.distributionlist-v1+xml
             <memberCount>2</memberCount>
             <access>Open</access>
             <visibility>Public</visibility>
-            <ns2:link uri="https://api.whispir.com/distributionlists/9FF7C2B470CCEC1E?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/distributionlists/9FF7C2B470CCEC1E?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:distributionList>
     </ns2:distributionLists>
 </ns2:return>
@@ -410,7 +413,7 @@ Content-Type: application/vnd.whispir.distributionlist-v1+json
     "access" : "ByApproval",
     "visibility" : "Private",
     "link" : [ {
-      "uri" : "https://api.whispir.com/distributionlists/CF5AF1AE49ED07A6?apikey=your_api_key",
+      "uri" : "https://api.<region>.whispir.com/distributionlists/CF5AF1AE49ED07A6?apikey=your_api_key",
       "rel" : "self",
       "method" : "GET"
     } ]
@@ -423,7 +426,7 @@ Content-Type: application/vnd.whispir.distributionlist-v1+json
     "access" : "Open",
     "visibility" : "Public",
     "link" : [ {
-      "uri" : "https://api.whispir.com/distributionlists/9FF7C2B470CCEC1E?apikey=your_api_key",
+      "uri" : "https://api.<region>.whispir.com/distributionlists/9FF7C2B470CCEC1E?apikey=your_api_key",
       "rel" : "self",
       "method" : "GET"
     } ]
@@ -441,7 +444,8 @@ The code samples on the right describe the methods to retrieve Distribution List
 
 ```
 HTTP 1.1 GET /distributionlists/E07BA0DA35B0B1EF?apikey=<your_api_key>
-Authorization: Basic [your basic auth]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ## Searching for Distribution Lists
@@ -451,7 +455,8 @@ Authorization: Basic [your basic auth]
 
 ```
 HTTP 1.1 GET /distributionlists?apikey=<your_api_key>&name=My%20Distribution%20List
-Authorization: Basic [your basic auth]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 > > **Search for a Distribution List by description**<br/><br/>
@@ -459,7 +464,8 @@ Authorization: Basic [your basic auth]
 
 ```
 HTTP 1.1 GET /distributionlists?apikey=<your_api_key>&description=company_name
-Authorization: Basic [your basic auth]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 The distribution list is usually retrieved by its `id`, but one can also search or refer to the distribution list by its name. This feature has to do with the **unique name** requirement for the distribution list.
@@ -479,8 +485,9 @@ Both these operations can be performed by passing in the relevant search paramet
 > > Request
 
 ```
-GET https://api.whispir.com/distributionlists/CF5AF1AE49ED07A6?apikey=[your api key]
-Authorization: Basic [your basic auth]
+GET https://api.<region>.whispir.com/distributionlists/CF5AF1AE49ED07A6?apikey=[your_api_key]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 > > Response
 
@@ -488,7 +495,7 @@ Authorization: Basic [your basic auth]
 Accept: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
+<ns1:distributionlists xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <id>CF5AF1AE49ED07A6</id>
     <name>Rockstar Distribution List</name>
     <description>All the rocks were once stars - astrophysicist inside me</description>
@@ -527,15 +534,16 @@ Accept: application/vnd.whispir.distributionlist-v1+json
 
 
 ```
-PUT https://api.whispir.com/distributionlists/CF5AF1AE49ED07A6?apikey=[your api key]
-Authorization: Basic [your basic auth]
+PUT https://api.<region>.whispir.com/distributionlists/CF5AF1AE49ED07A6?apikey=[your_api_key]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
+<ns1:distributionlists xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <id>CF5AF1AE49ED07A6</id>
     <name>Rockstar Distribution List</name>
     <description>All the rocks were once stars - astrophysicist inside me</description>
@@ -587,14 +595,14 @@ The steps usually are -
 1. After the DL is created, if you want to add/update the values, then
 2. Do a GET request to retrieve the specific DL.
 
-	a. GET https://api.whispir.com/workspaces/{id}/distributionlists/{id}?apikey=xxxx
+	a. GET https://api.<region>.whispir.com/workspaces/{id}/distributionlists/{id}?apikey=xxxx
 
 	b. This will return you the DL object
 
 3. Modify the DL properties (name, description, contactIds, UserIds, dlIds, location etc) as needed
 4. Do a PUT request to update the DL details
 
-	a. PUT https://api.whispir.com/workspaces/{id}/distributionlists/{id}?apikey=xxxx
+	a. PUT https://api.<region>.whispir.com/workspaces/{id}/distributionlists/{id}?apikey=xxxx
 
 	b. Successful update gives you a 204 No Content
 
@@ -614,15 +622,16 @@ Note:
 > > The API call is a `POST` request to the `/messages` endpoint.
 
 ```
-POST https://api.whispir.com/messages?apikey=[your api key]
-Authorization: Basic [your basic auth]
+POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>Docs_Distribution_List.company@list.company.whispir.sg</to>
     <subject>Simple SMS to List of contacts in the distribution list</subject>
     <body>This is the content of my sample sms message.</body>
@@ -649,13 +658,15 @@ This will result in the response of 202 Accepted and the message will be sent to
 > > The following API requests allow users to remove Distribution Lists from the Whispir API.
 
 ```xml
-DELETE https://api.whispir.com/distributionlists/E07BA0DA35B0B1EF?apikey=[your api key]
-Authorization: Basic [your basic auth]
+DELETE https://api.<region>.whispir.com/distributionlists/E07BA0DA35B0B1EF?apikey=[your_api_key]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```go
-DELETE https://api.whispir.com/distributionlists/E07BA0DA35B0B1EF?apikey=[your api key]
-Authorization: Basic [your basic auth]
+DELETE https://api.<region>.whispir.com/distributionlists/E07BA0DA35B0B1EF?apikey=[your_api_key]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 > > After performing the request the expected successful response is `204 No Content`.
@@ -678,15 +689,16 @@ Type can be:
 > > Distribution Lists can contain lists of Contacts, Users or other Distribution Lists
 
 ```
-POST https://api.whispir.com/distributionlists?apikey=[your api key]
-Authorization: Basic [your basic auth]
+POST https://api.<region>.whispir.com/distributionlists?apikey=[your_api_key]
+Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
+<ns1:distributionlists xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <name>My Distribution List</name>
     <description></description>
     <access>Open</access>

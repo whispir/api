@@ -29,9 +29,9 @@ HTTP 1.1 POST http://yourserver/callback.php
 Content-Type: application/xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.<region>.whispir.com">
   <messageid>ABC4857BCCF484575FCA</messageid>
-  <messagelocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
+  <messagelocation>https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
   <from>
       <name>Fred Waters</name>
       <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri>
@@ -51,7 +51,7 @@ Content-Type: application/xml
 Content-Type: application/json
 {
   "messageid":"ABC4857BCCF484575FCA",
-  "messagelocation" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
+  "messagelocation" : "https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA",
   "from":{
     "name":"Fred Waters",
     "mri":"Fred_Waters.528798.Sandbox@Contact.whispir.com",
@@ -87,16 +87,17 @@ Some other points to follow -
 > > The following API calls allow users to create new Callbacks using the Whispir API.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/callbacks?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/callbacks?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.api-callback-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:companyapicallback xmlns:ns2="http://schemas.api.whispir.com"
-                    xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:companyapicallback xmlns:ns2="http://schemas.api.<region>.whispir.com"
+                    xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <name>Callback Name</name>
     <url>http://myserver.com/mycallback.php</url>
     <auth>
@@ -270,9 +271,9 @@ X-Whispir-Callback-Key: MY_AUTH_TOKEN
 Content-Type: application/xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
-    <messagelocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
+    <messagelocation>https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
     <from>
       <name>Fred Waters</name>
       <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri>
@@ -293,7 +294,7 @@ Content-Type: application/json
 
 {
   "messageid" : "ABC4857BCCF484575FCA",
-  "messagelocation" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
+  "messagelocation" : "https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA",
   "from" : {
     "name" : "Fred Waters",
     "mri" : "Fred_Waters.528798.Sandbox@Contact.whispir.com",
@@ -320,9 +321,9 @@ HTTP 1.1 POST https://yourserver/callback.php?auth=MY_AUTH_TOKEN
 Content-Type: application/xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
-    <messagelocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
+    <messagelocation>https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
     <from>
       <name>Fred Waters</name>
       <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri>
@@ -343,7 +344,7 @@ Content-Type: application/json
 
 {
   "messageid" : "ABC4857BCCF484575FCA",
-  "messagelocation" : "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
+  "messagelocation" : "https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA",
   "from" : {
     "name" : "Fred Waters",
     "mri" : "Fred_Waters.528798.Sandbox@Contact.whispir.com",
@@ -412,34 +413,35 @@ When these are enabled, any reply or failed delivery will cause a `GET` request 
 > > The following API Methods allow you to access callbacks via the API
 
 ```
-HTTP 1.1 GET https://api.whispir.com/callbacks?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/callbacks?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.api-callback-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 3 of 3</status>
     <ns2:callbacks>
         <ns2:callback>
             <id>BCD374DABC73649B</id>
             <name>Sample Callback 1</name>
             <url>http://myserver.com/callback1.php</url>
-            <ns2:link uri="https://api.whispir.com/callbacks/BCD374DABC73649B?apikey=[API_KEY]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/callbacks/BCD374DABC73649B?apikey=[API_KEY]" rel="self" method="GET"/>
         </ns2:callback>
         <ns2:callback>
             <id>AD34DBCEFD74EABC</id>
             <name>Sample Callback 2</name>
             <url>http://myserver.com/callback2.php</url>
-            <ns2:link uri="https://api.whispir.com/callbacks/AD34DBCEFD74EABC?apikey=[API_KEY]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/callbacks/AD34DBCEFD74EABC?apikey=[API_KEY]" rel="self" method="GET"/>
         </ns2:callback>
         <ns2:callback>
             <id>73BDCEFA43DF35DB</id>
             <name>Sample Callback 3</name>
             <url>http://myserver.com/callback3.php</url>
-            <ns2:link uri="https://api.whispir.com/callbacks/73BDCEFA43DF35DB?apikey=[API_KEY]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/callbacks/73BDCEFA43DF35DB?apikey=[API_KEY]" rel="self" method="GET"/>
         </ns2:callback>
     </ns2:callbacks>
 </ns2:return>
@@ -455,7 +457,7 @@ Accept: application/vnd.whispir.api-callback-v1+json
     "name" : "Sample Callback 1",
     "url" : "http://myserver.com/callback1.php",
     "link" : [ {
-      "uri" : "https://api.whispir.com/callbacks/BCD374DABC73649B?apikey=[API_KEY]",
+      "uri" : "https://api.<region>.whispir.com/callbacks/BCD374DABC73649B?apikey=[API_KEY]",
       "rel" : "self",
       "method" : "GET"
     } ]
@@ -464,7 +466,7 @@ Accept: application/vnd.whispir.api-callback-v1+json
     "name" : "Sample Callback 2",
     "url" : "http://myserver.com/callback2.php",
     "link" : [ {
-      "uri" : "https://api.whispir.com/callbacks/AD34DBCEFD74EABC?apikey=[API_KEY]",
+      "uri" : "https://api.<region>.whispir.com/callbacks/AD34DBCEFD74EABC?apikey=[API_KEY]",
       "rel" : "self",
       "method" : "GET"
     } ]
@@ -473,7 +475,7 @@ Accept: application/vnd.whispir.api-callback-v1+json
     "name" : "Sample Callback 3",
     "url" : "http://myserver.com/callback3.php",
     "link" : [ {
-      "uri" : "https://api.whispir.com/callbacks/73BDCEFA43DF35DB?apikey=[API_KEY]",
+      "uri" : "https://api.<region>.whispir.com/callbacks/73BDCEFA43DF35DB?apikey=[API_KEY]",
       "rel" : "self",
       "method" : "GET"
     } ]
@@ -538,8 +540,9 @@ Each of these Callbacks will provide the following information:
 > > Callbacks can be added to messages by adding the `callbackId` parameter and the name of the callback as follows:
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```go
@@ -557,7 +560,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS Message</subject>
     <body>This is the body of my test SMS message</body>
@@ -584,7 +587,7 @@ Your callback *callback_id* failed on *date* with response: *response*.
 The callback that failed is as follows:
 
 URL: https://yourserver/callback.php?auth=12345
-Location: https://api.whispir.com/messages/ABC4857BCCF484575FCA
+Location: https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA
 Name: Fred Waters
 Mobile: $mobile
 Email: me@example.com
@@ -635,20 +638,21 @@ The following rules apply to Whispir's automated retries for callbacks:
 > > The following API Methods allow you to access callback attempts via the API
 
 ```
-HTTP 1.1 GET https://api.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.api-call-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
   <status>1 to 1 of 1</status>
   <ns2:call>
     <id>B3EDFE83DF389DFE</id>
     <messageId>ABC4857BCCF484575FCA</messageId>
-    <messageLocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
+    <messageLocation>https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA</messageLocation>
     <status>FAILED</status>
     <from>
       <voice></voice>
@@ -693,7 +697,7 @@ Accept: application/vnd.whispir.api-call-v1+json
     {
       "id": "B3EDFE83DF389DFE",
       "messageId": "ABC4857BCCF484575FCA",
-      "messageLocation": "https://api.whispir.com/messages/ABC4857BCCF484575FCA",
+      "messageLocation": "https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA",
       "status": "FAILED",
       "from": {
         "name": "Fred Waters",
@@ -838,15 +842,17 @@ Each of these calls will provide the following information:
 > > Failed Calls
 
 ```
-HTTP 1.1 GET https://api.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[your_api_key]&status=FAILED
+HTTP 1.1 GET https://api.<region>.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[your_api_key]&status=FAILED
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 > > Success Calls
 
 ```
-HTTP 1.1 GET https://api.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[your_api_key]&status=SUCCESS
+HTTP 1.1 GET https://api.<region>.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[your_api_key]&status=SUCCESS
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 To retrieve a list of attempted API calls from the Whispir API you can execute an **HTTP GET** using the `/calls` endpoint on a specific `callback`.
@@ -894,15 +900,16 @@ This process can be facilitated with the use of a `PUT` request to the `/calls` 
 > > The following API Methods allow you to update callback attempts via the API
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[YOUR_API_KEY]&id=YOUR_CALL_ID
+HTTP 1.1 PUT https://api.<region>.whispir.com/callbacks/BCD374DABC73649B/calls?apikey=[YOUR_API_KEY]&id=YOUR_CALL_ID
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.api-call-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:call xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:call xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
   <status>SUCCESS</status>
 </ns2:call>
 
@@ -961,8 +968,9 @@ The **PUT** request takes a single API parameter in the body:
 > > a single callback parameter
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```go
@@ -983,7 +991,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS</subject>
     <body>This is the SMS</body>
@@ -1000,8 +1008,9 @@ Content-Type: application/vnd.whispir.message-v1+xml
 > > multiple callback parameters
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```go
@@ -1024,7 +1033,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS</subject>
     <body>This is the SMS</body>
@@ -1114,7 +1123,7 @@ Content-Type: application/json
 
 {
     "messageid":"ABC4857BCCF4CA",
-    "location" : "https://api.whispir.com/messages/ABC4857BCCF4CA",
+    "location" : "https://api.<region>.whispir.com/messages/ABC4857BCCF4CA",
     "from":{
           "name":"Fred Waters",
           "mri":"Fred_Waters.528798.Sandbox@Contact.whispir.com",
@@ -1138,9 +1147,9 @@ Content-Type: application/json
 ```xml
 Content-Type: application/xml
 
-<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.<region>.whispir.com">
   <messageid>ABC4857BCCF484575FCA</messageid>
-  <messagelocation>https://api.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
+  <messagelocation>https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
   <from>
       <name>Fred Waters</name>
       <mri>Fred_Waters.528798.Sandbox@Contact.whispir.com</mri>

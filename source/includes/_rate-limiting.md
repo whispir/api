@@ -8,18 +8,20 @@
 # Over Queries Per Second Limit 
 
 GET /messages?apikey=abc38bc83bcd3ucbud83
+x-api-key: abc38bc83bcd3ucbud83
 
 HTTP 403 Forbidden
-X-Mashery-Error-Code: ERR_403_DEVELOPER_OVER_QPS
-X-Mashery-Error-Detail: Account Over Queries Per Second Limit
+X-Error-Code: ERR_403_DEVELOPER_OVER_QPS
+X-Error-Detail: Account Over Queries Per Second Limit
 
 # Over Queries Per Day Limit
 
 GET /messages?apikey=abc38bc83bcd3ucbud83
+x-api-key: abc38bc83bcd3ucbud83
 
 HTTP 403 Forbidden
-X-Mashery-Error-Code: ERR_403_DEVELOPER_OVER_QPD
-X-Mashery-Error-Detail: Account Over Queries Per Day Limit
+X-Error-Code: ERR_403_DEVELOPER_OVER_QPD
+X-Error-Detail: Account Over Queries Per Day Limit
 ```
 
 Whispir's API usage is limited on a per apikey basis using **per second** limit and **per day** limits.

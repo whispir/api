@@ -39,22 +39,22 @@ Now that you've got your App API key, you can check your connectivity to the API
 > > Using the information on the left, you can execute the following curl statement:
 
 ```shell
-curl -H "Authorization: <Your Authorization Header>"
-     https://api.whispir.com?apikey=<Your App API Key>
+curl -H "Authorization: <Your Authorization Header>" -H "x-api-key: <YOUR API KEY>"
+     https://api.<region>.whispir.com?apikey=<Your API Key>
 
 # with sample values
 
-curl -H "Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk"  
-     https://api.whispir.com?apikey=89asdfohasd89023rsd
+curl -H "Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk" -H "x-api-key: 89asdfohasd89023rsd" 
+     https://api.<region>.whispir.com?apikey=89asdfohasd89023rsd
 
 # If all is correct, the following response should be expected (The API defaults to an XML response)
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:company xmlns="http://schemas.api.whispir.com/dap"
-             xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:company xmlns="http://schemas.api.<region>.whispir.com/dap"
+             xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <link method="GET"
           rel="retrieveWorkspaces"
-          uri="https://api.whispir.com/workspaces?apikey=89asdfohasd89023rsd"/>
+          uri="https://api.<region>.whispir.com/workspaces?apikey=89asdfohasd89023rsd"/>
     ...
 </ns2:company>
 ```
@@ -120,11 +120,11 @@ To test your connectivity, you will need to enter the following parameters:
 
 The HTTP call will look like the following:
 
-`GET https://api.whispir.com?apikey=89asdfohasd89023rsdfhio8923`
+`GET https://api.<region>.whispir.com?apikey=89asdfohasd89023rsd`
 
-With the following header (as a minimum).
+With the following headers (as a minimum).
 
-`Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk`
+`Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk` and `x-api-key: 89asdfohasd89023rsd`
 
 Once you have executed this request, you should receive a **200 OK** response from the REST Client. This means that you have connectivity to the Whispir.io API and can start building your App.
 
@@ -152,6 +152,7 @@ If you get a different response than **HTTP 200 OK**, perform the following:
 
 ```shell
 curl -H "Authorization: Basic <YOUR AUTH HEADER>"
+     -H "x-api-key: <YOUR API KEY>"
      -H "Content-Type: application/vnd.whispir.message-v1+json"
      -H "Accept: application/vnd.whispir.message-v1+json"
      -d '{
@@ -159,7 +160,7 @@ curl -H "Authorization: Basic <YOUR AUTH HEADER>"
             "subject": "This is the first line of my SMS",
             "body": "This is the content of my SMS"
          }'
-     https://api.whispir.com/messages?apikey=<YOUR API KEY>
+     https://api.<region>.whispir.com/messages?apikey=<YOUR API KEY>
 ```
 
 > > Once you submit this, Whispir will send you back an **HTTP 202 Accepted** stating that your request has been accepted for processing.  
@@ -175,7 +176,7 @@ This is very similar to the previous request you executed to test your connectiv
 
 As you're sending a message, you need to tell Whispir *who* to send it to, and *what* the type of content it is.
 
-You're going to use the URL `https://api.whispir.com/messages` as the API endpoint.
+You're going to use the URL `https://api.<region>.whispir.com/messages` as the API endpoint.
 
 ### Content Type
 
@@ -184,8 +185,9 @@ You're going to use the URL `https://api.whispir.com/messages` as the API endpoi
 > > The following example shows how to use a POST request to send the message in XML or JSON.  Use the selector at the top to choose your syntax.
 
 ```
-POST https://api.whispir.com/messages?apikey=89asdfohasd89023rsdfhio8923
+POST https://api.<region>.whispir.com/messages?apikey=89asdfohasd89023rsd
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: 89asdfohasd89023rsd
 ```
 
 ```go
@@ -204,7 +206,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>[DESTINATION PHONE NUMBER]</to>
     <subject>This is the first line of my SMS</subject>    
     <body>This is the content of my SMS</body>

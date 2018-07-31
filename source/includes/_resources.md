@@ -5,24 +5,24 @@
 > > Default Workspace Example
 
 ```xml
-https://api.whispir.com/resources/?apikey=<your_api_key>
+https://api.<region>.whispir.com/resources/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.resource-v1+xml
 ```
 
 ```go
-https://api.whispir.com/resources/?apikey=<your_api_key>
+https://api.<region>.whispir.com/resources/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.resource-v1+json
 ```
 
 > > Workspace Specific Example
 
 ```xml
-https://api.whispir.com/workspaces/{:id}/resources/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/resources/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.resource-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:id}/resources/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/resources/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.resource-v1+json
 ```
 
@@ -168,15 +168,16 @@ Using the  Resources endpoint, application developers can submit, retrieve, upda
 ## Creating a resource
 
 ```
-HTTP 1.1 POST https://api.whispir.com/resources?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/resources?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <name>test.csv</name>
     <scope>private</scope>
     <mimeType>text/csv</mimeType>
@@ -205,7 +206,7 @@ Content-Type: application/vnd.whispir.resource-v1+json
 ```
 HTTP 1.1 201 Created
 ...
-Location: http://api.whispir.com/resources/4FBBC384BCE3DAABFE3
+Location: http://api.<region>.whispir.com/resources/4FBBC384BCE3DAABFE3
 ...
 ```
 
@@ -378,8 +379,9 @@ This is now ready to be uploaded to Whispir.
 ### Upload the encoded file to Whispir using the API
 
 ```
-HTTP 1.1 POST https://api.whispir.com/resources?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/resources?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -387,7 +389,7 @@ Content-Type: application/vnd.whispir.resource-v1+xml
 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <name>test.json</name>
     <scope>private</scope>
     <mimeType>application/json</mimeType>
@@ -416,7 +418,7 @@ Content-Type: application/vnd.whispir.resource-v1+json
 ```
 HTTP 1.1 201 Created
 ...
-Location: http://api.whispir.com/resources/ABD435DBFCD663DEDEFF?apikey=<your_api_key>
+Location: http://api.<region>.whispir.com/resources/ABD435DBFCD663DEDEFF?apikey=<your_api_key>
 ...
 
 ```
@@ -446,15 +448,16 @@ The `smsMappingField` should be mapped to the column or key that holds the numbe
 > > the resource type here is application/vnd.whispir.bulkmessage-v1+xml, application/vnd.whispir.bulkmessage-v1+json. Not the usual application/vnd.whispir.message-v1+xml, application/vnd.whispir.message-v1+json.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.bulkmessage-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
    <resource>
       <resourceId>ABD435DBFCD663DEDEFF</resourceId>
     <smsMappingField>mobile</smsMappingField>
@@ -492,7 +495,7 @@ Hi Jordan Windsor, Your planned mail delivery is at 09-Sep-2015 12:30 PM. Please
 
 ```
 HTTP 1.1 202 Accepted
-Location: http://api.whispir.com/messages/CDB938478CD6DBC3784C?apikey=[your_api_key]
+Location: http://api.<region>.whispir.com/messages/CDB938478CD6DBC3784C?apikey=[your_api_key]
 ```
 
 ## Error in creating a resource
@@ -616,59 +619,60 @@ Existing resources can be easily retrieved via the GET /resources API call. The 
 > > The resources contain the id, and url link of the resource (only public)
 
 ```
-HTTP 1.1 GET https://api.whispir.com/resources/?apikey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/resources/?apikey=<your_api_key>
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 7 of 7    </status>
     <ns2:resources>
         <ns2:resource>
             <name>singapore.csv</name>
             <scope>private</scope>
             <mimeType>application/json</mimeType>
-            <ns2:link uri="https://api.whispir.com/resources/D9A8DC34EDRSD7E4?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/resources/D9A8DC34EDRSD7E4?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:resource>
         <ns2:resource>
             <name>australia.json</name>
             <scope>private</scope>
             <mimeType>application/json</mimeType>
-            <ns2:link uri="https://api.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:resource>
         <ns2:resource>
             <name>usa.csv</name>
             <scope>private</scope>
             <mimeType>text/csv</mimeType>
-            <ns2:link uri="https://api.whispir.com/resources/3E2F6E72642F949?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/resources/3E2F6E72642F949?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:resource>
         <ns2:resource>
             <name>users.json</name>
             <scope>public</scope>
             <mimeType>application.json</mimeType>
             <url>https://cdn-ap.whispir.com/public/resources/216asdfgjgedf1sdf56fd472360cd.json</url>
-            <ns2:link uri="https://api.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:resource>
         <ns2:resource>
             <name>whispir-example-bulk-message-1.csv</name>
             <scope>private</scope>
             <mimeType>text/csv</mimeType>
-            <ns2:link uri="https://api.whispir.com/resources/32SDF43ED6829B2?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/resources/32SDF43ED6829B2?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:resource>
         <ns2:resource>
             <name>whispir-example-bulk-message-2.csv</name>
             <scope>private</scope>
             <mimeType>text/csv</mimeType>
-            <ns2:link uri="https://api.whispir.com/resources/C708D712EDRB0?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/resources/C708D712EDRB0?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:resource>
         <ns2:resource>
             <name>whispir-example-bulk-message-3.csv</name>
             <scope>private</scope>
             <mimeType>text/csv</mimeType>
-            <ns2:link uri="https://api.whispir.com/resources/2FEED897U46E2?apikey=<your_api_key>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/resources/2FEED897U46E2?apikey=<your_api_key>" rel="self" method="GET"/>
         </ns2:resource>
     </ns2:resources>
 </ns2:return>
@@ -685,7 +689,7 @@ Accept: application/vnd.whispir.resource-v1+json
       "mimeType": "application/json",
       "link": [
         {
-          "uri": "https://api.whispir.com/resources/D9A8DC34EDRSD7E4?apikey=<your_api_key>",
+          "uri": "https://api.<region>.whispir.com/resources/D9A8DC34EDRSD7E4?apikey=<your_api_key>",
           "rel": "self",
           "method": "GET"
         }
@@ -697,7 +701,7 @@ Accept: application/vnd.whispir.resource-v1+json
       "mimeType": "application/json",
       "link": [
         {
-          "uri": "https://api.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>",
+          "uri": "https://api.<region>.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>",
           "rel": "self",
           "method": "GET"
         }
@@ -709,7 +713,7 @@ Accept: application/vnd.whispir.resource-v1+json
       "mimeType": "text/csv",
       "link": [
         {
-          "uri": "https://api.whispir.com/resources/3E2F6E72642F949?apikey=<your_api_key>",
+          "uri": "https://api.<region>.whispir.com/resources/3E2F6E72642F949?apikey=<your_api_key>",
           "rel": "self",
           "method": "GET"
         }
@@ -722,7 +726,7 @@ Accept: application/vnd.whispir.resource-v1+json
       "url": "https://cdn-ap.whispir.com/public/resources/2163b29d4edf1bd77d71a36210d472360cd.json",
       "link": [
         {
-          "uri": "https://api.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>",
+          "uri": "https://api.<region>.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>",
           "rel": "self",
           "method": "GET"
         }
@@ -734,7 +738,7 @@ Accept: application/vnd.whispir.resource-v1+json
       "mimeType": "text/csv",
       "link": [
         {
-          "uri": "https://api.whispir.com/resources/32SDF43ED6829B2?apikey=<your_api_key>",
+          "uri": "https://api.<region>.whispir.com/resources/32SDF43ED6829B2?apikey=<your_api_key>",
           "rel": "self",
           "method": "GET"
         }
@@ -746,7 +750,7 @@ Accept: application/vnd.whispir.resource-v1+json
       "mimeType": "text/csv",
       "link": [
         {
-          "uri": "https://api.whispir.com/resources/C708D712EDRB0?apikey=<your_api_key>",
+          "uri": "https://api.<region>.whispir.com/resources/C708D712EDRB0?apikey=<your_api_key>",
           "rel": "self",
           "method": "GET"
         }
@@ -758,7 +762,7 @@ Accept: application/vnd.whispir.resource-v1+json
       "mimeType": "text/csv",
       "link": [
         {
-          "uri": "https://api.whispir.com/resources/2FEED897U46E2?apikey=<your_api_key>",
+          "uri": "https://api.<region>.whispir.com/resources/2FEED897U46E2?apikey=<your_api_key>",
           "rel": "self",
           "method": "GET"
         }
@@ -779,21 +783,22 @@ A single resource (public|private) can be retrieved from the available resource 
 > > use the resource's link uri for private scope file
 
 ```
-HTTP 1.1 GET https://api.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <name>australia.json</name>
     <scope>private</scope>
     <mimeType>application/json</mimeType>
-    <ns2:link uri="https://api.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>" rel="self" method="GET"/>
-    <ns2:link uri="https://api.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>" rel="updateResource" method="PUT" type="application/vnd.whispir.resource-v1+json,application/vnd.whispir.resource-v1+xml"/>
-    <ns2:link uri="https://api.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>" rel="deleteResource" method="DELETE"/>
+    <ns2:link uri="https://api.<region>.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>" rel="self" method="GET"/>
+    <ns2:link uri="https://api.<region>.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>" rel="updateResource" method="PUT" type="application/vnd.whispir.resource-v1+json,application/vnd.whispir.resource-v1+xml"/>
+    <ns2:link uri="https://api.<region>.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>" rel="deleteResource" method="DELETE"/>
 </ns3:resource>
 
 ```
@@ -807,18 +812,18 @@ Accept: application/vnd.whispir.resource-v1+json
   "mimeType": "application/json",
   "link": [
     {
-      "uri": "https://api.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>",
+      "uri": "https://api.<region>.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>",
       "rel": "self",
       "method": "GET"
     },
     {
-      "uri": "https://api.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>",
+      "uri": "https://api.<region>.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>",
       "rel": "updateResource",
       "method": "PUT",
       "type": "application/vnd.whispir.resource-v1+json,application/vnd.whispir.resource-v1+xml"
     },
     {
-      "uri": "https://api.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>",
+      "uri": "https://api.<region>.whispir.com/resources/D3E2XCDF3WS4859?apikey=<your_api_key>",
       "rel": "deleteResource",
       "method": "DELETE"
     }
@@ -832,22 +837,23 @@ Accept: application/vnd.whispir.resource-v1+json
 ```
 
 ```
-HTTP 1.1 GET https://api.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <name>users.json</name>
     <scope>public</scope>
     <mimeType>application/json</mimeType>
   <url>https://cdn-ap.whispir.com/public/resources/2163b29d4edf1bd77d71a36210d472360cd.json</url>
-    <ns2:link uri="https://api.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>" rel="self" method="GET"/>
-    <ns2:link uri="https://api.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>" rel="updateResource" method="PUT" type="application/vnd.whispir.resource-v1+json,application/vnd.whispir.resource-v1+xml"/>
-    <ns2:link uri="https://api.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>" rel="deleteResource" method="DELETE"/>
+    <ns2:link uri="https://api.<region>.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>" rel="self" method="GET"/>
+    <ns2:link uri="https://api.<region>.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>" rel="updateResource" method="PUT" type="application/vnd.whispir.resource-v1+json,application/vnd.whispir.resource-v1+xml"/>
+    <ns2:link uri="https://api.<region>.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>" rel="deleteResource" method="DELETE"/>
 </ns3:resource>
 
 ```
@@ -862,18 +868,18 @@ Accept: application/vnd.whispir.resource-v1+json
   "url": "https://cdn-ap.whispir.com/public/resources/2163b29d4edf1bd77d71a36210d472360cd.json",
   "link": [
     {
-      "uri": "https://api.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>",
+      "uri": "https://api.<region>.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>",
       "rel": "self",
       "method": "GET"
     },
     {
-      "uri": "https://api.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>",
+      "uri": "https://api.<region>.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>",
       "rel": "updateResource",
       "method": "PUT",
       "type": "application/vnd.whispir.resource-v1+json,application/vnd.whispir.resource-v1+xml"
     },
     {
-      "uri": "https://api.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>",
+      "uri": "https://api.<region>.whispir.com/resources/F1212CF334EDR68?apikey=<your_api_key>",
       "rel": "deleteResource",
       "method": "DELETE"
     }
@@ -945,15 +951,17 @@ Resources can be filtered by their scope. This can be achieved by sending in the
 > > Only get the public resources
 
 ```
-HTTP 1.1 GET https://api.whispir.com/resources/?apikey=<your_api_key>&scope=public
+HTTP 1.1 GET https://api.<region>.whispir.com/resources/?apikey=<your_api_key>&scope=public
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 > > Only get the private resources
 
 ```
-HTTP 1.1 GET https://api.whispir.com/resources/?apikey=<your_api_key>&scope=private
+HTTP 1.1 GET https://api.<region>.whispir.com/resources/?apikey=<your_api_key>&scope=private
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 #### Filtering By name
@@ -964,8 +972,9 @@ Authorization: Basic asdf98nf89asdvasd2r398h8sdf
 > > With extension of file type
 
 ```
-HTTP 1.1 GET https://api.whispir.com/resources/?apikey=<your_api_key>&name=australia.csv
+HTTP 1.1 GET https://api.<region>.whispir.com/resources/?apikey=<your_api_key>&name=australia.csv
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 > > Response will be array of records that match exactly the whole name given in the query
@@ -974,8 +983,9 @@ Authorization: Basic asdf98nf89asdvasd2r398h8sdf
 > > Only part of name
 
 ```
-HTTP 1.1 GET https://api.whispir.com/resources/?apikey=<your_api_key>&name=au
+HTTP 1.1 GET https://api.<region>.whispir.com/resources/?apikey=<your_api_key>&name=au
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 > > Response will match all records that have `au` in their file name. So, multiple records are returned.
@@ -990,8 +1000,9 @@ Eg: - `&name=australia.csv`
 ## Updating a resource
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/resources/ABD435DBFCD663DEDEFF?apikey=[your_api_key]
+HTTP 1.1 PUT https://api.<region>.whispir.com/resources/ABD435DBFCD663DEDEFF?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -999,7 +1010,7 @@ Content-Type: application/vnd.whispir.resource-v1+xml
 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <name>australia.json</name>
     <scope>private</scope>
     <mimeType>application/json</mimeType>
@@ -1042,8 +1053,9 @@ Any or all of the 4 values can be changed. **i.e,** name, scope, mimeType, deref
 > > Exact URI of the resource has to be provided.
 
 ```
-HTTP 1.1 DELETE https://api.whispir.com/resources/F1212CF334EDR68?apikey=[your_key]
+HTTP 1.1 DELETE https://api.<region>.whispir.com/resources/F1212CF334EDR68?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 > Response

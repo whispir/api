@@ -7,28 +7,28 @@
 ```xml
 <!-- From the default workspace -->
 
-https://api.whispir.com/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
+https://api.<region>.whispir.com/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
 Accept: application/vnd.whispir.messagestatus-v1+xml
 ```
 
 ```go
 //From the default workspace
 
-https://api.whispir.com/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
+https://api.<region>.whispir.com/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
 Accept: application/vnd.whispir.messagestatus-v1+json
 ```
 
 ```xml
 <!-- or from a defined workspace -->
 
-https://api.whispir.com/workspaces/{:id}/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
 Accept: application/vnd.whispir.messagestatus-v1+xml
 ```
 
 ```go
 //or from a defined workspace
 
-https://api.whispir.com/workspaces/{:id}/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/messages/{:messageId}/messagestatus/?apikey=<your_api_key>
 Accept: application/vnd.whispir.messagestatus-v1+json
 ```
 
@@ -108,15 +108,16 @@ The first thing a developer must do in order to retrieve the status of a sent me
 > > Use the API to retrieve a sent Message 
 
 ```
-HTTP 1.1 GET https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/messages?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
  <to>$mobile</to>
  <subject>test subject</subject>
  <body>test body</body>
@@ -128,25 +129,25 @@ Content-Type: application/vnd.whispir.message-v1+xml
  <createdTime>2012-09-24T15:36:16+10:00</createdTime>
  <ns3:link method="GET" 
    rel="self" 
-   uri="https://api.whispir.com/messages/069BF68E5E0FE99B?apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B?apikey=498nadsasdff09fewdsafjaa90f"/>
  <ns3:link method="GET" 
    rel="summaryStatus" 
-   uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"/>
  <ns3:link method="GET" 
    rel="detailedStatus" 
-   uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"/>
  <ns3:link method="GET" 
    rel="summaryResponses" 
-   uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=summary&filter=default&apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=summary&filter=default&apikey=498nadsasdff09fewdsafjaa90f"/>
  <ns3:link method="GET" 
    rel="detailedResponses" 
-   uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=detailed&filter=default&apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=detailed&filter=default&apikey=498nadsasdff09fewdsafjaa90f"/>
  <ns3:link method="GET" 
    rel="summaryResponsesWithResponseRule" 
-   uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=summary&filter=responserule&apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=summary&filter=responserule&apikey=498nadsasdff09fewdsafjaa90f"/>
  <ns3:link method="GET" 
    rel="detailedResponsesWithResponseRule" 
-   uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=detailed&filter=responserule&apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=detailed&filter=responserule&apikey=498nadsasdff09fewdsafjaa90f"/>
 </ns2:message>
 ```
 ```go
@@ -162,31 +163,31 @@ Content-Type: application/vnd.whispir.message-v1+json
     "link": [{
       "method": "GET",
       "rel": "self",
-      "uri": "https://api.whispir.com/messages/069BF68E5E0FE99B?apikey=498nadsasdff09fewdsafjaa90f"
+      "uri": "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B?apikey=498nadsasdff09fewdsafjaa90f"
     },{
       "method": "GET",
       "rel": "summaryStatus",
-      "uri": "https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"
+      "uri": "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"
     },{
       "method": "GET",
       "rel": "detailedStatus",
-      "uri": "https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"
+      "uri": "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"
     },{
       "method": "GET",
       "rel": "summaryResponses",
-      "uri": "https://api.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=summary&filter=default&apikey=498nadsasdff09fewdsafjaa90f"
+      "uri": "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=summary&filter=default&apikey=498nadsasdff09fewdsafjaa90f"
     },{
       "method": "GET",
       "rel": "detailedResponses",
-      "uri": "https://api.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=detailed&filter=default&apikey=498nadsasdff09fewdsafjaa90f"
+      "uri": "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=detailed&filter=default&apikey=498nadsasdff09fewdsafjaa90f"
     },{
       "method": "GET",
       "rel": "summaryResponsesWithResponseRule",
-      "uri": "https://api.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=summary&filter=responserule&apikey=498nadsasdff09fewdsafjaa90f"
+      "uri": "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=summary&filter=responserule&apikey=498nadsasdff09fewdsafjaa90f"
     },{
       "method": "GET",
       "rel": "detailedResponsesWithResponseRule",
-      "uri": "https://api.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=detailed&filter=responserule&apikey=498nadsasdff09fewdsafjaa90f"
+      "uri": "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=detailed&filter=responserule&apikey=498nadsasdff09fewdsafjaa90f"
     }]
 }
 ```
@@ -256,13 +257,13 @@ Each of the URLs specified in the response can be accessed using the REL and app
 ```xml
 <ns3:link method="GET" 
    rel="summaryStatus" 
-   uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"/>
 ```
 ```go
 {
   	"method": "GET",
   	"rel": "summaryStatus",
-  	"uri": "https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"
+  	"uri": "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"
 }
 ```
 
@@ -271,12 +272,12 @@ Each of the URLs specified in the response can be accessed using the REL and app
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
  <ns2:messageStatuses>
   <ns2:messageStatus>
     <ns2:link method="GET" 
              rel="self" 
-             uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"/>
+             uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f"/>
     <categories>
       <status name="Sent">
         <percentageTotal>0.0%</percentageTotal>
@@ -307,7 +308,7 @@ Each of the URLs specified in the response can be accessed using the REL and app
 {
   "messageStatuses" : [ {
     "link" : [ {
-      "uri" : "https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f",
+      "uri" : "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f",
       "rel" : "self",
       "method" : "GET"
     } ],
@@ -343,7 +344,7 @@ In the example above, the **summaryStatus** URL is:
 
 So the request would look as follows:
 
-`GET https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f`
+`GET https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=summary&apikey=498nadsasdff09fewdsafjaa90f`
 
 As this is a **GET** request we don't have to provide any message body.
 
@@ -359,13 +360,13 @@ Your application can use this information to easily determine the numbers of rec
 ```xml
 <ns3:link method="GET" 
    rel="detailedStatus" 
-   uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"/>
+   uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"/>
 ```
 ```go
 {
   	"method": "GET",
   	"rel": "detailedStatus",
-  	"uri": "https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"
+  	"uri": "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=498nadsasdff09fewdsafjaa90f"
 }
 ```
 
@@ -373,13 +374,13 @@ Your application can use this information to easily determine the numbers of rec
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
   <status>1 to 2 of 2</status>
   <ns2:messageStatuses>
     <ns2:messageStatus>
       <ns2:link method="GET" 
 	        rel="self" 
-                uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed"/>
+                uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed"/>
       <status type="email">
         <destination></destination>
         <status></status>
@@ -401,7 +402,7 @@ Your application can use this information to easily determine the numbers of rec
     <ns2:messageStatus>
       <ns2:link method="GET" 
 	        rel="self" 
-                uri="https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed"/>
+                uri="https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed"/>
       <status type="email">
         <destination></destination>
         <status></status>
@@ -429,7 +430,7 @@ Your application can use this information to easily determine the numbers of rec
     "name" : "John Smith",
     "info" : "Out bound SMS text message sent OK.",
     "link" : [ {
-      "uri" : "https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed",
+      "uri" : "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed",
       "rel" : "self",
       "method" : "GET"
     } ],
@@ -452,7 +453,7 @@ Your application can use this information to easily determine the numbers of rec
     "name" : "Fred Smith",
     "info" : "Out bound SMS text message sent OK.",
     "link" : [ {
-      "uri" : "https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed",
+      "uri" : "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?apikey=498nadsasdff09fewdsafjaa90f&view=detailed",
       "rel" : "self",
       "method" : "GET"
     } ],
@@ -479,7 +480,7 @@ Your application can use this information to easily determine the numbers of rec
 
 Similar to the **summaryStatus**, using the links provided in the message response, the user can simply make a new API request to retrieve the **detailedStatus** URL. 
 
-` GET https://api.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=`
+` GET https://api.<region>.whispir.com/messages/069BF68E5E0FE99B/messagestatus?view=detailed&apikey=`
 
 As this is a **GET** request we don't have to provide any message body.	
 

@@ -5,24 +5,24 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/scenarios/?apikey=<your_api_key>
+https://api.<region>.whispir.com/scenarios/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.scenario-v1+xml
 ```
 
 ```go
-https://api.whispir.com/scenarios/?apikey=<your_api_key>
+https://api.<region>.whispir.com/scenarios/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.scenario-v1+json
 ```
 
 > > - limited to a workspace
 
 ```xml
-https://api.whispir.com/workspaces/{:id}/scenarios/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/scenarios/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.scenario-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:id}/scenarios/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/scenarios/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.scenario-v1+json
 ```
 
@@ -59,15 +59,16 @@ Not just an emergency, but any scenario where a fixed content/Rich Message has t
 > > The following API calls allow users to create Scenarios using the Whispir API.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/scenarios?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/scenarios?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.scenario-v1+xml 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:scenario xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:scenario xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
 	<title>Fire Evacuation Block A</title>
 	<description>Fire evacuation notification for A block residents</description>
 	<message>
@@ -223,28 +224,29 @@ The following fields are required:
 > > The following API calls allow users to retrieve scenarios using the Whispir API.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/scenarios?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/scenarios?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.scenario-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 2 of 2</status>
     <ns2:scenarios>
         <ns2:scenario>
             <title>Emergency Comms - Fire</title>
             <description>Scenario to use during fire evacuation</description>
             <createdTime>2015-07-20T17:18:58+08:00</createdTime>
-            <ns2:link uri="https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:scenario>
         <ns2:scenario>
             <title>Scenario X</title>
             <description>This is a scenario where a scenario is created</description>
             <createdTime>2015-07-20T17:19:41+08:00</createdTime>
-            <ns2:link uri="https://api.whispir.com/scenarios/6EE7F6F2E48B73B4?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/scenarios/6EE7F6F2E48B73B4?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:scenario>
     </ns2:scenarios>
 </ns2:return>
@@ -261,7 +263,7 @@ Accept: application/vnd.whispir.scenario-v1+json
       "createdTime": 1437383938000,
       "link": [
         {
-          "uri": "https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -273,7 +275,7 @@ Accept: application/vnd.whispir.scenario-v1+json
       "createdTime": 1437383981000,
       "link": [
         {
-          "uri": "https://api.whispir.com/scenarios/6EE7F6F2E48B73B4?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/scenarios/6EE7F6F2E48B73B4?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -340,15 +342,16 @@ While that specifies the master list, doing a GET on a single scenario provides 
 > > Retrieving a single scenario details needs the ID of the scenario
 
 ```
-HTTP 1.1 GET https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.scenario-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:scenario xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:scenario xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <title>Emergency Comms - Fire</title>
     <description>Scenario to use during fire evacuation</description>
     <createdTime>2015-07-20T17:18:58+08:00</createdTime>
@@ -367,9 +370,9 @@ Accept: application/vnd.whispir.scenario-v1+xml
         </social>
         <createdTime>2015-07-22T20:48:31+08:00</createdTime>
     </message>
-    <ns3:link uri="https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]" rel="self" method="GET"/>
-    <ns3:link uri="https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]" rel="updateScenario" method="PUT" type="application/vnd.whispir.scenario-v1+json,application/vnd.whispir.scenario-v1+xml"/>
-    <ns3:link uri="https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]" rel="deleteScenario" method="DELETE" type="application/vnd.whispir.scenario-v1+json,application/vnd.whispir.scenario-v1+xml"/>
+    <ns3:link uri="https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]" rel="self" method="GET"/>
+    <ns3:link uri="https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]" rel="updateScenario" method="PUT" type="application/vnd.whispir.scenario-v1+json,application/vnd.whispir.scenario-v1+xml"/>
+    <ns3:link uri="https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]" rel="deleteScenario" method="DELETE" type="application/vnd.whispir.scenario-v1+json,application/vnd.whispir.scenario-v1+xml"/>
 </ns2:scenario>
 ```
 
@@ -400,18 +403,18 @@ Accept: application/vnd.whispir.scenario-v1+json
   },
   "link": [
     {
-      "uri": "https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]",
+      "uri": "https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]",
       "rel": "self",
       "method": "GET"
     },
     {
-      "uri": "https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]",
+      "uri": "https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]",
       "rel": "updateScenario",
       "method": "PUT",
       "type": "application/vnd.whispir.scenario-v1+json,application/vnd.whispir.scenario-v1+xml"
     },
     {
-      "uri": "https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]",
+      "uri": "https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]",
       "rel": "deleteScenario",
       "method": "DELETE",
       "type": "application/vnd.whispir.scenario-v1+json,application/vnd.whispir.scenario-v1+xml"
@@ -563,8 +566,9 @@ Accept: application/vnd.whispir.scenario-v1+json
 > > A simple POST call to the scenarios endpoint with the scenario ID triggers the scenario execution
 
 ```
-HTTP 1.1 POST https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 
 > > The expected response to this call is an HTTP 204 - No Content.
 ```
@@ -579,7 +583,7 @@ Step wise example -
 2. Pick the required scenario's link attribute
 3. Make a /POST call
 
-From the retrieving scenarios call above, we can get all the scenarios in the workspace. Choosing the `Emergency Comms - Fire` named Scenario, the link provided is `https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]`
+From the retrieving scenarios call above, we can get all the scenarios in the workspace. Choosing the `Emergency Comms - Fire` named Scenario, the link provided is `https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]`
 
 Now invoking this scenario is just making a /POST call.  There is no need for a `Content-type` header as the payload is empty.
 
@@ -592,15 +596,16 @@ To update existing scenario, you can use a PUT request the /scenarios endpoint.
 > > The following API calls allow users to update Scenarios using the Whispir API.
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]
+HTTP 1.1 PUT https://api.<region>.whispir.com/scenarios/F0547F6F2E4839F8?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.scenario-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:scenario xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:scenario xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <title>Emergency Comms - Fire</title>
     <description>Scenario to use during fire evacuation</description>
     <allowedUsers>EVERYONE</allowedUsers>
@@ -783,8 +788,9 @@ The following fields are required:
 > > The following API calls allow users to delete Scenarios using the Whispir API.
 
 ```
-HTTP 1.1 DELETE https://api.whispir.com/scenarios/6EE7F6F2E48B73B4?apikey=[your_api_key]
+HTTP 1.1 DELETE https://api.<region>.whispir.com/scenarios/6EE7F6F2E48B73B4?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 
 > > The expected response to this call is an HTTP 204 - No Content.
 ```

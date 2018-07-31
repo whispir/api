@@ -4,7 +4,7 @@
 HTTP 1.1 POST http://myapp.com/statusupdate
 Content-Type: application/xml
 
-<ns2:statuscallback xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:statuscallback xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid> 
     <from>
         <name>John Waters</name> 
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 {
     "messageId":"ABC4857BCCF484575FCA",
-    "location" : "https://api.whispir.com/workspaces/FDD8348CBBED939FCAC/messages/ABC4857BCCF484575FCA",
+    "location" : "https://api.<region>.whispir.com/workspaces/FDD8348CBBED939FCAC/messages/ABC4857BCCF484575FCA",
     "from":{
           "name":"Fred Waters",
           "mri":"Fred_Waters.528798.Sandbox@Contact.whispir.com",
@@ -85,7 +85,7 @@ The structure of the on ‘Report Completion' callback will be as follows:
 HTTP 1.1 POST http://myapp.com/reportcompletion
 Content-Type: application/xml
 
-<ns2:reportcompletion xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:reportcompletion xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <reportid>ABC4857BCCF484575FCA</reportid>
     <outputLocation>http://203.116.705.600/reports</outputLocation>
     <timestamp>09/01/13 13:22</timestamp>
@@ -153,7 +153,7 @@ HTTP 1.1 POST https://yourserver/callback.php
 Content-Type: application/json
 {
     "messageId":"ABC4857BCCF4CA",
-    "location" : "https://api.whispir.com/messages/ABC4857BCCF4CA",
+    "location" : "https://api.<region>.whispir.com/messages/ABC4857BCCF4CA",
     "from":{
           "name":"Fred Waters",
           "mri":"Fred_Waters.528798.Sandbox@Contact.whispir.com",

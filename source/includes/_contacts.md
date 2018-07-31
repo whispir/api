@@ -5,24 +5,24 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/contacts/?apikey=<your_api_key>
+https://api.<region>.whispir.com/contacts/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.contact-v1+xml
 ```
 
 ```go
-https://api.whispir.com/contacts/?apikey=<your_api_key>
+https://api.<region>.whispir.com/contacts/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.contact-v1+json
 ```
 
 > > - limited to a workspace
 
 ```xml
-https://api.whispir.com/workspaces/{:id}/contacts/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/contacts/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.contact-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:id}/contacts/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/contacts/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.contact-v1+json
 ```
 
@@ -51,15 +51,16 @@ The Whispir API provides secure cloud based storage for your contact information
 > > Users can easily create new contacts by using the following request structure
 
 ```
-POST https://api.whispir.com/contacts?apikey=[your api key]
+POST https://api.<region>.whispir.com/contacts?apikey=[your api key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:contact xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:contact xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <firstName>John</firstName>
     <lastName>Wick</lastName>
     <status>A</status>
@@ -121,7 +122,7 @@ Content-Type: application/vnd.whispir.contact-v1+json
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:contact xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:contact xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <type>COMPANY</type>
     <firstName>John</firstName>
     <lastName>Wick</lastName>
@@ -159,9 +160,9 @@ Content-Type: application/vnd.whispir.contact-v1+json
             <tertiary></tertiary>
         </messagingoption>
     </messagingoptions>
-    <ns3:link uri="https://api.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]" rel="self" method="GET"/>
-    <ns3:link uri="https://api.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]" rel="updateContact" method="PUT" type="application/vnd.whispir.contact-v1+json,application/vnd.whispir.contact-v1+xml"/>
-    <ns3:link uri="https://api.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]" rel="deleteContact" method="DELETE"/>
+    <ns3:link uri="https://api.<region>.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]" rel="self" method="GET"/>
+    <ns3:link uri="https://api.<region>.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]" rel="updateContact" method="PUT" type="application/vnd.whispir.contact-v1+json,application/vnd.whispir.contact-v1+xml"/>
+    <ns3:link uri="https://api.<region>.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]" rel="deleteContact" method="DELETE"/>
 ```
 
 ```go
@@ -203,18 +204,18 @@ Content-Type: application/vnd.whispir.contact-v1+json
   ],
   "link": [
     {
-      "uri": "https://api.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]",
+      "uri": "https://api.<region>.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]",
       "rel": "self",
       "method": "GET"
     },
     {
-      "uri": "https://api.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]",
+      "uri": "https://api.<region>.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]",
       "rel": "updateContact",
       "method": "PUT",
       "type": "application/vnd.whispir.contact-v1+json,application/vnd.whispir.contact-v1+xml"
     },
     {
-      "uri": "https://api.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]",
+      "uri": "https://api.<region>.whispir.com/contacts/CB4558257DD86D09?apikey=[your api key]",
       "rel": "deleteContact",
       "method": "DELETE"
     }
@@ -477,15 +478,16 @@ Each messaging options allows to specify the following 3 configuration settings
 > > Contacts can easily be retrieved from the Whispir API using the following endpoints:
 
 ```
-HTTP 1.1 GET https://api.whispir.com/contacts?apikey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/contacts?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 1 of 1</status>
     <ns2:contacts>
         <ns2:contact>
@@ -496,7 +498,7 @@ Accept: application/vnd.whispir.contact-v1+xml
             <messagingoptions/> > 
             <ns2:link method="GET" 
                       rel="self" 
-                      uri="http://api.whispir.com/contacts/AF48A9EC3F02E43C?apikey=<your_api_key>"/>
+                      uri="http://api.<region>.whispir.com/contacts/AF48A9EC3F02E43C?apikey=<your_api_key>"/>
         </ns2:contact>
     </ns2:contacts>
 </ns2:return>
@@ -517,7 +519,7 @@ Accept: application/vnd.whispir.contact-v1+json
       "link": {
         "method": "GET",
         "rel": "self",
-        "uri": "http://api.whispir.com/contacts/AF48A9EC3F02E43C?apikey=<your_api_key>"
+        "uri": "http://api.<region>.whispir.com/contacts/AF48A9EC3F02E43C?apikey=<your_api_key>"
       }
     }
   ]
@@ -532,11 +534,11 @@ Once the request is placed, the response will be a list of url's to each of the 
 
 <dl>
     <dt>URI for default workspace</dt>
-    <dd>- https://api.whispir.com/contacts?apikey=<your_api_key></dd>
+    <dd>- https://api.<region>.whispir.com/contacts?apikey=<your_api_key></dd>
 </dl>
 <dl>
     <dt>URI for a specific workspace with id BC348DC83DF1AB34</dt>
-    <dd> > - https://api.whispir.com/workspaces/BC348DC83DF1AB34/contacts?apikey=<your_api_key></dd>
+    <dd> > - https://api.<region>.whispir.com/workspaces/BC348DC83DF1AB34/contacts?apikey=<your_api_key></dd>
 </dl>
 
 ### Get a specific contact
@@ -545,15 +547,16 @@ Once the request is placed, the response will be a list of url's to each of the 
 > > Users can retrieve a specific contact by supplying the Contact ID in the URL.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/contacts/AF48A9EC3F02E43C?apikey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/contacts/AF48A9EC3F02E43C?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:contact xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:contact xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
    <id>AF48A9EC3F02E43C</id>
    <firstName>Fred</firstName>
    <lastName>Smith</lastName>
@@ -561,7 +564,7 @@ Accept: application/vnd.whispir.contact-v1+xml
    <messagingoptions/> > 
    <ns2:link method="GET" 
              rel="self" 
-             uri="http://api.whispir.com/contacts/AF48A9EC3F02E43C?apikey=<your_api_key>"/>
+             uri="http://api.<region>.whispir.com/contacts/AF48A9EC3F02E43C?apikey=<your_api_key>"/>
 </ns2:contact>
 ```
 
@@ -577,14 +580,14 @@ Accept: application/vnd.whispir.contact-v1+json
    "link": {
      "method": "GET",
      "rel": "self",
-     "uri": "http://api.whispir.com/contacts/AF48A9EC3F02E43C?apikey=<your_api_key>"
+     "uri": "http://api.<region>.whispir.com/contacts/AF48A9EC3F02E43C?apikey=<your_api_key>"
    }
 }
 ```
 
 To get details of a specific contact, the URI must be passed with the ID of the contact. So, the URI shall be:
 
-`https://api.whispir.com/contacts/AF48A9EC3F02E43C` 
+`https://api.<region>.whispir.com/contacts/AF48A9EC3F02E43C` 
 
 Where `AF48A9EC3F02E43C` is the contact id.
 
@@ -594,8 +597,9 @@ Where `AF48A9EC3F02E43C` is the contact id.
 > > Within Whispir, contacts can have Custom Fields present to store data that is not supported on the default contact profile.  Users can show this custom data for contacts by adding the `customFields=true` query parameter.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/contacts?apikey=<your_api_key>&customFields=true
+HTTP 1.1 GET https://api.<region>.whispir.com/contacts?apikey=<your_api_key>&customFields=true
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -620,8 +624,9 @@ In order to reveal these custom fields on the contact profile, you can use the `
 > > Users can easily use further query parameters to search for specific contacts within Whispir.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/contacts?apikey=<your_api_key>&firstName=Sam&sortOrder=desc&sortFields=workEmailAddressPrimary
+HTTP 1.1 GET https://api.<region>.whispir.com/contacts?apikey=<your_api_key>&firstName=Sam&sortOrder=desc&sortFields=workEmailAddressPrimary
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -651,7 +656,7 @@ The key parameters that are required on the URL to facilitate this search are as
 				Specifies the field name of the contact object. The field name could be any thing as long as it is a valid contact object.
 				<br><br>
 				<b>Ex:</b><br>
-				http://api.whispir.com/contacts?apikey=<your_api_key><b>&firstName=Sam</b>
+				http://api.<region>.whispir.com/contacts?apikey=<your_api_key><b>&firstName=Sam</b>
 			</td>
 		</tr>
 		<tr>
@@ -666,7 +671,7 @@ The key parameters that are required on the URL to facilitate this search are as
 				The fields that you require the ordering to be performed on. Multiple fields can be provided, separated by a comma.
 				<br><br>
 				<b>Ex:</b><br>
-				http://api.whispir.com/contacts?apikey=<your_api_key>&firstName=Sam<b>&sortFields=lastName,jobTitle</b>
+				http://api.<region>.whispir.com/contacts?apikey=<your_api_key>&firstName=Sam<b>&sortFields=lastName,jobTitle</b>
 			</td>
 		</tr>
 	</tbody>
@@ -682,8 +687,9 @@ The search can also be done inside a specific workspace if needed, by adding the
 > > Within Whispir, contacts can have Custom Fields present to store data that is not supported on the default contact profile.  Users can search for contacts using this data using the API.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/contacts?apikey=<your_api_key>&custom_staffID=123456
+HTTP 1.1 GET https://api.<region>.whispir.com/contacts?apikey=<your_api_key>&custom_staffID=123456
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -708,15 +714,16 @@ For example, if the field name is **StaffId**, then the URL would search for:
 > > The following endpoints allow users to update contacts using the Whispir API.
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/contacts/CB4558257DD86D09?apikey=<your_api_key>
+HTTP 1.1 PUT https://api.<region>.whispir.com/contacts/CB4558257DD86D09?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:contact xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:contact xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <firstName>John</firstName>
     <lastName>Wick</lastName>
     <timeZone>+8</timezone>
@@ -769,8 +776,9 @@ The response to the PUT request upon success is usually a `204` with no content 
 > > The following statement allows users to delete contacts using the Whispir API.  Please note, this contact will only be deleted from the current workspace.
 
 ```
-HTTP 1.1 DELETE https://api.whispir.com/contacts/124F6B2D46A5A268?apikey=<your_api_key>
+HTTP 1.1 DELETE https://api.<region>.whispir.com/contacts/124F6B2D46A5A268?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 Deleting a contact can be performed using a DELETE request to the /contacts/{id} endpoint. So, to perform this, one must be knowing the exact "link" associated with the contact.
@@ -791,8 +799,9 @@ Whispir API provides some advanced options to perform search and data related qu
 > > The following statement allows users to delete a given contact from all mapped/copied workspaces using the API. Please note, this process is asynchronous and cannot be terminated once triggered.
 
 ```
-HTTP 1.1 DELETE https://api.whispir.com/workspaces/A51D76194DDC09CC/contacts/124F6B2D46A5A268?apikey=<your_api_key>&action=deleteAll 
+HTTP 1.1 DELETE https://api.<region>.whispir.com/workspaces/A51D76194DDC09CC/contacts/124F6B2D46A5A268?apikey=<your_api_key>&action=deleteAll 
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 Whispir API allows to delete a contact from one workspace only by default at a time. However, due to certain business scenarios, there could be a need to delete all the references of a given contact from all workspaces in the company. Usually such references are made when there is a contact mapping rule (either automated, or via contact api) is in place. 
@@ -815,8 +824,9 @@ The following are the types of contact that can be deleted:
 > > The following query parameters allow users to search with more than one piece of search criteria on the contact profile.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/contacts?apikey=<your_api_key>&firstName=Sam&lastname=gamjee
+HTTP 1.1 GET https://api.<region>.whispir.com/contacts?apikey=<your_api_key>&firstName=Sam&lastname=gamjee
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 The API allows to search for a contact based on any attribute/ data element associated with the contact. This is not limited to just one attribute, but multiple attributes can be searched at the same time.
@@ -834,7 +844,7 @@ The API allows to search for a contact based on any attribute/ data element asso
 				Specifies the field name of the contact object. The field name could be any thing as long as it is a valid contact object.
 				<br><br>
 				<b>Ex:</b><br>
-				http://api.whispir.com/contacts?apikey=<your_api_key><b>&firstName=Sam&lastName=gamjee</b>
+				http://api.<region>.whispir.com/contacts?apikey=<your_api_key><b>&firstName=Sam&lastName=gamjee</b>
 			</td>
 		</tr>
 		<tr>
@@ -849,7 +859,7 @@ The API allows to search for a contact based on any attribute/ data element asso
 				The fields that you require the ordering to be performed on. Multiple fields can be provided, separated by a comma.
 				<br><br>
 				<b>Ex:</b><br>
-				http://api.whispir.com/contacts?apikey=<your_api_key>&firstName=Sam<b>&sortFields=lastName,jobTitle</b>
+				http://api.<region>.whispir.com/contacts?apikey=<your_api_key>&firstName=Sam<b>&sortFields=lastName,jobTitle</b>
 			</td>
 		</tr>
 	</tbody>
@@ -861,12 +871,13 @@ The API allows to search for a contact based on any attribute/ data element asso
 > > The following query parameters allow users to return data fields from the contact profile that are specifically what they are looking to retrieve.
 
 ```xml
-HTTP 1.1 GET https://api.whispir.com/contacts?apikey=<your_api_key>&fields=workEmailAddress1,workMobilePhone1&firstname=Sam
+HTTP 1.1 GET https://api.<region>.whispir.com/contacts?apikey=<your_api_key>&fields=workEmailAddress1,workMobilePhone1&firstname=Sam
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 Accept: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 1 of 1</status>
     <ns2:contacts>
         <ns2:contact>
@@ -874,15 +885,16 @@ Accept: application/vnd.whispir.contact-v1+xml
             <workEmailAddress1>sam@gamjee.com</workEmailAddress1>
             <workMobilePhone1>61423456789</workMobilePhone1>
             <messagingoptions/>
-            <ns2:link uri="https://api.whispir.com/contacts/DC09CC30243A51D5?apikey=<your_key_api>" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/contacts/DC09CC30243A51D5?apikey=<your_key_api>" rel="self" method="GET"/>
         </ns2:contact>
 	<ns2:contacts>
 </ns2:return>
 ````
 
 ```go
-HTTP 1.1 GET https://api.whispir.com/contacts?apikey=<your_api_key>&fields=workEmailAddress1,workMobilePhone1&firstname=Sam
+HTTP 1.1 GET https://api.<region>.whispir.com/contacts?apikey=<your_api_key>&fields=workEmailAddress1,workMobilePhone1&firstname=Sam
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 Accept: application/vnd.whispir.contact-v1+json
 
 {
@@ -892,7 +904,7 @@ Accept: application/vnd.whispir.contact-v1+json
 		"workMobilePhone1":"61423456789"
         "messagingoptions": [],
         "link": [{
-          "uri": "https://api.whispir.com/contacts/DC09CC30243A51D5?apikey=<your_key_api>",
+          "uri": "https://api.<region>.whispir.com/contacts/DC09CC30243A51D5?apikey=<your_key_api>",
           "rel": "self",
           "method": "GET"
         }]

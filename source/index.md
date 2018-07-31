@@ -11,6 +11,7 @@ toc_footers:
 
 includes:
   - intro
+  - api-gateway-changes
   - api-access
   - rate-limiting
   - conventions

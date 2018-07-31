@@ -5,24 +5,24 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/customlists/?apikey=<your_api_key>
+https://api.<region>.whispir.com/customlists/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.customlist-v1+xml
 ```
 
 ```go
-https://api.whispir.com/customlists/?apikey=<your_api_key>
+https://api.<region>.whispir.com/customlists/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.customlist-v1+json
 ```
 
 > > - limited to a workspace
 
 ```xml
-https://api.whispir.com/workspaces/{:id}/customlists/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/customlists/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.customlist-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:id}/customlists/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/customlists/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.customlist-v1+json
 ```
 
@@ -74,15 +74,16 @@ The customlists will contain all lists in the company across the following place
 ## Retrieving custom lists
 
 ```
-HTTP 1.1 GET https://api.whispir.com/customlists?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/customlists?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.customlist-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 5 of 5</status>
     <ns2:customlabels>
         <ns2:customlabel>
@@ -92,7 +93,7 @@ Accept: application/vnd.whispir.customlist-v1+xml
             <createdDate>02/08/11 14:20</createdDate>
             <sortType>As Displayed</sortType>
             <linked>disabled</linked>
-            <ns2:link uri="https://api.whispir.com/customlists/40E5D16229E2101D?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/customlists/40E5D16229E2101D?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
         </ns2:customlabel>
         <ns2:customlabel>
             <id>0CA7B9E2B21A3B1A</id>
@@ -101,7 +102,7 @@ Accept: application/vnd.whispir.customlist-v1+xml
             <createdDate>13/10/14 16:30</createdDate>
             <sortType>As Displayed</sortType>
             <linked>disabled</linked>
-            <ns2:link uri="https://api.whispir.com/customlists/0CA7B9E2B21A3B1A?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/customlists/0CA7B9E2B21A3B1A?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
         </ns2:customlabel>
         <ns2:customlabel>
             <id>87F23964C25ECF22</id>
@@ -110,7 +111,7 @@ Accept: application/vnd.whispir.customlist-v1+xml
             <createdDate>07/01/14 09:51</createdDate>
             <sortType>As Displayed</sortType>
             <linked>disabled</linked>
-            <ns2:link uri="https://api.whispir.com/customlists/87F23964C25ECF22?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/customlists/87F23964C25ECF22?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
         </ns2:customlabel>
         <ns2:customlabel>
             <id>F0771B97F1EF770B</id>
@@ -119,7 +120,7 @@ Accept: application/vnd.whispir.customlist-v1+xml
             <createdDate>02/08/11 14:20</createdDate>
             <sortType>As Displayed</sortType>
             <linked>disabled</linked>
-            <ns2:link uri="https://api.whispir.com/customlists/F0771B97F1EF770B?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/customlists/F0771B97F1EF770B?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
         </ns2:customlabel>
         <ns2:customlabel>
             <id>768E4ACA5DA7500C</id>
@@ -128,7 +129,7 @@ Accept: application/vnd.whispir.customlist-v1+xml
             <createdDate>01/08/11 12:38</createdDate>
             <sortType>As Displayed</sortType>
             <linked>disabled</linked>
-            <ns2:link uri="https://api.whispir.com/customlists/768E4ACA5DA7500C?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/customlists/768E4ACA5DA7500C?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
         </ns2:customlabel>
     </ns2:customlabels>
 </ns2:return>
@@ -149,7 +150,7 @@ Accept: application/vnd.whispir.customlist-v1+json
       "linked": "disabled",
       "link": [
         {
-          "uri": "https://api.whispir.com/customlists/40E5D16229E2101D?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/customlists/40E5D16229E2101D?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -164,7 +165,7 @@ Accept: application/vnd.whispir.customlist-v1+json
       "linked": "disabled",
       "link": [
         {
-          "uri": "https://api.whispir.com/customlists/0CA7B9E2B21A3B1A?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/customlists/0CA7B9E2B21A3B1A?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -179,7 +180,7 @@ Accept: application/vnd.whispir.customlist-v1+json
       "linked": "disabled",
       "link": [
         {
-          "uri": "https://api.whispir.com/customlists/87F23964C25ECF22?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/customlists/87F23964C25ECF22?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -194,7 +195,7 @@ Accept: application/vnd.whispir.customlist-v1+json
       "linked": "disabled",
       "link": [
         {
-          "uri": "https://api.whispir.com/customlists/F0771B97F1EF770B?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/customlists/F0771B97F1EF770B?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -209,7 +210,7 @@ Accept: application/vnd.whispir.customlist-v1+json
       "linked": "disabled",
       "link": [
         {
-          "uri": "https://api.whispir.com/customlists/768E4ACA5DA7500C?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/customlists/768E4ACA5DA7500C?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -299,15 +300,16 @@ An array of Custom Lists will be returned to you in the HTTP response body.
 ## Details of a Specific Custom List
 
 ```
-HTTP 1.1 GET https://api.whispir.com/customlists/4E2101D0E5D16229?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/customlists/4E2101D0E5D16229?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.customlist-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:customlabel xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:customlabel xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <id>4E2101D0E5D16229</id>
     <name>Category</name>
     <type>INCIDENT</type>
@@ -328,7 +330,7 @@ Accept: application/vnd.whispir.customlist-v1+xml
             <value>Infrastructure</value>
         </customlabellist>
     </customlabellists>
-    <ns3:link uri="https://api.whispir.com/customlists/40E5D16229E2101D?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
+    <ns3:link uri="https://api.<region>.whispir.com/customlists/40E5D16229E2101D?apikey=7qyxe7z37tsdy9spv6sw6uec" rel="self" method="GET"/>
 </ns2:customlabel>
 ```
 
@@ -358,7 +360,7 @@ Accept: application/vnd.whispir.customlist-v1+json
   ],
   "link": [
     {
-      "uri": "https://api.whispir.com/customlists/40E5D16229E2101D?apikey=7qyxe7z37tsdy9spv6sw6uec",
+      "uri": "https://api.<region>.whispir.com/customlists/40E5D16229E2101D?apikey=7qyxe7z37tsdy9spv6sw6uec",
       "rel": "self",
       "method": "GET"
     }
@@ -452,8 +454,9 @@ To retrieve the details of a specific list, the end point must be passed with th
 API allows you to be able to query the `GET /customlists` endpoint using the following filters.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/customlists?apikey=[your_api_key]&field=value
+HTTP 1.1 GET https://api.<region>.whispir.com/customlists?apikey=[your_api_key]&field=value
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 All filter options are to be passed in as URL query parameters.

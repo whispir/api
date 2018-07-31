@@ -10,24 +10,24 @@ So, to send a push notification to a user device, one has to register the push t
 > > - generic
 
 ```xml
-https://api.whispir.com/contacts/{:contact-id}/devices?apikey=<your_api_key>
+https://api.<region>.whispir.com/contacts/{:contact-id}/devices?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.contactdevice-v1+xml
 ```
 
 ```go
-https://api.whispir.com/contacts/{:contact-id}/devices?apikey=<your_api_key>
+https://api.<region>.whispir.com/contacts/{:contact-id}/devices?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.contactdevice-v1+json
 ```
 
 > > - limited to a workspace
 
 ```xml
-https://api.whispir.com/workspaces/{:workspace-id}/contacts/{:contact-id}/devices?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:workspace-id}/contacts/{:contact-id}/devices?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.contactdevice-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:workspace-id}/contacts/{:contact-id}/devices?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:workspace-id}/contacts/{:contact-id}/devices?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.contactdevice-v1+json
 ```
 
@@ -58,15 +58,16 @@ To understand the relationship easily, refer to the `apps` section.
 > > New Devices can only be created under a given contact easily by following the request structure
 
 ```
-POST https://api.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices?apikey=[your api key]
+POST https://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.contactdevice-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:device xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:device xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <deviceName>Device 1</deviceName>
     <appId>B1A24A8BF2DBB10E</appId>
     <platform>APNS</platform>
@@ -95,7 +96,7 @@ Content-Type: application/vnd.whispir.contactdevice-v1+json
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:device xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:device xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <id>1B0C3FC62D59BF90</id>
     <deviceName>Device 1</deviceName>
     <appId>B1A24A8BF2DBB10E</appId>
@@ -106,9 +107,9 @@ Content-Type: application/vnd.whispir.contactdevice-v1+json
     <deviceModel>Iphone 7 Plus</deviceModel>
     <status>active</status>
     <pushToken>15a01046 16f6f4f9 2f2055b5 f12d2c93 a70de908 487762f9 7b6c7115 e30083b1</pushToken>
-    <ns3:link uri="https://api.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]" rel="self" method="GET"/>
-    <ns3:link uri="https://api.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]" rel="updateDevice" method="PUT" type="application/vnd.whispir.contactdevice-v1+json,application/vnd.whispir.contactdevice-v1+xml"/>
-    <ns3:link uri="https://api.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]" rel="deleteDevice" method="DELETE"/>
+    <ns3:link uri="https://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]" rel="self" method="GET"/>
+    <ns3:link uri="https://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]" rel="updateDevice" method="PUT" type="application/vnd.whispir.contactdevice-v1+json,application/vnd.whispir.contactdevice-v1+xml"/>
+    <ns3:link uri="https://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]" rel="deleteDevice" method="DELETE"/>
 </device>
 ```
 
@@ -126,18 +127,18 @@ Content-Type: application/vnd.whispir.contactdevice-v1+json
     "pushToken": "15a01046 16f6f4f9 2f2055b5 f12d2c93 a70de908 487762f9 7b6c7115 e30083b1",
   "link": [
     {
-      "uri": "https://api.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]",
+      "uri": "https://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]",
       "rel": "self",
       "method": "GET"
     },
     {
-      "uri": "https://api.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]",
+      "uri": "https://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]",
       "rel": "updateDevice",
       "method": "PUT",
       "type": "application/vnd.whispir.contactdevice-v1+json,application/vnd.whispir.contactdevice-v1+xml"
     },
     {
-      "uri": "https://api.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]",
+      "uri": "https://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/1B0C3FC62D59BF90?apikey=[your api key]",
       "rel": "deleteDevice",
       "method": "DELETE"
     }
@@ -241,15 +242,16 @@ The following fields are required:
 > > Devices can easily be retrieved from the Whispir API using the following endpoints:
 
 ```
-HTTP 1.1 GET https://api.whispir.com/workspaces/{:wid}/contacts/{:cid}?apikey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
         <ns2:contact>
             <id>AF48A9EC3F02E43C</id>
             <firstName>Fred</firstName>
@@ -259,7 +261,7 @@ Accept: application/vnd.whispir.contact-v1+xml
             <devices/>
             <ns2:link method="GET" 
                       rel="self" 
-                      uri="http://api.whispir.com/workspaces/{:wid}/contacts/{:cid}?apikey=<your_api_key>"/>
+                      uri="http://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}?apikey=<your_api_key>"/>
         </ns2:contact>
 </ns2:return>
 ```
@@ -278,7 +280,7 @@ Accept: application/vnd.whispir.contact-v1+json
       "link": {
         "method": "GET",
         "rel": "self",
-        "uri": "http://api.whispir.com/workspaces/{:wid}/contacts/{:cid}?apikey=<your_api_key>"
+        "uri": "http://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}?apikey=<your_api_key>"
       }
     }
 }
@@ -295,15 +297,16 @@ Devices are sub-resource to Contacts. So, Devices belonging to a specific contac
 > > The following endpoints allow users to update contact's devices using the Whispir API.
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/{:did}?apikey=<your_api_key>
+HTTP 1.1 PUT https://api.<region>.whispir.com/workspaces/{:wid}/contacts/{:cid}/devices/{:did}?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.contactdevice-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<<ns2:device xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<<ns2:device xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <deviceName>Device 1</deviceName>
     <appId>B1A24A8BF2DBB10E</appId>
     <platform>APNS</platform>
@@ -364,8 +367,9 @@ The response to the PUT request upon success is usually a `204` with no content 
 > > The following statement allows users to delete contact's device using the Whispir API.  Please note, this device cannot be recovered back once deleted.
 
 ```
-HTTP 1.1 DELETE https://api.whispir.com/contacts/124F6B2D46A5A268/device/{:did}?apikey=<your_api_key>
+HTTP 1.1 DELETE https://api.<region>.whispir.com/contacts/124F6B2D46A5A268/device/{:did}?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 Deleting a contact device can be performed using a DELETE request to the /contacts/{:cid}/devices/{:did} endpoint. So, to perform this, one must be knowing the exact “link” associated with the contact device.

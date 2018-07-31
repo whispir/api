@@ -5,24 +5,24 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/activities/?apikey=<your_api_key>
+https://api.<region>.whispir.com/activities/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.activity-v1+xml
 ```
 
 ```go
-https://api.whispir.com/activities/?apikey=<your_api_key>
+https://api.<region>.whispir.com/activities/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.activity-v1+json
 ```
 
 > > - limited to a workspace
 
 ```xml
-https://api.whispir.com/workspaces/{:id}/activities/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/activities/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.activity-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:id}/activities/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/activities/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.activity-v1+json
 ```
 
@@ -58,8 +58,9 @@ As activities information is sensitive, stricter permission rules apply to the d
 ## Creating an activity log
 
 ```
-HTTP 1.1 POST https://api.whispir.com/activities?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/activities?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -67,7 +68,7 @@ Content-Type: application/vnd.whispir.activity-v1+xml
 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:activity xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns3:activity xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <module>Message</module>
     <action>Send</action>
     <status>Successful</status>
@@ -206,15 +207,16 @@ Only **3 fields** are required:
 To retrieve a list of activities from the Whispir.io API you can execute an HTTP GET using the /activities endpoint.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/activities?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/activities?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.activity-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <ns2:activities>
         <ns2:activity>
             <user>james.cameron</user>
@@ -224,7 +226,7 @@ Accept: application/vnd.whispir.activity-v1+xml
             <status>Successful</status>
             <module>Message</module>
             <workspaceName>Whispir</workspaceName>
-            <ns2:link uri="https://api.whispir.com/activities/9B26BCE6A7C1997D3E3C04D4C0B62165?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/activities/9B26BCE6A7C1997D3E3C04D4C0B62165?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:activity>
         <ns2:activity>
             <user>james.cameron</user>
@@ -233,7 +235,7 @@ Accept: application/vnd.whispir.activity-v1+xml
             <status>Successful</status>
             <module>Workspace</module>
             <workspaceName>Whispir</workspaceName>
-            <ns2:link uri="https://api.whispir.com/activities/CF8F388F18FDDA7CA40F42E888EC8E67?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/activities/CF8F388F18FDDA7CA40F42E888EC8E67?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:activity>
         <ns2:activity>
             <user>james.cameron</user>
@@ -243,7 +245,7 @@ Accept: application/vnd.whispir.activity-v1+xml
             <status>Successful</status>
             <module>Template</module>
             <workspaceName>Whispir</workspaceName>
-            <ns2:link uri="https://api.whispir.com/activities/19F603F21E8A7D536D577A6B4DBCFE3F?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/activities/19F603F21E8A7D536D577A6B4DBCFE3F?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:activity>
     <ns2:activity>
             <user>markm</user>
@@ -284,7 +286,7 @@ Accept: application/vnd.whispir.activity-v1+json
       "workspaceName": "Whispir",
       "link": [
         {
-          "uri": "https://api.whispir.com/activities/9B26BCE6A7C1997D3E3C04D4C0B62165?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/activities/9B26BCE6A7C1997D3E3C04D4C0B62165?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -299,7 +301,7 @@ Accept: application/vnd.whispir.activity-v1+json
       "workspaceName": "Whispir",
       "link": [
         {
-          "uri": "https://api.whispir.com/activities/CF8F388F18FDDA7CA40F42E888EC8E67?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/activities/CF8F388F18FDDA7CA40F42E888EC8E67?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -315,7 +317,7 @@ Accept: application/vnd.whispir.activity-v1+json
       "workspaceName": "Whispir",
       "link": [
         {
-          "uri": "https://api.whispir.com/activities/19F603F21E8A7D536D577A6B4DBCFE3F?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/activities/19F603F21E8A7D536D577A6B4DBCFE3F?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -331,7 +333,7 @@ Accept: application/vnd.whispir.activity-v1+json
       "workspaceName": "ABC Operations",
       "link": [
         {
-          "uri": "https://api.whispir.com/activities/0DEB48AB3D3B6069D7DA1A808F5A5DE4?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/activities/0DEB48AB3D3B6069D7DA1A808F5A5DE4?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -347,7 +349,7 @@ Accept: application/vnd.whispir.activity-v1+json
       "workspaceName": "ABC Operations",
       "link": [
         {
-          "uri": "https://api.whispir.com/activities/0CEC8009230B3B92F5B548A22B55C407?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/activities/0CEC8009230B3B92F5B548A22B55C407?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -441,13 +443,15 @@ Each of these activities will provide the following information:
 ### Restricting to only a single workspace
 
 ```
-HTTP 1.1 GET https://api.whispir.com/activities?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/activities?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```
-HTTP 1.1 GET https://api.whispir.com/workspace/B7BFEF555F0F7F81/activities?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/workspace/B7BFEF555F0F7F81/activities?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 By default, `GET /activities` returns all the activities at company level. This covers all the workspaces. So, if the items has to limited to a specific workspace, one has to use the workspace as the endpoint and activities followed by it.
@@ -479,8 +483,9 @@ By default, `GET /activities` returns all the activities at company level. This 
 Activity logs can become quickly huge owing to the amount of actions performed. In such cases, to have a proper filtering of data during a GET /activities, Whispir API provides very neat filtering options on the data.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/activities?apikey=[your_api_key]&field=value
+HTTP 1.1 GET https://api.<region>.whispir.com/activities?apikey=[your_api_key]&field=value
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 All filter options are to be passed in as URL query parameters.

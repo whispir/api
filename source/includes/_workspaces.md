@@ -5,12 +5,12 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/workspaces/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.workspace-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.workspace-v1+json
 ```
 
@@ -37,8 +37,9 @@ Each of these work areas are independent from one another and can be governed by
 ## Creating a new workspace
 
 ```
-HTTP 1.1 POST https://api.whispir.com/workspaces?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/workspaces?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -46,7 +47,7 @@ Content-Type: application/vnd.whispir.workspace-v1+xml
 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:workspace xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns3:workspace xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <projectName>A Space Odessey</projectName>
     <projectNumber>2000</projectNumber>
     <status>A</status>
@@ -118,15 +119,16 @@ Note: There is no limit to the amount of workspaces each API user can create.
 To retrieve a list of workspaces from the Whispir.io API you can execute an HTTP GET using the /workspaces endpoint.
 
 ```
-HTTP 1.1 GET https://api.whispir.com/workspaces?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/workspaces?apikey=[your_api_key]
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.workspace-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 4 of 4</status>
     <ns2:workspaces>
         <ns2:workspace>
@@ -135,7 +137,7 @@ Accept: application/vnd.whispir.workspace-v1+xml
             <projectNumber></projectNumber>
             <status>A</status>
             <billingcostcentre>test</billingcostcentre>
-            <ns2:link uri="https://api.whispir.com/workspaces/BB9ECBE5BA73CD81?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/workspaces/BB9ECBE5BA73CD81?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:workspace>
         <ns2:workspace>
             <id>7311ABEB701E7C60</id>
@@ -143,7 +145,7 @@ Accept: application/vnd.whispir.workspace-v1+xml
             <projectNumber></projectNumber>
             <status>A</status>
             <billingcostcentre>0</billingcostcentre>
-            <ns2:link uri="https://api.whispir.com/workspaces/7311ABEB701E7C60?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/workspaces/7311ABEB701E7C60?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:workspace>
         <ns2:workspace>
             <id>26B1A09C1FEC20A2</id>
@@ -151,7 +153,7 @@ Accept: application/vnd.whispir.workspace-v1+xml
             <projectNumber></projectNumber>
             <status>A</status>
             <billingcostcentre>0</billingcostcentre>
-            <ns2:link uri="https://api.whispir.com/workspaces/26B1A09C1FEC20A2?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/workspaces/26B1A09C1FEC20A2?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:workspace>
         <ns2:workspace>
             <id>A358845BF004C113</id>
@@ -159,14 +161,14 @@ Accept: application/vnd.whispir.workspace-v1+xml
             <projectNumber></projectNumber>
             <status>A</status>
             <billingcostcentre>CLSA</billingcostcentre>
-            <ns2:link uri="https://api.whispir.com/workspaces/A358845BF004C113?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/workspaces/A358845BF004C113?apikey=[your_api_key]" rel="self" method="GET"/>
         </ns2:workspace>
         <ns2:workspace>
             <projectName>Critical Incident Management</projectName>
             <projectNumber></projectNumber>
             <status>A</status>
             <billingcostcentre></billingcostcentre>
-            <ns2:link uri="https://api.whispir.com/workspaces/B7BFEF555F0F7F81?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/workspaces/B7BFEF555F0F7F81?apikey=[your_api_key]" rel="self" method="GET"/>
        </ns2:workspace>
     </ns2:workspaces>
 </ns2:return>
@@ -185,7 +187,7 @@ Accept: application/vnd.whispir.workspace-v1+json
       "billingcostcentre": "0",
       "link": [
         {
-          "uri": "https://api.whispir.com/workspaces/7311ABEB701E7C60?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/workspaces/7311ABEB701E7C60?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -199,7 +201,7 @@ Accept: application/vnd.whispir.workspace-v1+json
       "billingcostcentre": "0",
       "link": [
         {
-          "uri": "https://api.whispir.com/workspaces/26B1A09C1FEC20A2?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/workspaces/26B1A09C1FEC20A2?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -213,7 +215,7 @@ Accept: application/vnd.whispir.workspace-v1+json
       "billingcostcentre": "CLSA",
       "link": [
         {
-          "uri": "https://api.whispir.com/workspaces/A358845BF004C113?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/workspaces/A358845BF004C113?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }
@@ -227,7 +229,7 @@ Accept: application/vnd.whispir.workspace-v1+json
       "billingcostcentre": "",
       "link": [
         {
-          "uri": "https://api.whispir.com/workspaces/B7BFEF555F0F7F81?apikey=[your_api_key]",
+          "uri": "https://api.<region>.whispir.com/workspaces/B7BFEF555F0F7F81?apikey=[your_api_key]",
           "rel": "self",
           "method": "GET"
         }

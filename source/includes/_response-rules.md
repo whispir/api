@@ -5,24 +5,24 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/responserules/?apikey=<your_api_key>
+https://api.<region>.whispir.com/responserules/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.responserule-v1+xml
 ```
 
 ```go
-https://api.whispir.com/responserules/?apikey=<your_api_key>
+https://api.<region>.whispir.com/responserules/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.responserule-v1+json
 ```
 
 > > - limited to a workspace
 
 ```xml
-https://api.whispir.com/workspaces/{:id}/responserules/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/responserules/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.responserule-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:id}/responserules/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/responserules/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.responserule-v1+json
 ```
 
@@ -55,15 +55,16 @@ Once the Response Rule has been defined, it can be associated with a Message Tem
 > > The following API calls allow users to create new Response Rules using the Whispir API.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/responserules?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/responserules?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.responserule-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:responserule xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns3:responserule xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <name>Response Rule 1</name>
     <description></description> 
     <responseTemplatePatterns>
@@ -215,15 +216,16 @@ For more information on Creating Message Templates, click <a href="#creating-tem
 > > Sending a message using template and callback
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <messageTemplateName>ReplyYesNoTemplate</messageTemplateName>
     <callbackId>myCallbackName</callbackId>

@@ -3,12 +3,24 @@
 > API Endpoint
 
 ```
-https://api.whispir.com
+https://api.<region>.whispir.com
+```
+
+>> Whispir regions are -
+
+```
+AU - https://api.au.whispir.com
+AP - https://api.ap.whispir.com
+AP1 - https://api.ap1.whispir.com
+NZ - https://api.nz.whispir.com
+US - https://api.us.whispir.com
+IT - https://api.app.whispir.it
+EDU - https://api.education.whispir.com
 ```
 
 > API Authorization
 
-> > Users must use an **API Key** and **Authorization Header** to access the Whispir API. These are available by signing up for a free trial at [whispir.io](https://whispir.io).
+> > Users must use an **API Key** and **Authorization Header** to access the Whispir API. These are available by signing up for a account at [whispir.io](https://whispir.io).
 
 
 > Summary of Resources
@@ -40,8 +52,8 @@ https://api.whispir.com
 
 ```shell
 # Authorization and apikey are provided in the registration processes
-curl -H "Authorization: Basic <YOUR AUTHORIZATION HEADER>"
-     https://api.whispir.com/messages?apikey=<YOUR API KEY>
+curl -H "Authorization: Basic <YOUR AUTHORIZATION HEADER>" -H "x-api-key: <YOUR API KEY>"
+     https://api.<region>.whispir.com/messages?apikey=<YOUR API KEY>
 ```
 
 > Example Response
@@ -53,7 +65,7 @@ HTTP/1.1 200 OK
 
 ```shell
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>No records found</status>
 </ns2:return>
 ```

@@ -12,12 +12,12 @@ The endpoint serves the need for
 > > Apps exist at Company level, and are then made available to workspaces. So, there is no workspace-id to be provided in the URL.
 
 ```xml
-https://api.whispir.com/apps?apikey=<your_api_key>
+https://api.<region>.whispir.com/apps?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.app-v1+xml
 ```
 
 ```go
-https://api.whispir.com/apps?apikey=<your_api_key>
+https://api.<region>.whispir.com/apps?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.app-v1+json
 ```
 
@@ -46,17 +46,19 @@ To understand the relationship between your app and Whispir endpoints, refer to 
 App registration is a one time process, and once created, the app information can be used to register the pushTokens as devices (under contacts), and use the contact mri value to send the push messages to the app.
 
 ```
-POST https://api.whispir.com/apps?apikey=<your_api_key>
+POST https://api.<region>.whispir.com/apps?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.app-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:app xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:app xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <name>My Push App</name>
     <description>Description of the App</description>
+    <bundleId>com.your.bundleId</bundleId>
     <options>
         <apiKey>A valid UUID value</apiKey>
         <clientSecret>A valid UUID value without the `-` dashes</clientSecret>
@@ -90,6 +92,7 @@ Content-Type: application/vnd.whispir.app-v1+json
 {
  "name": "string",
  "description": "string",
+ "bundleId": "string"
  "options": {
     "apikey": "string",
     "clientSecret": "string",
@@ -148,6 +151,15 @@ Almost all the fields are mandatory. So, please ensure the information is provid
 			<td>
 				Not Required. Alphanumeric. No max length. Default: "" <br>
 				<b>Sample:</b> App for sending messages to My Awesome App
+			</td>
+		</tr><tr>
+			<td style="text-align: right; font-weight: bold;">bundleId:</td>
+			<td><strong>String</strong><br/>
+				The bundle Id of your application 
+			</td>
+			<td>
+				Required. Alphanumeric. No max length. Default: "" <br>
+				<b>Sample:</b> com.pushie.whispir
 			</td>
 		</tr>
 		<tr>
@@ -210,7 +222,7 @@ Almost all the fields are mandatory. So, please ensure the information is provid
 			<td>
 				Single line. Alphanumeric. No max length. Default: "" <br>
 				<b>Sample:</b> -----BEGIN CERTIFICATE-----\nMIIGSjCCBTKgAwIBAgIICdjQ9d41eiYwDQYJKoZIhvcNAQELBQAwgZYxCzAJ.....\n-----END CERTIFICATE----- <br>
-				<b>IMP:</b> You must ensure that the value is provided in a single line only with the use of `\n` to specify the line breaks. If you have .p12, then use any of the valid converter tools to extract the certificate, and private key correctly.
+				<b>IMP:</b> You must ensure that the value is provided in a single line only with the use of `\n` to specify the line breaks just after the BEGIN CERTIFICATE---- and before the -----END CERTIFICATE. If you have .p12, then use any of the valid converter tools to extract the certificate, and private key correctly. An Incorrect value will lead to failure of app creation.
 			</td>
 		</tr>
 		<tr>
@@ -221,7 +233,7 @@ Almost all the fields are mandatory. So, please ensure the information is provid
 			<td>
 				Single line. Alphanumeric. No max length. Default: "" <br>
 				<b>Sample:</b> -----BEGIN PRIVATE KEY-----\nMIIGSjCCBTKgAwIBAgIICdjQ9d41eiYwDQYJKoZIhvcNAQELBQAwgZYxCzAJ.....\n-----END PRIVATE KEY----- <br>
-				<b>IMP:</b> You must ensure that the value is provided in a single line only with the use of `\n` to specify the line breaks.
+				<b>IMP:</b> You must ensure that the value is provided in a single line only with the use of `\n` to specify the line breaks just after the BEGIN PRIVATE KEY---- and before the -----END PRIVATE KEY. An Incorrect value will lead to failure of app creation.
 			</td>
 		</tr>
 		<tr>
@@ -232,7 +244,7 @@ Almost all the fields are mandatory. So, please ensure the information is provid
 			<td>
 				Single line. Alphanumeric. No max length. Default: "" <br>
 				<b>Sample:</b> -----BEGIN CERTIFICATE-----\nMIIGSjCCBTKgAwIBAgIICdjQ9d41eiYwDQYJKoZIhvcNAQELBQAwgZYxCzAJ.....\n-----END CERTIFICATE----- <br>
-				<b>IMP:</b> You must ensure that the value is provided in a single line only with the use of `\n` to specify the line breaks. These values are usually different from the above values.
+				<b>IMP:</b> You must ensure that the value is provided in a single line only with the use of `\n` to specify the line breaks just after the BEGIN CERTIFICATE---- and before the -----END CERTIFICATE. If you have .p12, then use any of the valid converter tools to extract the certificate, and private key correctly. An Incorrect value will lead to failure of app creation.
 			</td>
 		</tr>
 		<tr>
@@ -243,7 +255,7 @@ Almost all the fields are mandatory. So, please ensure the information is provid
 			<td>
 				Single line. Alphanumeric. No max length. Default: "" <br>
 				<b>Sample:</b> -----BEGIN PRIVATE KEY-----\nMIIGSjCCBTKgAwIBAgIICdjQ9d41eiYwDQYJKoZIhvcNAQELBQAwgZYxCzAJ.....\n-----END PRIVATE KEY----- <br>
-				<b>IMP:</b> You must ensure that the value is provided in a single line only with the use of `\n` to specify the line breaks.
+				<b>IMP:</b> You must ensure that the value is provided in a single line only with the use of `\n` to specify the line breaks just after the BEGIN PRIVATE KEY---- and before the -----END PRIVATE KEY. An Incorrect value will lead to failure of app creation.
 			</td>
 		</tr>
 		<tr>
@@ -313,7 +325,9 @@ Almost all the fields are mandatory. So, please ensure the information is provid
 	</tbody>
 </table>
 
-*Note: * Do NOT try to register both an APNS, and GCM app underr a single app. Doing so would result in failed Push Notifications.
+<aside class="notice">
+	Do NOT try to register both an APNS, APNS Sandbox and GCM app under a single app. Create separate apps. If not followed, this would result in failed Push Notifications.
+</aside>
 
 ## Updating an App
 
@@ -325,15 +339,16 @@ Please remember that you do not need to pass on the APNS certificates every time
 > > The following endpoints allow users to update contact's devices using the Whispir API.
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/apps/{:aid}?apikey=<your_api_key>
+HTTP 1.1 PUT https://api.<region>.whispir.com/apps/{:aid}?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.app-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:app xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:app xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <id>521BBA863C2C230BD0E1BBA86</id>
     <name>My Push App</name>
     <description>Description of the App</description>
@@ -401,8 +416,9 @@ Content-Type: application/vnd.whispir.app-v1+json
 > > The following statement allows users to delete an App using the Whispir API.  Please note, this app cannot be recovered back once deleted, and you must also ensure that the devices that are referreing to this App are also promptly either deleted or updated to refer to a new App.
 
 ```
-HTTP 1.1 DELETE https://api.whispir.com/apps/{:aid}?apikey=<your_api_key>
+HTTP 1.1 DELETE https://api.<region>.whispir.com/apps/{:aid}?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 Deleting an App can be performed using a DELETE request to the /apps/{:aid} endpoint. So, to perform this, one must be knowing the exact “link” associated with the app.

@@ -5,24 +5,24 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/templates/?apikey=<your_api_key>
+https://api.<region>.whispir.com/templates/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.template-v1+xml
 ```
 
 ```go
-https://api.whispir.com/templates/?apikey=<your_api_key>
+https://api.<region>.whispir.com/templates/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.template-v1+json
 ```
 
 > > - limited to a workspace
 
 ```xml
-https://api.whispir.com/workspaces/{:id}/templates/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/templates/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.template-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:id}/templates/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/templates/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.template-v1+json
 ```
 
@@ -55,16 +55,17 @@ The simple inclusion of a Message Template can alleviate this completely, allowi
 > > The following API calls allow users to manage Templates using the Whispir API.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/templates?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/templates?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.template-v1+xml
 
 <?xml version="1.0" encoding="UTF-8"?>
-<ns3:template xmlns:ns3="http://schemas.api.whispir.com" 
-              xmlns:ns2="http://schemas.api.whispir.com/dap">
+<ns3:template xmlns:ns3="http://schemas.api.<region>.whispir.com" 
+              xmlns:ns2="http://schemas.api.<region>.whispir.com/dap">
   <messageTemplateName>Sample SMS Template</messageTemplateName>
   <messageTemplateDescription>
     Template to provide an example on whispir.io
@@ -200,19 +201,20 @@ The following fields are required:
 > > The following API Methods allow you to access templates via the API
 
 ```
-HTTP 1.1 GET https://api.whispir.com/templates?apikey=[your_api_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/templates?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Accept: application/vnd.whispir.template-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 4 of 4</status>
     <ns2:messagetemplates>
         <ns2:template>
-            <ns2:link uri="https://api.whispir.com/templates/F0547F6F2E4839F8?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/templates/F0547F6F2E4839F8?apikey=[your_api_key]" rel="self" method="GET"/>
             <id>F0547F6F2E4839F8</id>
             <messageTemplateDescription>
             </messageTemplateDescription>
@@ -221,7 +223,7 @@ Accept: application/vnd.whispir.template-v1+xml
             </messageTemplateName>
         </ns2:template>
         <ns2:template>
-            <ns2:link uri="https://api.whispir.com/templates/DDE10AC13FB0E457?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/templates/DDE10AC13FB0E457?apikey=[your_api_key]" rel="self" method="GET"/>
             <id>DDE10AC13FB0E457</id>
             <messageTemplateDescription>
             </messageTemplateDescription>
@@ -230,7 +232,7 @@ Accept: application/vnd.whispir.template-v1+xml
             </messageTemplateName>
         </ns2:template>
         <ns2:template>
-            <ns2:link uri="https://api.whispir.com/templates/900972D1C916FE84?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/templates/900972D1C916FE84?apikey=[your_api_key]" rel="self" method="GET"/>
             <id>900972D1C916FE84</id>
             <messageTemplateDescription>
             </messageTemplateDescription>
@@ -239,7 +241,7 @@ Accept: application/vnd.whispir.template-v1+xml
             </messageTemplateName>
         </ns2:template>
         <ns2:template>
-            <ns2:link uri="https://api.whispir.com/templates/9CB9BE20B885542D?apikey=[your_api_key]" rel="self" method="GET"/>
+            <ns2:link uri="https://api.<region>.whispir.com/templates/9CB9BE20B885542D?apikey=[your_api_key]" rel="self" method="GET"/>
             <id>9CB9BE20B885542D</id>
             <messageTemplateDescription>
             </messageTemplateDescription>
@@ -260,7 +262,7 @@ Accept: application/vnd.whispir.template-v1+json
     "messageTemplateDescription" : "",
     "id" : "F0547F6F2E4839F8",
     "link" : [ {
-      "uri" : "https://api.whispir.com/templates/F0547F6F2E4839F8?apikey=[your_api_key]",
+      "uri" : "https://api.<region>.whispir.com/templates/F0547F6F2E4839F8?apikey=[your_api_key]",
       "rel" : "self",
       "method" : "GET"
     } ]
@@ -269,7 +271,7 @@ Accept: application/vnd.whispir.template-v1+json
     "messageTemplateDescription" : "",
     "id" : "DDE10AC13FB0E457",
     "link" : [ {
-      "uri" : "https://api.whispir.com/templates/DDE10AC13FB0E457?apikey=[your_api_key]",
+      "uri" : "https://api.<region>.whispir.com/templates/DDE10AC13FB0E457?apikey=[your_api_key]",
       "rel" : "self",
       "method" : "GET"
     } ]
@@ -278,7 +280,7 @@ Accept: application/vnd.whispir.template-v1+json
     "messageTemplateDescription" : "",
     "id" : "900972D1C916FE84",
     "link" : [ {
-      "uri" : "https://api.whispir.com/templates/900972D1C916FE84?apikey=[your_api_key]",
+      "uri" : "https://api.<region>.whispir.com/templates/900972D1C916FE84?apikey=[your_api_key]",
       "rel" : "self",
       "method" : "GET"
     } ]
@@ -287,7 +289,7 @@ Accept: application/vnd.whispir.template-v1+json
     "messageTemplateDescription" : "",
     "id" : "9CB9BE20B885542D",
     "link" : [ {
-      "uri" : "https://api.whispir.com/templates/9CB9BE20B885542D?apikey=[your_api_key]",
+      "uri" : "https://api.<region>.whispir.com/templates/9CB9BE20B885542D?apikey=[your_api_key]",
       "rel" : "self",
       "method" : "GET"
     } ]
@@ -352,8 +354,9 @@ Each of these templates will provide the following information:
 > > The following API calls allow users to update Template content using the Whispir API.
 
 ```
-HTTP 1.1 PUT https://api.whispir.com/templates/C37DCBAEFF73FEDA45?apikey=[your_key]
+HTTP 1.1 PUT https://api.<region>.whispir.com/templates/C37DCBAEFF73FEDA45?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -361,8 +364,8 @@ Content-Type: application/vnd.whispir.template-v1+xml
 Accept: application/vnd.whispir.template-v1+xml
 
 <?xml version="1.0" encoding="UTF-8"?>
-<ns3:template xmlns:ns3="http://schemas.api.whispir.com" 
-              xmlns:ns2="http://schemas.api.whispir.com/dap">
+<ns3:template xmlns:ns3="http://schemas.api.<region>.whispir.com" 
+              xmlns:ns2="http://schemas.api.<region>.whispir.com/dap">
   <messageTemplateName>Sample SMS Template</messageTemplateName>
   <messageTemplateDescription>
     Template to provide an example on whispir.io
@@ -572,8 +575,9 @@ The following fields are required:
 
 > > Exact URI of the template has to be provided. 
 
-HTTP 1.1 DELETE https://api.whispir.com/templates/C37DCBAEFF73FEDA45?apikey=[your_key]
+HTTP 1.1 DELETE https://api.<region>.whispir.com/templates/C37DCBAEFF73FEDA45?apikey=[your_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```
@@ -592,15 +596,16 @@ Deleting a template is done via the `DELETE` method. The exact link url of the s
 > > The following methods allow you to use the templates that you've created in your Whispir Messages
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>john.smith@test.com</to>
     <messageTemplateId>BACEB8D46BEF5315</messageTemplateId>
 </ns2:message> 
@@ -617,15 +622,16 @@ Content-Type: application/vnd.whispir.message-v1+json
 > > Alternatively, you can enter the Message Template Name in place of the Message Template ID:
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <messageTemplateName>Sample SMS Template</messageTemplateName>
 </ns2:message> 
@@ -649,15 +655,16 @@ The message template can then easily be changed (using either another API reques
 > > You can override content in the template by supplying it inline with the message request
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_api_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <messageTemplateName>Sample SMS Template</messageTemplateName>
     <subject>This will override the template Subject</subject>

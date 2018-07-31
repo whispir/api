@@ -7,28 +7,28 @@
 ```xml
 <!-- From the default workspace -->
 
-https://api.whispir.com/messages/?apikey=<your_api_key>
+https://api.<region>.whispir.com/messages/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
 // From the default workspace
 
-https://api.whispir.com/messages/?apikey=<your_api_key>
+https://api.<region>.whispir.com/messages/?apikey=<your_api_key>
 Accept: application/vnd.whispir.message-v1+json
 ```
 
 ```xml
 <!-- Or from a defined workspace -->
 
-https://api.whispir.com/workspaces/{:id}/messages/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/messages/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.message-v1+xml
 ```
 
 ```go
 // Or from a defined workspace
 
-https://api.whispir.com/workspaces/{:id}/messages/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/messages/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.message-v1+json
 ```
 
@@ -51,15 +51,16 @@ Content-Type: application/vnd.whispir.message-v1+json
 > > Sample to send an SMS, Email, Voice call, and Web Publishing in one request
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic <YOUR AUTH HEADER>
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test Message</subject>
     <body>This is the body of my test SMS message</body>
@@ -171,9 +172,9 @@ These are described in more detail below:
 
 As message resources can exist in the default (Company) workspace or other workspace, messages have two access URLs:
 
-`https://api.whispir.com/messages` - for Company Workspace messages
+`https://api.<region>.whispir.com/messages` - for Company Workspace messages
 
-`https://api.whispir.com/workspaces/:id/messages` - for other Workspace messages where `:id` is the id of the specific workspace.
+`https://api.<region>.whispir.com/workspaces/:id/messages` - for other Workspace messages where `:id` is the id of the specific workspace.
 
 <aside class="notice">
 Whispir strongly recommends use of workspaces for all messaging needs. Refer <a href="#workspaces">workspaces</a>. If not followed, this may lead to billing and data privacy concerns within your company account.
@@ -282,8 +283,9 @@ Whispir strongly recommends use of workspaces for all messaging needs. Refer <a 
 > > Sending SMS messages using Whispir is as easy as providing the destination phone number(s), a message subject, and the content of the message.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -291,7 +293,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS Message</subject>
     <body>This is the body of my test SMS message</body>
@@ -311,7 +313,7 @@ Accept: application/vnd.whispir.message-v1+json
 
 ```
 Response: 202 Accepted
-Location: https://api.whispir.com/messages/{id}?apikey=[your_key]
+Location: https://api.<region>.whispir.com/messages/{id}?apikey=[your_api_key]
 ```
 Sending SMS from Whispir is as easy as providing the recipient information and the content of the message.
 
@@ -378,15 +380,16 @@ Whispir strongly recommends use of workspaces for all messaging needs. Refer <a 
 > > **Sending Plain Text Emails**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test Email Message</subject>
     <email>
@@ -415,14 +418,15 @@ Accept: application/vnd.whispir.message-v1+json
 > > **Sending Rich Text (HTML) Emails**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test Email Message</subject>
     <email>
@@ -472,15 +476,16 @@ Whispir strongly recommends use of workspaces for all messaging needs. Refer <a 
 > > **Sending Emails with Attachments**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test e-mail message with attachment</subject>
     <email>
@@ -581,15 +586,16 @@ The attachment element in JSON is also an array, so be sure to add the square br
 > > **Sending Voice Calls**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test Voice Call</subject>
     <voice>
@@ -625,15 +631,16 @@ Content-Type: application/vnd.whispir.message-v1+json
 > > **Sending Voice Calls with Teleconferences**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test Voice Call</subject>
     <voice>
@@ -732,15 +739,16 @@ Each Voice Call is made up of four parts:
  4. Message Response - Allows the recipient to provide an acknowledgement to the message, either default options or based off a response rule
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>61423568958</to>
     <subject>Test voice call with attachment</subject>
     <voice>
@@ -811,15 +819,16 @@ Before a WAV file will be played, it needs to conform to a certain criteria.
 > > Simple Rich Message using SMS with a Web Link
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test Rich Message</subject>
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
@@ -857,15 +866,16 @@ Accept: application/vnd.whispir.message-v1+json
 > > The following example uses javascript to personalise the Rich Message
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test Rich Message</subject>
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
@@ -963,8 +973,9 @@ More information about Rich Messages and the `Whispir` object is included later 
 
 
 ```
-HTTP 1.1 POST https://api.whispir.com/workspaces/{:wid}/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/workspaces/{:wid}/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -972,7 +983,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>contact-mri-value</to>
     <subject>Test Push Message</subject>
     <body>This is the body of my test Push message</body>
@@ -1002,7 +1013,7 @@ Accept: application/vnd.whispir.message-v1+json
 
 ```
 Response: 202 Accepted
-Location: https://api.whispir.com/workspaces/{:wid}/messages/{:mid}?apikey=[your_key]
+Location: https://api.<region>.whispir.com/workspaces/{:wid}/messages/{:mid}?apikey=[your_api_key]
 ```
 
 
@@ -1056,7 +1067,7 @@ The following fields are required:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>contact-mri-value</to>
     <messageTemplateName>Name-Of-the-Template-Goes-Here</messageTemplateName>
 </ns2:message> 
@@ -1092,15 +1103,16 @@ The following fields are required:
 > > Social Media Request/Response Example
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test Web Message</subject>
     <web>
@@ -1170,15 +1182,16 @@ For more information about configuring Social Publishing, please contact <a href
 > > ONCE
 
 ```
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST http://api.<region>.whispir.com/messages?apikey=<[your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <to>john.smith@test.com</to>
     <subject>Test scheduled e-mail message</subject>
     <email>
@@ -1222,14 +1235,15 @@ For example. the code will schedule a single message to be delivered at 3:55pm o
 > > REPEAT
 
 ```
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=<yourkey>
+HTTP 1.1 POST http://api.<region>.whispir.com/messages?apikey=<your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <to>john.smith@test.com</to>
     <subject>Test scheduled e-mail message</subject>
     <email>
@@ -1298,15 +1312,16 @@ However, at this point of time, Whispir does not allow each message row inside t
 > > Demonstration of sending messages with variables (or tags).
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>John_Wick.1143139@Contact.whispir.sg</to>
     <subject>Test SMS Message with tags</subject>
     <body>Hi @@first_name@@.  This is your message.</body>
@@ -1396,15 +1411,16 @@ For more information about sending messages to Contacts or Distribution Lists, p
 > > Demonstration of sending messages with system variables (or tags).
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS Message with tags</subject>
     <body>The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
@@ -1485,8 +1501,9 @@ Each of these system tags will resolve on send of the message to the system info
 > > Sending an invitation message
 
 ```
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=[your_api_key]
+HTTP 1.1 POST http://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```go
@@ -1522,8 +1539,9 @@ The API call to populate this without Message Attributes could look as shown in 
 > > Using Templates to add in attributes
 
 ```
-HTTP 1.1 POST http://api.whispir.com/templates?apikey=<yourkey>
+HTTP 1.1 POST http://api.<region>.whispir.com/templates?apikey=<[your_api_key>
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```go
@@ -1544,7 +1562,7 @@ Content-Type: application/vnd.whispir.template-v1+json
 
 ```
 HTTP 1.1 201 Created
-Location: http://api.whispir.com/templates/DACADB02209CC93C
+Location: http://api.<region>.whispir.com/templates/DACADB02209CC93C
 ```
 
 ```go
@@ -1572,8 +1590,9 @@ Using this Message Template ID and now using the Message Attribute @@event_expir
 > > to send the Message
 
 ```
-HTTP 1.1 POST http://api.whispir.com/messages?apikey=[your_api_key]
+HTTP 1.1 POST http://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```go
@@ -1672,8 +1691,9 @@ The bulk message sending is an easy two-step process.
 **Step 1: Upload the Resource file via API**
 
 ```
-HTTP 1.1 POST https://api.whispir.com/resources?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/resources?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -1681,7 +1701,7 @@ Content-Type: application/vnd.whispir.resource-v1+xml
 Accept: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <name>sample.json</name>
     <scope>private</scope>
     <mimeType>application/json</mimeType>
@@ -1718,15 +1738,16 @@ Information about the resources endpoint is documented in the [Resources](https:
 Once the resource file has been uploaded and the location of the resource being returned, applications can use this to populate a dynamic message using the **/messages** endpoint.
 
 ```
-HTTP 1.1 POST https://api.whispir.com/messages?apikey=[your_key]
+HTTP 1.1 POST https://api.<region>.whispir.com/messages?apikey=[your_api_key]
 Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.bulkmessage-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <resource>
       <resourceId/>
       <smsMappingField/>
@@ -1809,7 +1830,7 @@ Content-Type: application/vnd.whispir.bulkmessage-v1+json
     <tbody>
         <tr>
             <td>Service URL</td>
-            <td>https://api.whispir.com/messages <br/> https://api.whispir.com/workspaces/[id]/messages</td>
+            <td>https://api.<region>.whispir.com/messages <br/> https://api.<region>.whispir.com/workspaces/[id]/messages</td>
         </tr>
         <tr>
             <td>Methods Supported</td>
@@ -2068,7 +2089,7 @@ The structure of the Bulk Message is used to define the resource that should be 
 
 ```
 HTTP 1.1 202 Accepted
-Location: https://api.whispir.com/messages/4FBBC384BCE3DAABFE3?apikey=<your_api_key>
+Location: https://api.<region>.whispir.com/messages/4FBBC384BCE3DAABFE3?apikey=<your_api_key>
 
 Your request has been accepted for processing.
 ```
@@ -2123,15 +2144,16 @@ Each of these can be found by using the Whispir API to search for the resource t
 ## Retrieve a previously sent Message
 
 ```
-HTTP 1.1 GET https://api.whispir.com/messages/069BF68E5E0FE99B?apikey=[your_key]
+HTTP 1.1 GET https://api.<region>.whispir.com/messages/069BF68E5E0FE99B?apikey=[your_api_key]
 Authorization: Basic <YOUR AUTH HEADER>
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <to>$mobile</to>
     <subject>Test Message</subject>
     <body>This is the body of my test SMS message</body>
@@ -2147,7 +2169,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
     
     <ns3:link method="GET" 
        rel="self" 
-       uri="http://api.whispir.com/messages/069BF68E5E0FE99B?apikey=[your-api-key]"/>
+       uri="http://api.<region>.whispir.com/messages/069BF68E5E0FE99B?apikey=[your-api-key]"/>
 </ns2:message> 
 ````
 ```go
@@ -2170,7 +2192,7 @@ Content-Type: application/vnd.whispir.message-v1+json
     
     "link": [
         {
-          "uri": "https://api.whispir.com/messages/069BF68E5E0FE99B?apikey=[your-api-key]",
+          "uri": "https://api.<region>.whispir.com/messages/069BF68E5E0FE99B?apikey=[your-api-key]",
           "rel": "self",
           "method": "GET"
         }

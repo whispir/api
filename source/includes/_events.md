@@ -5,24 +5,24 @@
 > > - generic
 
 ```xml
-https://api.whispir.com/events/?apikey=<your_api_key>
+https://api.<region>.whispir.com/events/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.event-v1+xml
 ```
 
 ```go
-https://api.whispir.com/events/?apikey=<your_api_key>
+https://api.<region>.whispir.com/events/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.event-v1+json
 ```
 
 > > - limited to a workspace
 
 ```xml
-https://api.whispir.com/workspaces/{:id}/events/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/events/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.event-v1+xml
 ```
 
 ```go
-https://api.whispir.com/workspaces/{:id}/events/?apikey=<your_api_key>
+https://api.<region>.whispir.com/workspaces/{:id}/events/?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.event-v1+json
 ```
 
@@ -67,7 +67,7 @@ Events are created within a workspace. As they are custom built the information 
 Most importantly, to create an event, one must have the create access for Incident row in the Roles & Permission section of the account settings.
 
 ```
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.api.whispir.com/dap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.api.<region>.whispir.com/dap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="link">
     <xs:complexType>
       <xs:simpleContent>
@@ -136,8 +136,9 @@ You can refer to the schema for a detail of the object structure.
 > > Event can easily be created by using the following request structure
 
 ```
-HTTP1.1 POST https://api.whispir.com/events?apikey=<your_api_key>
+HTTP1.1 POST https://api.<region>.whispir.com/events?apikey=<your_api_key>
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
@@ -145,8 +146,8 @@ Content-Type: application/vnd.whispir.event-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns3:event
-    xmlns:ns2="http://schemas.api.whispir.com/dap"
-    xmlns:ns3="http://schemas.api.whispir.com">
+    xmlns:ns2="http://schemas.api.<region>.whispir.com/dap"
+    xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <eventLabel>2701095 - Outage of Local Systems in Sydney</eventLabel>
     <status>Open</status>
     <eventFormList>
@@ -240,7 +241,7 @@ Content-Type: application/vnd.whispir.event-v1+json
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:event xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
+<ns2:event xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
     <id>421FEEBA93GF53A2</id>
     <eventLabel>2701095 - Outage of Local Systems in Sydney</eventLabel>
     <status>Open</status>
@@ -445,9 +446,9 @@ Content-Type: application/vnd.whispir.event-v1+json
         </eventFieldList>
         <formName>MetroEvent</formName>
     </eventFormList>
-    <ns3:link uri="https://api.whispir.com/workspaces/26C20B1A09XS3RA2/events/421FEEBA93GF53A2?apikey=<your_api_key>" rel="self" method="GET"/>
-    <ns3:link uri="https://api.whispir.com/workspaces/26C20B1A09XS3RA2/events/421FEEBA93GF53A2?apikey=<your_api_key>" rel="self" method="PUT" type="application/vnd.whispir.event-v1+xml,application/vnd.whispir.event-v1+json"/>
-    <ns3:link uri="https://api.whispir.com/workspaces/26C20B1A09XS3RA2/messages?label=2701095%20-%20Outage%20of%20Local%20Systems%20in%20Sydney" rel="retrieveEventMessages" method="GET"/>
+    <ns3:link uri="https://api.<region>.whispir.com/workspaces/26C20B1A09XS3RA2/events/421FEEBA93GF53A2?apikey=<your_api_key>" rel="self" method="GET"/>
+    <ns3:link uri="https://api.<region>.whispir.com/workspaces/26C20B1A09XS3RA2/events/421FEEBA93GF53A2?apikey=<your_api_key>" rel="self" method="PUT" type="application/vnd.whispir.event-v1+xml,application/vnd.whispir.event-v1+json"/>
+    <ns3:link uri="https://api.<region>.whispir.com/workspaces/26C20B1A09XS3RA2/messages?label=2701095%20-%20Outage%20of%20Local%20Systems%20in%20Sydney" rel="retrieveEventMessages" method="GET"/>
 </ns2:event>
 ```
 
@@ -663,18 +664,18 @@ Content-Type: application/vnd.whispir.event-v1+json
   ],
   "link": [
     {
-      "uri": "https://api.whispir.com/workspaces/26C20B1A09XS3RA2/events/421FEEBA93GF53A2?apikey=<your_api_key>",
+      "uri": "https://api.<region>.whispir.com/workspaces/26C20B1A09XS3RA2/events/421FEEBA93GF53A2?apikey=<your_api_key>",
       "rel": "self",
       "method": "GET"
     },
     {
-      "uri": "https://api.whispir.com/workspaces/26C20B1A09XS3RA2/events/421FEEBA93GF53A2?apikey=<your_api_key>",
+      "uri": "https://api.<region>.whispir.com/workspaces/26C20B1A09XS3RA2/events/421FEEBA93GF53A2?apikey=<your_api_key>",
       "rel": "self",
       "method": "PUT",
       "type": "application/vnd.whispir.event-v1+xml,application/vnd.whispir.event-v1+json"
     },
     {
-      "uri": "https://api.whispir.com/workspaces/26C20B1A09XS3RA2/messages?label=2701095%20-%20Outage%20of%20Local%20Systems%20in%20Sydney",
+      "uri": "https://api.<region>.whispir.com/workspaces/26C20B1A09XS3RA2/messages?label=2701095%20-%20Outage%20of%20Local%20Systems%20in%20Sydney",
       "rel": "retrieveEventMessages",
       "method": "GET"
     }
@@ -923,15 +924,16 @@ Content-Type: application/vnd.whispir.event-v1+json
 > > The messages are sent using the /message end point. The added data here is the `eventId`. The id of the event whose data has to be used.
 
 ```
-HTTP1.1 POST https://api.whispir.com/messages?apikey=<your_api_key>
+HTTP1.1 POST https://api.<region>.whispir.com/messages?apikey=<your_api_key>
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 ```xml
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Event Notification</subject>    
     <eventId>2EE7FEA3343662BE</eventId>  
@@ -962,8 +964,7 @@ An event has occurred: Outage of systems in Sydney.  A resolution is required by
 
 ```
 HTTP 1.1 202 Accepted 
-Authorization: Basic asdf98nf89asdvasd2r398h8sdf 
-Location: http://api.whispir.com/messages/47707420BAE1288B?apikey=<your_api_key>  
+Location: http://api.<region>.whispir.com/messages/47707420BAE1288B?apikey=<your_api_key>  
 
 ```
 
@@ -973,7 +974,7 @@ Location: http://api.whispir.com/messages/47707420BAE1288B?apikey=<your_api_key>
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
     <to>$mobile</to>
     <subject>Event Notification</subject>    
     <eventId>2EE7FEA3343662BE</eventId>  
@@ -1013,14 +1014,14 @@ Including this Event ID will link the message to the event, and allow you to use
 
 ```xml
 <ns2:link 
-		uri="http://api.whispir.com/messages?label=657126%20Outage%20of%20systems%20in%20Sydney" 
+		uri="http://api.<region>.whispir.com/messages?label=657126%20Outage%20of%20systems%20in%20Sydney" 
 		rel="retrieveEventMessages" 
 		method="GET" /> 
 ```
 
 ```go
 {
-   "uri": "http://api.whispir.com/messages?label=657126%20Outage%20of%20systems%20in%20Sydney",
+   "uri": "http://api.<region>.whispir.com/messages?label=657126%20Outage%20of%20systems%20in%20Sydney",
    "rel": "retrieveEventMessages",
    "method": "GET"
 }
@@ -1036,8 +1037,9 @@ The API also supports to use this listing to query the different messages for st
 > Sending in request to retrieve Event Messages
 
 ```
-HTTP 1.1 GET https://api.whispir.com/messages?label=657126%20Outage%20of%20systems%20in%20Sydney?apikey=<your_api_key>
+HTTP 1.1 GET https://api.<region>.whispir.com/messages?label=657126%20Outage%20of%20systems%20in%20Sydney?apikey=<your_api_key>
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
+x-api-key: your_api_key
 ```
 
 > > response
@@ -1046,11 +1048,11 @@ Authorization: Basic asdf98nf89asdvasd2r398h8sdf
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
     <status>1 to 1 of 1</status>
     <ns2:messages>
         <ns2:message>
-            <ns2:link method="GET" rel="self" uri="http://api.whispir.com/messages/47707420BAE1288B?apikey=<your_api_key>"/>
+            <ns2:link method="GET" rel="self" uri="http://api.<region>.whispir.com/messages/47707420BAE1288B?apikey=<your_api_key>"/>
             <subject>Event Notification</subject>
             <repetitionCount>0</repetitionCount>
             <repeatDays>0</repeatDays>
@@ -1082,7 +1084,7 @@ HTTP 1.1 200 OK
      "responseCount" : "0",
      "createdTime" : 1424062773000,
      "link" : [ {
-       "uri" : "http://api.whispir.com/messages/47707420BAE1288B?apikey=DFD0FD90u809SDF90832FDS ",
+       "uri" : "http://api.<region>.whispir.com/messages/47707420BAE1288B?apikey=DFD0FD90u809SDF90832FDS ",
        "rel" : "self",
        "method" : "GET"
      } ]

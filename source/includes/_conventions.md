@@ -1,14 +1,15 @@
-#Conventions
+# Conventions
 
-##API Security
+## API Security
 
 > API Security
 
 > > Whispir utilises Basic HTTP Authentication over HTTPS to secure the API Requests.
 
 ```shell
-HTTP/1.1 GET https://api.whispir.com/?apikey=ab37bdvs32898dssddsddsfklio
+HTTP/1.1 GET https://api.<region>.whispir.com/?apikey=ab37bdvs32898dssddsddsfklio
 Authorization: Basic frJIUN8DYpKDtOLCwo//yllqDzg=
+x-api-key: your_api_key
 
 # Successful Response
 HTTP/1.1 200 OK
@@ -79,26 +80,26 @@ Each **resource** within the Whispir API is available through a secure and authe
 > > Retrieve all workspaces within your Company
 
 ```xml
-HTTP/1.1 GET https://api.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.<region>.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-HTTP/1.1 GET https://api.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.<region>.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3
 ```
 
 > > Retrieve all Messages from within the Company
 
 ```xml
-HTTP/1.1 GET https://api.whispir.com/messages?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.<region>.whispir.com/messages?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-HTTP/1.1 GET https://api.whispir.com/messages?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.<region>.whispir.com/messages?apikey=bneov3023nfo023rssdf3
 ```
 
 Application clients can retrieve lists of resources of a single type through a simple URL. 
 
 For example, to retrieve a list of **Workspaces** from within the **Company**, the URL is as follows:
 
-`GET https://api.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3`
+`GET https://api.<region>.whispir.com/workspaces?apikey=bneov3023nfo023rssdf3`
 
 
 ### Retrieving a single object
@@ -108,29 +109,29 @@ For example, to retrieve a list of **Workspaces** from within the **Company**, t
 > > Retrieve the Workspace with the ID of 12345
 
 ```xml
-HTTP/1.1 GET https://api.whispir.com/workspaces/12345?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.<region>.whispir.com/workspaces/12345?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-HTTP/1.1 GET https://api.whispir.com/workspaces/12345?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.<region>.whispir.com/workspaces/12345?apikey=bneov3023nfo023rssdf3
 ```
 
 Application clients also have access to a single resource by specifying the relevant ID of the resource.  This information would have been returned when retrieving the list of resources as specified above.
 
 To retrieve a single **Workspace** when you know the ID, the URL is as follows:
 
-`GET https://api.whispir.com/workspaces/12345?apikey=bneov3023nfo023rssdf3`
+`GET https://api.<region>.whispir.com/workspaces/12345?apikey=bneov3023nfo023rssdf3`
 
 Or to retrieve a single **Contact** when you know the ID, the URL is as follows:
 
-`GET https://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3`
+`GET https://api.<region>.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3`
 
 > > Retrieve the Contact with the ID of 78910
 
 ```xml
-HTTP/1.1 GET https://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.<region>.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-HTTP/1.1 GET https://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.<region>.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3
 ```
 
 ### Nested objects
@@ -140,10 +141,10 @@ HTTP/1.1 GET https://api.whispir.com/contacts/78910?apikey=bneov3023nfo023rssdf3
 > > Retrieve the Contact with the ID 67890 from within the Workspace with ID 12345
 
 ```xml
-HTTP/1.1 GET https://api.whispir.com/workspaces/12345/contacts/67890?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.<region>.whispir.com/workspaces/12345/contacts/67890?apikey=bneov3023nfo023rssdf3
 ```
 ```go
-HTTP/1.1 GET https://api.whispir.com/workspaces/12345/contacts/67890?apikey=bneov3023nfo023rssdf3
+HTTP/1.1 GET https://api.<region>.whispir.com/workspaces/12345/contacts/67890?apikey=bneov3023nfo023rssdf3
 ```
 
 Within Whispir's resource model, some resources are nested within one another.  For example; 
@@ -156,7 +157,7 @@ Requests can be *nested* in order to provide application clients the ability to 
 
 For example, if you wanted to retrieve a **Contact** from within a **Workspace**, the URL would look as follows:
 
-`GET https://api.whispir.com/workspaces/12345/contacts/67890?apikey=bneov3023nfo023rssdf3`
+`GET https://api.<region>.whispir.com/workspaces/12345/contacts/67890?apikey=bneov3023nfo023rssdf3`
 
 ## HTTP Response Codes
 
@@ -503,25 +504,25 @@ The following table depicts the available mime types that will be accepted throu
 > > Request for the first page of messages:
 
 ```
-HTTP/1.1 GET https://api.whispir.com/?apikey=[your-api-key]&limit=20&offset=0
+HTTP/1.1 GET https://api.<region>.whispir.com/?apikey=[your-api-key]&limit=20&offset=0
 ```
 
 > > Request for the second page of messages (note the offset is now 20):
 
 ```
-HTTP/1.1 GET https://api.whispir.com/?apikey=[your-api-key]&limit=20&offset=20
+HTTP/1.1 GET https://api.<region>.whispir.com/?apikey=[your-api-key]&limit=20&offset=20
 ```
 
 
 > > Request for the page of messages which does not exist.
 
 ```
-HTTP/1.1 GET https://api.whispir.com/workspaces/7311ABEB701E7C60/messages?apikey=[your-api-key]&limit=20&offset=20
+HTTP/1.1 GET https://api.<region>.whispir.com/workspaces/7311ABEB701E7C60/messages?apikey=[your-api-key]&limit=20&offset=20
 ```
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="true"?>
-<ns2:return xmlns:ns3="http://schemas.api.whispir.com" xmlns:ns2="http://schemas.api.whispir.com/dap">
+<ns2:return xmlns:ns3="http://schemas.api.<region>.whispir.com" xmlns:ns2="http://schemas.api.<region>.whispir.com/dap">
     <status>No records found</status>
 </ns2:return>
 ```
@@ -559,7 +560,7 @@ It's also possible that the messages are older than the default filter that is a
 > > Requesting for records from 01/01/2015 00:00 – 01/07/2015 23:59
 
 ```
-https://api.whispir.com/messages?apikey=[your-api-key]&criteriaFromDate=01/01/2015&criteriaFromTime=00:00&criteriaToDate=01/07/2015&criteriaToTime=23:59
+https://api.<region>.whispir.com/messages?apikey=[your-api-key]&criteriaFromDate=01/01/2015&criteriaFromTime=00:00&criteriaToDate=01/07/2015&criteriaToTime=23:59
 ```
 
  * criteriaFromDate (format: dd/mm/yyyy)
