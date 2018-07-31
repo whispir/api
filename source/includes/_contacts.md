@@ -538,7 +538,7 @@ Once the request is placed, the response will be a list of url's to each of the 
 </dl>
 <dl>
     <dt>URI for a specific workspace with id BC348DC83DF1AB34</dt>
-    <dd> > - https://api.<region>.whispir.com/workspaces/BC348DC83DF1AB34/contacts?apikey=<your_api_key></dd>
+    <dd>- https://api.<region>.whispir.com/workspaces/BC348DC83DF1AB34/contacts?apikey=<your_api_key></dd>
 </dl>
 
 ### Get a specific contact
