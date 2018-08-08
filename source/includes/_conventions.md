@@ -269,6 +269,13 @@ The table below describes the response codes that will be issued and gives poten
             </td>
         </tr>
         <tr>
+            <td style="text-align: right; font-weight: bold;">429 Too many requests:</td>
+            <td><strong>Above API Quota Limits</strong><br/>
+                <ul>
+                <li>returned when you have tried to make API calls more than your allowed Quota (QPS). refer to <a href="https://whispir.github.io/api/#api-rate-limits" title="api rate limiting">API Rate Limits</a></li>
+            </td>
+        </tr>
+        <tr>
             <td style="text-align: right; font-weight: bold;">422 Unprocessable Entity:</td>
             <td><strong>The request is formed correctly, but due to some condition the request cannot be processed e.g. email is required and it is not provided in the request</strong><br/>
                 The request did not contain all of the information required to perform this method.  Please check your request for the required fields to be passed in and try again.  The offending fields will be specified in the error text of the response.
