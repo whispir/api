@@ -8,7 +8,7 @@ The changes we are rolling in now are primarily in two areas.
 2. The API Key information is also to be passed in the headers, apart from the current query param
 
 <aside class="notice">
-Whispir has set a good timeline of 6 months for its customers to update their API libraries, and systems to adapt to these changes. This means, you can continue to make your API calls in the current way till 31-Jan-2019 (23:59:59 GMT). 
+Whispir has set a timeline of 6 months for its customers to update their API libraries, and systems to adapt to these changes. This means, you can continue to make your API calls in the current way till 31-Jan-2019 (23:59:59 GMT). 
 </aside>
 
 However, Whispir requests you to make efforts to change as stated below at the earliest possible time. The 31-Jan-2019 is a fixed date, and no extention will be provided. If no changes are made by the said date, your API calls will be rejected by Whispir.
