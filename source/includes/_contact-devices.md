@@ -188,8 +188,9 @@ The following fields are required:
 			<td><strong>String</strong><br/>
 				Specifies the app's platform. The value can be one of - 
 				<ul>
-					<li>APNS</li>
-					<li>GCM</li>
+          <li>APNS - for Production APNS apps</li>
+					<li>APNS_SANDBOX - for Sandbox APNS apps</li>
+					<li>GCM - for FCM/GCM Apps</li>
 				</ul>
 			</td>
 		</tr>
