@@ -105,4 +105,17 @@ Apart from the programming changes, this change is more done at the infrastructu
 
 If your application is not SNI enabled, then the API calls made to Whispir using https will fail. Whispir is hosting its new API Service using Amazon's Web Services. The API Gateway is fronted by a Amazon CDN CloudFront. This means, if the calling party (your application server/integration server) does not understand SNI, the certificate handshake will fail, as it may not request specifically to connect with api.whispir.com, and CloudFront will then choose to provide its default SSL cert, which will result in your service treating this as a SSL hand-shake error. With SNI Enabled, your application server can specifically ask for api.whispir.com certificate, and things will work as expected.
 
-If you have any queries, related to this, please do reach out to <a href="mailto:support@whispir.com?subject=I%20need%20help%20with%20api%20key%20header%20value">Whispir Support</a>. Provide as much detail as possible in relation to the help you need, or the error you have faced with this change.
+You can connect to the following URL - <a href="https://api-sni.whispir.com/">http://api-sni.whispir.com/</a> to test if your application server supports SNI handling. Please pass a valid API Key in the headers as stated above.
+
+
+## IP Restrictions
+
+We host our REST API service on a high availability load balanced configuration, and so no fixed IPs are available for whitelisting. If your solution requires whitelisting of <a href="https://api.whispir.com">https://api.whispir.com</a>, please do so based on domain name (according to your region) or look for the new set of <a href="https://ip-ranges.amazonaws.com/ip-ranges.json">Amazon IP's here</a>. Please filter by service as "CLOUDFRONT".
+
+## Change of SSL Certs
+
+The current API gateway URL is set to change as per your region. This means, the leaf SSL certs that you might have stored in your cert store would no longer be relevant. Please review the certs that you have stored, and ensure that the latest certs are consumed. Whispir's new certs are derived from the same root and intermediate chain of trust. Your application server should be able to handle it as per normal.
+
+Also, the current <a href="https://api.whispir.com">https://api.whispir.com</a> certificate will expire on 20th September 2018. Please ensure that you update the certificate if you are not able to move to the regional gateway endpoints.
+
+If you have any queries, related to this, please do reach out to <a href="mailto:support@whispir.com?subject=API%20Gateway%20Changes">Whispir Support</a>. Provide as much detail as possible in relation to the help you need, or the error you have faced with this change.
