@@ -234,3 +234,8 @@ Be sure to include the correct headers for the desired content type:
 * JSON - `application/vnd.whispir.message-v1+json`
 
 For more information on Messages and all the other Whispir resources please continue through the documentation, or browse straight to Messages resource documentation for more information.
+
+
+### Case Sensitivity of Headers
+
+As per <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html">RFC-2616</a>, the headers in both the request and response are case in-sensitive. This implies that `Accept = accept` in request headers, and `Location = location` in response headers. When you process the header values, please ensure that case sensitivity does not cause any issues in your integration implementation.
