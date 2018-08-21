@@ -369,9 +369,9 @@ Whispir strongly recommends use of workspaces for all messaging needs. Refer <a 
 
 ### Response
 
-* If the response is `202 Accepted`, then the `location` header contains the reference to the message request. This value can be used to retrieve the message status, responses later on.
+* If the response is `202 Accepted`, then the `Location` header contains the reference to the message request. This value can be used to retrieve the message status, responses later on.
 * For any other response codes, please refer to the <a href="#http-response-codes">HTTP Response Codes</a> section.
-* If you have failed to capture the `location` header value, then refer to <a href="#retrieve-a-previously-sent-message"> How to Retrieve previously sent messages? </a>
+* If you have failed to capture the `Location` header value, then refer to <a href="#retrieve-a-previously-sent-message"> How to Retrieve previously sent messages? </a>
 * This process is same for sms, email, voice, push notifications.
 
 ## Email Messages
