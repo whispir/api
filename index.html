@@ -569,6 +569,10 @@ Accept: application/vnd.whispir.message-v1+xml
 
 <p>For more information on Messages and all the other Whispir resources please continue through the documentation, or browse straight to Messages resource documentation for more information.</p>
 
+<h3 id="case-sensitivity-of-headers">Case Sensitivity of Headers</h3>
+
+<p>As per <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html">RFC-2616</a>, the headers in both the request and response are case in-sensitive. This implies that <code class="prettyprint">Accept = accept</code> in request headers, and <code class="prettyprint">Location = location</code> in response headers. When you process the header values, please ensure that case sensitivity does not cause any issues in your integration implementation.</p>
+
         <h2 id="api-rate-limits">API Rate Limits</h2>
 
 <blockquote>
