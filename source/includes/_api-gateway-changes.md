@@ -10,7 +10,8 @@ Please follow the steps below to check the 3 main element of compliance to API s
 ## Change of SSL Certs
 Whispir is aware of some client integrations that depend upon trusting the client SSL Certificate explicitly. 
 
-If your application has this dependency, we would recommend that you review your implementation as the certificate serving api.whispir.com will be changing. You can download the new wildcard certificate by simply visiting au.whispir.com, or the respective region (ap, us, nz, it, ap1) based URL.
+If your application has this dependency, we would recommend that you review your implementation as the certificate serving api.whispir.com will be changing. You can download the new wildcard certificate by simply visiting au.whispir.com , or the respective region (ap, us, nz, it, ap1) based URL.
+
 
 ## IP Whitelisting
 The new and legacy Whispir API Gateway services are hosted in AWS.
@@ -22,8 +23,10 @@ Whispir is aware of some client intergration that do not adhere to header parsin
 
 While Whispir is looking to implement mitigations for those impacted, we highly recommend that you review your implementations and ensure that they treat all headers as case insensitive to increase resilience.
 
+The rollout of changes on the 21st of August highlighted these issues with some client integrations. The most common problem identified was a dependency on the casing of the 'location' response header provided by Whispir after successful API calls.
+
 ## Preparing for the Change
-Once you have reviewed the points above, you can directly test your integration by utilizing the following URL - <a href="https://api-sni.whispir.com/">http://api-sni.whispir.com/</a>. This URL is a parallel production link and will give you the opportunity to identify any issues or impacts that our migration might have on your integration.
+Once you have reviewed the points above, you can directly test your integration by utilizing the following URL - <a href="https://api-sni.whispir.com/">http://api-sni.whispir.com/</a>. This URL is a parallel production link and will give you the opportunity to identify any issues or impacts that our migration might have on your integration. 
 
 
 
