@@ -1,4 +1,33 @@
 # API Gateway Changes
+We're finalising the migration of our legacy API Gateway service.
+
+This migration is being performed in 2 phases. The instructions below refer to the initial phase of the API Gateway service. This will be followed by (refer below) client changes to move to region based API connections. We require clients to check that their API service connects & receives correct replies through the test link below (api-sni.whispir.com). 
+This link points to the new production system & should be used to verify that there will be no issues once we migrate.
+
+Please follow the steps below to check the 3 main element of compliance to API standards.
+
+
+## Change of SSL Certs
+Whispir is aware of some client integrations that depend upon trusting the client SSL Certificate explicitly. 
+
+If your application has this dependency, we would recommend that you review your implementation as the certificate serving api.whispir.com will be changing. You can download the new wildcard certificate by simply visiting au.whispir.com, or the respective region (ap, us, nz, it, ap1) based URL.
+
+## IP Whitelisting
+The new and legacy Whispir API Gateway services are hosted in AWS.
+
+If your implementation depends upon IP Whitelisting in order to make calls to our service, we suggest that you review the following set of <a href="https://ip-ranges.amazonaws.com/ip-ranges.json">Amazon IP's</a>. You will need to whitelist all IP ranges for the service "CLOUDFRONT" in the region "GLOBAL".
+
+## Enforcing HTTP Specifications
+Whispir is aware of some client intergration that do not adhere to header parsing rules specified in the <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html">Hypertext Transfer Protocol specification</a>.
+
+While Whispir is looking to implement mitigations for those impacted, we highly recommend that you review your implementations and ensure that they treat all headers as case insensitive to increase resilience.
+
+## Preparing for the Change
+Once you have reviewed the points above, you can directly test your integration by utilizing the following URL - <a href="https://api-sni.whispir.com/">http://api-sni.whispir.com/</a>. This URL is a parallel production link and will give you the opportunity to identify any issues or impacts that our migration might have on your integration.
+
+
+
+# Changes to API URL and Key
 
 Whispir has recently updated the API Gateway Service for all its instances. This update brings in the ability to better route the API requests to its regional instances, and also lays the foundation for more API Gateway related benefits it will bringing to its customers in the future.
 
@@ -94,28 +123,5 @@ In line with the new API Gateway changes, the key information has to be passed i
 4. If the API Key value is incorrect, or not passed propery, then a `403 Forbidden` error will be returned by Whispir.
 5. All other header parameters that you are sending today, should be passed as-is. DO NOT remove them. DO NOT remove them. DO NOT remove them. You have been warned thrice.
 
-
-## SNI Compliance
-
-(Server Name Indication (SNI) is a TLS extension that allows a single endpoint to provide multiple, valid certificates based on the resource being requested. SNI was first introduced in 2004 and has had support across major browsers since 2006, and most web servers since 2009. 
-
-Almost all modern programming languages have SNI support through their native cryptographic libraries, though this is not true for all versions of those programming languages. For example, Java introduced native SNI support in 2011 with the release of Java 1.7. Integrations that use native Java 1.6 libraries, which is currently in Extended Support and due for End of Life in December, will not have support for SNI.)
-
-Apart from the programming changes, this change is more done at the infrastructure level. So, please speak to your Architect, or Ops Admins in relation to this change. The change will involve all clients needing to be compliant to Server Name Indication (SNI). Whispir is undertaking measures to minimise the impact of client-side integrations lacking this compliance - however we encourage all clients to be compliant to SNI as soon as possible.
-
-If your application is not SNI enabled, then the API calls made to Whispir using https will fail. Whispir is hosting its new API Service using Amazon's Web Services. The API Gateway is fronted by a Amazon CDN CloudFront. This means, if the calling party (your application server/integration server) does not understand SNI, the certificate handshake will fail, as it may not request specifically to connect with api.whispir.com, and CloudFront will then choose to provide its default SSL cert, which will result in your service treating this as a SSL hand-shake error. With SNI Enabled, your application server can specifically ask for api.whispir.com certificate, and things will work as expected.
-
-You can connect to the following URL - <a href="https://api-sni.whispir.com/">http://api-sni.whispir.com/</a> to test if your application server supports SNI handling. Please pass a valid API Key in the headers as stated above.
-
-
-## IP Restrictions
-
-We host our REST API service on a high availability load balanced configuration, and so no fixed IPs are available for whitelisting. If your solution requires whitelisting of <a href="https://api.whispir.com">https://api.whispir.com</a>, please do so based on domain name (according to your region) or look for the new set of <a href="https://ip-ranges.amazonaws.com/ip-ranges.json">Amazon IP's here</a>. Please filter by service as "CLOUDFRONT".
-
-## Change of SSL Certs
-
-The current API gateway URL is set to change as per your region. This means, the leaf SSL certs that you might have stored in your cert store would no longer be relevant. Please review the certs that you have stored, and ensure that the latest certs are consumed. Whispir's new certs are derived from the same root and intermediate chain of trust. Your application server should be able to handle it as per normal.
-
-Also, the current <a href="https://api.whispir.com">https://api.whispir.com</a> certificate will expire on 20th September 2018. Please ensure that you update the certificate if you are not able to move to the regional gateway endpoints.
 
 If you have any queries, related to this, please do reach out to <a href="mailto:support@whispir.com?subject=API%20Gateway%20Changes">Whispir Support</a>. Provide as much detail as possible in relation to the help you need, or the error you have faced with this change.

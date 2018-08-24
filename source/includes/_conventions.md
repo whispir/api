@@ -582,4 +582,6 @@ All four of these parameters are required for a date search to work e.g.
 You can also use the parameter `viewType=shared` if the messages you are looking for were sent from other users (not the API user).
 
 
+### Case Sensitivity of Headers
 
+As per <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html">RFC-2616</a>, the headers in both the request and response are case in-sensitive. Please ensure your integration takes this into note when interacting with Whispir API.
