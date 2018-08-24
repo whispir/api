@@ -185,6 +185,37 @@ curl -H <span class="s2">"Authorization: Basic &lt;YOUR AUTHORIZATION HEADER&gt;
 
         <h1 id="api-gateway-changes">API Gateway Changes</h1>
 
+<p>We&rsquo;re finalising the migration of our legacy API Gateway service.</p>
+
+<p>This migration is being performed in 2 phases. The instructions below refer to the initial phase of the API Gateway service. This will be followed by (refer below) client changes to move to region based API connections. We require clients to check that their API service connects &amp; receives correct replies through the test link below (api-sni.whispir.com). 
+This link points to the new production system &amp; should be used to verify that there will be no issues once we migrate.</p>
+
+<p>Please follow the steps below to check the 3 main element of compliance to API standards.</p>
+
+<h2 id="change-of-ssl-certs">Change of SSL Certs</h2>
+
+<p>Whispir is aware of some client integrations that depend upon trusting the client SSL Certificate explicitly. </p>
+
+<p>If your application has this dependency, we would recommend that you review your implementation as the certificate serving api.whispir.com will be changing. You can download the new wildcard certificate by simply visiting au.whispir.com, or the respective region (ap, us, nz, it, ap1) based URL.</p>
+
+<h2 id="ip-whitelisting">IP Whitelisting</h2>
+
+<p>The new and legacy Whispir API Gateway services are hosted in AWS.</p>
+
+<p>If your implementation depends upon IP Whitelisting in order to make calls to our service, we suggest that you review the following set of <a href="https://ip-ranges.amazonaws.com/ip-ranges.json">Amazon IP&rsquo;s</a>. You will need to whitelist all IP ranges for the service &ldquo;CLOUDFRONT&rdquo; in the region &ldquo;GLOBAL&rdquo;.</p>
+
+<h2 id="enforcing-http-specifications">Enforcing HTTP Specifications</h2>
+
+<p>Whispir is aware of some client intergration that do not adhere to header parsing rules specified in the <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html">Hypertext Transfer Protocol specification</a>.</p>
+
+<p>While Whispir is looking to implement mitigations for those impacted, we highly recommend that you review your implementations and ensure that they treat all headers as case insensitive to increase resilience.</p>
+
+<h2 id="preparing-for-the-change">Preparing for the Change</h2>
+
+<p>Once you have reviewed the points above, you can directly test your integration by utilizing the following URL - <a href="https://api-sni.whispir.com/">http://api-sni.whispir.com/</a>. This URL is a parallel production link and will give you the opportunity to identify any issues or impacts that our migration might have on your integration.</p>
+
+<h1 id="changes-to-api-url-and-key">Changes to API URL and Key</h1>
+
 <p>Whispir has recently updated the API Gateway Service for all its instances. This update brings in the ability to better route the API requests to its regional instances, and also lays the foundation for more API Gateway related benefits it will bringing to its customers in the future.</p>
 
 <p>The changes we are rolling in now are primarily in two areas.</p>
@@ -287,28 +318,6 @@ x-api-key: YOUR-API-KEY
 <li>If the API Key value is incorrect, or not passed propery, then a <code class="prettyprint">403 Forbidden</code> error will be returned by Whispir.</li>
 <li>All other header parameters that you are sending today, should be passed as-is. DO NOT remove them. DO NOT remove them. DO NOT remove them. You have been warned thrice.</li>
 </ol>
-
-<h2 id="sni-compliance">SNI Compliance</h2>
-
-<p>(Server Name Indication (SNI) is a TLS extension that allows a single endpoint to provide multiple, valid certificates based on the resource being requested. SNI was first introduced in 2004 and has had support across major browsers since 2006, and most web servers since 2009. </p>
-
-<p>Almost all modern programming languages have SNI support through their native cryptographic libraries, though this is not true for all versions of those programming languages. For example, Java introduced native SNI support in 2011 with the release of Java 1.7. Integrations that use native Java 1.6 libraries, which is currently in Extended Support and due for End of Life in December, will not have support for SNI.)</p>
-
-<p>Apart from the programming changes, this change is more done at the infrastructure level. So, please speak to your Architect, or Ops Admins in relation to this change. The change will involve all clients needing to be compliant to Server Name Indication (SNI). Whispir is undertaking measures to minimise the impact of client-side integrations lacking this compliance - however we encourage all clients to be compliant to SNI as soon as possible.</p>
-
-<p>If your application is not SNI enabled, then the API calls made to Whispir using https will fail. Whispir is hosting its new API Service using Amazon&rsquo;s Web Services. The API Gateway is fronted by a Amazon CDN CloudFront. This means, if the calling party (your application server/integration server) does not understand SNI, the certificate handshake will fail, as it may not request specifically to connect with api.whispir.com, and CloudFront will then choose to provide its default SSL cert, which will result in your service treating this as a SSL hand-shake error. With SNI Enabled, your application server can specifically ask for api.whispir.com certificate, and things will work as expected.</p>
-
-<p>You can connect to the following URL - <a href="https://api-sni.whispir.com/">http://api-sni.whispir.com/</a> to test if your application server supports SNI handling. Please pass a valid API Key in the headers as stated above.</p>
-
-<h2 id="ip-restrictions">IP Restrictions</h2>
-
-<p>We host our REST API service on a high availability load balanced configuration, and so no fixed IPs are available for whitelisting. If your solution requires whitelisting of <a href="https://api.whispir.com">https://api.whispir.com</a>, please do so based on domain name (according to your region) or look for the new set of <a href="https://ip-ranges.amazonaws.com/ip-ranges.json">Amazon IP&rsquo;s here</a>. Please filter by service as &ldquo;CLOUDFRONT&rdquo;.</p>
-
-<h2 id="change-of-ssl-certs">Change of SSL Certs</h2>
-
-<p>The current API gateway URL is set to change as per your region. This means, the leaf SSL certs that you might have stored in your cert store would no longer be relevant. Please review the certs that you have stored, and ensure that the latest certs are consumed. Whispir&rsquo;s new certs are derived from the same root and intermediate chain of trust. Your application server should be able to handle it as per normal.</p>
-
-<p>Also, the current <a href="https://api.whispir.com">https://api.whispir.com</a> certificate will expire on 20th September 2018. Please ensure that you update the certificate if you are not able to move to the regional gateway endpoints.</p>
 
 <p>If you have any queries, related to this, please do reach out to <a href="mailto:support@whispir.com?subject=API%20Gateway%20Changes">Whispir Support</a>. Provide as much detail as possible in relation to the help you need, or the error you have faced with this change.</p>
 
@@ -568,10 +577,6 @@ Accept: application/vnd.whispir.message-v1+xml
 </ul>
 
 <p>For more information on Messages and all the other Whispir resources please continue through the documentation, or browse straight to Messages resource documentation for more information.</p>
-
-<h3 id="case-sensitivity-of-headers">Case Sensitivity of Headers</h3>
-
-<p>As per <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html">RFC-2616</a>, the headers in both the request and response are case in-sensitive. This implies that <code class="prettyprint">Accept = accept</code> in request headers, and <code class="prettyprint">Location = location</code> in response headers. When you process the header values, please ensure that case sensitivity does not cause any issues in your integration implementation.</p>
 
         <h2 id="api-rate-limits">API Rate Limits</h2>
 
@@ -1243,6 +1248,10 @@ Content-Type: application/vnd.whispir.contact-v2+xml
 <p>All four of these parameters are required for a date search to work e.g.</p>
 
 <p>You can also use the parameter <code class="prettyprint">viewType=shared</code> if the messages you are looking for were sent from other users (not the API user).</p>
+
+<h3 id="case-sensitivity-of-headers">Case Sensitivity of Headers</h3>
+
+<p>As per <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html">RFC-2616</a>, the headers in both the request and response are case in-sensitive. Please ensure your integration takes this into note when interacting with Whispir API.</p>
 
         <h1 id="workspaces">Workspaces</h1>
 
