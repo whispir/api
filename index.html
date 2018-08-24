@@ -196,7 +196,7 @@ This link points to the new production system &amp; should be used to verify tha
 
 <p>Whispir is aware of some client integrations that depend upon trusting the client SSL Certificate explicitly. </p>
 
-<p>If your application has this dependency, we would recommend that you review your implementation as the certificate serving api.whispir.com will be changing. You can download the new wildcard certificate by simply visiting au.whispir.com, or the respective region (ap, us, nz, it, ap1) based URL.</p>
+<p>If your application has this dependency, we would recommend that you review your implementation as the certificate serving api.whispir.com will be changing. You can download the new wildcard certificate by simply visiting au.whispir.com , or the respective region (ap, us, nz, it, ap1) based URL.</p>
 
 <h2 id="ip-whitelisting">IP Whitelisting</h2>
 
@@ -210,9 +210,11 @@ This link points to the new production system &amp; should be used to verify tha
 
 <p>While Whispir is looking to implement mitigations for those impacted, we highly recommend that you review your implementations and ensure that they treat all headers as case insensitive to increase resilience.</p>
 
+<p>The rollout of changes on the 21st of August highlighted these issues with some client integrations. The most common problem identified was a dependency on the casing of the &lsquo;location&rsquo; response header provided by Whispir after successful API calls.</p>
+
 <h2 id="preparing-for-the-change">Preparing for the Change</h2>
 
-<p>Once you have reviewed the points above, you can directly test your integration by utilizing the following URL - <a href="https://api-sni.whispir.com/">http://api-sni.whispir.com/</a>. This URL is a parallel production link and will give you the opportunity to identify any issues or impacts that our migration might have on your integration.</p>
+<p>Once you have reviewed the points above, you can directly test your integration by utilizing the following URL - <a href="https://api-sni.whispir.com/">http://api-sni.whispir.com/</a>. This URL is a parallel production link and will give you the opportunity to identify any issues or impacts that our migration might have on your integration. </p>
 
 <h1 id="changes-to-api-url-and-key">Changes to API URL and Key</h1>
 
