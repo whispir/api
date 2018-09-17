@@ -136,7 +136,7 @@ curl -H <span class="s2">"Authorization: Basic &lt;YOUR AUTHORIZATION HEADER&gt;
 <pre><code class="highlight plaintext">HTTP/1.1 200 OK
 </code></pre>
 <pre><code class="highlight shell">&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span> <span class="nv">standalone</span><span class="o">=</span><span class="s2">"yes"</span>?&gt;
-&lt;ns2:return xmlns:ns2<span class="o">=</span><span class="s2">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> xmlns:ns3<span class="o">=</span><span class="s2">"http://schemas.api.&lt;region&gt;.whispir.com"</span>&gt;
+&lt;ns2:return xmlns:ns2<span class="o">=</span><span class="s2">"http://schemas.api.whispir.com/dap"</span> xmlns:ns3<span class="o">=</span><span class="s2">"http://schemas.api.whispir.com"</span>&gt;
     &lt;status&gt;No records found&lt;/status&gt;
 &lt;/ns2:return&gt;
 </code></pre>
@@ -214,7 +214,7 @@ This link points to the new production system &amp; should be used to verify tha
 
 <h2 id="preparing-for-the-change">Preparing for the Change</h2>
 
-<p>Once you have reviewed the points above, you can directly test your integration by utilizing the following URL - <a href="https://api-sni.whispir.com/">http://api-sni.whispir.com/</a>. This URL is a parallel production link and will give you the opportunity to identify any issues or impacts that our migration might have on your integration. </p>
+<p>Once you have reviewed the points above, you can directly test your integration by utilizing the following URL - <a href="https://api-sni.whispir.com/">https://api-sni.whispir.com/</a>. This URL is a parallel production link and will give you the opportunity to identify any issues or impacts that our migration might have on your integration. Do not set this as your production url. This step is purely for testing only.</p>
 
 <h1 id="changes-to-api-url-and-key">Changes to API URL and Key</h1>
 
@@ -377,8 +377,8 @@ curl -H <span class="s2">"Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk"</sp
 <span class="c"># If all is correct, the following response should be expected (The API defaults to an XML response)</span>
 
 &lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span> <span class="nv">standalone</span><span class="o">=</span><span class="s2">"yes"</span>?&gt;
-&lt;ns2:company <span class="nv">xmlns</span><span class="o">=</span><span class="s2">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span>
-             xmlns:ns2<span class="o">=</span><span class="s2">"http://schemas.api.&lt;region&gt;.whispir.com"</span>&gt;
+&lt;ns2:company <span class="nv">xmlns</span><span class="o">=</span><span class="s2">"http://schemas.api.whispir.com/dap"</span>
+             xmlns:ns2<span class="o">=</span><span class="s2">"http://schemas.api.whispir.com"</span>&gt;
     &lt;link <span class="nv">method</span><span class="o">=</span><span class="s2">"GET"</span>
           <span class="nv">rel</span><span class="o">=</span><span class="s2">"retrieveWorkspaces"</span>
           <span class="nv">uri</span><span class="o">=</span><span class="s2">"https://api.&lt;region&gt;.whispir.com/workspaces?apikey=89asdfohasd89023rsd"</span>/&gt;
@@ -548,7 +548,7 @@ x-api-key: 89asdfohasd89023rsd
 Accept: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>[DESTINATION PHONE NUMBER]<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>This is the first line of my SMS<span class="nt">&lt;/subject&gt;</span>    
     <span class="nt">&lt;body&gt;</span>This is the content of my SMS<span class="nt">&lt;/body&gt;</span>
@@ -1196,7 +1196,7 @@ Content-Type: application/vnd.whispir.contact-v2+xml
 <pre><code class="highlight plaintext">HTTP/1.1 GET https://api.&lt;region&gt;.whispir.com/workspaces/7311ABEB701E7C60/messages?apikey=[your-api-key]&amp;limit=20&amp;offset=20
 </code></pre>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="true"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>No records found<span class="nt">&lt;/status&gt;</span>
 <span class="nt">&lt;/ns2:return&gt;</span>
 </code></pre>
@@ -1299,7 +1299,7 @@ x-api-key: your_api_key
 
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns3:workspace</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:workspace</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;projectName&gt;</span>A Space Odessey<span class="nt">&lt;/projectName&gt;</span>
     <span class="nt">&lt;projectNumber&gt;</span>2000<span class="nt">&lt;/projectNumber&gt;</span>
     <span class="nt">&lt;status&gt;</span>A<span class="nt">&lt;/status&gt;</span>
@@ -1376,7 +1376,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.workspace-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 4 of 4<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:workspaces&gt;</span>
         <span class="nt">&lt;ns2:workspace&gt;</span>
@@ -1616,7 +1616,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test Message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>This is the body of my test SMS message<span class="nt">&lt;/body&gt;</span>
@@ -1849,7 +1849,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test SMS Message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>This is the body of my test SMS message<span class="nt">&lt;/body&gt;</span>
@@ -1949,7 +1949,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>john.smith@test.com<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test Email Message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;email&gt;</span>
@@ -1985,7 +1985,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>john.smith@test.com<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test Email Message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;email&gt;</span>
@@ -2044,7 +2044,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>john.smith@test.com<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test e-mail message with attachment<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;email&gt;</span>
@@ -2157,7 +2157,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test Voice Call<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;voice&gt;</span>
@@ -2201,7 +2201,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test Voice Call<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;voice&gt;</span>
@@ -2309,7 +2309,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>61423568958<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test voice call with attachment<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;voice&gt;</span>
@@ -2392,7 +2392,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test Rich Message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>This is some content followed by the Rich Message link @@web_link@@<span class="nt">&lt;/body&gt;</span>
@@ -2437,7 +2437,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test Rich Message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>This is some content followed by the Rich Message link @@web_link@@<span class="nt">&lt;/body&gt;</span>
@@ -2549,7 +2549,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>contact-mri-value<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test Push Message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>This is the body of my test Push message<span class="nt">&lt;/body&gt;</span>
@@ -2631,7 +2631,7 @@ Location: https://api.&lt;region&gt;.whispir.com/workspaces/{:wid}/messages/{:mi
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>contact-mri-value<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;messageTemplateName&gt;</span>Name-Of-the-Template-Goes-Here<span class="nt">&lt;/messageTemplateName&gt;</span>
 <span class="nt">&lt;/ns2:message&gt;</span> 
@@ -2681,7 +2681,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test Web Message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;web&gt;</span>
@@ -2759,7 +2759,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>john.smith@test.com<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test scheduled e-mail message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;email&gt;</span>
@@ -2812,7 +2812,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>john.smith@test.com<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test scheduled e-mail message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;email&gt;</span>
@@ -2893,7 +2893,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>John_Wick.1143139@Contact.whispir.sg<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test SMS Message with tags<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>Hi @@first_name@@.  This is your message.<span class="nt">&lt;/body&gt;</span>
@@ -2993,7 +2993,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test SMS Message with tags<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>The date is @@dd@@ / @@mm@@ / @@yyyy@@.<span class="nt">&lt;/body&gt;</span>
@@ -3277,7 +3277,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.resource-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>sample.json<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;scope&gt;</span>private<span class="nt">&lt;/scope&gt;</span>
     <span class="nt">&lt;mimeType&gt;</span>application/json<span class="nt">&lt;/mimeType&gt;</span>
@@ -3321,7 +3321,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.bulkmessage-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;resource&gt;</span>
       <span class="nt">&lt;resourceId/&gt;</span>
       <span class="nt">&lt;smsMappingField/&gt;</span>
@@ -3739,7 +3739,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test Message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>This is the body of my test SMS message<span class="nt">&lt;/body&gt;</span>
@@ -3911,7 +3911,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
  <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
  <span class="nt">&lt;subject&gt;</span>test subject<span class="nt">&lt;/subject&gt;</span>
  <span class="nt">&lt;body&gt;</span>test body<span class="nt">&lt;/body&gt;</span>
@@ -4070,7 +4070,7 @@ x-api-key: your_api_key
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
  <span class="nt">&lt;ns2:messageStatuses&gt;</span>
   <span class="nt">&lt;ns2:messageStatus&gt;</span>
     <span class="nt">&lt;ns2:link</span> <span class="na">method=</span><span class="s">"GET"</span> 
@@ -4173,7 +4173,7 @@ x-api-key: your_api_key
 <p>Sample Detailed Status Response</p>
 </blockquote>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;status&gt;</span>1 to 2 of 2<span class="nt">&lt;/status&gt;</span>
   <span class="nt">&lt;ns2:messageStatuses&gt;</span>
     <span class="nt">&lt;ns2:messageStatus&gt;</span>
@@ -4363,7 +4363,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
  <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
  <span class="nt">&lt;subject&gt;</span>test subject<span class="nt">&lt;/subject&gt;</span>
  <span class="nt">&lt;body&gt;</span>test body<span class="nt">&lt;/body&gt;</span>
@@ -4522,7 +4522,7 @@ x-api-key: your_api_key
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ns2:link</span> <span class="na">method=</span><span class="s">"GET"</span> 
               <span class="na">rel=</span><span class="s">"self"</span> 
               <span class="na">uri=</span><span class="s">"https://api.&lt;region&gt;.whispir.com/messages/069BF68E5E0FE99B/messageresponses?view=summary&amp;filter=default&amp;apikey=498nadsasdff09fewdsafjaa90f"</span><span class="nt">/&gt;</span>
@@ -4606,7 +4606,7 @@ x-api-key: your_api_key
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 2 of 2<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:messageresponses&gt;</span>
         <span class="nt">&lt;ns2:response&gt;</span>
@@ -4776,8 +4776,8 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.template-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ns3:template</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> 
-              <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:template</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span> 
+              <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;messageTemplateName&gt;</span>Sample SMS Template<span class="nt">&lt;/messageTemplateName&gt;</span>
   <span class="nt">&lt;messageTemplateDescription&gt;</span>
     Template to provide an example on whispir.io
@@ -4928,7 +4928,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.template-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 4 of 4<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:messagetemplates&gt;</span>
         <span class="nt">&lt;ns2:template&gt;</span>
@@ -5084,8 +5084,8 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.template-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ns3:template</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> 
-              <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:template</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span> 
+              <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;messageTemplateName&gt;</span>Sample SMS Template<span class="nt">&lt;/messageTemplateName&gt;</span>
   <span class="nt">&lt;messageTemplateDescription&gt;</span>
     Template to provide an example on whispir.io
@@ -5327,7 +5327,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>john.smith@test.com<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;messageTemplateId&gt;</span>BACEB8D46BEF5315<span class="nt">&lt;/messageTemplateId&gt;</span>
 <span class="nt">&lt;/ns2:message&gt;</span> 
@@ -5352,7 +5352,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;messageTemplateName&gt;</span>Sample SMS Template<span class="nt">&lt;/messageTemplateName&gt;</span>
 <span class="nt">&lt;/ns2:message&gt;</span> 
@@ -5385,7 +5385,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;messageTemplateName&gt;</span>Sample SMS Template<span class="nt">&lt;/messageTemplateName&gt;</span>
     <span class="nt">&lt;subject&gt;</span>This will override the template Subject<span class="nt">&lt;/subject&gt;</span>
@@ -5477,7 +5477,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.responserule-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns3:responserule</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:responserule</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>Response Rule 1<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;description&gt;&lt;/description&gt;</span> 
     <span class="nt">&lt;responseTemplatePatterns&gt;</span>
@@ -5641,7 +5641,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;messageTemplateName&gt;</span>ReplyYesNoTemplate<span class="nt">&lt;/messageTemplateName&gt;</span>
     <span class="nt">&lt;callbackId&gt;</span>myCallbackName<span class="nt">&lt;/callbackId&gt;</span>
@@ -5783,7 +5783,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.contact-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:contact</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:contact</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;firstName&gt;</span>John<span class="nt">&lt;/firstName&gt;</span>
     <span class="nt">&lt;lastName&gt;</span>Wick<span class="nt">&lt;/lastName&gt;</span>
     <span class="nt">&lt;status&gt;</span>A<span class="nt">&lt;/status&gt;</span>
@@ -5845,7 +5845,7 @@ x-api-key: your_api_key
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:contact</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:contact</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;type&gt;</span>COMPANY<span class="nt">&lt;/type&gt;</span>
     <span class="nt">&lt;firstName&gt;</span>John<span class="nt">&lt;/firstName&gt;</span>
     <span class="nt">&lt;lastName&gt;</span>Wick<span class="nt">&lt;/lastName&gt;</span>
@@ -6208,7 +6208,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.contact-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 1 of 1<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:contacts&gt;</span>
         <span class="nt">&lt;ns2:contact&gt;</span>
@@ -6277,7 +6277,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.contact-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:contact</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:contact</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;id&gt;</span>AF48A9EC3F02E43C<span class="nt">&lt;/id&gt;</span>
    <span class="nt">&lt;firstName&gt;</span>Fred<span class="nt">&lt;/firstName&gt;</span>
    <span class="nt">&lt;lastName&gt;</span>Smith<span class="nt">&lt;/lastName&gt;</span>
@@ -6440,7 +6440,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.contact-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:contact</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:contact</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;firstName&gt;</span>John<span class="nt">&lt;/firstName&gt;</span>
     <span class="nt">&lt;lastName&gt;</span>Wick<span class="nt">&lt;/lastName&gt;</span>
     <span class="nt">&lt;timeZone&gt;</span>+8<span class="nt">&lt;/timezone&gt;</span>
@@ -6613,7 +6613,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.contact-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 1 of 1<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:contacts&gt;</span>
         <span class="nt">&lt;ns2:contact&gt;</span>
@@ -6720,7 +6720,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.contactdevice-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:device</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:device</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;deviceName&gt;</span>Device 1<span class="nt">&lt;/deviceName&gt;</span>
     <span class="nt">&lt;appId&gt;</span>B1A24A8BF2DBB10E<span class="nt">&lt;/appId&gt;</span>
     <span class="nt">&lt;platform&gt;</span>APNS<span class="nt">&lt;/platform&gt;</span>
@@ -6749,7 +6749,7 @@ x-api-key: your_api_key
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:device</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:device</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;id&gt;</span>1B0C3FC62D59BF90<span class="nt">&lt;/id&gt;</span>
     <span class="nt">&lt;deviceName&gt;</span>Device 1<span class="nt">&lt;/deviceName&gt;</span>
     <span class="nt">&lt;appId&gt;</span>B1A24A8BF2DBB10E<span class="nt">&lt;/appId&gt;</span>
@@ -6909,7 +6909,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.contact-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;ns2:contact&gt;</span>
             <span class="nt">&lt;id&gt;</span>AF48A9EC3F02E43C<span class="nt">&lt;/id&gt;</span>
             <span class="nt">&lt;firstName&gt;</span>Fred<span class="nt">&lt;/firstName&gt;</span>
@@ -6962,7 +6962,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.contactdevice-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="err">&lt;</span><span class="nt">&lt;ns2:device</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="err">&lt;</span><span class="nt">&lt;ns2:device</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;deviceName&gt;</span>Device 1<span class="nt">&lt;/deviceName&gt;</span>
     <span class="nt">&lt;appId&gt;</span>B1A24A8BF2DBB10E<span class="nt">&lt;/appId&gt;</span>
     <span class="nt">&lt;platform&gt;</span>APNS<span class="nt">&lt;/platform&gt;</span>
@@ -7150,7 +7150,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.distributionlist-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns1:distributionlists</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns1:distributionlists</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>My Distribution List<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;description&gt;&lt;/description&gt;</span>
     <span class="nt">&lt;access&gt;</span>Open<span class="nt">&lt;/access&gt;</span>
@@ -7191,7 +7191,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.distributionlist-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns1:distributionlist</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns1:distributionlist</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;name&gt;</span>My Dynamic DistributionList<span class="nt">&lt;/name&gt;</span>
    <span class="nt">&lt;description&gt;</span>My Distribution list<span class="nt">&lt;/description&gt;</span>
    <span class="nt">&lt;access&gt;</span>Open<span class="nt">&lt;/access&gt;</span>
@@ -7455,7 +7455,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.distributionlist-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 2 of 2<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:distributionLists&gt;</span>
         <span class="nt">&lt;ns2:distributionList&gt;</span>
@@ -7585,7 +7585,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.distributionlist-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns1:distributionlists</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns1:distributionlists</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;id&gt;</span>CF5AF1AE49ED07A6<span class="nt">&lt;/id&gt;</span>
     <span class="nt">&lt;name&gt;</span>Rockstar Distribution List<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;description&gt;</span>All the rocks were once stars - astrophysicist inside me<span class="nt">&lt;/description&gt;</span>
@@ -7632,7 +7632,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.distributionlist-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns1:distributionlists</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns1:distributionlists</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;id&gt;</span>CF5AF1AE49ED07A6<span class="nt">&lt;/id&gt;</span>
     <span class="nt">&lt;name&gt;</span>Rockstar Distribution List<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;description&gt;</span>All the rocks were once stars - astrophysicist inside me<span class="nt">&lt;/description&gt;</span>
@@ -7722,7 +7722,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>Docs_Distribution_List.company@list.company.whispir.sg<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Simple SMS to List of contacts in the distribution list<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>This is the content of my sample sms message.<span class="nt">&lt;/body&gt;</span>
@@ -7794,7 +7794,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.distributionlist-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns1:distributionlists</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns1:distributionlists</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>My Distribution List<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;description&gt;&lt;/description&gt;</span>
     <span class="nt">&lt;access&gt;</span>Open<span class="nt">&lt;/access&gt;</span>
@@ -7871,7 +7871,7 @@ An example callback that your application or service would receive is specified 
 <pre><code class="highlight xml">Content-Type: application/xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:deliveryResponse</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:deliveryResponse</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;messageid&gt;</span>ABC4857BCCF484575FCA<span class="nt">&lt;/messageid&gt;</span>
   <span class="nt">&lt;messagelocation&gt;</span>https://api.<span class="nt">&lt;region&gt;</span>.whispir.com/messages/ABC4857BCCF484575FCA<span class="nt">&lt;/messagelocation&gt;</span>
   <span class="nt">&lt;from&gt;</span>
@@ -7939,8 +7939,8 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.api-callback-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:companyapicallback</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span>
-                    <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:companyapicallback</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span>
+                    <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>Callback Name<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;url&gt;</span>http://myserver.com/mycallback.php<span class="nt">&lt;/url&gt;</span>
     <span class="nt">&lt;auth&gt;</span>
@@ -8119,7 +8119,7 @@ X-Whispir-Callback-Key: MY_AUTH_TOKEN
 <pre><code class="highlight xml">Content-Type: application/xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:deliveryResponse</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:deliveryResponse</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;messageid&gt;</span>ABC4857BCCF484575FCA<span class="nt">&lt;/messageid&gt;</span>
     <span class="nt">&lt;messagelocation&gt;</span>https://api.<span class="nt">&lt;region&gt;</span>.whispir.com/messages/ABC4857BCCF484575FCA<span class="nt">&lt;/messagelocation&gt;</span>
     <span class="nt">&lt;from&gt;</span>
@@ -8167,7 +8167,7 @@ X-Whispir-Callback-Key: MY_AUTH_TOKEN
 <pre><code class="highlight xml">Content-Type: application/xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:deliveryResponse</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:deliveryResponse</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;messageid&gt;</span>ABC4857BCCF484575FCA<span class="nt">&lt;/messageid&gt;</span>
     <span class="nt">&lt;messagelocation&gt;</span>https://api.<span class="nt">&lt;region&gt;</span>.whispir.com/messages/ABC4857BCCF484575FCA<span class="nt">&lt;/messagelocation&gt;</span>
     <span class="nt">&lt;from&gt;</span>
@@ -8273,7 +8273,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.api-callback-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 3 of 3<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:callbacks&gt;</span>
         <span class="nt">&lt;ns2:callback&gt;</span>
@@ -8411,7 +8411,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test SMS Message<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>This is the body of my test SMS message<span class="nt">&lt;/body&gt;</span>
@@ -8508,7 +8508,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.api-call-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;status&gt;</span>1 to 1 of 1<span class="nt">&lt;/status&gt;</span>
   <span class="nt">&lt;ns2:call&gt;</span>
     <span class="nt">&lt;id&gt;</span>B3EDFE83DF389DFE<span class="nt">&lt;/id&gt;</span>
@@ -8778,7 +8778,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.api-call-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:call</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:call</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;status&gt;</span>SUCCESS<span class="nt">&lt;/status&gt;</span>
 <span class="nt">&lt;/ns2:call&gt;</span>
 
@@ -8863,7 +8863,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test SMS<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>This is the SMS<span class="nt">&lt;/body&gt;</span>
@@ -8903,7 +8903,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Test SMS<span class="nt">&lt;/subject&gt;</span>
     <span class="nt">&lt;body&gt;</span>This is the SMS<span class="nt">&lt;/body&gt;</span>
@@ -9026,7 +9026,7 @@ x-api-key: your_api_key
 </span></code></pre>
 <pre><code class="highlight xml">Content-Type: application/xml
 
-<span class="nt">&lt;ns2:deliveryResponse</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:deliveryResponse</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;messageid&gt;</span>ABC4857BCCF484575FCA<span class="nt">&lt;/messageid&gt;</span>
   <span class="nt">&lt;messagelocation&gt;</span>https://api.<span class="nt">&lt;region&gt;</span>.whispir.com/messages/ABC4857BCCF484575FCA<span class="nt">&lt;/messagelocation&gt;</span>
   <span class="nt">&lt;from&gt;</span>
@@ -9504,7 +9504,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.app-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:app</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:app</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>My Push App<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;description&gt;</span>Description of the App<span class="nt">&lt;/description&gt;</span>
     <span class="nt">&lt;bundleId&gt;</span>com.your.bundleId<span class="nt">&lt;/bundleId&gt;</span>
@@ -9799,7 +9799,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.app-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:app</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:app</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;id&gt;</span>521BBA863C2C230BD0E1BBA86<span class="nt">&lt;/id&gt;</span>
     <span class="nt">&lt;name&gt;</span>My Push App<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;description&gt;</span>Description of the App<span class="nt">&lt;/description&gt;</span>
@@ -9957,7 +9957,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.scenario-v1+xml 
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:scenario</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:scenario</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;title&gt;</span>Fire Evacuation Block A<span class="nt">&lt;/title&gt;</span>
     <span class="nt">&lt;description&gt;</span>Fire evacuation notification for A block residents<span class="nt">&lt;/description&gt;</span>
     <span class="nt">&lt;message&gt;</span>
@@ -10126,7 +10126,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.scenario-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 2 of 2<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:scenarios&gt;</span>
         <span class="nt">&lt;ns2:scenario&gt;</span>
@@ -10245,7 +10245,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.scenario-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:scenario</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:scenario</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;title&gt;</span>Emergency Comms - Fire<span class="nt">&lt;/title&gt;</span>
     <span class="nt">&lt;description&gt;</span>Scenario to use during fire evacuation<span class="nt">&lt;/description&gt;</span>
     <span class="nt">&lt;createdTime&gt;</span>2015-07-20T17:18:58+08:00<span class="nt">&lt;/createdTime&gt;</span>
@@ -10501,7 +10501,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.scenario-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:scenario</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:scenario</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;title&gt;</span>Emergency Comms - Fire<span class="nt">&lt;/title&gt;</span>
     <span class="nt">&lt;description&gt;</span>Scenario to use during fire evacuation<span class="nt">&lt;/description&gt;</span>
     <span class="nt">&lt;allowedUsers&gt;</span>EVERYONE<span class="nt">&lt;/allowedUsers&gt;</span>
@@ -10766,7 +10766,7 @@ x-api-key: your_api_key
 
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns3:activity</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:activity</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;module&gt;</span>Message<span class="nt">&lt;/module&gt;</span>
     <span class="nt">&lt;action&gt;</span>Send<span class="nt">&lt;/action&gt;</span>
     <span class="nt">&lt;status&gt;</span>Successful<span class="nt">&lt;/status&gt;</span>
@@ -10908,7 +10908,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.activity-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ns2:activities&gt;</span>
         <span class="nt">&lt;ns2:activity&gt;</span>
             <span class="nt">&lt;user&gt;</span>james.cameron<span class="nt">&lt;/user&gt;</span>
@@ -11315,7 +11315,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.customlist-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 5 of 5<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:customlabels&gt;</span>
         <span class="nt">&lt;ns2:customlabel&gt;</span>
@@ -11535,7 +11535,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.customlist-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:customlabel</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:customlabel</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;id&gt;</span>4E2101D0E5D16229<span class="nt">&lt;/id&gt;</span>
     <span class="nt">&lt;name&gt;</span>Category<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;type&gt;</span>INCIDENT<span class="nt">&lt;/type&gt;</span>
@@ -11836,7 +11836,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.user-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:user</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:user</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;firstName&gt;</span>John<span class="nt">&lt;/firstName&gt;</span>
     <span class="nt">&lt;lastName&gt;</span>Wick<span class="nt">&lt;/lastName&gt;</span>
     <span class="nt">&lt;userName&gt;</span>John.Wick<span class="nt">&lt;/userName&gt;</span>
@@ -11867,7 +11867,7 @@ x-api-key: your_api_key
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns3:user</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:user</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;userName&gt;</span>John.Wick<span class="nt">&lt;/userName&gt;</span>
     <span class="nt">&lt;password&gt;&lt;/password&gt;</span>
     <span class="nt">&lt;status&gt;</span>PENDING<span class="nt">&lt;/status&gt;</span>
@@ -12130,7 +12130,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.user-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 1 of 1<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:Users&gt;</span>
         <span class="nt">&lt;ns2:user&gt;</span>
@@ -12197,7 +12197,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.user-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:user</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:user</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;id&gt;</span>AF48A9EC3F02E43C<span class="nt">&lt;/id&gt;</span>
    <span class="nt">&lt;firstName&gt;</span>Fred<span class="nt">&lt;/firstName&gt;</span>
    <span class="nt">&lt;lastName&gt;</span>Smith<span class="nt">&lt;/lastName&gt;</span>
@@ -12242,7 +12242,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.user-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 20 of 28<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:link</span> <span class="na">uri=</span><span class="s">"https://api.&lt;region&gt;.whispir.com/workspaces/C727BCE3A813E2B1/users/?apikey=&lt;your_api_key&gt;&amp;offset=20&amp;limit=20"</span> <span class="na">rel=</span><span class="s">"next"</span> <span class="na">method=</span><span class="s">"GET"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;ns2:users&gt;</span>
@@ -12420,7 +12420,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.user-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:user</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:user</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;firstName&gt;</span>John<span class="nt">&lt;/firstName&gt;</span>
     <span class="nt">&lt;lastName&gt;</span>Wick<span class="nt">&lt;/lastName&gt;</span>
     <span class="nt">&lt;timeZone&gt;</span>+8<span class="nt">&lt;/timezone&gt;</span>
@@ -12660,7 +12660,7 @@ Content-Type: application/vnd.whispir.event-v1+xml
 <p>Events are created within a workspace. As they are custom built the information to be captured will depend on your organisations specific requirements. Generally at a minimum an event will have a label, start date, and a status.</p>
 
 <p>Most importantly, to create an event, one must have the create access for Incident row in the Roles &amp; Permission section of the account settings.</p>
-<pre><code class="highlight plaintext">&lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.api.&lt;region&gt;.whispir.com/dap" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+<pre><code class="highlight plaintext">&lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.api.whispir.com/dap" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;xs:element name="link"&gt;
     &lt;xs:complexType&gt;
       &lt;xs:simpleContent&gt;
@@ -12739,8 +12739,8 @@ x-api-key: your_api_key
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
 <span class="nt">&lt;ns3:event</span>
-    <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span>
-    <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+    <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span>
+    <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;eventLabel&gt;</span>2701095 - Outage of Local Systems in Sydney<span class="nt">&lt;/eventLabel&gt;</span>
     <span class="nt">&lt;status&gt;</span>Open<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;eventFormList&gt;</span>
@@ -12835,7 +12835,7 @@ x-api-key: your_api_key
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:event</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:event</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;id&gt;</span>421FEEBA93GF53A2<span class="nt">&lt;/id&gt;</span>
     <span class="nt">&lt;eventLabel&gt;</span>2701095 - Outage of Local Systems in Sydney<span class="nt">&lt;/eventLabel&gt;</span>
     <span class="nt">&lt;status&gt;</span>Open<span class="nt">&lt;/status&gt;</span>
@@ -13526,7 +13526,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Event Notification<span class="nt">&lt;/subject&gt;</span>    
     <span class="nt">&lt;eventId&gt;</span>2EE7FEA3343662BE<span class="nt">&lt;/eventId&gt;</span>  
@@ -13571,7 +13571,7 @@ Location: http://api.&lt;region&gt;.whispir.com/messages/47707420BAE1288B?apikey
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;to&gt;</span>$mobile<span class="nt">&lt;/to&gt;</span>
     <span class="nt">&lt;subject&gt;</span>Event Notification<span class="nt">&lt;/subject&gt;</span>    
     <span class="nt">&lt;eventId&gt;</span>2EE7FEA3343662BE<span class="nt">&lt;/eventId&gt;</span>  
@@ -13644,7 +13644,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.message-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 1 of 1<span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:messages&gt;</span>
         <span class="nt">&lt;ns2:message&gt;</span>
@@ -13867,7 +13867,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.resource-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>test.csv<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;scope&gt;</span>private<span class="nt">&lt;/scope&gt;</span>
     <span class="nt">&lt;mimeType&gt;</span>text/csv<span class="nt">&lt;/mimeType&gt;</span>
@@ -14078,7 +14078,7 @@ x-api-key: your_api_key
 
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>test.json<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;scope&gt;</span>private<span class="nt">&lt;/scope&gt;</span>
     <span class="nt">&lt;mimeType&gt;</span>application/json<span class="nt">&lt;/mimeType&gt;</span>
@@ -14147,7 +14147,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Content-Type: application/vnd.whispir.bulkmessage-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:message</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;resource&gt;</span>
       <span class="nt">&lt;resourceId&gt;</span>ABD435DBFCD663DEDEFF<span class="nt">&lt;/resourceId&gt;</span>
     <span class="nt">&lt;smsMappingField&gt;</span>mobile<span class="nt">&lt;/smsMappingField&gt;</span>
@@ -14316,7 +14316,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.resource-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:return</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;status&gt;</span>1 to 7 of 7    <span class="nt">&lt;/status&gt;</span>
     <span class="nt">&lt;ns2:resources&gt;</span>
         <span class="nt">&lt;ns2:resource&gt;</span>
@@ -14478,7 +14478,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.resource-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>australia.json<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;scope&gt;</span>private<span class="nt">&lt;/scope&gt;</span>
     <span class="nt">&lt;mimeType&gt;</span>application/json<span class="nt">&lt;/mimeType&gt;</span>
@@ -14524,7 +14524,7 @@ x-api-key: your_api_key
 <pre><code class="highlight xml">Accept: application/vnd.whispir.resource-v1+xml
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>users.json<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;scope&gt;</span>public<span class="nt">&lt;/scope&gt;</span>
     <span class="nt">&lt;mimeType&gt;</span>application/json<span class="nt">&lt;/mimeType&gt;</span>
@@ -14691,7 +14691,7 @@ x-api-key: your_api_key
 
 
 <span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns3:resource</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com/dap"</span> <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;name&gt;</span>australia.json<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;scope&gt;</span>private<span class="nt">&lt;/scope&gt;</span>
     <span class="nt">&lt;mimeType&gt;</span>application/json<span class="nt">&lt;/mimeType&gt;</span>
@@ -14867,8 +14867,8 @@ Content-Type: application/vnd.whispir.import-v1+xml
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ns2:import</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com"</span> 
-             <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.&lt;region&gt;.whispir.com/dap"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:import</span> <span class="na">xmlns:ns2=</span><span class="s">"http://schemas.api.whispir.com"</span> 
+             <span class="na">xmlns:ns3=</span><span class="s">"http://schemas.api.whispir.com/dap"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ns2:contacts&gt;</span>
         <span class="nt">&lt;ns2:contact&gt;</span>
             <span class="nt">&lt;firstName&gt;</span>John<span class="nt">&lt;/firstName&gt;</span>
