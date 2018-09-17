@@ -47,7 +47,7 @@ Content-Type: application/vnd.whispir.workspace-v1+xml
 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:workspace xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns3:workspace xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <projectName>A Space Odessey</projectName>
     <projectNumber>2000</projectNumber>
     <status>A</status>
@@ -128,7 +128,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.workspace-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 4 of 4</status>
     <ns2:workspaces>
         <ns2:workspace>

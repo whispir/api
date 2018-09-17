@@ -64,7 +64,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.responserule-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:responserule xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns3:responserule xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <name>Response Rule 1</name>
     <description></description> 
     <responseTemplatePatterns>
@@ -225,7 +225,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <messageTemplateName>ReplyYesNoTemplate</messageTemplateName>
     <callbackId>myCallbackName</callbackId>

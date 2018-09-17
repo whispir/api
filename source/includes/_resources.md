@@ -177,7 +177,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <name>test.csv</name>
     <scope>private</scope>
     <mimeType>text/csv</mimeType>
@@ -389,7 +389,7 @@ Content-Type: application/vnd.whispir.resource-v1+xml
 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <name>test.json</name>
     <scope>private</scope>
     <mimeType>application/json</mimeType>
@@ -457,7 +457,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.bulkmessage-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
    <resource>
       <resourceId>ABD435DBFCD663DEDEFF</resourceId>
     <smsMappingField>mobile</smsMappingField>
@@ -628,7 +628,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 7 of 7    </status>
     <ns2:resources>
         <ns2:resource>
@@ -792,7 +792,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <name>australia.json</name>
     <scope>private</scope>
     <mimeType>application/json</mimeType>
@@ -846,7 +846,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <name>users.json</name>
     <scope>public</scope>
     <mimeType>application/json</mimeType>
@@ -1010,7 +1010,7 @@ Content-Type: application/vnd.whispir.resource-v1+xml
 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <name>australia.json</name>
     <scope>private</scope>
     <mimeType>application/json</mimeType>

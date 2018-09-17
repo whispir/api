@@ -67,7 +67,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.contactdevice-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:device xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:device xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <deviceName>Device 1</deviceName>
     <appId>B1A24A8BF2DBB10E</appId>
     <platform>APNS</platform>
@@ -96,7 +96,7 @@ Content-Type: application/vnd.whispir.contactdevice-v1+json
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:device xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:device xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <id>1B0C3FC62D59BF90</id>
     <deviceName>Device 1</deviceName>
     <appId>B1A24A8BF2DBB10E</appId>
@@ -252,7 +252,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
         <ns2:contact>
             <id>AF48A9EC3F02E43C</id>
             <firstName>Fred</firstName>
@@ -307,7 +307,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.contactdevice-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<<ns2:device xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<<ns2:device xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <deviceName>Device 1</deviceName>
     <appId>B1A24A8BF2DBB10E</appId>
     <platform>APNS</platform>

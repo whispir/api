@@ -55,7 +55,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.app-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:app xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:app xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <name>My Push App</name>
     <description>Description of the App</description>
     <bundleId>com.your.bundleId</bundleId>
@@ -348,7 +348,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.app-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:app xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:app xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <id>521BBA863C2C230BD0E1BBA86</id>
     <name>My Push App</name>
     <description>Description of the App</description>

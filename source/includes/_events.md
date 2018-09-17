@@ -67,7 +67,7 @@ Events are created within a workspace. As they are custom built the information 
 Most importantly, to create an event, one must have the create access for Incident row in the Roles & Permission section of the account settings.
 
 ```
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.api.<region>.whispir.com/dap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.api.whispir.com/dap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="link">
     <xs:complexType>
       <xs:simpleContent>
@@ -146,8 +146,8 @@ Content-Type: application/vnd.whispir.event-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns3:event
-    xmlns:ns2="http://schemas.api.<region>.whispir.com/dap"
-    xmlns:ns3="http://schemas.api.<region>.whispir.com">
+    xmlns:ns2="http://schemas.api.whispir.com/dap"
+    xmlns:ns3="http://schemas.api.whispir.com">
     <eventLabel>2701095 - Outage of Local Systems in Sydney</eventLabel>
     <status>Open</status>
     <eventFormList>
@@ -241,7 +241,7 @@ Content-Type: application/vnd.whispir.event-v1+json
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:event xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:event xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <id>421FEEBA93GF53A2</id>
     <eventLabel>2701095 - Outage of Local Systems in Sydney</eventLabel>
     <status>Open</status>
@@ -933,7 +933,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Event Notification</subject>    
     <eventId>2EE7FEA3343662BE</eventId>  
@@ -974,7 +974,7 @@ Location: http://api.<region>.whispir.com/messages/47707420BAE1288B?apikey=<your
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Event Notification</subject>    
     <eventId>2EE7FEA3343662BE</eventId>  
@@ -1048,7 +1048,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 1 of 1</status>
     <ns2:messages>
         <ns2:message>

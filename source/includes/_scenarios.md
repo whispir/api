@@ -68,7 +68,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.scenario-v1+xml 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:scenario xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:scenario xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
 	<title>Fire Evacuation Block A</title>
 	<description>Fire evacuation notification for A block residents</description>
 	<message>
@@ -233,7 +233,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.scenario-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 2 of 2</status>
     <ns2:scenarios>
         <ns2:scenario>
@@ -351,7 +351,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.scenario-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:scenario xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:scenario xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <title>Emergency Comms - Fire</title>
     <description>Scenario to use during fire evacuation</description>
     <createdTime>2015-07-20T17:18:58+08:00</createdTime>
@@ -605,7 +605,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.scenario-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:scenario xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:scenario xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <title>Emergency Comms - Fire</title>
     <description>Scenario to use during fire evacuation</description>
     <allowedUsers>EVERYONE</allowedUsers>

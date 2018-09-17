@@ -50,8 +50,8 @@ curl -H "Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk" -H "x-api-key: 89asd
 # If all is correct, the following response should be expected (The API defaults to an XML response)
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:company xmlns="http://schemas.api.<region>.whispir.com/dap"
-             xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:company xmlns="http://schemas.api.whispir.com/dap"
+             xmlns:ns2="http://schemas.api.whispir.com">
     <link method="GET"
           rel="retrieveWorkspaces"
           uri="https://api.<region>.whispir.com/workspaces?apikey=89asdfohasd89023rsd"/>
@@ -206,7 +206,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>[DESTINATION PHONE NUMBER]</to>
     <subject>This is the first line of my SMS</subject>    
     <body>This is the content of my SMS</body>

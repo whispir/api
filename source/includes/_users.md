@@ -121,7 +121,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:user xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:user xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <firstName>John</firstName>
     <lastName>Wick</lastName>
     <userName>John.Wick</userName>
@@ -151,7 +151,7 @@ Content-Type: application/vnd.whispir.user-v1+json
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:user xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns3:user xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <userName>John.Wick</userName>
     <password></password>
     <status>PENDING</status>
@@ -414,7 +414,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 1 of 1</status>
     <ns2:Users>
         <ns2:user>
@@ -482,7 +482,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:user xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:user xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
    <id>AF48A9EC3F02E43C</id>
    <firstName>Fred</firstName>
    <lastName>Smith</lastName>
@@ -529,7 +529,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 20 of 28</status>
     <ns2:link uri="https://api.<region>.whispir.com/workspaces/C727BCE3A813E2B1/users/?apikey=<your_api_key>&offset=20&limit=20" rel="next" method="GET"/>
     <ns2:users>
@@ -708,7 +708,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.user-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:user xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:user xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <firstName>John</firstName>
     <lastName>Wick</lastName>
     <timeZone>+8</timezone>

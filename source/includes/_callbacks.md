@@ -29,7 +29,7 @@ HTTP 1.1 POST http://yourserver/callback.php
 Content-Type: application/xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:deliveryResponse xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
   <messageid>ABC4857BCCF484575FCA</messageid>
   <messagelocation>https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
   <from>
@@ -96,8 +96,8 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.api-callback-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:companyapicallback xmlns:ns2="http://schemas.api.<region>.whispir.com"
-                    xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:companyapicallback xmlns:ns2="http://schemas.api.whispir.com"
+                    xmlns:ns3="http://schemas.api.whispir.com/dap">
     <name>Callback Name</name>
     <url>http://myserver.com/mycallback.php</url>
     <auth>
@@ -271,7 +271,7 @@ X-Whispir-Callback-Key: MY_AUTH_TOKEN
 Content-Type: application/xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:deliveryResponse xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
     <messagelocation>https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
     <from>
@@ -321,7 +321,7 @@ HTTP 1.1 POST https://yourserver/callback.php?auth=MY_AUTH_TOKEN
 Content-Type: application/xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:deliveryResponse xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid>
     <messagelocation>https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
     <from>
@@ -422,7 +422,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.api-callback-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 3 of 3</status>
     <ns2:callbacks>
         <ns2:callback>
@@ -560,7 +560,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS Message</subject>
     <body>This is the body of my test SMS message</body>
@@ -647,7 +647,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.api-call-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
   <status>1 to 1 of 1</status>
   <ns2:call>
     <id>B3EDFE83DF389DFE</id>
@@ -909,7 +909,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.api-call-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:call xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:call xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
   <status>SUCCESS</status>
 </ns2:call>
 
@@ -991,7 +991,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS</subject>
     <body>This is the SMS</body>
@@ -1033,7 +1033,7 @@ Content-Type: application/vnd.whispir.message-v1+json
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS</subject>
     <body>This is the SMS</body>
@@ -1147,7 +1147,7 @@ Content-Type: application/json
 ```xml
 Content-Type: application/xml
 
-<ns2:deliveryResponse xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:deliveryResponse xmlns:ns2="http://schemas.api.whispir.com">
   <messageid>ABC4857BCCF484575FCA</messageid>
   <messagelocation>https://api.<region>.whispir.com/messages/ABC4857BCCF484575FCA</messagelocation>
   <from>

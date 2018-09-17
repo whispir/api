@@ -4,7 +4,7 @@
 HTTP 1.1 POST http://myapp.com/statusupdate
 Content-Type: application/xml
 
-<ns2:statuscallback xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:statuscallback xmlns:ns2="http://schemas.api.whispir.com">
     <messageid>ABC4857BCCF484575FCA</messageid> 
     <from>
         <name>John Waters</name> 
@@ -85,7 +85,7 @@ The structure of the on ‘Report Completion' callback will be as follows:
 HTTP 1.1 POST http://myapp.com/reportcompletion
 Content-Type: application/xml
 
-<ns2:reportcompletion xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:reportcompletion xmlns:ns2="http://schemas.api.whispir.com">
     <reportid>ABC4857BCCF484575FCA</reportid>
     <outputLocation>http://203.116.705.600/reports</outputLocation>
     <timestamp>09/01/13 13:22</timestamp>

@@ -68,7 +68,7 @@ Content-Type: application/vnd.whispir.activity-v1+xml
 
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:activity xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns3:activity xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <module>Message</module>
     <action>Send</action>
     <status>Successful</status>
@@ -216,7 +216,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.activity-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <ns2:activities>
         <ns2:activity>
             <user>james.cameron</user>

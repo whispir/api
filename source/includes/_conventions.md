@@ -529,7 +529,7 @@ HTTP/1.1 GET https://api.<region>.whispir.com/workspaces/7311ABEB701E7C60/messag
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="true"?>
-<ns2:return xmlns:ns3="http://schemas.api.<region>.whispir.com" xmlns:ns2="http://schemas.api.<region>.whispir.com/dap">
+<ns2:return xmlns:ns3="http://schemas.api.whispir.com" xmlns:ns2="http://schemas.api.whispir.com/dap">
     <status>No records found</status>
 </ns2:return>
 ```

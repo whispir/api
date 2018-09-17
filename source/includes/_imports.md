@@ -109,8 +109,8 @@ These two stages are further explained below.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:import xmlns:ns2="http://schemas.api.<region>.whispir.com" 
-             xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:import xmlns:ns2="http://schemas.api.whispir.com" 
+             xmlns:ns3="http://schemas.api.whispir.com/dap">
     <ns2:contacts>
         <ns2:contact>
             <firstName>John</firstName>

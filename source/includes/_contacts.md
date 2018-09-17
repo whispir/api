@@ -60,7 +60,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:contact xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:contact xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <firstName>John</firstName>
     <lastName>Wick</lastName>
     <status>A</status>
@@ -122,7 +122,7 @@ Content-Type: application/vnd.whispir.contact-v1+json
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:contact xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:contact xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <type>COMPANY</type>
     <firstName>John</firstName>
     <lastName>Wick</lastName>
@@ -487,7 +487,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 1 of 1</status>
     <ns2:contacts>
         <ns2:contact>
@@ -556,7 +556,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:contact xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:contact xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
    <id>AF48A9EC3F02E43C</id>
    <firstName>Fred</firstName>
    <lastName>Smith</lastName>
@@ -723,7 +723,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:contact xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:contact xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <firstName>John</firstName>
     <lastName>Wick</lastName>
     <timeZone>+8</timezone>
@@ -877,7 +877,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.contact-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 1 of 1</status>
     <ns2:contacts>
         <ns2:contact>

@@ -60,7 +60,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Message</subject>
     <body>This is the body of my test SMS message</body>
@@ -293,7 +293,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS Message</subject>
     <body>This is the body of my test SMS message</body>
@@ -389,7 +389,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test Email Message</subject>
     <email>
@@ -426,7 +426,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test Email Message</subject>
     <email>
@@ -485,7 +485,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>john.smith@test.com</to>
     <subject>Test e-mail message with attachment</subject>
     <email>
@@ -595,7 +595,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Voice Call</subject>
     <voice>
@@ -640,7 +640,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Voice Call</subject>
     <voice>
@@ -748,7 +748,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>61423568958</to>
     <subject>Test voice call with attachment</subject>
     <voice>
@@ -828,7 +828,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Rich Message</subject>
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
@@ -875,7 +875,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Rich Message</subject>
     <body>This is some content followed by the Rich Message link @@web_link@@</body>
@@ -983,7 +983,7 @@ Content-Type: application/vnd.whispir.message-v1+xml
 Accept: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>contact-mri-value</to>
     <subject>Test Push Message</subject>
     <body>This is the body of my test Push message</body>
@@ -1067,7 +1067,7 @@ The following fields are required:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>contact-mri-value</to>
     <messageTemplateName>Name-Of-the-Template-Goes-Here</messageTemplateName>
 </ns2:message> 
@@ -1112,7 +1112,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test Web Message</subject>
     <web>
@@ -1191,7 +1191,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <to>john.smith@test.com</to>
     <subject>Test scheduled e-mail message</subject>
     <email>
@@ -1243,7 +1243,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <to>john.smith@test.com</to>
     <subject>Test scheduled e-mail message</subject>
     <email>
@@ -1321,7 +1321,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>John_Wick.1143139@Contact.whispir.sg</to>
     <subject>Test SMS Message with tags</subject>
     <body>Hi @@first_name@@.  This is your message.</body>
@@ -1420,7 +1420,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>$mobile</to>
     <subject>Test SMS Message with tags</subject>
     <body>The date is @@dd@@ / @@mm@@ / @@yyyy@@.</body>
@@ -1701,7 +1701,7 @@ Content-Type: application/vnd.whispir.resource-v1+xml
 Accept: application/vnd.whispir.resource-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:resource xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns3:resource xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <name>sample.json</name>
     <scope>private</scope>
     <mimeType>application/json</mimeType>
@@ -1747,7 +1747,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.bulkmessage-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <resource>
       <resourceId/>
       <smsMappingField/>
@@ -2153,7 +2153,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <to>$mobile</to>
     <subject>Test Message</subject>
     <body>This is the body of my test SMS message</body>

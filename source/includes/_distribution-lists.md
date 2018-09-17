@@ -75,7 +75,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlists xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
     <name>My Distribution List</name>
     <description></description>
     <access>Open</access>
@@ -115,7 +115,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlist xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns1:distributionlist xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
    <name>My Dynamic DistributionList</name>
    <description>My Distribution list</description>
    <access>Open</access>
@@ -373,7 +373,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 2 of 2</status>
     <ns2:distributionLists>
         <ns2:distributionList>
@@ -495,7 +495,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlists xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
     <id>CF5AF1AE49ED07A6</id>
     <name>Rockstar Distribution List</name>
     <description>All the rocks were once stars - astrophysicist inside me</description>
@@ -543,7 +543,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlists xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
     <id>CF5AF1AE49ED07A6</id>
     <name>Rockstar Distribution List</name>
     <description>All the rocks were once stars - astrophysicist inside me</description>
@@ -631,7 +631,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.message-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:message xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns2:message xmlns:ns2="http://schemas.api.whispir.com">
     <to>Docs_Distribution_List.company@list.company.whispir.sg</to>
     <subject>Simple SMS to List of contacts in the distribution list</subject>
     <body>This is the content of my sample sms message.</body>
@@ -698,7 +698,7 @@ x-api-key: your_api_key
 Content-Type: application/vnd.whispir.distributionlist-v1+xml
  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns1:distributionlists xmlns:ns2="http://schemas.api.<region>.whispir.com">
+<ns1:distributionlists xmlns:ns2="http://schemas.api.whispir.com">
     <name>My Distribution List</name>
     <description></description>
     <access>Open</access>

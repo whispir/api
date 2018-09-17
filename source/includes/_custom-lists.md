@@ -83,7 +83,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.customlist-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:return xmlns:ns2="http://schemas.api.<region>.whispir.com/dap" xmlns:ns3="http://schemas.api.<region>.whispir.com">
+<ns2:return xmlns:ns2="http://schemas.api.whispir.com/dap" xmlns:ns3="http://schemas.api.whispir.com">
     <status>1 to 5 of 5</status>
     <ns2:customlabels>
         <ns2:customlabel>
@@ -309,7 +309,7 @@ x-api-key: your_api_key
 Accept: application/vnd.whispir.customlist-v1+xml
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:customlabel xmlns:ns2="http://schemas.api.<region>.whispir.com" xmlns:ns3="http://schemas.api.<region>.whispir.com/dap">
+<ns2:customlabel xmlns:ns2="http://schemas.api.whispir.com" xmlns:ns3="http://schemas.api.whispir.com/dap">
     <id>4E2101D0E5D16229</id>
     <name>Category</name>
     <type>INCIDENT</type>
