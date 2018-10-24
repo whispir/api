@@ -1,10 +1,12 @@
 # API Gateway Changes
-We're finalising the migration of our legacy API Gateway service.
+We have moved away from our legacy API Gateway service to AWS API Gateway Service to better serve your growing API needs.
 
-This migration is being performed in 2 phases. The instructions below refer to the initial phase of the API Gateway service. This will be followed by (refer below) client changes to move to region based API connections. We require clients to check that their API service connects & receives correct replies through the test link below (api-sni.whispir.com). 
-This link points to the new production system & should be used to verify that there will be no issues once we migrate.
+This migration is being performed in 2 phases. 
 
-Please follow the steps below to check the 3 main element of compliance to API standards.
+Phase 1: Provide the new regional gateway service (Completed)
+Phase 2: Sunset the api.whispir.com url, and only keep the regional based links. (Ongoing, and last date for clients to update is Jan 31, 2019)
+
+Please follow the steps below to check the 3 main element of compliance to the new API Gateway standards.
 
 
 ## Change of SSL Certs
@@ -24,11 +26,6 @@ Whispir is aware of some client intergration that do not adhere to header parsin
 While Whispir is looking to implement mitigations for those impacted, we highly recommend that you review your implementations and ensure that they treat all headers as case insensitive to increase resilience.
 
 The rollout of changes on the 21st of August highlighted these issues with some client integrations. The most common problem identified was a dependency on the casing of the 'location' response header provided by Whispir after successful API calls.
-
-## Preparing for the Change
-Once you have reviewed the points above, you can directly test your integration by utilizing the following URL - <a href="https://api-sni.whispir.com/">https://api-sni.whispir.com/</a>. This URL is a parallel production link and will give you the opportunity to identify any issues or impacts that our migration might have on your integration. Do not set this as your production url. This step is purely for testing only.
-
-
 
 # Changes to API URL and Key
 
