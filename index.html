@@ -185,12 +185,14 @@ curl -H <span class="s2">"Authorization: Basic &lt;YOUR AUTHORIZATION HEADER&gt;
 
         <h1 id="api-gateway-changes">API Gateway Changes</h1>
 
-<p>We&rsquo;re finalising the migration of our legacy API Gateway service.</p>
+<p>We have moved away from our legacy API Gateway service to AWS API Gateway Service to better serve your growing API needs.</p>
 
-<p>This migration is being performed in 2 phases. The instructions below refer to the initial phase of the API Gateway service. This will be followed by (refer below) client changes to move to region based API connections. We require clients to check that their API service connects &amp; receives correct replies through the test link below (api-sni.whispir.com). 
-This link points to the new production system &amp; should be used to verify that there will be no issues once we migrate.</p>
+<p>This migration is being performed in 2 phases. </p>
 
-<p>Please follow the steps below to check the 3 main element of compliance to API standards.</p>
+<p>Phase 1: Provide the new regional gateway service (Completed)
+Phase 2: Sunset the api.whispir.com url, and only keep the regional based links. (Ongoing, and last date for clients to update is Jan 31, 2019)</p>
+
+<p>Please follow the steps below to check the 3 main element of compliance to the new API Gateway standards.</p>
 
 <h2 id="change-of-ssl-certs">Change of SSL Certs</h2>
 
@@ -211,10 +213,6 @@ This link points to the new production system &amp; should be used to verify tha
 <p>While Whispir is looking to implement mitigations for those impacted, we highly recommend that you review your implementations and ensure that they treat all headers as case insensitive to increase resilience.</p>
 
 <p>The rollout of changes on the 21st of August highlighted these issues with some client integrations. The most common problem identified was a dependency on the casing of the &lsquo;location&rsquo; response header provided by Whispir after successful API calls.</p>
-
-<h2 id="preparing-for-the-change">Preparing for the Change</h2>
-
-<p>Once you have reviewed the points above, you can directly test your integration by utilizing the following URL - <a href="https://api-sni.whispir.com/">https://api-sni.whispir.com/</a>. This URL is a parallel production link and will give you the opportunity to identify any issues or impacts that our migration might have on your integration. Do not set this as your production url. This step is purely for testing only.</p>
 
 <h1 id="changes-to-api-url-and-key">Changes to API URL and Key</h1>
 
@@ -639,6 +637,12 @@ X-Error-Detail: Account Over Queries Per Day Limit
 </tbody></table>
 
 <p>If further calls per second or per day are required for your application, please contact your Whispir Sales Representative, or <a href="https://whispir.io/contact/">Contact Us</a>.</p>
+
+<h2 id="auto-extention-of-daily-limits">Auto Extention of daily limits</h2>
+
+<p>Whispir enforces a strict daily limit for the API Calls made to its API irrespective of the endpoint and the HTTP Method. At times, there could be a need to temporarily extend the limits of the API Key because you may be experiencing higher than normal activity on your service due to planned or unplanned events. Whispir understands that, and does an automated extention of your api limits to twice the original value for the next 24 hours. This helps in prevention of hitting a wall, and ensures that your messaging traffic flows smoothly. The extention is automatic, and does not need your input or confirmation/action. After 24 hours, the limits are returned to original values. Any auto-extention is free twice a month, and notification will be sent to your account manager whenever the extention happens. Whispir may reach out to discuss commercials if a higher CPD limit is observed continously.</p>
+
+<p>Ex: If you are in Startup Edition, then your per day limits will be doubled to 20k. For Business, it will become 40k, and Enterprise will become 100k. The per second limits remain unchanged at all times.</p>
 
         <h1 id="conventions">Conventions</h1>
 
