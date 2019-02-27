@@ -226,10 +226,10 @@ Phase 2: Sunset the api.whispir.com url, and only keep the regional based links.
 </ol>
 
 <aside class="notice">
-Whispir has set a timeline of 6 months for its customers to update their API libraries, and systems to adapt to these changes. This means, you can continue to make your API calls in the current way till 31-Jan-2019 (23:59:59 GMT). 
+Whispir has set a timeline for its customers to update their API libraries, and systems to adapt to these changes. This means, you can continue to make your API calls in the current way till 31-Apr-2019 (23:59:59 GMT). 
 </aside>
 
-<p>However, Whispir requests you to make efforts to change as stated below at the earliest possible time. The 31-Jan-2019 is a fixed date, and no extention will be provided. If no changes are made by the said date, your API calls will be rejected by Whispir.</p>
+<p>However, Whispir requests you to make efforts to change as stated below FROM 15-Mar-2019 until the 30-Apr-2019 which is a fixed date, and no extention will be provided. If no changes are made by the said date, your API calls will be rejected by Whispir.</p>
 
 <h2 id="new-api-url">New API URL</h2>
 
@@ -3185,6 +3185,34 @@ x-api-key: your_api_key
       </span><span class="s">"attribute"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="p">[{</span><span class="x">
          </span><span class="s">"name"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"event_expiry"</span><span class="p">,</span><span class="x">     
          </span><span class="s">"value"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"13/06/2014"</span><span class="x">   
+      </span><span class="p">}]</span><span class="x">
+   </span><span class="p">}</span><span class="x"> 
+</span><span class="p">}</span><span class="x"> 
+</span></code></pre>
+
+<blockquote>
+<p>Using Template (with more than 1 attribute)</p>
+
+<blockquote>
+<p>to send the Message</p>
+</blockquote>
+</blockquote>
+<pre><code class="highlight plaintext">HTTP 1.1 POST http://api.&lt;region&gt;.whispir.com/messages?apikey=[your_api_key]
+Authorization: Basic am9obi5zbWl0aDpteXBhc3N3b3Jk
+x-api-key: your_api_key
+</code></pre>
+<pre><code class="highlight go"><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">message</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
+
+</span><span class="p">{</span><span class="x"> 
+   </span><span class="s">"to"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"john@api-example.com"</span><span class="p">,</span><span class="x"> 
+   </span><span class="s">"messageTemplateId"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"DACADB02209CC93C"</span><span class="p">,</span><span class="x"> 
+   </span><span class="s">"messageattributes"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="p">{</span><span class="x">
+      </span><span class="s">"attribute"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="p">[{</span><span class="x">
+         </span><span class="s">"name"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"event_expiry"</span><span class="p">,</span><span class="x">     
+         </span><span class="s">"value"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"13/06/2014"</span><span class="x">   
+      </span><span class="p">},{</span><span class="x">
+         </span><span class="s">"name"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"event_expiry_time"</span><span class="p">,</span><span class="x">     
+         </span><span class="s">"value"</span><span class="x"> </span><span class="o">:</span><span class="x"> </span><span class="s">"23:59:59"</span><span class="x">   
       </span><span class="p">}]</span><span class="x">
    </span><span class="p">}</span><span class="x"> 
 </span><span class="p">}</span><span class="x"> 
