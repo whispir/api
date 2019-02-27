@@ -189,8 +189,8 @@ curl -H <span class="s2">"Authorization: Basic &lt;YOUR AUTHORIZATION HEADER&gt;
 
 <p>This migration is being performed in 2 phases. </p>
 
-<p>Phase 1: Provide the new regional gateway service (Completed)
-Phase 2: Sunset the api.whispir.com url, and only keep the regional based links. (Ongoing, and last date for clients to update is Jan 31, 2019)</p>
+<p>Phase 1: Provide the new regional gateway service (Completed)<br/>
+Phase 2: Sunset the api.whispir.com url, and only keep the regional based links. (Ongoing, and last date for clients to update is Apr 30, 2019)</p>
 
 <p>Please follow the steps below to check the 3 main element of compliance to the new API Gateway standards.</p>
 
@@ -212,7 +212,7 @@ Phase 2: Sunset the api.whispir.com url, and only keep the regional based links.
 
 <p>While Whispir is looking to implement mitigations for those impacted, we highly recommend that you review your implementations and ensure that they treat all headers as case insensitive to increase resilience.</p>
 
-<p>The rollout of changes on the 21st of August highlighted these issues with some client integrations. The most common problem identified was a dependency on the casing of the &lsquo;location&rsquo; response header provided by Whispir after successful API calls.</p>
+<p>The rollout of changes on the 21st of August 2018 highlighted these issues with some client integrations. The most common problem identified was a dependency on the casing of the &lsquo;location&rsquo; response header provided by Whispir after successful API calls.</p>
 
 <h1 id="changes-to-api-url-and-key">Changes to API URL and Key</h1>
 
