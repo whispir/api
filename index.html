@@ -204,7 +204,21 @@ Phase 2: Sunset the api.whispir.com url, and only keep the regional based links.
 
 <p>The new and legacy Whispir API Gateway services are hosted in AWS.</p>
 
-<p>If your implementation depends upon IP Whitelisting in order to make calls to our service, we suggest that you review the following set of <a href="https://ip-ranges.amazonaws.com/ip-ranges.json">Amazon IP&rsquo;s</a>. You will need to whitelist all IP ranges for the service &ldquo;CLOUDFRONT&rdquo; in the region &ldquo;GLOBAL&rdquo;.</p>
+<p>If your implementation depends upon IP Whitelisting in order to make calls to our service, we suggest that you review the following set of <a href="https://ip-ranges.amazonaws.com/ip-ranges.json">Amazon IP&rsquo;s</a>. You will need to whitelist all IP ranges</p>
+
+<p>For users still connecting to &ldquo;https://api.whispir.com&rdquo; until the 30-Apr-2019 deadline,</p>
+
+<ul>
+<li>Service &ldquo;CLOUDFRONT&rdquo; in the region &ldquo;GLOBAL&rdquo;</li>
+</ul>
+
+<p>For all the regional endpoints, you should be using REGION + EC2</p>
+
+<ul>
+<li>AU, IT, EDUCATION, NZ = AP-SOUTHEAST-2</li>
+<li>AP, AP1 = AP-SOUTHEAST-1</li>
+<li>US = US-WEST-1</li>
+</ul>
 
 <h2 id="enforcing-http-specifications">Enforcing HTTP Specifications</h2>
 
