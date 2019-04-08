@@ -340,34 +340,22 @@ x-api-key: YOUR-API-KEY
 <p>Getting started with the Whispir.io API is easy:</p>
 
 <ol>
-<li>Register with Whispir.io to create your account - (<a href="https://whispir.io/register">Free 30 Day Trial</a>)</li>
-<li>Create an App inside the Whispir.io App Dashboard - (<a href="https://whispir.io/dashboard">App Dashboard</a>)</li>
+<li>Register with Whispir to create your account - (<a href="https://www.whispir.com/free-trial">Free 14 Day Trial</a>)</li>
+<li>Activate your account, and reach out to Whispir for the API Credentials- (<a href="mailto:support@whispir.com?subject=Whispir%20Trail%20Account%20API%20Key">Whispir Support</a>)</li>
 <li>Check your connectivity to the API</li>
 <li>Try it out! Send your first message</li>
 </ol>
 
 <h2 id="register-with-whispir">Register with Whispir</h2>
 
-<p>The Whispir.io API is available for all existing Whispir customers to use.  If you&rsquo;re already a Whispir customer, great! Your existing username and password will work straight away.  You don&rsquo;t even need to contact us.</p>
-
-<p>Simply log in to (<a href="https://whispir.io/login">whispir.io</a>) and create an app inside the app dashboard.</p>
-
-<p>If you&rsquo;re a new customer and are interested in using the API, sign up for our (<a href="https://whispir.io/register">Free 30 Day Trial</a>). No Credit Card Required.  </p>
-
-<h2 id="create-an-app">Create an app</h2>
-
-<p>Follow these simple steps to create your first Whispir.io Application.</p>
+<p>The Whispir.io API is available for all existing Whispir customers to use.  If you&rsquo;re already a Whispir customer, great! Your existing username and password will work straight away.</p>
 
 <ol>
-<li><p>Log in to the (<a href="https://whispir.io/login">whispir.io dashboard</a>).</p></li>
-<li><p>If you haven&rsquo;t validated your e-mail address, you&rsquo;ll need to do this first by clicking the <em>validate</em> link.  This will send you an e-mail.  Simply click the link in the e-mail you receive and your e-mail will be validated.</p></li>
-<li><p>You should now see the <em>Create App</em> button at the top of the screen.  Click this button to create your first app.</p></li>
-<li><p>You&rsquo;ll need to give your app a <strong>Name</strong> and a <strong>Description</strong>. These help you identify your app within the App Dashboard.  These won&rsquo;t be exposed to the users of your app.</p></li>
-<li><p>Click <em>Create</em>. That&rsquo;s it, you&rsquo;ve now created your first Whispir.io App.<br>
-An API key will be generated for this application automatically.  You&rsquo;ll need this API key to start making API calls for this application.</p></li>
+<li>If you are an existing Whispir client, please contact <a href="mailto:support@whispir.com?subject=Whispir%20Trail%20API%20Key">Whispir Support</a> for a new API key.</li>
+<li>If you are using a Whispir Free Trial - please email <a href="mailto:support@whispir.com?subject=Whispir%20Trail%20API%20Key">Whispir Support</a> to apply for an API key.</li>
 </ol>
 
-<p>Now that you&rsquo;ve got your App API key, you can check your connectivity to the API using the steps below.</p>
+<p>Once you&rsquo;ve got your App API key, you can check your connectivity to the API using the steps below.</p>
 
 <h2 id="connect-to-the-api">Connect to the API</h2>
 
@@ -14810,10 +14798,10 @@ x-api-key: your_api_key
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml">https://api.<span class="nt">&lt;region&gt;</span>.whispir.com/imports/?apikey=<span class="nt">&lt;your_api_key&gt;</span>
-Content-Type: application/vnd.whispir.import-v1+xml
+Content-Type: application/vnd.whispir.importcontact-v1+xml
 </code></pre>
 <pre><code class="highlight go"><span class="n">https</span><span class="o">:</span><span class="c">//api.&lt;region&gt;.whispir.com/imports/?apikey=&lt;your_api_key&gt;</span><span class="x">
-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="k">import</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
+</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">importcontact</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
 </span></code></pre>
 
 <blockquote>
@@ -14824,10 +14812,10 @@ Content-Type: application/vnd.whispir.import-v1+xml
 </blockquote>
 </blockquote>
 <pre><code class="highlight xml">https://api.<span class="nt">&lt;region&gt;</span>.whispir.com/workspaces/{:id}/imports/?apikey=<span class="nt">&lt;your_api_key&gt;</span>
-Content-Type: application/vnd.whispir.import-v1+xml
+Content-Type: application/vnd.whispir.importcontact-v1+xml
 </code></pre>
 <pre><code class="highlight go"><span class="n">https</span><span class="o">:</span><span class="c">//api.&lt;region&gt;.whispir.com/workspaces/{:id}/imports/?apikey=&lt;your_api_key&gt;</span><span class="x">
-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="k">import</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
+</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="x"> </span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">whispir</span><span class="o">.</span><span class="n">importcontact</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span><span class="x">
 </span></code></pre>
 <pre><code class="highlight plaintext">&gt; Methods supported
 
@@ -14998,7 +14986,7 @@ Jane,Smith,jane.smith@testcompany,com,61498765432,Australia,+10
 <pre><code class="highlight plaintext">HTTP 1.1 POST https://api.&lt;region&gt;.whispir.com/imports?apikey=&lt;your_api_key&gt;
 Authorization: Basic asdf98nf89asdvasd2r398h8sdf
 x-api-key: your_api_key
-Accept: application/vnd.whispir.import-v1+json
+Accept: application/vnd.whispir.importcontact-v1+json
 
 {
     "resourceId": "4FBBC384BCE3DAABFE3",
